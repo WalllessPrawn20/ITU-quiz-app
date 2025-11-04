@@ -1,9 +1,9 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import HomeView from '../views/HomeView.vue'
+import HomeView from '../views/Homepageview.vue'
 import SettingsView from '../views/SettingsView.vue'
-import RegionView from '../views/RegionView.vue'
+import RegionView from '../views/Categoryview.vue'
 import StatsView from '../views/StatsView.vue'
-import ThemesView from '../views/ThemesView.vue'
+import ThemesView from '../views/Settingview.vue'
 import GameView from '../views/GameView.vue'
 import QuestionABCDView from '../views/QuestionABCDView.vue'
 
@@ -12,7 +12,7 @@ const router = createRouter({
   routes: [
     { path: '/', name: 'home', component: HomeView },
     { path: '/settings', name: 'settings', component: SettingsView },
-    { path: '/choose-region', name: 'region', component: RegionView },
+    { path: '/category', name: 'region', component: RegionView },
     { path: '/stats', name: 'stats', component: StatsView },
     { path: '/themes', name: 'themes', component: ThemesView },
     { path: '/game', name: 'game', component: GameView },
