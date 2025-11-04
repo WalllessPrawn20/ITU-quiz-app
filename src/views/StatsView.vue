@@ -27,22 +27,60 @@
 </template>
 
 <script setup>
+import { ref, onMounted } from 'vue'
 import { useRouter } from 'vue-router'
 
 const router = useRouter()
 
-const stats = [
+const stats = ref([
   { name: 'Whole world', correct: 0, incorrect: 0, successRate: '-' },
   { name: 'Europe', correct: 0, incorrect: 0, successRate: '-' },
   { name: 'Asia', correct: 0, incorrect: 0, successRate: '-' },
   { name: 'America', correct: 0, incorrect: 0, successRate: '-' },
   { name: 'Australia', correct: 0, incorrect: 0, successRate: '-' },
   { name: 'Africa', correct: 0, incorrect: 0, successRate: '-' },
-]
+])
 
 function closeStats() {
-  router.back() // alebo router.push('/') ak chceš ísť na hlavnú obrazovku
+  router.back()
 }
+
+// pomocná funkcia na výpočet percent
+function calcRate(correct, incorrect) {
+  const total = correct + incorrect
+  if (total === 0) return '-'
+  return `${Math.round((correct / total) * 100)}%`
+}
+
+// načítanie zo servera
+async function fetchStats() {
+  try {
+    const res = await fetch('http://localhost:5000/stats')
+    if (!res.ok) throw new Error('Failed to fetch stats')
+    const data = await res.json()
+
+    stats.value = stats.value.map((s) => {
+      const cont = s.name
+      if (data[cont]) {
+        const correct = data[cont].correct
+        const incorrect = data[cont].wrong
+        return {
+          ...s,
+          correct,
+          incorrect,
+          successRate: calcRate(correct, incorrect),
+        }
+      }
+      return s
+    })
+  } catch (err) {
+    console.error('Error loading stats:', err)
+  }
+}
+
+onMounted(() => {
+  fetchStats()
+})
 </script>
 
 <style scoped>

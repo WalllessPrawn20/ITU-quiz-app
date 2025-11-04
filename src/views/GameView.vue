@@ -10,6 +10,8 @@
       <div class="info-panel">
         <p><strong>Time left:</strong> {{ timer }}s</p>
         <p><strong>Command:</strong> {{ command }}</p>
+        <p><strong>Turns:</strong> {{ turn }}/{{ totalRounds }}</p>
+        <!-- pridané -->
         <p><strong>Score</strong></p>
         <p>You: {{ scores.you }}</p>
         <p>Enemy: {{ scores.enemy }}</p>
@@ -76,8 +78,11 @@ async function handleCountryClick(countryId) {
   if (path) path.style.fill = '#00cc66'
 }
 
-// odpoveď
-function handleAnswer(correct) {
+const totalRounds = ref(gameSettings.rounds || 10) // z localStorage
+const turn = ref(0) // aktuálne odohrané kolo
+
+// každý krát po odpovedi zvýšiť turn
+async function handleAnswer(correct) {
   if (correct) scores.value.you += 1
   else scores.value.enemy += 1
 
@@ -86,10 +91,30 @@ function handleAnswer(correct) {
   const path = mapContainer.value.querySelector(`#${selectedCountryId}`)
   if (path) path.style.fill = correct ? '#00ff00' : '#ff3333'
 
+  await updateStats('Europe', correct)
+
+  turn.value++ // <-- pridané
+
   currentQuestion.value = null
   command.value = 'Select a country'
 
   startGameTimer()
+}
+
+async function updateStats(continent, correct) {
+  try {
+    const res = await fetch('http://localhost:5000/stats/update', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        continent,
+        correct: correct ? 1 : 0,
+      }),
+    })
+    if (!res.ok) throw new Error('Failed to update stats')
+  } catch (err) {
+    console.error('Error updating stats:', err)
+  }
 }
 
 // vypršal čas otázky
@@ -129,7 +154,7 @@ function startGameTimer() {
 
 async function fetchQuestions(id) {
   try {
-    const capitalizedId = id.toUpperCase() // pre prípad lowercase
+    const capitalizedId = id.slice(0, 2).toUpperCase()
     const res = await fetch(`http://localhost:5000/questions/filter?id=${capitalizedId}`)
     if (!res.ok) throw new Error('Failed to fetch questions')
     const data = await res.json()
