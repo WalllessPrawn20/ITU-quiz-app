@@ -5,7 +5,7 @@
       <h1>Europe Conquest</h1>
     </div>
 
-    <div class="content">
+    <div class="content" v-if="!gameOver">
       <!-- Left Info Panel -->
       <div class="info-panel">
         <p><strong>Time left:</strong> {{ timer }}s</p>
@@ -23,12 +23,15 @@
 
     <!-- Question View -->
     <QuestionView
-      v-if="currentQuestion"
+      v-if="currentQuestion && !gameOver"
       :question="currentQuestion"
       :duration="questionDuration"
       @answered="handleAnswer"
       @timeout="handleTimeout"
     />
+
+    <!-- Game Over View -->
+    <GameOverView v-if="gameOver" :scores="scores" :totalRounds="totalRounds" />
   </div>
 </template>
 
@@ -36,6 +39,7 @@
 import { ref, onMounted } from 'vue'
 import europeSvg from '@/assets/europe.svg?raw'
 import QuestionView from './QuestionABCDView.vue'
+import GameOverView from './GameOverView.vue' // ✅ pridané
 
 const mapContainer = ref(null)
 
@@ -46,42 +50,37 @@ let gameInterval = null
 const command = ref('Select a country')
 const scores = ref({ you: 0, enemy: 0 })
 
-// otázky - teraz načítané z backendu
 const questions = ref([])
 const currentQuestion = ref(null)
-const questionDuration = 15
+const questionDuration = gameSettings.timer || 15
 let selectedCountryId = null
 const countryResults = ref({})
 
+const totalRounds = ref(gameSettings.rounds)
+const turn = ref(0)
+const gameOver = ref(false) // ✅ pridané
+
 // klik na štát
 async function handleCountryClick(countryId) {
-  if (currentQuestion.value) return
+  if (currentQuestion.value || gameOver.value) return
 
   selectedCountryId = countryId
   command.value = `Loading question for ${countryId}...`
 
-  // fetch otázok pre daný štát
   const countryQuestions = await fetchQuestions(countryId)
 
   if (countryQuestions.length) {
-    // náhodná otázka zo zoznamu
     const randomIndex = Math.floor(Math.random() * countryQuestions.length)
     currentQuestion.value = countryQuestions[randomIndex]
-    questionTimer.value = questionDuration
     command.value = `Question for ${countryId}`
   } else {
     command.value = `No question for ${countryId}`
   }
 
-  // zvýraznenie kliknutého štátu
   const path = mapContainer.value.querySelector(`#${countryId}`)
-  if (path) path.style.fill = '#00cc66'
+  // if (path) path.style.fill = '#00cc66'
 }
 
-const totalRounds = ref(gameSettings.rounds || 10) // z localStorage
-const turn = ref(0) // aktuálne odohrané kolo
-
-// každý krát po odpovedi zvýšiť turn
 async function handleAnswer(correct) {
   if (correct) scores.value.you += 1
   else scores.value.enemy += 1
@@ -93,12 +92,23 @@ async function handleAnswer(correct) {
 
   await updateStats('Europe', correct)
 
-  turn.value++ // <-- pridané
+  turn.value++
+
+  if (turn.value >= totalRounds.value) {
+    endGame() // ✅ pridané
+    return
+  }
 
   currentQuestion.value = null
   command.value = 'Select a country'
 
   startGameTimer()
+}
+
+function endGame() {
+  clearInterval(gameInterval)
+  gameOver.value = true
+  command.value = 'Game Over!'
 }
 
 async function updateStats(continent, correct) {
@@ -117,20 +127,15 @@ async function updateStats(continent, correct) {
   }
 }
 
-// vypršal čas otázky
 function handleTimeout() {
   countryResults.value[selectedCountryId] = 'wrong'
-
   const path = mapContainer.value.querySelector(`#${selectedCountryId}`)
   if (path) path.style.fill = '#ff3333'
-
   currentQuestion.value = null
   command.value = 'Select a country'
-
   startGameTimer()
 }
 
-// timer
 function startGameTimer() {
   clearInterval(gameInterval)
   timer.value = 10
@@ -139,7 +144,6 @@ function startGameTimer() {
       timer.value -= 1
     } else {
       clearInterval(gameInterval)
-
       const paths = mapContainer.value.querySelectorAll('path')
       const unselected = Array.from(paths).filter((p) => !countryResults.value[p.id])
       if (unselected.length > 0) {
@@ -158,7 +162,7 @@ async function fetchQuestions(id) {
     const res = await fetch(`http://localhost:5000/questions/filter?id=${capitalizedId}`)
     if (!res.ok) throw new Error('Failed to fetch questions')
     const data = await res.json()
-    return data // vrátime otázky, neukladáme do questions.value
+    return data
   } catch (err) {
     console.error('Error loading questions:', err)
     return []

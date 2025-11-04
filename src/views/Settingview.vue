@@ -6,7 +6,7 @@ const router = useRouter()
 
 // všetko uložené v jednom objekte
 const settings = ref({
-  region:"europe",
+  region: 'europe',
   sets: {
     History: false,
     Society: false,
@@ -19,7 +19,7 @@ const settings = ref({
 })
 
 function playQuiz() {
-  localStorage.setItem('quizSettings', JSON.stringify(settings.value))
+  localStorage.setItem('gameSettings', JSON.stringify(settings.value))
   router.push('/game')
 }
 </script>
@@ -77,8 +77,8 @@ function playQuiz() {
 
       <div class="slider-group">
         <label>Turns</label>
-        <input type="range" min="1" max="50" v-model="settings.turns" />
-        <span class="value">{{ settings.turns }}</span>
+        <input type="range" min="1" max="50" v-model="settings.rounds" />
+        <span class="value">{{ settings.rounds }}</span>
       </div>
 
       <button class="play-btn" @click="playQuiz">▶</button>
