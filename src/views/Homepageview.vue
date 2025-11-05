@@ -6,7 +6,7 @@
       </button>
     </router-link>
 
-    <h1 class="title">Ultimate Country Quiz</h1>
+    <h1 class="title">World Conquest</h1>
 
     <router-link to="/category">
       <button class="start" aria-label="Start quiz">
@@ -73,7 +73,7 @@ body {
 
 /* label za textom */
 .title {
-  font-size: 5rem;
+  font-size: 6rem;
   font-weight: bold;
   margin-bottom: 2rem;
   padding: 1rem 2rem;

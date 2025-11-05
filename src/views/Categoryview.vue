@@ -5,43 +5,50 @@ const selectRegion = (region) => {
 </script>
 
 <template>
-  <div class="header">
+  <div class="background">
+  <div class="header-category">
     <div class="titles">
-      <h1>Ultimate Country Quiz</h1>
-      <h2>Play:</h2>
+      <router-link to="/" class="back-link">
+      <h1>World Conquest</h1>
+    </router-link>
+      <h2>Choose region you want to play:</h2>
     </div>
 
-    <router-link to="/" class="back-link">← Back</router-link>
+    <router-link to="/settings">
+      <button class="settings" aria-label="Settings">
+        ⚙️
+      </button>
+    </router-link>
   </div>
 
   <div class="categories">
-    <router-link to="/themes" class="category">
-      <button class="img-button">
+    <!-- <router-link to="/themes" class="category"> -->
+      <button class="img-button blocked">
         <h3>Africa</h3>
         <img src="../assets/africa.jpg" alt="Africa" @click="selectRegion('africa')" />
       </button>
-    </router-link>
+    <!-- </router-link> -->
 
-    <router-link to="/themes" class="category">
-      <button class="img-button">
+    <!-- <router-link to="/themes" class="category"> -->
+      <button class="img-button blocked">
         <h3>Americas</h3>
         <img src="../assets/america.jpg" alt="Americas" @click="selectRegion('americas')" />
       </button>
-    </router-link>
+    <!-- </router-link> -->
 
-    <router-link to="/themes" class="category">
-      <button class="img-button">
+    <!-- <router-link to="/themes" class="category"> -->
+      <button class="img-button blocked">
         <h3>Asia</h3>
         <img src="../assets/asia.png" alt="Asia" @click="selectRegion('asia')" />
       </button>
-    </router-link>
+    <!-- </router-link> -->
 
-    <router-link to="/themes" class="category">
-      <button class="img-button">
+    <!-- <router-link to="/themes" class="category"> -->
+      <button class="img-button blocked">
         <h3>Australia & Oceania</h3>
         <img src="../assets/oceania.png" alt="Oceania" @click="selectRegion('oceania')" />
       </button>
-    </router-link>
+    <!-- </router-link> -->
 
     <router-link to="/themes" class="category">
       <button class="img-button">
@@ -50,52 +57,73 @@ const selectRegion = (region) => {
       </button>
     </router-link>
 
-    <router-link to="/themes" class="category">
-      <button class="img-button">
+    <!-- <router-link to="/themes" class="category"> -->
+      <button class="img-button blocekd">
         <h3>Whole World</h3>
         <img src="../assets/earth.jpg" alt="World" @click="selectRegion('earth')" />
       </button>
-    </router-link>
+    <!-- </router-link> -->
   </div>
+</div>
 </template>
 
 <style>
-/* Header layout */
-.header {
+.background {
+  position: relative; /* dôležité pre pseudo-element */
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  font-family: 'Press Start 2P', monospace;
+  color: white;
+  /* odstránime opacity odtiaľto */
+}
+
+.background::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('../assets/home.png');
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  opacity: 0.5; /* iba pozadie je priehľadné */
+  z-index: -1; /* aby bolo pod obsahom */
+}
+
+
+.header-category {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  width: 92vw;
-  padding: 20px 40px;
+  width: 95vw;
+  margin: 2rem; /* top, bottom, horizontálne centrovanie */
 }
 
-.titles h1 {
-  font-size: 2.2rem;
-  margin: 0 0 8px 0;
-}
-
-.titles h2 {
-  font-size: 1.6rem;
-  margin: 0;
-}
-
-.back-link {
-  text-decoration: underline;
-  color: blue;
-  font-size: 1.2rem;
-  margin-top: 5px;
+.categories-wrapper {
+  flex: 1; /* zabere zostávajúcu výšku */
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .categories {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  justify-content: center; /* horizontálne centrovanie gridu */
-  justify-items: center; /* centrovanie obsahu v každej bunke */
+  gap: 20px;
+  justify-items: center;
+  align-items: center;
 }
+
+
 
 /* Buttons */
 .img-button {
   border: none;
+    font-family: 'Press Start 2P', monospace;
   background: none;
   cursor: pointer;
   position: relative;
@@ -114,7 +142,15 @@ const selectRegion = (region) => {
   left: 10px;
   margin: 0;
   color: white;
-  font-size: 1.4rem;
+  font-size: 1.1rem;
   text-shadow: 0 0 6px black;
+}
+.titles h1{
+  font-size: 4rem;
+  margin: 0;
+}
+.back-link{
+  color: white;
+  text-decoration: none;
 }
 </style>

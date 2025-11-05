@@ -4,7 +4,6 @@ import { useRouter } from 'vue-router'
 
 const router = useRouter()
 
-// všetko uložené v jednom objekte
 const settings = ref({
   region: 'europe',
   sets: {
@@ -25,111 +24,205 @@ function playQuiz() {
 </script>
 
 <template>
-  <div class="header">
+
+  <div class="settings-wrapper-settings">
+<div class="header">
     <div class="titles">
-      <h1>Ultimate Country Quiz</h1>
+      <router-link to="/" class="back-link">
+      <h1>World Conquest</h1>
+    </router-link>
+      <h2>Choose settings for your game:</h2>
     </div>
 
-    <router-link to="../category" class="back-link">← Back</router-link>
+    <router-link to="/settings">
+      <button class="settings" aria-label="Settings">
+        ⚙️
+      </button>
+    </router-link>
   </div>
-  <div class="settings-page">
-    <!-- QUIZ SETS -->
-    <div class="block">
-      <h2>Quiz sets</h2>
-
-      <div
-        class="row"
-        v-for="(value, key) in settings.sets"
-        :key="key"
-        @click="settings.sets[key] = !settings.sets[key]"
-      >
-        <div class="circle-img"></div>
-        <span class="label">{{ key }}</span>
-        <div class="checkbox" :class="{ active: settings.sets[key] }"></div>
-      </div>
+    <!-- Panely s nastaveniami -->
+    <div class="settings-page">
+      <!-- QUIZ SETS -->
+      <div class="block">
+  <h2>Quiz sets</h2>
+  <div class="block-content">
+    <div
+      class="row"
+      v-for="(value, key) in settings.sets"
+      :key="key"
+      @click="settings.sets[key] = !settings.sets[key]"
+    >
+      <div class="circle-img"></div>
+      <span class="label">{{ key }}</span>
+      <div class="checkbox" :class="{ active: settings.sets[key] }"></div>
     </div>
+  </div>
+</div>
 
-    <!-- DIFFICULTY -->
-    <div class="block">
-      <h2>Difficulty</h2>
 
-      <div
-        class="row diff"
-        v-for="level in ['Easy', 'Medium', 'Hard']"
-        :key="level"
-        @click="settings.difficulty = level"
-      >
-        <div class="square-img"></div>
-        <span class="label">{{ level }}</span>
-        <div class="checkbox" :class="{ active: settings.difficulty === level }"></div>
-      </div>
+      <!-- DIFFICULTY -->
+<div class="block">
+  <h2>Difficulty</h2>
+  <div class="difficulty-rows">
+    <div
+      class="row diff"
+      v-for="level in ['Easy', 'Medium', 'Hard']"
+      :key="level"
+      @click="settings.difficulty = level"
+    >
+      <div class="square-img"></div>
+      <span class="label">{{ level }}</span>
+      <div class="checkbox" :class="{ active: settings.difficulty === level }"></div>
     </div>
+  </div>
+</div>
 
-    <!-- ADDITIONAL -->
-    <div class="block">
-      <h2>Additional</h2>
 
-      <div class="slider-group">
-        <label>Timer</label>
-        <input type="range" min="5" max="25" v-model="settings.timer" />
-        <span class="value">{{ settings.timer }}s</span>
+      <!-- ADDITIONAL -->
+      <div class="block">
+        <h2>Additional</h2>
+        <div class="slider-group">
+          <label>Timer</label>
+          <input type="range" min="5" max="25" v-model="settings.timer" />
+          <span class="value">{{ settings.timer }}s</span>
+        </div>
+
+        <div class="slider-group">
+          <label>Turns</label>
+          <input type="range" min="1" max="50" v-model="settings.rounds" />
+          <span class="value">{{ settings.rounds }}</span>
+        </div>
+
+        <button class="play-btn" @click="playQuiz">▶</button>
       </div>
-
-      <div class="slider-group">
-        <label>Turns</label>
-        <input type="range" min="1" max="50" v-model="settings.rounds" />
-        <span class="value">{{ settings.rounds }}</span>
-      </div>
-
-      <button class="play-btn" @click="playQuiz">▶</button>
     </div>
   </div>
 </template>
 
 <style>
-.settings-page {
-  height: 100vh;
+.settings-wrapper-settings {
+  position: relative; /* dôležité pre pseudo-element */
   width: 100vw;
+  height: 100vh;
   display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 6vw;
+  flex-direction: column;
+  font-family: 'Press Start 2P', monospace;
   color: white;
-  font-family: sans-serif;
+  margin:0;
+  padding:0;
+  /* odstránime opacity odtiaľto */
 }
 
-/* Panels */
+.settings-wrapper-settings::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-image: url('../assets/home.png');
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  opacity: 0.5; /* iba pozadie je priehľadné */
+  z-index: -1; /* aby bolo pod obsahom */
+}
+.settings-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem;
+  gap: 2rem;
+  font-family: 'Press Start 2P', monospace;
+  color: white;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  width: 95vw;
+  margin: 2rem; /* top, bottom, horizontálne centrovanie */
+}
+
+.back-link {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Panely */
+.settings-page {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 4vw;
+  width: 100%;
+  flex-wrap: wrap;
+}
+
+/* Každý block */
+/* Každý block */
 .block {
-  background: rgba(0, 0, 0, 0.4);
+  background: rgba(0, 0, 0, 0.7);
   width: 22vw;
-  height: 80vh;
-  padding: 3vh 2vw;
+  padding: 2rem;
   border-radius: 2vw;
   text-align: center;
   backdrop-filter: blur(0.5vw);
+  height: 60vh;
+
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+
+  /* Vertikálne rozloženie */
+  justify-content: flex-start;
+  align-items: center;
+
+  gap: 1.5rem;
+  /* pridať vnútorný flex pre riadky */
+  position: relative;
 }
 
+/* H2 všetkých blokov bude hore, rovnaká výška */
 .block h2 {
   font-size: 2rem;
-  margin-bottom: 2vh;
+  margin-bottom: 2rem; /* väčší margin, aby bol priestor pod h2 rovnaký */
+  flex-shrink: 0;
+}
+
+/* Obsah blokov (riadky + sliders + tlačidlo) */
+.block-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* rovnomerné rozloženie */
+  flex-grow: 1;
+  width: 100%;
 }
 
 /* Rows */
 .row {
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 1vw;
-  margin: 2vh 0;
   cursor: pointer;
+  width: 100%;
 }
-
+/* Zabalené riadky difficulty */
+.difficulty-rows {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  width: 100%;
+}
+.row.diff {
+  margin-top: 0;
+}
 .label {
   font-size: 1.4rem;
   flex-grow: 1;
-  text-align: left;
+  text-align: center;
 }
 
 /* Image placeholders */
@@ -138,6 +231,9 @@ function playQuiz() {
   width: 6vw;
   height: 6vw;
   background: gray;
+}
+
+.circle-img {
   border-radius: 50%;
 }
 
@@ -158,25 +254,73 @@ function playQuiz() {
 }
 
 /* Sliders */
+/* === RETRO PIXEL SLIDER === */
 .slider-group {
-  text-align: center;
-  margin: 3vh 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  gap: 1vh;
 }
 
 .slider-group label {
-  font-size: 1.4rem;
-  display: block;
+  font-size: 1.2rem;
 }
 
-.slider-group input {
+/* Base slider */
+input[type="range"] {
+  -webkit-appearance: none;
   width: 100%;
-  margin-top: 1vh;
+  background: transparent;
+  cursor: pointer;
 }
 
+/* Track (dráha) */
+input[type="range"]::-webkit-slider-runnable-track {
+  height: 1.2vw;
+  background: black;
+  border: 0.4vw solid white;
+  image-rendering: pixelated;
+}
+
+input[type="range"]::-moz-range-track {
+  height: 1.2vw;
+  background: black;
+  border: 0.4vw solid white;
+}
+
+/* Thumb (jazdec) */
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 2vw;
+  height: 2vw;
+  background: white;
+  border: 0.4vw solid black;
+  image-rendering: pixelated;
+  margin-top: -0.5vw; /* centrovanie */
+}
+
+input[type="range"]::-moz-range-thumb {
+  width: 2vw;
+  height: 2vw;
+  background: white;
+  border: 0.4vw solid black;
+}
+
+/* Hover efekt – old school “bright” */
+input[type="range"]::-webkit-slider-thumb:hover {
+  background: yellow;
+}
+
+input[type="range"]::-moz-range-thumb:hover {
+  background: yellow;
+}
+
+/* Value text */
 .slider-group .value {
   font-size: 1.2rem;
-  margin-top: 0.5vh;
 }
+
 
 /* Play Button */
 .play-btn {
