@@ -223,12 +223,14 @@ onMounted(async () => {
 }
 
 .map-container svg {
-  width: 100%;
-  height: 100%;
-  max-width: 900px;
-  max-height: 700px;
+  width: 120%;
+  height: auto;
+  max-width: none;
+  max-height: none;
   border: 2px solid #555;
   background: #222;
+  transform: scale(1.3); /* makes it 30% bigger */
+  transform-origin: center;
 }
 
 .map-container path:hover {
