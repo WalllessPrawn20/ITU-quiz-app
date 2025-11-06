@@ -2,8 +2,8 @@
   <div class="game-over-overlay">
     <div class="game-over-card">
       <h2>
-        <span v-if="scores.you > scores.enemy">🏆 You Win!</span>
-        <span v-else-if="scores.you < scores.enemy">💀 You Lost!</span>
+        <span v-if="scores.you > scores.bot">🏆 You Win!</span>
+        <span v-else-if="scores.you < scores.bot">💀 You Lost!</span>
         <span v-else>🤝 It's a tie!</span>
       </h2>
 
@@ -11,7 +11,7 @@
 
       <div class="score">
         <p><strong>You:</strong> {{ scores.you }}</p>
-        <p><strong>Enemy:</strong> {{ scores.enemy }}</p>
+        <p><strong>Enemy:</strong> {{ scores.bot }}</p>
       </div>
 
       <div class="message">

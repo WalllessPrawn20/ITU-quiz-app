@@ -11,10 +11,9 @@
         <p><strong>Time left:</strong> {{ timer }}s</p>
         <p><strong>Command:</strong> {{ command }}</p>
         <p><strong>Turns:</strong> {{ turn }}/{{ totalRounds }}</p>
-        <!-- pridané -->
         <p><strong>Score</strong></p>
         <p>You: {{ scores.you }}</p>
-        <p>Enemy: {{ scores.enemy }}</p>
+        <p>Enemy: {{ scores.bot }}</p>
       </div>
 
       <!-- SVG Map -->
@@ -26,8 +25,10 @@
       v-if="currentQuestion && !gameOver"
       :question="currentQuestion"
       :duration="questionDuration"
+      :difficulty="difficulty"
       @answered="handleAnswer"
       @timeout="handleTimeout"
+      @score="handleScore"
     />
 
     <!-- Game Over View -->
@@ -39,7 +40,7 @@
 import { ref, onMounted } from 'vue'
 import europeSvg from '@/assets/europe.svg?raw'
 import QuestionView from './QuestionABCDView.vue'
-import GameOverView from './GameOverView.vue' // ✅ pridané
+import GameOverView from './GameOverView.vue'
 
 const mapContainer = ref(null)
 
@@ -48,7 +49,9 @@ const initialTimer = gameSettings.timer || 20
 const timer = ref(initialTimer)
 let gameInterval = null
 const command = ref('Select a country')
-const scores = ref({ you: 0, enemy: 0 })
+
+// ✅ pridáme bot skóre
+const scores = ref({ you: 0, bot: 0 })
 
 const questions = ref([])
 const currentQuestion = ref(null)
@@ -58,7 +61,9 @@ const countryResults = ref({})
 
 const totalRounds = ref(gameSettings.rounds)
 const turn = ref(0)
-const gameOver = ref(false) // ✅ pridané
+const gameOver = ref(false)
+
+const difficulty = gameSettings.difficulty || 'Medium'
 
 // klik na štát
 async function handleCountryClick(countryId) {
@@ -76,26 +81,18 @@ async function handleCountryClick(countryId) {
   } else {
     command.value = `No question for ${countryId}`
   }
-
-  const path = mapContainer.value.querySelector(`#${countryId}`)
-  // if (path) path.style.fill = '#00cc66'
 }
 
 async function handleAnswer(correct) {
-  if (correct) scores.value.you += 1
-  else scores.value.enemy += 1
-
+  // ❌ tu už nepridávame body, riešime cez handleScore
   countryResults.value[selectedCountryId] = correct ? 'correct' : 'wrong'
-
-  const path = mapContainer.value.querySelector(`#${selectedCountryId}`)
-  if (path) path.style.fill = correct ? '#00ff00' : '#ff3333'
 
   await updateStats('Europe', correct)
 
   turn.value++
 
   if (turn.value >= totalRounds.value) {
-    endGame() // ✅ pridané
+    endGame()
     return
   }
 
@@ -103,6 +100,16 @@ async function handleAnswer(correct) {
   command.value = 'Select a country'
 
   startGameTimer()
+}
+
+// ✅ handler pre bodovanie
+function handleScore({ playerPoint, botPoint }) {
+  scores.value.you += playerPoint
+  scores.value.bot += botPoint
+
+  const path = mapContainer.value.querySelector(`#${selectedCountryId}`)
+  if (path && playerPoint) path.style.fill = '#00ff00'
+  else if (path && botPoint) path.style.fill = '#ff3333'
 }
 
 function endGame() {
@@ -130,7 +137,6 @@ async function updateStats(continent, correct) {
 function handleTimeout() {
   countryResults.value[selectedCountryId] = 'wrong'
   const path = mapContainer.value.querySelector(`#${selectedCountryId}`)
-  if (path) path.style.fill = '#ff3333'
   currentQuestion.value = null
   command.value = 'Select a country'
   startGameTimer()
@@ -187,22 +193,25 @@ onMounted(async () => {
 .game-view {
   display: flex;
   flex-direction: column;
-  height: 100vh;
+  height: 100vh; /* ❌ nie auto, ale celá výška viewportu */
   width: 100vw;
   font-family: 'Press Start 2P', monospace;
   color: white;
   background: #111;
+  overflow: hidden; /* zabráni scrollom ak náhodou presiahne */
 }
 
 .top-bar {
   background: #333;
   padding: 1rem;
   text-align: center;
+  flex-shrink: 0; /* nech top-bar nemení veľkosť */
 }
 
 .content {
   display: flex;
-  flex: 1;
+  flex: 1 1 auto; /* zvyšok priestoru vyplní content */
+  overflow: hidden; /* nech map-container nepridá scroll */
 }
 
 .info-panel {
@@ -220,16 +229,15 @@ onMounted(async () => {
   justify-content: center;
   align-items: center;
   padding: 1rem;
+  overflow: hidden; /* zabráni scrollu */
 }
 
 .map-container svg {
-  width: 120%;
-  height: auto;
-  max-width: none;
-  max-height: none;
+  max-width: 100%;
+  max-height: 100%;
   border: 2px solid #555;
   background: #222;
-  transform: scale(1.3); /* makes it 30% bigger */
+  transform: scale(1.3);
   transform-origin: center;
 }
 
