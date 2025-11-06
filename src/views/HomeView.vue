@@ -1,83 +1,106 @@
 <template>
-  <div class="menu-screen">
-    <div class="top-right">
-      <button class="settings-btn" @click="goToSettings">⚙️</button>
-    </div>
+  <div class="homepage">
+    <!-- SETTINGS BUTTON -->
+    <router-link to="/settings">
+      <button class="header-btn settings" aria-label="Settings">
+        <img src="../assets/settings2.png" alt="Settings"/>
+      </button>
+    </router-link>
 
-    <div class="menu-content">
-      <h1 class="title">Europe<br />Conquest</h1>
-      <button class="play-btn" @click="startGame">PLAY</button>
-    </div>
+    <!-- TITLE -->
+    <h1 class="title">World Conquest</h1>
+
+    <!-- START BUTTON -->
+    <router-link to="/category">
+      <button class="start" aria-label="Start quiz">
+        <img src="../assets/play.png" alt="Play" class="play-icon"/>
+      </button>
+    </router-link>
   </div>
 </template>
 
-<script setup>
-import { useRouter } from 'vue-router'
-const router = useRouter()
-
-function startGame() {
-  router.push('/choose-region') // neskôr zmeníš na router.push('/game')
-}
-
-function goToSettings() {
-  router.push('/settings')
-}
-</script>
-
 <style>
-.menu-screen {
-  background-image: url('@/assets/europe_back.png');
-  background-size: cover;
-  background-position: center;
+.homepage {
   height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  font-family: 'Press Start 2P', monospace;
+  background-image: url('../assets/home.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  color: white;
+  text-align: center;
   position: relative;
-  width: 100vw;
 }
 
-.top-right {
+/* SETTINGS BUTTON */
+.settings {
   position: absolute;
-  top: 10px;
-  right: 15px;
-}
-
-.settings-btn {
-  font-size: 24px;
+  top: 2rem;
+  right: 2rem;
+  font-family: 'Press Start 2P', monospace;
+  font-size: 3rem;
+  color: white;
   background: none;
   border: none;
   cursor: pointer;
-  color: white;
-}
-
-.menu-content {
-  background-color: rgba(255, 255, 255, 0.6);
-  padding: 2rem 4rem;
+  padding: 0.5rem 0.7rem;
   border-radius: 8px;
-  text-align: center;
+  transition: 0.2s all;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
+.settings:hover {
+  color: #ccc;
+  transform: scale(1.1);
+}
+
+.settings:focus {
+  box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.5);
+}
+
+/* TITLE */
 .title {
-  font-family: 'Press Start 2P', monospace;
-  font-size: 32px;
-  text-align: center;
-  margin-bottom: 2rem;
-}
-
-.play-btn {
-  background-color: rgba(255, 255, 255, 0.8);
-  border: none;
-  padding: 1rem 3rem;
-  border-radius: 8px;
-  font-size: 20px;
+  font-size: 6rem;
   font-weight: bold;
-  cursor: pointer;
-  font-family: 'Press Start 2P', monospace;
+  margin-bottom: 2rem;
+  padding: 1rem 2rem;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(1px);
+  border-radius: 12px;
 }
 
-.play-btn:hover {
-  background-color: white;
+/* START BUTTON */
+.start {
+  border: none;           /* odstráni border */
+  padding: 0;             /* odstráni vnútorné odsadenie */
+  background: none;       /* odstráni pozadie */
+  cursor: pointer;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.start .play-icon {
+  width: 120px;           /* nastav šírku obrázka */
+  height: 120px;          /* nastav výšku obrázka */
+  object-fit: contain;    /* zachová proporcie obrázka */
+  display: block;         /* zabráni inline space okolo obrázka */
+}
+
+
+.start:focus {
+  box-shadow: 0 0 0 4px rgba(0, 0, 0, 0.25);
+}
+
+
+/* Hover efekt */
+.start:hover {
+  transform: scale(1.06);
 }
 </style>

@@ -7,39 +7,47 @@ const selectRegion = (region) => {
 <template>
   <div class="background">
   <div class="header-category">
-    <div class="titles">
-      <router-link to="/" class="back-link">
+  <div class="titles">
+    <router-link to="/" class="back-link">
       <h1>World Conquest</h1>
     </router-link>
-      <h2>Choose region you want to play:</h2>
-    </div>
+    <h2>Choose region you want to play:</h2>
+  </div>
 
+  <div class="header-buttons">
+    <router-link to="/stats">
+      <button class="header-btn" aria-label="Statistics">
+        <img src="../assets/stats3.png" alt="Statistics"/>
+      </button>
+    </router-link>
     <router-link to="/settings">
-      <button class="settings" aria-label="Settings">
-        ⚙️
+      <button class="header-btn" aria-label="Settings">
+                <img src="../assets/settings2.png" alt="Settings"/>
       </button>
     </router-link>
   </div>
+</div>
 
-  <div class="categories">
+
+  <div class="categories-category">
     <!-- <router-link to="/themes" class="category"> -->
       <button class="img-button blocked">
         <h3>Africa</h3>
-        <img src="../assets/africa.jpg" alt="Africa" @click="selectRegion('africa')" />
+        <img src="../assets/africa.png" alt="Africa" class="filter2" @click="selectRegion('africa')" />
       </button>
     <!-- </router-link> -->
 
     <!-- <router-link to="/themes" class="category"> -->
       <button class="img-button blocked">
         <h3>Americas</h3>
-        <img src="../assets/america.jpg" alt="Americas" @click="selectRegion('americas')" />
+        <img src="../assets/americas.png" class="filter" alt="Americas" @click="selectRegion('americas')" />
       </button>
     <!-- </router-link> -->
 
     <!-- <router-link to="/themes" class="category"> -->
       <button class="img-button blocked">
         <h3>Asia</h3>
-        <img src="../assets/asia.png" alt="Asia" @click="selectRegion('asia')" />
+        <img src="../assets/asia.png" class="filter" alt="Asia" @click="selectRegion('asia')" />
       </button>
     <!-- </router-link> -->
 
@@ -53,14 +61,14 @@ const selectRegion = (region) => {
     <router-link to="/themes" class="category">
       <button class="img-button">
         <h3>Europe</h3>
-        <img src="../assets/europe.png" alt="Europe" @click="selectRegion('europe')" />
+        <img src="../assets/europe.png" alt="Europe" class="filter" @click="selectRegion('europe')" />
       </button>
     </router-link>
 
     <!-- <router-link to="/themes" class="category"> -->
       <button class="img-button blocekd">
         <h3>Whole World</h3>
-        <img src="../assets/earth.jpg" alt="World" @click="selectRegion('earth')" />
+        <img src="../assets/home.png" alt="World" @click="selectRegion('earth')" />
       </button>
     <!-- </router-link> -->
   </div>
@@ -68,6 +76,63 @@ const selectRegion = (region) => {
 </template>
 
 <style>
+/* .header-buttons img {
+  scale: 0.4;
+  } */
+.header-buttons {
+  display: flex;
+  flex-direction: row; /* tlačidlá vedľa seba */
+  align-items: center; /* vertikálne vycentrované voči okoliu */
+  gap: 1rem; /* medzera medzi tlačidlami */
+}
+
+
+
+.header-btn {
+  display: flex;            /* Flex layout v tlačidle */
+  flex-direction: column;   /* Vertikálne usporiadanie: obrázok hore, text dole */
+  align-items: center;      /* Centrovanie horizontálne */
+  justify-content: flex-start; /* Obrázok hore */
+  font-family: 'Press Start 2P', monospace;
+  font-size: 3rem;
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+  padding: 0;
+  border-radius: 8px;
+  transition: 0.2s all;
+}
+
+.header-btn img {
+  object-fit: contain;
+  margin-bottom: 0.3rem; /* medzera medzi obrázkom a textom, ak je */
+}
+
+.header-category {
+  display: flex;
+  justify-content: space-between; /* tituly vľavo, tlačidlá vpravo */
+  align-items: flex-start; /* tlačidlá hore */
+  width: 95vw;
+  margin: 2rem;
+}
+
+.header-btn:hover {
+  color: #ccc; /* jemný hover efekt */
+  transform: scale(1.1); /* jemné zväčšenie pri hover, podobne ako obrázky */
+}
+
+.filter{
+  filter: brightness(1.4);
+
+}
+.filter2{
+  filter: brightness(1.2);
+
+}
+ h3{
+  z-index: 999;
+}
 .background {
   position: relative; /* dôležité pre pseudo-element */
   width: 100vw;
@@ -110,7 +175,7 @@ const selectRegion = (region) => {
   align-items: center;
 }
 
-.categories {
+.categories-category{
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 20px;
@@ -134,7 +199,19 @@ const selectRegion = (region) => {
   object-fit: cover;
   border-radius: 12px;
   aspect-ratio: 1 / 1;
+  transition: 0.3s all;
 }
+
+.img-button:hover img {
+  box-shadow:
+    0 0 5px #ccc,
+    0 0 10px #ccc,
+    0 0 15px #ccc;
+  transform: scale(1.05); /* mierne zväčšenie */
+}
+
+
+
 
 .img-button h3 {
   position: absolute;
