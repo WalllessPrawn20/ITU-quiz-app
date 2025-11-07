@@ -2,7 +2,7 @@
   <div class="game-view">
     <!-- Top Bar -->
     <div class="top-bar">
-      <h1>Europe Conquest</h1>
+      <h1>World Conquest</h1>
     </div>
 
     <div class="content" v-if="!gameOver">
