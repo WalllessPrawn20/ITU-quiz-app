@@ -2,7 +2,7 @@
   <div class="game-view">
     <!-- Top Bar -->
     <div class="top-bar">
-      <h1>World Conquest</h1>
+      <router-link to="/" class="title-link">World Conquest</router-link>
     </div>
 
     <div class="content" v-if="!gameOver">
@@ -67,7 +67,9 @@ const difficulty = gameSettings.difficulty || 'Medium'
 
 // klik na štát
 async function handleCountryClick(countryId) {
-  if (currentQuestion.value || gameOver.value) return
+  if (countryResults.value[countryId] || currentQuestion.value || gameOver.value) return
+
+  clearInterval(gameInterval)
 
   selectedCountryId = countryId
   command.value = `Loading question for ${countryId}...`
@@ -84,9 +86,6 @@ async function handleCountryClick(countryId) {
 }
 
 async function handleAnswer(correct) {
-  // ❌ tu už nepridávame body, riešime cez handleScore
-  countryResults.value[selectedCountryId] = correct ? 'correct' : 'wrong'
-
   await updateStats('Europe', correct)
 
   turn.value++
@@ -108,8 +107,13 @@ function handleScore({ playerPoint, botPoint }) {
   scores.value.bot += botPoint
 
   const path = mapContainer.value.querySelector(`#${selectedCountryId}`)
-  if (path && playerPoint) path.style.fill = '#00ff00'
-  else if (path && botPoint) path.style.fill = '#ff3333'
+  if (path && playerPoint) {
+    path.style.fill = '#00ff00'
+    countryResults.value[selectedCountryId] = 'correct'
+  } else if (path && botPoint) {
+    path.style.fill = '#ff3333'
+    countryResults.value[selectedCountryId] = 'wrong'
+  }
 }
 
 function endGame() {
@@ -134,13 +138,13 @@ async function updateStats(continent, correct) {
   }
 }
 
-function handleTimeout() {
-  countryResults.value[selectedCountryId] = 'wrong'
-  const path = mapContainer.value.querySelector(`#${selectedCountryId}`)
-  currentQuestion.value = null
-  command.value = 'Select a country'
-  startGameTimer()
-}
+// function handleTimeout() {
+//   countryResults.value[selectedCountryId] = 'wrong'
+//   const path = mapContainer.value.querySelector(`#${selectedCountryId}`)
+//   currentQuestion.value = null
+//   command.value = 'Select a country'
+//   startGameTimer()
+// }
 
 function startGameTimer() {
   clearInterval(gameInterval)
@@ -193,25 +197,35 @@ onMounted(async () => {
 .game-view {
   display: flex;
   flex-direction: column;
-  height: 100vh; /* ❌ nie auto, ale celá výška viewportu */
+  height: 100vh;
   width: 100vw;
   font-family: 'Press Start 2P', monospace;
   color: white;
   background: #111;
-  overflow: hidden; /* zabráni scrollom ak náhodou presiahne */
+  overflow: hidden;
 }
 
 .top-bar {
   background: #333;
-  padding: 1rem;
   text-align: center;
-  flex-shrink: 0; /* nech top-bar nemení veľkosť */
+  font-size: 25px;
+  padding: 1rem 0;
+}
+
+.title-link {
+  color: white;
+  text-decoration: none;
+  font-size: 40px;
+}
+
+.title-link:hover {
+  color: #00ff88;
 }
 
 .content {
   display: flex;
-  flex: 1 1 auto; /* zvyšok priestoru vyplní content */
-  overflow: hidden; /* nech map-container nepridá scroll */
+  flex: 1 1 auto;
+  overflow: hidden;
 }
 
 .info-panel {
@@ -229,7 +243,7 @@ onMounted(async () => {
   justify-content: center;
   align-items: center;
   padding: 1rem;
-  overflow: hidden; /* zabráni scrollu */
+  overflow: hidden;
 }
 
 .map-container svg {
