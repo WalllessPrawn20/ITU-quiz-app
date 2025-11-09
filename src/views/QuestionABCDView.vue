@@ -70,10 +70,9 @@ function botSelectAnswer() {
 function selectAnswer(answer = null) {
   if (answered.value) return
   answered.value = true
-  selectedAnswer.value = answer // môže byť null, ak hráč nestihol odpovedať
+  selectedAnswer.value = answer
   clearInterval(interval)
 
-  // Počkáme 1,5s pred zobrazením botovej odpovede a výsledku
   setTimeout(() => {
     botSelectAnswer()
 
@@ -82,7 +81,6 @@ function selectAnswer(answer = null) {
 
     showResult.value = true
 
-    // 🧮 Vyhodnotenie bodov
     let playerPoint = 0
     let botPoint = 0
 
@@ -92,7 +90,6 @@ function selectAnswer(answer = null) {
       botPoint = 1
     }
 
-    // Po ďalších 1,5 sekundách reset
     setTimeout(() => {
       emit('score', { playerPoint, botPoint })
       emit('answered', playerCorrect)
@@ -104,7 +101,6 @@ function selectAnswer(answer = null) {
   }, 1500)
 }
 
-// Upravený timer
 function startTimer() {
   clearInterval(interval)
   remainingTime.value = props.duration
@@ -112,7 +108,6 @@ function startTimer() {
     remainingTime.value -= 1
     if (remainingTime.value <= 0) {
       clearInterval(interval)
-      // ak hráč nestihol odpovedať, vyvolá sa selectAnswer bez hráčovej odpovede
       selectAnswer(null)
     }
   }, 1000)
@@ -170,20 +165,17 @@ watch(
   cursor: default;
 }
 
-/* žltý outline pre hráča */
 .answers button.selected {
   border-color: #ffcc00;
   box-shadow: 0 0 10px #ffcc00;
 }
 
-/* zelené zvýraznenie správnej odpovede */
 .answers button.correct {
   background: #00cc66 !important;
   color: black;
   font-weight: bold;
 }
 
-/* červený glow pre odpoveď bota */
 .answers button.botSelected {
   box-shadow: 0 0 15px 3px #ff4444;
   border-color: #ff4444;

@@ -21,11 +21,23 @@ function playQuiz() {
   localStorage.setItem('gameSettings', JSON.stringify(settings.value))
   router.push('/game')
 }
+function getImgSrc(key) {
+  return new URL(`../assets/${key.toLowerCase()}.png`, import.meta.url).href
+}
+function toggleSet(key) {
+  const activeCount = Object.values(settings.value.sets).filter(Boolean).length
+
+  if (activeCount === 1 && settings.value.sets[key]) {
+    return
+  }
+
+  settings.value.sets[key] = !settings.value.sets[key]
+}
+
 </script>
 
 <template>
   <div class="settings-wrapper-settings">
-    <!-- HEADER -->
     <div class="header-category">
       <div class="titles">
         <router-link to="/" class="back-link">
@@ -48,26 +60,25 @@ function playQuiz() {
       </div>
     </div>
 
-    <!-- SETTINGS CONTENT -->
     <div class="settings-page">
-      <!-- QUIZ SETS -->
       <div class="block">
         <h2>Quiz sets</h2>
         <div class="block-content">
-          <div
-            class="row"
-            v-for="(value, key) in settings.sets"
-            :key="key"
-            @click="settings.sets[key] = !settings.sets[key]"
-          >
-            <div class="circle-img"></div>
-            <span class="label">{{ key }}</span>
-            <div class="checkbox" :class="{ active: settings.sets[key] }"></div>
+        <div
+          class="row"
+          v-for="(value, key) in settings.sets"
+          :key="key"
+          @click="toggleSet(key)"
+        >
+          <div class="circle-img">
+            <img :src="getImgSrc(key)" :alt="key" />
           </div>
+          <span class="label">{{ key }}</span>
+          <div class="checkbox" :class="{ active: settings.sets[key] }"></div>
+        </div>
         </div>
       </div>
 
-      <!-- DIFFICULTY -->
       <div class="block">
         <h2>Difficulty</h2>
         <div class="difficulty-rows">
@@ -84,8 +95,6 @@ function playQuiz() {
         </div>
       </div>
 
-      <!-- ADDITIONAL -->
-<!-- ADDITIONAL -->
 <div class="block">
   <h2>Additional</h2>
   <div class="block-content">
@@ -139,7 +148,6 @@ function playQuiz() {
   z-index: -1;
 }
 
-/* HEADER - rovnaký ako region selection */
 .header-category {
   display: flex;
   justify-content: space-between;
@@ -196,7 +204,6 @@ function playQuiz() {
   transform: scale(1.1);
 }
 
-/* SETTINGS PAGE */
 .settings-page {
   display: flex;
   justify-content: center;
@@ -206,7 +213,6 @@ function playQuiz() {
   flex-wrap: wrap;
 }
 
-/* Blocks */
 .block {
   background: rgba(0, 0, 0, 0.7);
   width: 22vw;
@@ -227,23 +233,20 @@ function playQuiz() {
   margin-bottom: 2rem;
   flex-shrink: 0;
 }
-/* Pre categories v settings (rovnaké ako difficulty) */
 .categories {
   display: flex;
   flex-direction: column;
-  justify-content: space-between; /* rozložené vertikálne */
+  justify-content: space-between;
   flex-grow: 1;
   gap: 1rem;
   width: 100%;
 }
 
-/* Pre additional sliders + play button */
 .slider-group,
 .play-btn {
   margin-top: 0;
 }
 
-/* Celý additional block */
 .block.additional {
   display: flex;
   flex-direction: column;
@@ -252,7 +255,6 @@ function playQuiz() {
   align-items: center;
 }
 
-/* Rows / sliders / play button - zachované */
 .row {
   display: flex;
   align-items: center;
@@ -375,20 +377,46 @@ input[type="range"]::-moz-range-thumb:hover {
 }
 
 .play-icon {
-  width: 10vw;        /* nastav veľkosť podľa bloku */
+  width: 10vw;
   height: 10vw;
-  object-fit: contain; /* zachová proporcie obrázka */
+  object-fit: contain;
   display: block;
 }
 
-
-/* Spoločný obsah blokov */
 .block-content {
   display: flex;
   flex-direction: column;
-  justify-content: space-between; /* rovnomerné rozloženie riadkov/sliders/tlačidla */
+  justify-content: space-between;
   flex-grow: 1;
   width: 100%;
 }
+.circle-img {
+  border-radius: 50%;
+  width: 6vw;
+  height: 6vw;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.1);
+  border: 0.2vw solid white;
+  transition: transform 0.2s, background 0.2s;
+}
+
+.circle-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.row:hover .circle-img {
+  transform: scale(1.05);
+  background: rgba(255, 255, 255, 0.2);
+}
+.row .checkbox.active + .circle-img,
+.row.active .circle-img {
+  border-color: yellow;
+}
+
 
 </style>

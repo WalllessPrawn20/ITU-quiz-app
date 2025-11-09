@@ -153,21 +153,18 @@ onMounted(() => {
   font-size: 1rem;
 }
 
-/* thead fix – nech je malý a nech ho nepohlcuje flex */
 .stats-table thead {
-  height: 12%; /* môžeš doladiť */
+  height: 12%;
 }
 
 .stats-table tbody {
   height: 88%;
 }
 
-/* rovnomerné rozloženie riadkov v tbody */
 .stats-table tbody tr {
-  height: calc(100% / 6); /* 6 = počet riadkov */
+  height: calc(100% / 6);
 }
 
-/* cells */
 .stats-table th,
 .stats-table td {
   background: black;

@@ -1,12 +1,10 @@
 <template>
   <div class="game-view">
-    <!-- Top Bar -->
     <div class="top-bar">
       <router-link to="/" class="title-link">World Conquest</router-link>
     </div>
 
     <div class="content" v-if="!gameOver">
-      <!-- Left Info Panel -->
       <div class="info-panel">
         <p><strong>Time left:</strong> {{ timer }}s</p>
         <p><strong>Command:</strong> {{ command }}</p>
@@ -16,11 +14,9 @@
         <p>Enemy: {{ scores.bot }}</p>
       </div>
 
-      <!-- SVG Map -->
       <div class="map-container" ref="mapContainer" v-html="europeSvg"></div>
     </div>
 
-    <!-- Question View -->
     <QuestionView
       v-if="currentQuestion && !gameOver"
       :question="currentQuestion"
@@ -31,7 +27,6 @@
       @score="handleScore"
     />
 
-    <!-- Game Over View -->
     <GameOverView v-if="gameOver" :scores="scores" :totalRounds="totalRounds" />
   </div>
 </template>
@@ -50,10 +45,9 @@ const timer = ref(initialTimer)
 let gameInterval = null
 const command = ref('Select a country')
 
-// ✅ pridáme bot skóre
 const scores = ref({ you: 0, bot: 0 })
 
-const questions = ref([])
+// const questions = ref([])
 const currentQuestion = ref(null)
 const questionDuration = gameSettings.timer || 15
 let selectedCountryId = null
@@ -65,7 +59,6 @@ const gameOver = ref(false)
 
 const difficulty = gameSettings.difficulty || 'Medium'
 
-// klik na štát
 async function handleCountryClick(countryId) {
   if (countryResults.value[countryId] || currentQuestion.value || gameOver.value) return
 
@@ -101,7 +94,6 @@ async function handleAnswer(correct) {
   startGameTimer()
 }
 
-// ✅ handler pre bodovanie
 function handleScore({ playerPoint, botPoint }) {
   scores.value.you += playerPoint
   scores.value.bot += botPoint

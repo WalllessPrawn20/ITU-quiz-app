@@ -76,23 +76,21 @@ const selectRegion = (region) => {
 </template>
 
 <style>
-/* .header-buttons img {
-  scale: 0.4;
-  } */
+
 .header-buttons {
   display: flex;
-  flex-direction: row; /* tlačidlá vedľa seba */
-  align-items: center; /* vertikálne vycentrované voči okoliu */
-  gap: 1rem; /* medzera medzi tlačidlami */
+  flex-direction: row;
+  align-items: center;
+  gap: 1rem;
 }
 
 
 
 .header-btn {
-  display: flex;            /* Flex layout v tlačidle */
-  flex-direction: column;   /* Vertikálne usporiadanie: obrázok hore, text dole */
-  align-items: center;      /* Centrovanie horizontálne */
-  justify-content: flex-start; /* Obrázok hore */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
   font-family: 'Press Start 2P', monospace;
   font-size: 3rem;
   background: none;
@@ -106,20 +104,20 @@ const selectRegion = (region) => {
 
 .header-btn img {
   object-fit: contain;
-  margin-bottom: 0.3rem; /* medzera medzi obrázkom a textom, ak je */
+  margin-bottom: 0.3rem;
 }
 
 .header-category {
   display: flex;
-  justify-content: space-between; /* tituly vľavo, tlačidlá vpravo */
-  align-items: flex-start; /* tlačidlá hore */
+  justify-content: space-between;
+  align-items: flex-start;
   width: 95vw;
   margin: 2rem;
 }
 
 .header-btn:hover {
-  color: #ccc; /* jemný hover efekt */
-  transform: scale(1.1); /* jemné zväčšenie pri hover, podobne ako obrázky */
+  color: #ccc;
+  transform: scale(1.1);
 }
 
 .filter{
@@ -134,14 +132,14 @@ const selectRegion = (region) => {
   z-index: 999;
 }
 .background {
-  position: relative; /* dôležité pre pseudo-element */
+  position: relative;
   width: 100vw;
   height: 100vh;
   display: flex;
   flex-direction: column;
   font-family: 'Press Start 2P', monospace;
   color: white;
-  /* odstránime opacity odtiaľto */
+
 }
 
 .background::before {
@@ -155,8 +153,8 @@ const selectRegion = (region) => {
   background-repeat: no-repeat;
   background-position: center center;
   background-size: cover;
-  opacity: 0.5; /* iba pozadie je priehľadné */
-  z-index: -1; /* aby bolo pod obsahom */
+  opacity: 0.5;
+  z-index: -1;
 }
 
 
@@ -165,11 +163,11 @@ const selectRegion = (region) => {
   justify-content: space-between;
   align-items: flex-start;
   width: 95vw;
-  margin: 2rem; /* top, bottom, horizontálne centrovanie */
+  margin: 2rem;
 }
 
 .categories-wrapper {
-  flex: 1; /* zabere zostávajúcu výšku */
+  flex: 1;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -183,9 +181,6 @@ const selectRegion = (region) => {
   align-items: center;
 }
 
-
-
-/* Buttons */
 .img-button {
   border: none;
     font-family: 'Press Start 2P', monospace;
@@ -207,11 +202,8 @@ const selectRegion = (region) => {
     0 0 5px #ccc,
     0 0 10px #ccc,
     0 0 15px #ccc;
-  transform: scale(1.05); /* mierne zväčšenie */
+  transform: scale(1.05);
 }
-
-
-
 
 .img-button h3 {
   position: absolute;

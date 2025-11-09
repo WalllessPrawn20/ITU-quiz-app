@@ -1,16 +1,13 @@
 <template>
   <div class="homepage">
-    <!-- SETTINGS BUTTON -->
     <router-link to="/settings">
       <button class="header-btn settings" aria-label="Settings">
         <img src="../assets/settings2.png" alt="Settings"/>
       </button>
     </router-link>
 
-    <!-- TITLE -->
     <h1 class="title">World Conquest</h1>
 
-    <!-- START BUTTON -->
     <router-link to="/category">
       <button class="start" aria-label="Start quiz">
         <img src="../assets/play.png" alt="Play" class="play-icon"/>
@@ -36,7 +33,6 @@
   position: relative;
 }
 
-/* SETTINGS BUTTON */
 .settings {
   position: absolute;
   top: 2rem;
@@ -64,7 +60,6 @@
   box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.5);
 }
 
-/* TITLE */
 .title {
   font-size: 6rem;
   font-weight: bold;
@@ -75,11 +70,10 @@
   border-radius: 12px;
 }
 
-/* START BUTTON */
 .start {
-  border: none;           /* odstráni border */
-  padding: 0;             /* odstráni vnútorné odsadenie */
-  background: none;       /* odstráni pozadie */
+  border: none;
+  padding: 0;
+  background: none;
   cursor: pointer;
   display: inline-flex;
   justify-content: center;
@@ -87,19 +81,16 @@
 }
 
 .start .play-icon {
-  width: 120px;           /* nastav šírku obrázka */
-  height: 120px;          /* nastav výšku obrázka */
-  object-fit: contain;    /* zachová proporcie obrázka */
-  display: block;         /* zabráni inline space okolo obrázka */
+  width: 120px;
+  height: 120px;
+  object-fit: contain;
+  display: block;
 }
-
 
 .start:focus {
   box-shadow: 0 0 0 4px rgba(0, 0, 0, 0.25);
 }
 
-
-/* Hover efekt */
 .start:hover {
   transform: scale(1.06);
 }

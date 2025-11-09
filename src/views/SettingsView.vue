@@ -37,7 +37,6 @@ function goBack() {
 </script>
 
 <style scoped>
-/* SCREEN CONTAINER */
 .menu-screen {
   position: relative;
   width: 100vw;
@@ -49,7 +48,6 @@ function goBack() {
   color: white;
 }
 
-/* BACKGROUND */
 .menu-screen::before {
   content: "";
   position: absolute;
@@ -61,7 +59,6 @@ function goBack() {
   z-index: -1;
 }
 
-/* CLOSE BUTTON */
 .close-btn {
   position: absolute;
   top: 20px;
@@ -73,7 +70,6 @@ function goBack() {
   color: white;
 }
 
-/* MAIN CONTENT BOX */
 .menu-content {
   padding: 3rem 5rem;
   text-align: center;
@@ -83,7 +79,6 @@ function goBack() {
   box-shadow: 0 0 0 6px black;
 }
 
-/* TITLE */
 .title {
   font-size: 48px;
   line-height: 1.2;
@@ -91,7 +86,6 @@ function goBack() {
   text-shadow: 4px 4px black;
 }
 
-/* SETTINGS LIST */
 .settings-box {
   display: flex;
   flex-direction: column;
@@ -99,14 +93,12 @@ function goBack() {
   font-size: 24px;
 }
 
-/* EACH ROW */
 .setting-item {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
-/* PIXEL CHECKBOX */
 .pixel-checkbox {
   width: 36px;
   height: 36px;
@@ -120,7 +112,6 @@ function goBack() {
   background: white;
 }
 
-/* CREDITS BUTTON */
 .credits-btn {
   font-size: 22px;
   padding: 1rem 3rem;
