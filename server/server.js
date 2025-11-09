@@ -7,12 +7,12 @@ const app = express()
 const PORT = 5000
 
 app.use(cors())
-app.use(express.json()) // kvôli POST požiadavkám
+app.use(express.json())
 
 const dataPath = path.join(process.cwd(), 'questions.json')
 const statsPath = path.join(process.cwd(), 'stats.json')
 
-// ===== Pomocné funkcie =====
+
 function loadQuestions() {
   return JSON.parse(fs.readFileSync(dataPath, 'utf-8'))
 }
@@ -26,15 +26,13 @@ function saveStats(stats) {
   fs.writeFileSync(statsPath, JSON.stringify(stats, null, 2))
 }
 
-// ===== Endpointy =====
 
-// všetky otázky
 app.get('/questions', (req, res) => {
   const questions = loadQuestions()
   res.json(questions)
 })
 
-// filter: ?id=FR&category=history&continent=Europe
+
 app.get('/questions/filter', (req, res) => {
   let questions = loadQuestions()
   const { id, category, continent } = req.query
@@ -46,15 +44,13 @@ app.get('/questions/filter', (req, res) => {
   res.json(questions)
 })
 
-// ===== Štatistiky =====
 
-// vráti všetky štatistiky
 app.get('/stats', (req, res) => {
   const stats = loadStats()
   res.json(stats)
 })
 
-// aktualizuje štatistiku pre daný kontinent
+
 app.post('/stats/update', (req, res) => {
   const { continent, correct } = req.body
 
@@ -72,4 +68,4 @@ app.post('/stats/update', (req, res) => {
   res.json(stats[continent])
 })
 
-app.listen(PORT, () => console.log(`✅ Server running on port ${PORT}`))
+app.listen(PORT, () => console.log(`Server running on port ${PORT}`))
