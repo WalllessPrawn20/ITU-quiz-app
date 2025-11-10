@@ -2,7 +2,7 @@
   {
     "id": "AL",
     "played": 0,
-    "category": "history",
+    "category": "History",
     "title": "Which Albanian leader ruled the country as an isolationist communist state from 1946 to 1985?",
     "answers": ["Enver Hoxha", "Ahmet Zogu", "Ramiz Alia", "Ismail Qemali"],
     "correct": "Enver Hoxha"
@@ -10,7 +10,7 @@
   {
     "id": "AL",
     "played": 0,
-    "category": "sport",
+    "category": "Sport",
     "title": "Which Albanian football club became the first in the country to reach the UEFA Champions League play-off round?",
     "answers": ["FK Skënderbeu", "KF Tirana", "Partizani Tirana", "Vllaznia Shkodër"],
     "correct": "FK Skënderbeu"
@@ -18,7 +18,7 @@
   {
     "id": "AL",
     "played": 0,
-    "category": "society",
+    "category": "Society",
     "title": "Which traditional Albanian code of honor has influenced social behavior in northern Albania for centuries?",
     "answers": ["Kanun of Lekë Dukagjini", "Gjakmarrja Charter", "Adriatic Oath", "Code of Krujë"],
     "correct": "Kanun of Lekë Dukagjini"
@@ -26,7 +26,7 @@
   {
     "id": "AL",
     "played": 0,
-    "category": "geography",
+    "category": "Geography",
     "title": "Which lake, shared with North Macedonia, is one of the oldest and deepest in Europe and partly located in Albania?",
     "answers": ["Lake Ohrid", "Lake Skadar", "Lake Prespa", "Lake Shkodër"],
     "correct": "Lake Ohrid"
@@ -35,7 +35,7 @@
   {
     "id": "AD",
     "played": 0,
-    "category": "history",
+    "category": "History",
     "title": "Which unusual political system has governed Andorra since 1278?",
     "answers": [
       "Diarchy with two co-princes",
@@ -48,15 +48,15 @@
   {
     "id": "AD",
     "played": 0,
-    "category": "sport",
-    "title": "Which sport attracts the most international tourism to Andorra due to its Pyrenean landscape?",
+    "category": "Sport",
+    "title": "Which Sport attracts the most international tourism to Andorra due to its Pyrenean landscape?",
     "answers": ["Skiing", "Handball", "Cycling", "Tennis"],
     "correct": "Skiing"
   },
   {
     "id": "AD",
     "played": 0,
-    "category": "society",
+    "category": "Society",
     "title": "Which language is officially recognized as the only national language of Andorra?",
     "answers": ["Catalan", "Spanish", "French", "Occitan"],
     "correct": "Catalan"
@@ -64,7 +64,7 @@
   {
     "id": "AD",
     "played": 0,
-    "category": "geography",
+    "category": "Geography",
     "title": "What is notable about Andorra’s terrain?",
     "answers": [
       "It has no airport or railway due to mountains",
@@ -78,7 +78,7 @@
   {
     "id": "AT",
     "played": 0,
-    "category": "history",
+    "category": "History",
     "title": "Which empire was Austria the core of for centuries until 1918?",
     "answers": [
       "Austro-Hungarian Empire",
@@ -91,7 +91,7 @@
   {
     "id": "AT",
     "played": 0,
-    "category": "sport",
+    "category": "Sport",
     "title": "Which Austrian city hosts the famous annual New Year’s ski jumping event?",
     "answers": ["Innsbruck", "Vienna", "Graz", "Linz"],
     "correct": "Innsbruck"
@@ -99,7 +99,7 @@
   {
     "id": "AT",
     "played": 0,
-    "category": "society",
+    "category": "Society",
     "title": "Which famous psychoanalyst was born in Austria in 1856?",
     "answers": ["Sigmund Freud", "Carl Jung", "Alfred Adler", "Viktor Frankl"],
     "correct": "Sigmund Freud"
@@ -107,7 +107,7 @@
   {
     "id": "AT",
     "played": 0,
-    "category": "geography",
+    "category": "Geography",
     "title": "Which river flows through Vienna?",
     "answers": ["Danube", "Elbe", "Rhine", "Oder"],
     "correct": "Danube"
@@ -116,7 +116,7 @@
   {
     "id": "BY",
     "played": 0,
-    "category": "history",
+    "category": "History",
     "title": "Which state incorporated Belarus after the partitions of Poland in the late 18th century?",
     "answers": ["Russian Empire", "Prussia", "Austrian Empire", "Sweden"],
     "correct": "Russian Empire"
@@ -124,15 +124,15 @@
   {
     "id": "BY",
     "played": 0,
-    "category": "sport",
-    "title": "Which sport is Belarus especially known for internationally due to multiple Olympic medals?",
+    "category": "Sport",
+    "title": "Which Sport is Belarus especially known for internationally due to multiple Olympic medals?",
     "answers": ["Rhythmic gymnastics", "Boxing", "Water polo", "Cricket"],
     "correct": "Rhythmic gymnastics"
   },
   {
     "id": "BY",
     "played": 0,
-    "category": "society",
+    "category": "Society",
     "title": "Which alphabet is officially used in the Belarusian language?",
     "answers": ["Cyrillic", "Latin", "Georgian", "Greek"],
     "correct": "Cyrillic"
@@ -140,7 +140,7 @@
   {
     "id": "BY",
     "played": 0,
-    "category": "geography",
+    "category": "Geography",
     "title": "Belarus is one of the few European countries that is:",
     "answers": ["Fully landlocked", "Below sea level", "A volcanic island", "Mostly desert"],
     "correct": "Fully landlocked"
@@ -149,7 +149,7 @@
   {
     "id": "BE",
     "played": 0,
-    "category": "history",
+    "category": "History",
     "title": "Belgium became an independent state in 1830 after separating from which kingdom?",
     "answers": ["The Netherlands", "France", "Prussia", "Spain"],
     "correct": "The Netherlands"
@@ -157,15 +157,15 @@
   {
     "id": "BE",
     "played": 0,
-    "category": "sport",
-    "title": "Which Belgian cyclist is considered one of the greatest in history, nicknamed 'The Cannibal'?",
+    "category": "Sport",
+    "title": "Which Belgian cyclist is considered one of the greatest in History, nicknamed 'The Cannibal'?",
     "answers": ["Eddy Merckx", "Tom Boonen", "Philippe Gilbert", "Remco Evenepoel"],
     "correct": "Eddy Merckx"
   },
   {
     "id": "BE",
     "played": 0,
-    "category": "society",
+    "category": "Society",
     "title": "Belgium is officially divided into how many main language communities?",
     "answers": ["3", "2", "4", "5"],
     "correct": "3"
@@ -173,7 +173,7 @@
   {
     "id": "BE",
     "played": 0,
-    "category": "geography",
+    "category": "Geography",
     "title": "Which city hosts the headquarters of the European Union?",
     "answers": ["Brussels", "Luxembourg City", "Strasbourg", "The Hague"],
     "correct": "Brussels"
@@ -181,7 +181,7 @@
   {
     "id": "BA",
     "played": 0,
-    "category": "history",
+    "category": "History",
     "title": "Which agreement officially ended the Bosnian War in 1995?",
     "answers": ["Dayton Agreement", "Lisbon Treaty", "Yalta Agreement", "Geneva Convention"],
     "correct": "Dayton Agreement"
@@ -189,7 +189,7 @@
   {
     "id": "BA",
     "played": 0,
-    "category": "sport",
+    "category": "Sport",
     "title": "Which Bosnian-born basketball player is a multiple-time NBA All-Star?",
     "answers": ["Luka Dončić", "Nikola Jokić", "Goran Dragić", "Jusuf Nurkić"],
     "correct": "Jusuf Nurkić"
@@ -197,7 +197,7 @@
   {
     "id": "BA",
     "played": 0,
-    "category": "society",
+    "category": "Society",
     "title": "Bosnia and Herzegovina is culturally divided into how many main ethnic groups?",
     "answers": ["3", "2", "4", "5"],
     "correct": "3"
@@ -205,7 +205,7 @@
   {
     "id": "BA",
     "played": 0,
-    "category": "geography",
+    "category": "Geography",
     "title": "Bosnia and Herzegovina has only a small coastline. Which sea does it access?",
     "answers": ["Adriatic Sea", "Ionian Sea", "Aegean Sea", "Black Sea"],
     "correct": "Adriatic Sea"
@@ -214,7 +214,7 @@
   {
     "id": "BG",
     "played": 0,
-    "category": "history",
+    "category": "History",
     "title": "Which Bulgarian ruler introduced the Cyrillic alphabet in the 9th century?",
     "answers": ["Tsar Simeon I", "Boris I", "Ivan Asen II", "Kaloyan"],
     "correct": "Boris I"
@@ -222,7 +222,7 @@
   {
     "id": "BG",
     "played": 0,
-    "category": "sport",
+    "category": "Sport",
     "title": "Which Bulgarian weightlifter won multiple Olympic medals but was later banned for doping?",
     "answers": ["Naim Süleymanoğlu", "Yoto Yotov", "Ivan Abadjiev", "Stefan Botev"],
     "correct": "Naim Süleymanoğlu"
@@ -230,7 +230,7 @@
   {
     "id": "BG",
     "played": 0,
-    "category": "society",
+    "category": "Society",
     "title": "Which Bulgarian tradition involves red-and-white bracelets given on March 1st for health and luck?",
     "answers": ["Martenitsa", "Koleda", "Survakane", "Kukeri"],
     "correct": "Martenitsa"
@@ -238,7 +238,7 @@
   {
     "id": "BG",
     "played": 0,
-    "category": "geography",
+    "category": "Geography",
     "title": "Which mountain range runs across Bulgaria and gives the Balkan Peninsula its name?",
     "answers": ["Stara Planina", "Rhodope Mountains", "Pirin", "Carpathians"],
     "correct": "Stara Planina"
@@ -247,7 +247,7 @@
   {
     "id": "HR",
     "played": 0,
-    "category": "history",
+    "category": "History",
     "title": "Which 1991 event marked Croatia's declaration of independence from Yugoslavia?",
     "answers": ["Homeland War", "Velvet Revolution", "Operation Storm", "Day of the Republic"],
     "correct": "Homeland War"
@@ -255,7 +255,7 @@
   {
     "id": "HR",
     "played": 0,
-    "category": "sport",
+    "category": "Sport",
     "title": "Which Croatian footballer won the Ballon d'Or in 2018?",
     "answers": ["Luka Modrić", "Davor Šuker", "Mario Mandžukić", "Ivan Rakitić"],
     "correct": "Luka Modrić"
@@ -263,7 +263,7 @@
   {
     "id": "HR",
     "played": 0,
-    "category": "society",
+    "category": "Society",
     "title": "Which tie-like fashion accessory originated from Croatian soldiers in the 17th century?",
     "answers": ["Cravat", "Ascot", "Necktie", "Bow tie"],
     "correct": "Cravat"
@@ -271,7 +271,7 @@
   {
     "id": "HR",
     "played": 0,
-    "category": "geography",
+    "category": "Geography",
     "title": "Which city is the historic capital of the Dalmatian coast?",
     "answers": ["Split", "Dubrovnik", "Zadar", "Šibenik"],
     "correct": "Split"
@@ -280,7 +280,7 @@
   {
     "id": "CY",
     "played": 0,
-    "category": "history",
+    "category": "History",
     "title": "Which country invaded Cyprus in 1974, leading to its current division?",
     "answers": ["Turkey", "Greece", "UK", "Soviet Union"],
     "correct": "Turkey"
@@ -288,7 +288,7 @@
   {
     "id": "CY",
     "played": 0,
-    "category": "sport",
+    "category": "Sport",
     "title": "Which Cypriot football club became the first to reach the UEFA Champions League quarter-finals?",
     "answers": ["APOEL Nicosia", "Omonia Nicosia", "Anorthosis Famagusta", "AEL Limassol"],
     "correct": "APOEL Nicosia"
@@ -296,7 +296,7 @@
   {
     "id": "CY",
     "played": 0,
-    "category": "society",
+    "category": "Society",
     "title": "Which religion is followed by the majority of Greek Cypriots?",
     "answers": ["Eastern Orthodoxy", "Catholicism", "Sunni Islam", "Maronite Christianity"],
     "correct": "Eastern Orthodoxy"
@@ -304,7 +304,7 @@
   {
     "id": "CY",
     "played": 0,
-    "category": "geography",
+    "category": "Geography",
     "title": "Cyprus is geographically located in which region?",
     "answers": ["Eastern Mediterranean", "Balkan Peninsula", "North Africa", "Caucasus"],
     "correct": "Eastern Mediterranean"
@@ -313,7 +313,7 @@
   {
     "id": "CZ",
     "played": 0,
-    "category": "history",
+    "category": "History",
     "title": "Which non-violent movement led to the end of communism in Czechoslovakia in 1989?",
     "answers": ["Velvet Revolution", "Prague Spring", "Charter 77", "Orange Revolution"],
     "correct": "Velvet Revolution"
@@ -321,7 +321,7 @@
   {
     "id": "CZ",
     "played": 0,
-    "category": "sport",
+    "category": "Sport",
     "title": "Which Czech ice hockey player is the second-highest NHL point scorer of all time?",
     "answers": ["Jaromír Jágr", "Dominik Hašek", "Patrik Eliáš", "Milan Hejduk"],
     "correct": "Jaromír Jágr"
@@ -329,7 +329,7 @@
   {
     "id": "CZ",
     "played": 0,
-    "category": "society",
+    "category": "Society",
     "title": "Which beverage is the Czech Republic famous for having the highest consumption per capita?",
     "answers": ["Beer", "Wine", "Vodka", "Absinthe"],
     "correct": "Beer"
@@ -337,7 +337,7 @@
   {
     "id": "CZ",
     "played": 0,
-    "category": "geography",
+    "category": "Geography",
     "title": "Which city is the historic capital of Moravia?",
     "answers": ["Brno", "Ostrava", "Plzeň", "Olomouc"],
     "correct": "Brno"
@@ -345,7 +345,7 @@
   {
     "id": "DK",
     "played": 0,
-    "category": "history",
+    "category": "History",
     "title": "Which 19th-century war forced Denmark to cede Schleswig and Holstein to Prussia and Austria?",
     "answers": [
       "Second Schleswig War",
@@ -358,7 +358,7 @@
   {
     "id": "DK",
     "played": 0,
-    "category": "sport",
+    "category": "Sport",
     "title": "Which Danish footballer won the UEFA European Championship in 1992 and later became a famous goalkeeper for Manchester United?",
     "answers": ["Peter Schmeichel", "Kasper Schmeichel", "Michael Laudrup", "Allan Simonsen"],
     "correct": "Peter Schmeichel"
@@ -366,7 +366,7 @@
   {
     "id": "DK",
     "played": 0,
-    "category": "society",
+    "category": "Society",
     "title": "Which concept, meaning a cosy and content lifestyle, is strongly associated with Danish culture?",
     "answers": ["Hygge", "Lagom", "Fika", "Kos"],
     "correct": "Hygge"
@@ -374,7 +374,7 @@
   {
     "id": "DK",
     "played": 0,
-    "category": "geography",
+    "category": "Geography",
     "title": "Which strait separates Denmark from Sweden at its narrowest point?",
     "answers": ["Øresund", "Kattegat", "Skagerrak", "Storebælt"],
     "correct": "Øresund"
@@ -383,7 +383,7 @@
   {
     "id": "EE",
     "played": 0,
-    "category": "history",
+    "category": "History",
     "title": "Which year marked Estonia’s Singing Revolution independence from the Soviet Union?",
     "answers": ["1991", "1986", "1994", "1989"],
     "correct": "1991"
@@ -391,28 +391,28 @@
   {
     "id": "EE",
     "played": 0,
-    "category": "sport",
-    "title": "Which sport has brought Estonia multiple Olympic gold medals, especially through wrestler Kristjan Palusalu?",
+    "category": "Sport",
+    "title": "Which Sport has brought Estonia multiple Olympic gold medals, especially through wrestler Kristjan Palusalu?",
     "answers": ["Greco-Roman wrestling", "Cross-country skiing", "Weightlifting", "Fencing"],
     "correct": "Greco-Roman wrestling"
   },
   {
     "id": "EE",
     "played": 0,
-    "category": "society",
+    "category": "Society",
     "title": "Estonia is a world leader in which civic technology?",
     "answers": [
       "Online voting",
       "Universal basic income",
       "State-funded crypto",
-      "Free public transport"
+      "Free public tranSport"
     ],
     "correct": "Online voting"
   },
   {
     "id": "EE",
     "played": 0,
-    "category": "geography",
+    "category": "Geography",
     "title": "Which sea borders Estonia to the north?",
     "answers": ["Gulf of Finland", "Baltic Proper", "North Sea", "White Sea"],
     "correct": "Gulf of Finland"
@@ -421,7 +421,7 @@
   {
     "id": "FI",
     "played": 0,
-    "category": "history",
+    "category": "History",
     "title": "Which war (1939–1940) saw Finland resist a Soviet invasion despite being heavily outnumbered?",
     "answers": ["Winter War", "Continuation War", "Lapland War", "Russo-Swedish War"],
     "correct": "Winter War"
@@ -429,7 +429,7 @@
   {
     "id": "FI",
     "played": 0,
-    "category": "sport",
+    "category": "Sport",
     "title": "Which Finnish driver won the Formula 1 World Championship in 2007?",
     "answers": ["Kimi Räikkönen", "Mika Häkkinen", "Valtteri Bottas", "Heikki Kovalainen"],
     "correct": "Kimi Räikkönen"
@@ -437,7 +437,7 @@
   {
     "id": "FI",
     "played": 0,
-    "category": "society",
+    "category": "Society",
     "title": "Finland consistently ranks high in global indexes for what?",
     "answers": ["Education quality", "Military spending", "Wine consumption", "Population density"],
     "correct": "Education quality"
@@ -445,7 +445,7 @@
   {
     "id": "FI",
     "played": 0,
-    "category": "geography",
+    "category": "Geography",
     "title": "What is the name of Finland’s northern region known for the Sámi people and reindeer herding?",
     "answers": ["Lapland", "Kainuu", "Savonia", "Ostrobothnia"],
     "correct": "Lapland"
@@ -454,7 +454,7 @@
   {
     "id": "FR",
     "played": 0,
-    "category": "history",
+    "category": "History",
     "title": "Which 1789 event marked the symbolic beginning of the French Revolution?",
     "answers": [
       "Storming of the Bastille",
@@ -467,7 +467,7 @@
   {
     "id": "FR",
     "played": 0,
-    "category": "sport",
+    "category": "Sport",
     "title": "Which French football club became the first to win the UEFA Champions League?",
     "answers": ["Olympique Marseille", "Paris Saint-Germain", "AS Monaco", "Lyon"],
     "correct": "Olympique Marseille"
@@ -475,7 +475,7 @@
   {
     "id": "FR",
     "played": 0,
-    "category": "society",
+    "category": "Society",
     "title": "Which law in 1905 established strict separation between church and state in France?",
     "answers": ["Laïcité law", "Edict of Nantes", "Napoleonic Concordat", "Vichy Statute"],
     "correct": "Laïcité law"
@@ -483,7 +483,7 @@
   {
     "id": "FR",
     "played": 0,
-    "category": "geography",
+    "category": "Geography",
     "title": "Which overseas region makes France the largest EEZ (maritime zone) holder in the world?",
     "answers": ["French Polynesia", "Réunion", "Martinique", "Guadeloupe"],
     "correct": "French Polynesia"
@@ -492,7 +492,7 @@
   {
     "id": "DE",
     "played": 0,
-    "category": "history",
+    "category": "History",
     "title": "Which 1871 event unified Germany under Prussian leadership?",
     "answers": [
       "Proclamation of the German Empire",
@@ -505,7 +505,7 @@
   {
     "id": "DE",
     "played": 0,
-    "category": "sport",
+    "category": "Sport",
     "title": "Which German club has won the most Bundesliga titles?",
     "answers": ["Bayern Munich", "Borussia Dortmund", "Hamburger SV", "Werder Bremen"],
     "correct": "Bayern Munich"
@@ -513,7 +513,7 @@
   {
     "id": "DE",
     "played": 0,
-    "category": "society",
+    "category": "Society",
     "title": "Which political philosophy originated from German thinkers Karl Marx and Friedrich Engels?",
     "answers": ["Communism", "Liberalism", "Fascism", "Existentialism"],
     "correct": "Communism"
@@ -521,7 +521,7 @@
   {
     "id": "DE",
     "played": 0,
-    "category": "geography",
+    "category": "Geography",
     "title": "Which river divides the cities of Cologne, Düsseldorf and Bonn?",
     "answers": ["Rhine", "Elbe", "Danube", "Weser"],
     "correct": "Rhine"
@@ -529,7 +529,7 @@
   {
     "id": "GR",
     "played": 0,
-    "category": "history",
+    "category": "History",
     "title": "Which 1821 event marked the beginning of Greece's war of independence from the Ottoman Empire?",
     "answers": [
       "Greek War of Independence",
@@ -542,7 +542,7 @@
   {
     "id": "GR",
     "played": 0,
-    "category": "sport",
+    "category": "Sport",
     "title": "Which Greek football club has won the most national championships?",
     "answers": ["Olympiacos", "Panathinaikos", "AEK Athens", "PAOK"],
     "correct": "Olympiacos"
@@ -550,7 +550,7 @@
   {
     "id": "GR",
     "played": 0,
-    "category": "society",
+    "category": "Society",
     "title": "Which ancient Greek tradition greatly influenced Western theater and literature?",
     "answers": ["Greek Tragedy", "Roman Epic", "Byzantine Iconography", "Ottoman Folklore"],
     "correct": "Greek Tragedy"
@@ -558,7 +558,7 @@
   {
     "id": "GR",
     "played": 0,
-    "category": "geography",
+    "category": "Geography",
     "title": "Which mountain range is home to Mount Olympus, the mythological home of the Greek gods?",
     "answers": ["Olympus", "Pindus", "Taygetus", "Rhodope"],
     "correct": "Olympus"
@@ -567,7 +567,7 @@
   {
     "id": "HU",
     "played": 0,
-    "category": "history",
+    "category": "History",
     "title": "Which 1956 uprising was a nationwide revolt against the Soviet-imposed policies in Hungary?",
     "answers": ["Hungarian Revolution", "Budapest Uprising", "Velvet Revolution", "March Revolt"],
     "correct": "Hungarian Revolution"
@@ -575,7 +575,7 @@
   {
     "id": "HU",
     "played": 0,
-    "category": "sport",
+    "category": "Sport",
     "title": "Which Hungarian footballer won the Golden Boot in 1954 FIFA World Cup?",
     "answers": ["Sándor Kocsis", "Ferenc Puskás", "Flórián Albert", "László Kubala"],
     "correct": "Sándor Kocsis"
@@ -583,7 +583,7 @@
   {
     "id": "HU",
     "played": 0,
-    "category": "society",
+    "category": "Society",
     "title": "Which Hungarian dish, made with paprika and meat, is internationally famous?",
     "answers": ["Goulash", "Paella", "Borscht", "Moussaka"],
     "correct": "Goulash"
@@ -591,7 +591,7 @@
   {
     "id": "HU",
     "played": 0,
-    "category": "geography",
+    "category": "Geography",
     "title": "Which major river flows through Budapest?",
     "answers": ["Danube", "Tisza", "Drava", "Sava"],
     "correct": "Danube"
@@ -600,7 +600,7 @@
   {
     "id": "IS",
     "played": 0,
-    "category": "history",
+    "category": "History",
     "title": "Which year did Iceland gain full independence from Denmark?",
     "answers": ["1944", "1918", "1960", "1952"],
     "correct": "1944"
@@ -608,15 +608,15 @@
   {
     "id": "IS",
     "played": 0,
-    "category": "sport",
-    "title": "Which sport is Iceland surprisingly successful at, with notable international results?",
+    "category": "Sport",
+    "title": "Which Sport is Iceland surprisingly successful at, with notable international results?",
     "answers": ["Handball", "Football", "Basketball", "Ice Hockey"],
     "correct": "Handball"
   },
   {
     "id": "IS",
     "played": 0,
-    "category": "society",
+    "category": "Society",
     "title": "What is the national literary work of Iceland that chronicles early settlers and Vikings?",
     "answers": ["Sagas of the Icelanders", "Beowulf", "Odyssey", "Kalevala"],
     "correct": "Sagas of the Icelanders"
@@ -624,7 +624,7 @@
   {
     "id": "IS",
     "played": 0,
-    "category": "geography",
+    "category": "Geography",
     "title": "Which natural phenomenon is Iceland famous for due to its volcanic activity?",
     "answers": ["Geothermal hot springs", "Tornadoes", "Rainforests", "Geysers in Africa"],
     "correct": "Geothermal hot springs"
@@ -633,7 +633,7 @@
   {
     "id": "IE",
     "played": 0,
-    "category": "history",
+    "category": "History",
     "title": "Which 1921 agreement partitioned Ireland into the Irish Free State and Northern Ireland?",
     "answers": [
       "Anglo-Irish Treaty",
@@ -646,15 +646,15 @@
   {
     "id": "IE",
     "played": 0,
-    "category": "sport",
-    "title": "Which sport, originating in Ireland, combines elements of football and rugby?",
+    "category": "Sport",
+    "title": "Which Sport, originating in Ireland, combines elements of football and rugby?",
     "answers": ["Gaelic football", "Hurling", "Rugby Union", "Camogie"],
     "correct": "Gaelic football"
   },
   {
     "id": "IE",
     "played": 0,
-    "category": "society",
+    "category": "Society",
     "title": "Which Irish writer is famous for 'Ulysses'?",
     "answers": ["James Joyce", "Oscar Wilde", "W.B. Yeats", "Samuel Beckett"],
     "correct": "James Joyce"
@@ -662,7 +662,7 @@
   {
     "id": "IE",
     "played": 0,
-    "category": "geography",
+    "category": "Geography",
     "title": "Which is the largest island in Ireland?",
     "answers": ["Ireland", "Inishmore", "Achill Island", "Valentia Island"],
     "correct": "Ireland"
@@ -671,7 +671,7 @@
   {
     "id": "IT",
     "played": 0,
-    "category": "history",
+    "category": "History",
     "title": "Which city-state was the birthplace of the Renaissance?",
     "answers": ["Florence", "Rome", "Venice", "Milan"],
     "correct": "Florence"
@@ -679,7 +679,7 @@
   {
     "id": "IT",
     "played": 0,
-    "category": "sport",
+    "category": "Sport",
     "title": "Which Italian football club has won the most Serie A titles?",
     "answers": ["Juventus", "AC Milan", "Inter Milan", "AS Roma"],
     "correct": "Juventus"
@@ -687,7 +687,7 @@
   {
     "id": "IT",
     "played": 0,
-    "category": "society",
+    "category": "Society",
     "title": "Which Italian dish is globally recognized and traditionally consists of dough, tomato, and cheese?",
     "answers": ["Pizza", "Pasta", "Risotto", "Lasagna"],
     "correct": "Pizza"
@@ -695,7 +695,7 @@
   {
     "id": "IT",
     "played": 0,
-    "category": "geography",
+    "category": "Geography",
     "title": "Which mountain range forms Italy’s northern border with Switzerland and Austria?",
     "answers": ["Alps", "Apennines", "Dolomites", "Pyrenees"],
     "correct": "Alps"
@@ -703,7 +703,7 @@
   {
     "id": "XK",
     "played": 0,
-    "category": "history",
+    "category": "History",
     "title": "Which year did Kosovo declare independence from Serbia?",
     "answers": ["2008", "1999", "2000", "2010"],
     "correct": "2008"
@@ -711,15 +711,15 @@
   {
     "id": "XK",
     "played": 0,
-    "category": "sport",
-    "title": "Which sport has brought Kosovo its first Olympic gold medal in 2016?",
+    "category": "Sport",
+    "title": "Which Sport has brought Kosovo its first Olympic gold medal in 2016?",
     "answers": ["Judo", "Football", "Basketball", "Wrestling"],
     "correct": "Judo"
   },
   {
     "id": "XK",
     "played": 0,
-    "category": "society",
+    "category": "Society",
     "title": "Which ethnic group forms the majority population in Kosovo?",
     "answers": ["Albanians", "Serbs", "Bosniaks", "Turks"],
     "correct": "Albanians"
@@ -727,7 +727,7 @@
   {
     "id": "XK",
     "played": 0,
-    "category": "geography",
+    "category": "Geography",
     "title": "Kosovo is a landlocked territory located in which part of Europe?",
     "answers": ["Balkans", "Scandinavia", "Central Europe", "Baltic region"],
     "correct": "Balkans"
@@ -736,7 +736,7 @@
   {
     "id": "LV",
     "played": 0,
-    "category": "history",
+    "category": "History",
     "title": "Which year did Latvia restore its independence from the Soviet Union?",
     "answers": ["1991", "1989", "1990", "1992"],
     "correct": "1991"
@@ -744,15 +744,15 @@
   {
     "id": "LV",
     "played": 0,
-    "category": "sport",
-    "title": "Which sport is Latvia particularly known for in international competitions?",
+    "category": "Sport",
+    "title": "Which Sport is Latvia particularly known for in international competitions?",
     "answers": ["Ice hockey", "Basketball", "Football", "Handball"],
     "correct": "Ice hockey"
   },
   {
     "id": "LV",
     "played": 0,
-    "category": "society",
+    "category": "Society",
     "title": "Which festival in Latvia celebrates the summer solstice with bonfires and singing?",
     "answers": ["Jāņi", "Midsummer Madness", "Song and Dance Festival", "St. John's Day"],
     "correct": "Jāņi"
@@ -760,7 +760,7 @@
   {
     "id": "LV",
     "played": 0,
-    "category": "geography",
+    "category": "Geography",
     "title": "Which body of water borders Latvia to the west?",
     "answers": ["Baltic Sea", "North Sea", "Black Sea", "Adriatic Sea"],
     "correct": "Baltic Sea"
@@ -769,7 +769,7 @@
   {
     "id": "LI",
     "played": 0,
-    "category": "history",
+    "category": "History",
     "title": "Liechtenstein became a sovereign member of the German Confederation in which year?",
     "answers": ["1815", "1806", "1900", "1850"],
     "correct": "1815"
@@ -777,15 +777,15 @@
   {
     "id": "LI",
     "played": 0,
-    "category": "sport",
-    "title": "Which sport is most popular in Liechtenstein, known for its alpine landscape?",
+    "category": "Sport",
+    "title": "Which Sport is most popular in Liechtenstein, known for its alpine landscape?",
     "answers": ["Skiing", "Football", "Ice Hockey", "Cycling"],
     "correct": "Skiing"
   },
   {
     "id": "LI",
     "played": 0,
-    "category": "society",
+    "category": "Society",
     "title": "Which currency does Liechtenstein officially use?",
     "answers": ["Swiss Franc", "Euro", "Liechtenstein Crown", "USD"],
     "correct": "Swiss Franc"
@@ -793,7 +793,7 @@
   {
     "id": "LI",
     "played": 0,
-    "category": "geography",
+    "category": "Geography",
     "title": "Liechtenstein is located between which two countries?",
     "answers": [
       "Switzerland and Austria",
@@ -807,7 +807,7 @@
   {
     "id": "LT",
     "played": 0,
-    "category": "history",
+    "category": "History",
     "title": "Which medieval union linked Lithuania with Poland?",
     "answers": [
       "Polish-Lithuanian Commonwealth",
@@ -820,7 +820,7 @@
   {
     "id": "LT",
     "played": 0,
-    "category": "sport",
+    "category": "Sport",
     "title": "Which Lithuanian basketball player is considered one of the greatest in Europe?",
     "answers": ["Arvydas Sabonis", "Domantas Sabonis", "Linas Kleiza", "Šarūnas Marčiulionis"],
     "correct": "Arvydas Sabonis"
@@ -828,7 +828,7 @@
   {
     "id": "LT",
     "played": 0,
-    "category": "society",
+    "category": "Society",
     "title": "Which pagan festival is celebrated in Lithuania on June 24th, marking the summer solstice?",
     "answers": ["Joninės", "Kupolė", "Midsummer Night", "Litha"],
     "correct": "Joninės"
@@ -836,7 +836,7 @@
   {
     "id": "LT",
     "played": 0,
-    "category": "geography",
+    "category": "Geography",
     "title": "Which sea lies to the west of Lithuania?",
     "answers": ["Baltic Sea", "North Sea", "Black Sea", "Mediterranean Sea"],
     "correct": "Baltic Sea"
@@ -845,7 +845,7 @@
   {
     "id": "LU",
     "played": 0,
-    "category": "history",
+    "category": "History",
     "title": "Luxembourg was occupied during both World Wars by which country?",
     "answers": ["Germany", "France", "Belgium", "Netherlands"],
     "correct": "Germany"
@@ -853,7 +853,7 @@
   {
     "id": "LU",
     "played": 0,
-    "category": "sport",
+    "category": "Sport",
     "title": "Which annual cycling race passes through Luxembourg?",
     "answers": ["Tour de Luxembourg", "Tour de France", "Giro d'Italia", "Vuelta a España"],
     "correct": "Tour de Luxembourg"
@@ -861,7 +861,7 @@
   {
     "id": "LU",
     "played": 0,
-    "category": "society",
+    "category": "Society",
     "title": "Which three languages are officially recognized in Luxembourg?",
     "answers": [
       "Luxembourgish, French, German",
@@ -874,7 +874,7 @@
   {
     "id": "LU",
     "played": 0,
-    "category": "geography",
+    "category": "Geography",
     "title": "Which river runs through Luxembourg City?",
     "answers": ["Alzette", "Moselle", "Sauer", "Rhine"],
     "correct": "Alzette"
@@ -882,7 +882,7 @@
   {
     "id": "MT",
     "played": 0,
-    "category": "history",
+    "category": "History",
     "title": "Which order ruled Malta from 1530 until Napoleon’s invasion in 1798?",
     "answers": [
       "Knights Hospitaller",
@@ -895,15 +895,15 @@
   {
     "id": "MT",
     "played": 0,
-    "category": "sport",
-    "title": "Which sport is considered Malta's most popular, with a national league and cup competition?",
+    "category": "Sport",
+    "title": "Which Sport is considered Malta's most popular, with a national league and cup competition?",
     "answers": ["Football", "Rugby", "Basketball", "Water Polo"],
     "correct": "Football"
   },
   {
     "id": "MT",
     "played": 0,
-    "category": "society",
+    "category": "Society",
     "title": "Which language is traditionally spoken alongside Maltese?",
     "answers": ["English", "Italian", "French", "Spanish"],
     "correct": "English"
@@ -911,7 +911,7 @@
   {
     "id": "MT",
     "played": 0,
-    "category": "geography",
+    "category": "Geography",
     "title": "Malta is located in which sea?",
     "answers": ["Mediterranean Sea", "Adriatic Sea", "Ionian Sea", "Aegean Sea"],
     "correct": "Mediterranean Sea"
@@ -920,7 +920,7 @@
   {
     "id": "MD",
     "played": 0,
-    "category": "history",
+    "category": "History",
     "title": "Moldova declared independence from which country in 1991?",
     "answers": ["Soviet Union", "Romania", "Ukraine", "Russia"],
     "correct": "Soviet Union"
@@ -928,15 +928,15 @@
   {
     "id": "MD",
     "played": 0,
-    "category": "sport",
-    "title": "Which sport is Moldova best known for regionally?",
+    "category": "Sport",
+    "title": "Which Sport is Moldova best known for regionally?",
     "answers": ["Football", "Rugby", "Basketball", "Wrestling"],
     "correct": "Football"
   },
   {
     "id": "MD",
     "played": 0,
-    "category": "society",
+    "category": "Society",
     "title": "Which river forms part of Moldova’s western border?",
     "answers": ["Prut", "Dniester", "Danube", "Rhin"],
     "correct": "Prut"
@@ -944,7 +944,7 @@
   {
     "id": "MD",
     "played": 0,
-    "category": "geography",
+    "category": "Geography",
     "title": "Which region in Moldova declared itself a breakaway state with support from Russia?",
     "answers": ["Transnistria", "Gagauzia", "Bessarabia", "Budjak"],
     "correct": "Transnistria"
@@ -953,7 +953,7 @@
   {
     "id": "MC",
     "played": 0,
-    "category": "history",
+    "category": "History",
     "title": "Which family has ruled Monaco since 1297?",
     "answers": ["House of Grimaldi", "House of Bourbon", "House of Habsburg", "House of Savoy"],
     "correct": "House of Grimaldi"
@@ -961,15 +961,15 @@
   {
     "id": "MC",
     "played": 0,
-    "category": "sport",
-    "title": "Which famous annual motorsport event is held in Monaco?",
+    "category": "Sport",
+    "title": "Which famous annual motorSport event is held in Monaco?",
     "answers": ["Monaco Grand Prix", "Le Mans 24h", "Formula E Berlin", "Italian Grand Prix"],
     "correct": "Monaco Grand Prix"
   },
   {
     "id": "MC",
     "played": 0,
-    "category": "society",
+    "category": "Society",
     "title": "What is Monaco famous for economically besides tourism?",
     "answers": ["Banking and casinos", "Agriculture", "Fishing", "Automotive industry"],
     "correct": "Banking and casinos"
@@ -977,7 +977,7 @@
   {
     "id": "MC",
     "played": 0,
-    "category": "geography",
+    "category": "Geography",
     "title": "Monaco is located on which coast?",
     "answers": ["French Riviera", "Amalfi Coast", "Costa Brava", "Dalmatian Coast"],
     "correct": "French Riviera"
@@ -986,7 +986,7 @@
   {
     "id": "ME",
     "played": 0,
-    "category": "history",
+    "category": "History",
     "title": "Montenegro regained independence in 2006 after separating from which country?",
     "answers": ["Serbia", "Yugoslavia", "Albania", "Croatia"],
     "correct": "Serbia"
@@ -994,15 +994,15 @@
   {
     "id": "ME",
     "played": 0,
-    "category": "sport",
-    "title": "Which sport is Montenegro most internationally recognized for?",
+    "category": "Sport",
+    "title": "Which Sport is Montenegro most internationally recognized for?",
     "answers": ["Water polo", "Football", "Basketball", "Tennis"],
     "correct": "Water polo"
   },
   {
     "id": "ME",
     "played": 0,
-    "category": "society",
+    "category": "Society",
     "title": "Which language is officially used in Montenegro?",
     "answers": ["Montenegrin", "Serbian", "Albanian", "Bosnian"],
     "correct": "Montenegrin"
@@ -1010,7 +1010,7 @@
   {
     "id": "ME",
     "played": 0,
-    "category": "geography",
+    "category": "Geography",
     "title": "Which bay on the Adriatic coast is Montenegro famous for?",
     "answers": ["Bay of Kotor", "Bay of Biscay", "Gulf of Naples", "Bay of Venice"],
     "correct": "Bay of Kotor"
@@ -1019,7 +1019,7 @@
   {
     "id": "NL",
     "played": 0,
-    "category": "history",
+    "category": "History",
     "title": "Which treaty in 1648 recognized the independence of the Dutch Republic from Spain?",
     "answers": [
       "Peace of Westphalia",
@@ -1032,7 +1032,7 @@
   {
     "id": "NL",
     "played": 0,
-    "category": "sport",
+    "category": "Sport",
     "title": "Which Dutch football club has won the most Eredivisie titles?",
     "answers": ["Ajax", "PSV Eindhoven", "Feyenoord", "AZ Alkmaar"],
     "correct": "Ajax"
@@ -1040,7 +1040,7 @@
   {
     "id": "NL",
     "played": 0,
-    "category": "society",
+    "category": "Society",
     "title": "Which Dutch city is famous for its international court of justice?",
     "answers": ["The Hague", "Amsterdam", "Rotterdam", "Utrecht"],
     "correct": "The Hague"
@@ -1048,7 +1048,7 @@
   {
     "id": "NL",
     "played": 0,
-    "category": "geography",
+    "category": "Geography",
     "title": "Which major river flows through Rotterdam and other Dutch cities?",
     "answers": ["Rhine", "Elbe", "Danube", "Seine"],
     "correct": "Rhine"
@@ -1056,7 +1056,7 @@
   {
     "id": "NO",
     "played": 0,
-    "category": "history",
+    "category": "History",
     "title": "Which treaty in 1905 led to Norway gaining independence from Sweden?",
     "answers": ["Karlstad Treaty", "Treaty of Kiel", "Treaty of Versailles", "Treaty of Roskilde"],
     "correct": "Karlstad Treaty"
@@ -1064,7 +1064,7 @@
   {
     "id": "NO",
     "played": 0,
-    "category": "sport",
+    "category": "Sport",
     "title": "Which Norwegian athlete is famous for dominating cross-country skiing and winning multiple Olympic golds?",
     "answers": ["Marit Bjørgen", "Petter Northug", "Therese Johaug", "Ole Einar Bjørndalen"],
     "correct": "Marit Bjørgen"
@@ -1072,7 +1072,7 @@
   {
     "id": "NO",
     "played": 0,
-    "category": "society",
+    "category": "Society",
     "title": "Which Norwegian concept emphasizes outdoor life and connecting with nature?",
     "answers": ["Friluftsliv", "Lagom", "Hygge", "Allemansrätten"],
     "correct": "Friluftsliv"
@@ -1080,7 +1080,7 @@
   {
     "id": "NO",
     "played": 0,
-    "category": "geography",
+    "category": "Geography",
     "title": "Which fjord is Norway’s deepest and one of the most famous tourist destinations?",
     "answers": ["Sognefjord", "Hardangerfjord", "Geirangerfjord", "Lysefjord"],
     "correct": "Sognefjord"
@@ -1089,7 +1089,7 @@
   {
     "id": "PL",
     "played": 0,
-    "category": "history",
+    "category": "History",
     "title": "Which 1795 event marked the final partition of Poland?",
     "answers": [
       "Third Partition of Poland",
@@ -1102,7 +1102,7 @@
   {
     "id": "PL",
     "played": 0,
-    "category": "sport",
+    "category": "Sport",
     "title": "Which Polish footballer is known as the all-time top scorer for the national team?",
     "answers": ["Robert Lewandowski", "Grzegorz Lato", "Zbigniew Boniek", "Jakub Błaszczykowski"],
     "correct": "Robert Lewandowski"
@@ -1110,7 +1110,7 @@
   {
     "id": "PL",
     "played": 0,
-    "category": "society",
+    "category": "Society",
     "title": "Which Polish holiday on November 1st honors deceased ancestors?",
     "answers": ["All Saints' Day", "Independence Day", "Corpus Christi", "St. Andrew's Day"],
     "correct": "All Saints' Day"
@@ -1118,7 +1118,7 @@
   {
     "id": "PL",
     "played": 0,
-    "category": "geography",
+    "category": "Geography",
     "title": "Which mountain range forms Poland’s southern border with Slovakia?",
     "answers": ["Carpathians", "Sudetes", "Tatra", "Beskids"],
     "correct": "Carpathians"
@@ -1127,7 +1127,7 @@
   {
     "id": "PT",
     "played": 0,
-    "category": "history",
+    "category": "History",
     "title": "Which explorer from Portugal first sailed directly to India by sea in 1498?",
     "answers": ["Vasco da Gama", "Ferdinand Magellan", "Bartolomeu Dias", "Henry the Navigator"],
     "correct": "Vasco da Gama"
@@ -1135,7 +1135,7 @@
   {
     "id": "PT",
     "played": 0,
-    "category": "sport",
+    "category": "Sport",
     "title": "Which Portuguese footballer has won multiple Ballon d'Or awards?",
     "answers": ["Cristiano Ronaldo", "Eusebio", "Luis Figo", "Rui Costa"],
     "correct": "Cristiano Ronaldo"
@@ -1143,7 +1143,7 @@
   {
     "id": "PT",
     "played": 0,
-    "category": "society",
+    "category": "Society",
     "title": "Which Portuguese tradition features soulful music and storytelling?",
     "answers": ["Fado", "Flamenco", "Samba", "Funk"],
     "correct": "Fado"
@@ -1151,7 +1151,7 @@
   {
     "id": "PT",
     "played": 0,
-    "category": "geography",
+    "category": "Geography",
     "title": "Which major river flows through Lisbon?",
     "answers": ["Tagus", "Douro", "Guadiana", "Minho"],
     "correct": "Tagus"
@@ -1160,7 +1160,7 @@
   {
     "id": "RO",
     "played": 0,
-    "category": "history",
+    "category": "History",
     "title": "Which ruler of Wallachia inspired the legend of Dracula?",
     "answers": ["Vlad the Impaler", "Stephen the Great", "Michael the Brave", "Mircea the Elder"],
     "correct": "Vlad the Impaler"
@@ -1168,15 +1168,15 @@
   {
     "id": "RO",
     "played": 0,
-    "category": "sport",
-    "title": "Which sport brought Romania global fame through gymnast Nadia Comăneci?",
+    "category": "Sport",
+    "title": "Which Sport brought Romania global fame through gymnast Nadia Comăneci?",
     "answers": ["Gymnastics", "Tennis", "Handball", "Athletics"],
     "correct": "Gymnastics"
   },
   {
     "id": "RO",
     "played": 0,
-    "category": "society",
+    "category": "Society",
     "title": "Which Romanian region is famous for painted monasteries?",
     "answers": ["Moldavia", "Transylvania", "Muntenia", "Oltenia"],
     "correct": "Moldavia"
@@ -1184,7 +1184,7 @@
   {
     "id": "RO",
     "played": 0,
-    "category": "geography",
+    "category": "Geography",
     "title": "Which river runs through Romania’s capital, Bucharest?",
     "answers": ["Dâmbovița", "Danube", "Olt", "Mureș"],
     "correct": "Dâmbovița"
@@ -1193,7 +1193,7 @@
   {
     "id": "RU",
     "played": 0,
-    "category": "history",
+    "category": "History",
     "title": "Which city was the capital of Russia before Moscow was restored in 1918?",
     "answers": ["Saint Petersburg", "Kazan", "Novgorod", "Vladimir"],
     "correct": "Saint Petersburg"
@@ -1201,7 +1201,7 @@
   {
     "id": "RU",
     "played": 0,
-    "category": "sport",
+    "category": "Sport",
     "title": "Which Russian tennis player has won multiple Grand Slam singles titles and reached World No.1?",
     "answers": ["Maria Sharapova", "Svetlana Kuznetsova", "Anastasia Myskina", "Dinara Safina"],
     "correct": "Maria Sharapova"
@@ -1209,7 +1209,7 @@
   {
     "id": "RU",
     "played": 0,
-    "category": "society",
+    "category": "Society",
     "title": "Which Russian author wrote 'War and Peace'?",
     "answers": ["Leo Tolstoy", "Fyodor Dostoevsky", "Anton Chekhov", "Nikolai Gogol"],
     "correct": "Leo Tolstoy"
@@ -1217,7 +1217,7 @@
   {
     "id": "RU",
     "played": 0,
-    "category": "geography",
+    "category": "Geography",
     "title": "Which mountain range forms the boundary between Europe and Asia in Russia?",
     "answers": ["Ural Mountains", "Caucasus Mountains", "Altai Mountains", "Sayan Mountains"],
     "correct": "Ural Mountains"
@@ -1225,15 +1225,15 @@
   {
     "id": "RS",
     "played": 0,
-    "category": "history",
-    "title": "Which battle in 1389 marked a significant event in medieval Serbian history?",
+    "category": "History",
+    "title": "Which battle in 1389 marked a significant event in medieval Serbian History?",
     "answers": ["Battle of Kosovo", "Battle of Maritsa", "Battle of Nicopolis", "Battle of Mohács"],
     "correct": "Battle of Kosovo"
   },
   {
     "id": "RS",
     "played": 0,
-    "category": "sport",
+    "category": "Sport",
     "title": "Which Serbian tennis player has won multiple Grand Slam singles titles and reached World No.1?",
     "answers": ["Novak Djokovic", "Janko Tipsarević", "Nenad Zimonjić", "Viktor Troicki"],
     "correct": "Novak Djokovic"
@@ -1241,7 +1241,7 @@
   {
     "id": "RS",
     "played": 0,
-    "category": "society",
+    "category": "Society",
     "title": "Which traditional Serbian dance is performed in a circle and often features intricate footwork?",
     "answers": ["Kolo", "Sirtaki", "Polka", "Fandango"],
     "correct": "Kolo"
@@ -1249,7 +1249,7 @@
   {
     "id": "RS",
     "played": 0,
-    "category": "geography",
+    "category": "Geography",
     "title": "Which river is the longest in Serbia?",
     "answers": ["Danube", "Sava", "Morava", "Tisa"],
     "correct": "Danube"
@@ -1258,7 +1258,7 @@
   {
     "id": "SK",
     "played": 0,
-    "category": "history",
+    "category": "History",
     "title": "Which year did Slovakia become an independent state after the split of Czechoslovakia?",
     "answers": ["1993", "1989", "1990", "1991"],
     "correct": "1993"
@@ -1266,7 +1266,7 @@
   {
     "id": "SK",
     "played": 0,
-    "category": "sport",
+    "category": "Sport",
     "title": "Which Slovak ice hockey player is known for playing in the NHL with the Boston Bruins and New York Rangers?",
     "answers": ["Zdeno Chára", "Marián Hossa", "Peter Bondra", "Erik Černák"],
     "correct": "Zdeno Chára"
@@ -1274,15 +1274,15 @@
   {
     "id": "SK",
     "played": 0,
-    "category": "society",
-    "title": "Which Slovak mountain range is famous for hiking and winter sports?",
+    "category": "Society",
+    "title": "Which Slovak mountain range is famous for hiking and winter Sports?",
     "answers": ["Tatra Mountains", "Carpathians", "Sudetes", "Alps"],
     "correct": "Tatra Mountains"
   },
   {
     "id": "SK",
     "played": 0,
-    "category": "geography",
+    "category": "Geography",
     "title": "Which river flows through Bratislava?",
     "answers": ["Danube", "Váh", "Hron", "Morava"],
     "correct": "Danube"
@@ -1291,7 +1291,7 @@
   {
     "id": "SI",
     "played": 0,
-    "category": "history",
+    "category": "History",
     "title": "Slovenia declared independence from which country in 1991?",
     "answers": ["Yugoslavia", "Austria-Hungary", "Italy", "Czechoslovakia"],
     "correct": "Yugoslavia"
@@ -1299,7 +1299,7 @@
   {
     "id": "SI",
     "played": 0,
-    "category": "sport",
+    "category": "Sport",
     "title": "Which Slovenian skier won multiple Olympic medals in Alpine skiing?",
     "answers": ["Tina Maze", "Peter Prevc", "Janica Kostelić", "Mikaela Shiffrin"],
     "correct": "Tina Maze"
@@ -1307,7 +1307,7 @@
   {
     "id": "SI",
     "played": 0,
-    "category": "society",
+    "category": "Society",
     "title": "Which traditional Slovenian dish is a type of filled dumpling?",
     "answers": ["Kranjska klobasa", "Potica", "Štruklji", "Pierogi"],
     "correct": "Štruklji"
@@ -1315,7 +1315,7 @@
   {
     "id": "SI",
     "played": 0,
-    "category": "geography",
+    "category": "Geography",
     "title": "Which mountain range covers much of northern Slovenia?",
     "answers": ["Julian Alps", "Carpathians", "Alps", "Apennines"],
     "correct": "Julian Alps"
@@ -1324,7 +1324,7 @@
   {
     "id": "ES",
     "played": 0,
-    "category": "history",
+    "category": "History",
     "title": "Which Spanish civil conflict occurred between 1936 and 1939?",
     "answers": ["Spanish Civil War", "Peninsular War", "Reconquista", "War of Spanish Succession"],
     "correct": "Spanish Civil War"
@@ -1332,7 +1332,7 @@
   {
     "id": "ES",
     "played": 0,
-    "category": "sport",
+    "category": "Sport",
     "title": "Which Spanish football club has won the most UEFA Champions League titles?",
     "answers": ["Real Madrid", "Barcelona", "Atlético Madrid", "Valencia"],
     "correct": "Real Madrid"
@@ -1340,7 +1340,7 @@
   {
     "id": "ES",
     "played": 0,
-    "category": "society",
+    "category": "Society",
     "title": "Which festival in Spain is famous for running with bulls?",
     "answers": ["San Fermín", "La Tomatina", "Fallas", "Semana Santa"],
     "correct": "San Fermín"
@@ -1348,7 +1348,7 @@
   {
     "id": "ES",
     "played": 0,
-    "category": "geography",
+    "category": "Geography",
     "title": "Which mountain range forms the northern border of Spain with France?",
     "answers": ["Pyrenees", "Sierra Nevada", "Cantabrian Mountains", "Alps"],
     "correct": "Pyrenees"
@@ -1357,7 +1357,7 @@
   {
     "id": "SE",
     "played": 0,
-    "category": "history",
+    "category": "History",
     "title": "Which Swedish king famously led campaigns during the Thirty Years' War?",
     "answers": ["Gustavus Adolphus", "Charles XII", "Eric XIV", "Olof Skötkonung"],
     "correct": "Gustavus Adolphus"
@@ -1365,7 +1365,7 @@
   {
     "id": "SE",
     "played": 0,
-    "category": "sport",
+    "category": "Sport",
     "title": "Which Swedish footballer won the FIFA World Cup Golden Ball in 1958?",
     "answers": ["Pelé", "Nils Liedholm", "Gunnar Nordahl", "Sven Rydell"],
     "correct": "Pelé"
@@ -1373,7 +1373,7 @@
   {
     "id": "SE",
     "played": 0,
-    "category": "society",
+    "category": "Society",
     "title": "Which concept reflects Sweden’s focus on balance, moderation, and a good lifestyle?",
     "answers": ["Lagom", "Hygge", "Friluftsliv", "Fika"],
     "correct": "Lagom"
@@ -1381,7 +1381,7 @@
   {
     "id": "SE",
     "played": 0,
-    "category": "geography",
+    "category": "Geography",
     "title": "Which is the largest lake in Sweden?",
     "answers": ["Vänern", "Vättern", "Mälaren", "Storsjön"],
     "correct": "Vänern"
@@ -1389,7 +1389,7 @@
   {
     "id": "CH",
     "played": 0,
-    "category": "history",
+    "category": "History",
     "title": "Which treaty in 1815 established Switzerland’s permanent neutrality?",
     "answers": [
       "Congress of Vienna",
@@ -1402,7 +1402,7 @@
   {
     "id": "CH",
     "played": 0,
-    "category": "sport",
+    "category": "Sport",
     "title": "Which Swiss tennis player has won 20 Grand Slam singles titles?",
     "answers": ["Roger Federer", "Stan Wawrinka", "Martina Hingis", "Belinda Bencic"],
     "correct": "Roger Federer"
@@ -1410,7 +1410,7 @@
   {
     "id": "CH",
     "played": 0,
-    "category": "society",
+    "category": "Society",
     "title": "Which Swiss city is famous for hosting the headquarters of many international organizations, including the Red Cross?",
     "answers": ["Geneva", "Zurich", "Bern", "Basel"],
     "correct": "Geneva"
@@ -1418,7 +1418,7 @@
   {
     "id": "CH",
     "played": 0,
-    "category": "geography",
+    "category": "Geography",
     "title": "Which mountain range dominates southern Switzerland?",
     "answers": ["Alps", "Pyrenees", "Carpathians", "Apennines"],
     "correct": "Alps"
@@ -1427,7 +1427,7 @@
   {
     "id": "GB",
     "played": 0,
-    "category": "history",
+    "category": "History",
     "title": "Which year did the United Kingdom officially leave the European Union?",
     "answers": ["2020", "2016", "2019", "2018"],
     "correct": "2020"
@@ -1435,7 +1435,7 @@
   {
     "id": "GB",
     "played": 0,
-    "category": "sport",
+    "category": "Sport",
     "title": "Which British football club has won the most English league titles?",
     "answers": ["Manchester United", "Liverpool", "Arsenal", "Chelsea"],
     "correct": "Manchester United"
@@ -1443,7 +1443,7 @@
   {
     "id": "GB",
     "played": 0,
-    "category": "society",
+    "category": "Society",
     "title": "Which British author created the wizarding world of Harry Potter?",
     "answers": ["J.K. Rowling", "Philip Pullman", "C.S. Lewis", "Roald Dahl"],
     "correct": "J.K. Rowling"
@@ -1451,7 +1451,7 @@
   {
     "id": "GB",
     "played": 0,
-    "category": "geography",
+    "category": "Geography",
     "title": "Which is the largest city in the United Kingdom by population?",
     "answers": ["London", "Birmingham", "Manchester", "Glasgow"],
     "correct": "London"
@@ -1460,7 +1460,7 @@
   {
     "id": "CH",
     "played": 0,
-    "category": "history",
+    "category": "History",
     "title": "Which confederation formed the foundation of modern Switzerland in 1291?",
     "answers": ["Eidgenossenschaft", "Holy Roman Empire", "Swiss League", "Confederatio Helvetica"],
     "correct": "Eidgenossenschaft"
@@ -1468,7 +1468,7 @@
   {
     "id": "CH",
     "played": 0,
-    "category": "sport",
+    "category": "Sport",
     "title": "Which Swiss city hosts the famous Ironman Triathlon Europe?",
     "answers": ["Zurich", "Geneva", "Basel", "Lausanne"],
     "correct": "Zurich"
@@ -1476,7 +1476,7 @@
   {
     "id": "CH",
     "played": 0,
-    "category": "society",
+    "category": "Society",
     "title": "Which Swiss city is known as a banking and financial hub alongside Geneva?",
     "answers": ["Zurich", "Bern", "Lausanne", "Basel"],
     "correct": "Zurich"
@@ -1484,7 +1484,7 @@
   {
     "id": "CH",
     "played": 0,
-    "category": "geography",
+    "category": "Geography",
     "title": "Which Swiss canton is entirely surrounded by France, Italy, and Germany?",
     "answers": ["Jura", "Ticino", "Valais", "Graubünden"],
     "correct": "Jura"
@@ -1493,7 +1493,7 @@
   {
     "id": "GB",
     "played": 0,
-    "category": "history",
+    "category": "History",
     "title": "Which queen reigned over the United Kingdom from 1952 to 2022?",
     "answers": ["Elizabeth II", "Victoria", "Elizabeth I", "Mary I"],
     "correct": "Elizabeth II"
@@ -1501,7 +1501,7 @@
   {
     "id": "GB",
     "played": 0,
-    "category": "sport",
+    "category": "Sport",
     "title": "Which city hosted the 2012 Summer Olympics in the United Kingdom?",
     "answers": ["London", "Manchester", "Glasgow", "Birmingham"],
     "correct": "London"
@@ -1509,7 +1509,7 @@
   {
     "id": "GB",
     "played": 0,
-    "category": "society",
+    "category": "Society",
     "title": "Which British band is known for the album 'Abbey Road'?",
     "answers": ["The Beatles", "Queen", "The Rolling Stones", "Pink Floyd"],
     "correct": "The Beatles"
@@ -1517,7 +1517,7 @@
   {
     "id": "GB",
     "played": 0,
-    "category": "geography",
+    "category": "Geography",
     "title": "Which river flows through London?",
     "answers": ["Thames", "Severn", "Trent", "Tyne"],
     "correct": "Thames"
@@ -1525,7 +1525,7 @@
   {
     "id": "VA",
     "played": 0,
-    "category": "history",
+    "category": "History",
     "title": "Which year did Vatican City become an independent state?",
     "answers": ["1929", "1870", "1945", "1900"],
     "correct": "1929"
@@ -1533,15 +1533,15 @@
   {
     "id": "VA",
     "played": 0,
-    "category": "sport",
-    "title": "Which sport is most commonly played by residents and visitors in Vatican City?",
+    "category": "Sport",
+    "title": "Which Sport is most commonly played by residents and visitors in Vatican City?",
     "answers": ["Football", "Basketball", "Tennis", "Rugby"],
     "correct": "Football"
   },
   {
     "id": "VA",
     "played": 0,
-    "category": "society",
+    "category": "Society",
     "title": "Who is the head of state in Vatican City?",
     "answers": ["Pope", "Prime Minister", "King", "President"],
     "correct": "Pope"
@@ -1549,7 +1549,7 @@
   {
     "id": "VA",
     "played": 0,
-    "category": "geography",
+    "category": "Geography",
     "title": "Vatican City is entirely surrounded by which city?",
     "answers": ["Rome", "Milan", "Florence", "Naples"],
     "correct": "Rome"
@@ -1558,7 +1558,7 @@
   {
     "id": "SM",
     "played": 0,
-    "category": "history",
+    "category": "History",
     "title": "San Marino claims to be the world's oldest republic, founded in which year?",
     "answers": ["301", "500", "962", "1200"],
     "correct": "301"
@@ -1566,15 +1566,15 @@
   {
     "id": "SM",
     "played": 0,
-    "category": "sport",
-    "title": "Which sport is popular in San Marino, with its own national league?",
+    "category": "Sport",
+    "title": "Which Sport is popular in San Marino, with its own national league?",
     "answers": ["Football", "Basketball", "Handball", "Tennis"],
     "correct": "Football"
   },
   {
     "id": "SM",
     "played": 0,
-    "category": "society",
+    "category": "Society",
     "title": "San Marino is entirely surrounded by which country?",
     "answers": ["Italy", "France", "Switzerland", "Austria"],
     "correct": "Italy"
@@ -1582,7 +1582,7 @@
   {
     "id": "SM",
     "played": 0,
-    "category": "geography",
+    "category": "Geography",
     "title": "San Marino is located on which mountain?",
     "answers": ["Mount Titano", "Monte Bianco", "Monte Rosa", "Monte Cassino"],
     "correct": "Mount Titano"
@@ -1591,7 +1591,7 @@
   {
     "id": "CY",
     "played": 0,
-    "category": "history",
+    "category": "History",
     "title": "Which year did Cyprus gain independence from British rule?",
     "answers": ["1960", "1955", "1974", "1948"],
     "correct": "1960"
@@ -1599,15 +1599,15 @@
   {
     "id": "CY",
     "played": 0,
-    "category": "sport",
-    "title": "Which sport is most popular in Cyprus, with a national league and teams competing in Europe?",
+    "category": "Sport",
+    "title": "Which Sport is most popular in Cyprus, with a national league and teams competing in Europe?",
     "answers": ["Football", "Basketball", "Tennis", "Volleyball"],
     "correct": "Football"
   },
   {
     "id": "CY",
     "played": 0,
-    "category": "society",
+    "category": "Society",
     "title": "Which two communities mainly inhabit Cyprus?",
     "answers": [
       "Greek Cypriots and Turkish Cypriots",
@@ -1620,7 +1620,7 @@
   {
     "id": "CY",
     "played": 0,
-    "category": "geography",
+    "category": "Geography",
     "title": "Cyprus is located in which sea?",
     "answers": ["Mediterranean Sea", "Aegean Sea", "Black Sea", "Adriatic Sea"],
     "correct": "Mediterranean Sea"
@@ -1629,7 +1629,7 @@
   {
     "id": "TR",
     "played": 0,
-    "category": "history",
+    "category": "History",
     "title": "Which treaty in 1923 established the modern borders of Turkey?",
     "answers": [
       "Treaty of Lausanne",
@@ -1642,15 +1642,15 @@
   {
     "id": "TR",
     "played": 0,
-    "category": "sport",
-    "title": "Which sport is Turkey most internationally recognized for?",
+    "category": "Sport",
+    "title": "Which Sport is Turkey most internationally recognized for?",
     "answers": ["Football", "Basketball", "Wrestling", "Volleyball"],
     "correct": "Football"
   },
   {
     "id": "TR",
     "played": 0,
-    "category": "society",
+    "category": "Society",
     "title": "Which major city in European Turkey is a cultural and economic hub?",
     "answers": ["Istanbul", "Ankara", "Izmir", "Bursa"],
     "correct": "Istanbul"
@@ -1658,7 +1658,7 @@
   {
     "id": "TR",
     "played": 0,
-    "category": "geography",
+    "category": "Geography",
     "title": "European Turkey is also known by what historical name?",
     "answers": ["Thrace", "Anatolia", "Cappadocia", "Marmara"],
     "correct": "Thrace"
@@ -1666,7 +1666,7 @@
   {
     "id": "AD",
     "played": 0,
-    "category": "history",
+    "category": "History",
     "title": "Which year did Andorra adopt its first constitution?",
     "answers": ["1993", "1978", "1986", "2000"],
     "correct": "1993"
@@ -1674,15 +1674,15 @@
   {
     "id": "AD",
     "played": 0,
-    "category": "sport",
-    "title": "Which sport is most popular in Andorra, especially in its mountainous regions?",
+    "category": "Sport",
+    "title": "Which Sport is most popular in Andorra, especially in its mountainous regions?",
     "answers": ["Skiing", "Football", "Basketball", "Tennis"],
     "correct": "Skiing"
   },
   {
     "id": "AD",
     "played": 0,
-    "category": "society",
+    "category": "Society",
     "title": "Andorra is co-ruled by which two leaders?",
     "answers": [
       "President of France and Bishop of Urgell",
@@ -1695,7 +1695,7 @@
   {
     "id": "AD",
     "played": 0,
-    "category": "geography",
+    "category": "Geography",
     "title": "Andorra is located in which mountain range?",
     "answers": ["Pyrenees", "Alps", "Apennines", "Carpathians"],
     "correct": "Pyrenees"
@@ -1704,7 +1704,7 @@
   {
     "id": "MK",
     "played": 0,
-    "category": "history",
+    "category": "History",
     "title": "North Macedonia declared independence from which country in 1991?",
     "answers": ["Yugoslavia", "Greece", "Bulgaria", "Serbia"],
     "correct": "Yugoslavia"
@@ -1712,15 +1712,15 @@
   {
     "id": "MK",
     "played": 0,
-    "category": "sport",
-    "title": "Which sport is most popular in North Macedonia, with a national league?",
+    "category": "Sport",
+    "title": "Which Sport is most popular in North Macedonia, with a national league?",
     "answers": ["Football", "Basketball", "Handball", "Tennis"],
     "correct": "Football"
   },
   {
     "id": "MK",
     "played": 0,
-    "category": "society",
+    "category": "Society",
     "title": "Which city is the capital of North Macedonia?",
     "answers": ["Skopje", "Bitola", "Ohrid", "Tetovo"],
     "correct": "Skopje"
@@ -1728,7 +1728,7 @@
   {
     "id": "MK",
     "played": 0,
-    "category": "geography",
+    "category": "Geography",
     "title": "North Macedonia is a landlocked country in which region of Europe?",
     "answers": ["Balkans", "Baltic region", "Central Europe", "Scandinavia"],
     "correct": "Balkans"
@@ -1736,7 +1736,7 @@
   {
     "id": "UA",
     "played": 0,
-    "category": "history",
+    "category": "History",
     "title": "Which year did Ukraine declare independence from the Soviet Union?",
     "answers": ["1991", "1989", "1990", "1992"],
     "correct": "1991"
@@ -1744,7 +1744,7 @@
   {
     "id": "UA",
     "played": 0,
-    "category": "sport",
+    "category": "Sport",
     "title": "Which Ukrainian footballer is considered one of the greatest and played for Dynamo Kyiv and AC Milan?",
     "answers": ["Andriy Shevchenko", "Serhiy Rebrov", "Oleksandr Zinchenko", "Yevhen Konoplyanka"],
     "correct": "Andriy Shevchenko"
@@ -1752,7 +1752,7 @@
   {
     "id": "UA",
     "played": 0,
-    "category": "society",
+    "category": "Society",
     "title": "Which is the capital city of Ukraine?",
     "answers": ["Kyiv", "Lviv", "Odessa", "Kharkiv"],
     "correct": "Kyiv"
@@ -1760,7 +1760,7 @@
   {
     "id": "UA",
     "played": 0,
-    "category": "geography",
+    "category": "Geography",
     "title": "Which major river flows through Kyiv and is the longest river in Ukraine?",
     "answers": ["Dnieper", "Dniestr", "Southern Bug", "Prut"],
     "correct": "Dnieper"
@@ -1769,7 +1769,7 @@
   {
     "id": "BY",
     "played": 0,
-    "category": "history",
+    "category": "History",
     "title": "Belarus declared independence from which country in 1991?",
     "answers": ["Soviet Union", "Poland", "Lithuania", "Russia"],
     "correct": "Soviet Union"
@@ -1777,15 +1777,15 @@
   {
     "id": "BY",
     "played": 0,
-    "category": "sport",
-    "title": "Which sport is very popular in Belarus, producing Olympic champions like Darya Domracheva?",
+    "category": "Sport",
+    "title": "Which Sport is very popular in Belarus, producing Olympic champions like Darya Domracheva?",
     "answers": ["Biathlon", "Football", "Basketball", "Gymnastics"],
     "correct": "Biathlon"
   },
   {
     "id": "BY",
     "played": 0,
-    "category": "society",
+    "category": "Society",
     "title": "Which is the capital city of Belarus?",
     "answers": ["Minsk", "Gomel", "Brest", "Vitebsk"],
     "correct": "Minsk"
@@ -1793,7 +1793,7 @@
   {
     "id": "BY",
     "played": 0,
-    "category": "geography",
+    "category": "Geography",
     "title": "Belarus shares its western border with which country?",
     "answers": ["Poland", "Ukraine", "Lithuania", "Latvia"],
     "correct": "Poland"

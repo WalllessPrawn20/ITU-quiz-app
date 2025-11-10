@@ -2,21 +2,64 @@
   <div class="homepage">
     <router-link to="/settings">
       <button class="header-btn settings" aria-label="Settings">
-        <img src="../assets/settings2.png" alt="Settings"/>
+        <img src="../assets/settings2.png" alt="Settings" />
       </button>
     </router-link>
 
     <h1 class="title">World Conquest</h1>
 
-    <router-link to="/category">
-      <button class="start" aria-label="Start quiz">
-        <img src="../assets/play.png" alt="Play" class="play-icon"/>
+    <input
+      type="text"
+      v-model="username"
+      placeholder="Enter your username"
+      class="username-input"
+    />
+
+    <router-link :to="username ? '/category' : '#'" custom v-slot="{ navigate }">
+      <button
+        class="start"
+        aria-label="Start quiz"
+        :disabled="!username"
+        @click="username && navigate()"
+      >
+        <img src="../assets/play.png" alt="Play" class="play-icon" />
       </button>
     </router-link>
   </div>
 </template>
 
+<script setup>
+import { ref } from 'vue'
+
+const username = ref('')
+</script>
+
 <style>
+.username-input {
+  margin: 1rem 0 2rem 0;
+  padding: 0.8rem 1rem;
+  font-size: 1.5rem;
+  font-family: 'Press Start 2P', monospace;
+  border: 2px solid #00ff88;
+  border-radius: 8px;
+  background: rgba(0, 0, 0, 0.5);
+  color: white;
+  text-align: center;
+  outline: none;
+  width: 500px;
+  max-width: 80%;
+  transition: 0.2s all;
+}
+
+.username-input::placeholder {
+  color: #ccc;
+}
+
+.username-input:focus {
+  border-color: #ffcc00;
+  box-shadow: 0 0 10px #ffcc00;
+}
+
 .homepage {
   height: 100vh;
   display: flex;
@@ -68,6 +111,11 @@
   background: rgba(0, 0, 0, 0.5);
   backdrop-filter: blur(1px);
   border-radius: 12px;
+}
+
+.start:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
 }
 
 .start {

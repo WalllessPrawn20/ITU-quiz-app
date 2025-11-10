@@ -58,6 +58,7 @@ const turn = ref(0)
 const gameOver = ref(false)
 
 const difficulty = gameSettings.difficulty || 'Medium'
+let categories = Object.keys(gameSettings.sets).filter((key) => gameSettings.sets[key])
 
 async function handleCountryClick(countryId) {
   if (countryResults.value[countryId] || currentQuestion.value || gameOver.value) return
@@ -161,7 +162,12 @@ function startGameTimer() {
 async function fetchQuestions(id) {
   try {
     const capitalizedId = id.slice(0, 2).toUpperCase()
-    const res = await fetch(`http://localhost:5000/questions/filter?id=${capitalizedId}`)
+    const categoryParam = categories.join(',')
+    console.error('Category param:', categoryParam)
+    const res = await fetch(
+      `http://localhost:5000/questions/filter?id=${capitalizedId}&category=${categoryParam}`,
+    )
+
     if (!res.ok) throw new Error('Failed to fetch questions')
     const data = await res.json()
     return data
