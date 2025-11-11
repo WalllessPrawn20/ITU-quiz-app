@@ -7,6 +7,7 @@ import ThemesView from '../views/QuizSettingsView.vue'
 import GameView from '../views/GameView.vue'
 import QuestionABCDView from '../views/QuestionABCDView.vue'
 import GameOverView from '../views/GameOverView.vue'
+import CustomView from '../views/CustomView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -19,6 +20,7 @@ const router = createRouter({
     { path: '/game', name: 'game', component: GameView },
     { path: '/questionABCD', name: 'questionABCD', component: QuestionABCDView },
     { path: '/game-over', name: 'over', component: GameOverView },
+    { path: '/custom', name: 'custom', component: CustomView },
   ],
 })
 

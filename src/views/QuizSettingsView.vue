@@ -88,7 +88,8 @@ function toggleSet(key) {
             :key="level"
             @click="settings.difficulty = level"
           >
-            <div class="square-img"></div>
+            <div class="square-img">            <img :src="getImgSrc(level)" :alt="level" />
+</div>
             <span class="label">{{ level }}</span>
             <div class="checkbox" :class="{ active: settings.difficulty === level }"></div>
           </div>
@@ -110,9 +111,16 @@ function toggleSet(key) {
       <span class="value">{{ settings.rounds }}</span>
     </div>
 
-<button class="play-btn" @click="playQuiz">
-  <img src="../assets/play.png" alt="Play" class="play-icon"/>
-</button>
+<div class="action-buttons">
+  <div class="custom-section">
+    <p class="custom-label">Create question</p>
+    <button class="custom-btn" @click="router.push('/custom')">+</button>
+  </div>
+
+  <button class="play-btn" @click="playQuiz">
+    <img src="../assets/play.png" alt="Play" class="play-icon" />
+  </button>
+</div>
   </div>
 </div>
 
@@ -402,21 +410,75 @@ input[type="range"]::-moz-range-thumb:hover {
   border: 0.2vw solid white;
   transition: transform 0.2s, background 0.2s;
 }
+.square-img img{
+  background: rgba(255, 255, 255, 0.1);
+  border: 0.2vw solid white;
+  transition: transform 0.2s, background 0.2s;
+}
 
 .circle-img img {
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
-
+.square-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
 .row:hover .circle-img {
   transform: scale(1.05);
   background: rgba(255, 255, 255, 0.2);
 }
-.row .checkbox.active + .circle-img,
-.row.active .circle-img {
-  border-color: yellow;
+.row:hover .square-img {
+  transform: scale(1.05);
+  background: rgba(255, 255, 255, 0.2);
 }
 
+.row:hover .label {
+  transform: scale(1.05);
+  transition: transform 0.2s ease;
+}
+
+.action-buttons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2vw;
+  width: 100%;
+  margin-top: 2vh;
+}
+
+.custom-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1vh;
+}
+
+.custom-label {
+  font-size: 1.75rem;
+  color: white;
+  text-align: center;
+  margin:1rem;
+}
+
+.custom-btn {
+  width: 4vw;
+  height: 4vw;
+  border: 0.3vw solid white;
+  background: transparent;
+  color: white;
+  font-size: 2rem;
+  font-family: 'Press Start 2P', monospace;
+  cursor: pointer;
+  transition: transform 0.2s, background 0.2s;
+}
+
+.custom-btn:hover {
+  transform: scale(1.1);
+  background: rgba(255, 255, 255, 0.2);
+}
 
 </style>
