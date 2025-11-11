@@ -1,10 +1,10 @@
 <script setup>
-import { ref } from 'vue'
+import { ref, watch, onMounted } from 'vue'
 import { useRouter } from 'vue-router'
 
 const router = useRouter()
 
-const settings = ref({
+const defaultSettings = {
   region: 'europe',
   sets: {
     History: false,
@@ -15,15 +15,39 @@ const settings = ref({
   difficulty: 'Medium',
   timer: 15,
   rounds: 25,
+}
+
+const settings = ref({ ...defaultSettings })
+
+onMounted(() => {
+  const saved = localStorage.getItem('gameSettings')
+  if (saved) {
+    settings.value = JSON.parse(saved)
+  }
 })
+
+watch(
+  settings,
+  (newVal) => {
+    localStorage.setItem('gameSettings', JSON.stringify(newVal))
+  },
+  { deep: true }
+)
 
 function playQuiz() {
   localStorage.setItem('gameSettings', JSON.stringify(settings.value))
+
   router.push('/game')
+
+  settings.value = { ...defaultSettings }
+
+  localStorage.setItem('gameSettings', JSON.stringify(settings.value))
 }
+
 function getImgSrc(key) {
   return new URL(`../assets/${key.toLowerCase()}.png`, import.meta.url).href
 }
+
 function toggleSet(key) {
   const activeCount = Object.values(settings.value.sets).filter(Boolean).length
 
@@ -33,8 +57,8 @@ function toggleSet(key) {
 
   settings.value.sets[key] = !settings.value.sets[key]
 }
-
 </script>
+
 
 <template>
   <div class="settings-wrapper-settings">

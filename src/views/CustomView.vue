@@ -1,5 +1,5 @@
 <script setup>
-import { ref, reactive } from 'vue'
+import { ref, reactive, watch, onMounted } from 'vue'
 
 // Zoznam európskych krajín (ISO2 + Kosovo, Rusko, Turecko)
 const europeanCountries = [
@@ -51,6 +51,7 @@ const europeanCountries = [
   { code: 'GB', name: 'United Kingdom' }
 ]
 
+// reaktívne dáta otázky
 const newQuestion = reactive({
   country: '',
   questionType: '',
@@ -74,6 +75,7 @@ const errors = reactive({
 // ref pre feedback
 const saved = ref(false)
 
+// uloženie otázky do zoznamu
 function saveQuestion() {
   let hasError = false
 
@@ -95,12 +97,34 @@ function saveQuestion() {
   for (const key in newQuestion) newQuestion[key] = ''
   for (const key in errors) errors[key] = false
 
-  // ukážeme zelený feedback na 2 sekundy
+  // zmažeme aj autosave, lebo otázka bola uložená
+  localStorage.removeItem('customQuestionDraft')
+
   saved.value = true
   setTimeout(() => {
     saved.value = false
   }, 2000)
 }
+
+// 🔁 sleduj zmeny vo všetkých poliach a priebežne ukladaj
+watch(
+  newQuestion,
+  (val) => {
+    localStorage.setItem('customQuestionDraft', JSON.stringify(val))
+  },
+  { deep: true }
+)
+
+// 🔄 pri načítaní komponentu načítaj predchádzajúci draft
+onMounted(() => {
+  const draft = localStorage.getItem('customQuestionDraft')
+  if (draft) {
+    const parsed = JSON.parse(draft)
+    for (const key in newQuestion) {
+      if (parsed[key]) newQuestion[key] = parsed[key]
+    }
+  }
+})
 </script>
 
 <template>
