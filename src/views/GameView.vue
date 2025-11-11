@@ -2,6 +2,9 @@
   <div class="game-view">
     <div class="top-bar">
       <router-link to="/" class="title-link">World Conquest</router-link>
+      <button class="pause-button" @click="togglePause">
+        {{ isPaused ? 'Resume' : 'Pause' }}
+      </button>
     </div>
 
     <div class="content" v-if="!gameOver">
@@ -14,7 +17,8 @@
         <p>Enemy: {{ scores.bot }}</p>
       </div>
 
-      <div class="map-container" ref="mapContainer" v-html="europeSvg"></div>
+      <
+      <div class="map-container" ref="mapContainer" v-html="europeSvg" @wheel="handleZoom"></div>
     </div>
 
     <QuestionView
@@ -36,6 +40,7 @@ import { ref, onMounted } from 'vue'
 import europeSvg from '@/assets/europe.svg?raw'
 import QuestionView from './QuestionABCDView.vue'
 import GameOverView from './GameOverView.vue'
+import svgPanZoom from 'svg-pan-zoom'
 
 const mapContainer = ref(null)
 
@@ -58,6 +63,20 @@ const gameOver = ref(false)
 
 const difficulty = gameSettings.difficulty || 'Medium'
 let categories = Object.keys(gameSettings.sets).filter((key) => gameSettings.sets[key])
+
+const isPaused = ref(false)
+
+function togglePause() {
+  isPaused.value = !isPaused.value
+  let time = timer.value
+  if (isPaused.value) {
+    clearInterval(gameInterval) // pozastaví timer
+    command.value = 'Game Paused'
+  } else {
+    command.value = 'Select a country'
+    startGameTimer(time) // spustí timer znova
+  }
+}
 
 async function handleCountryClick(countryId) {
   if (countryResults.value[countryId] || currentQuestion.value || gameOver.value) return
@@ -89,18 +108,27 @@ async function handleAnswer(correct) {
   currentQuestion.value = null
   command.value = 'Select a country'
 
-  startGameTimer()
+  startGameTimer(10)
 }
 
 function handleScore({ playerPoint, botPoint }) {
-  const path = mapContainer.value.querySelector(`#${selectedCountryId}`)
-  if (path && playerPoint) {
-    path.style.fill = '#00ff00'
-    countryResults.value[selectedCountryId] = 'correct'
-  } else if (path && botPoint) {
-    path.style.fill = '#ff3333'
-    countryResults.value[selectedCountryId] = 'wrong'
-  }
+  if (!selectedCountryId) return
+
+  // Zober prvé dva znaky ID
+  const prefix = selectedCountryId.slice(0, 2)
+
+  // Všetky cesty, ktorých id začína na prefix
+  const paths = mapContainer.value.querySelectorAll(`path[id^="${prefix}"]`)
+
+  paths.forEach((path) => {
+    if (playerPoint) {
+      path.style.fill = '#00ff00' // hráč správne
+      countryResults.value[path.id] = 'correct'
+    } else if (botPoint) {
+      path.style.fill = '#ff3333' // bot správne
+      countryResults.value[path.id] = 'wrong'
+    }
+  })
 }
 
 function endGame() {
@@ -132,12 +160,12 @@ function handleTimeout() {
   const path = mapContainer.value.querySelector(`#${selectedCountryId}`)
   currentQuestion.value = null
   command.value = 'Select a country'
-  startGameTimer()
+  startGameTimer(10)
 }
 
-function startGameTimer() {
+function startGameTimer(time) {
   clearInterval(gameInterval)
-  timer.value = 10
+  timer.value = time
   gameInterval = setInterval(() => {
     if (timer.value > 0) {
       timer.value -= 1
@@ -180,6 +208,27 @@ onMounted(async () => {
     console.error('❌ Failed to reset game score:', err)
   }
 
+  const svg = mapContainer.value.querySelector('svg')
+  if (!svg) return
+
+  // odstrániť predvolené width/height, aby sa bral viewBox
+  svg.removeAttribute('width')
+  svg.removeAttribute('height')
+
+  // nastav CSS štýl, aby zabral celý kontajner
+  svg.style.width = '100%'
+  svg.style.height = '100%'
+
+  svgPanZoom(svg, {
+    zoomEnabled: true,
+    controlIconsEnabled: true,
+    fit: true,
+    center: true,
+    minZoom: 0.5,
+    maxZoom: 5,
+    zoomScaleSensitivity: 0.2,
+  })
+
   // 🔹 Pridaj klikateľnosť pre krajiny na mape
   const paths = mapContainer.value.querySelectorAll('path')
   paths.forEach((path) => {
@@ -190,9 +239,8 @@ onMounted(async () => {
     })
   })
 
-  startGameTimer()
-  // 🔹 Spusti timer hry
-  // 🔹 Spusti interval na sťahovanie skóre zo servera
+  startGameTimer(10)
+
   updateScoresFromServer() // hneď načíta prvé hodnoty
   setInterval(updateScoresFromServer, 1500) // každú sekundu
 })
@@ -260,7 +308,7 @@ async function updateScoresFromServer() {
   flex: 1;
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
   padding: 1rem;
   overflow: hidden;
 }
@@ -277,5 +325,22 @@ async function updateScoresFromServer() {
 .map-container path:hover {
   fill: #00ff88;
   transition: fill 0.2s;
+}
+
+.pause-button {
+  margin-left: 1rem;
+  padding: 0.5rem 1rem;
+  font-size: 16px;
+  background: #555;
+  color: white;
+  border: 2px solid #00cc66;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.pause-button:hover {
+  background: #00cc66;
+  color: black;
 }
 </style>
