@@ -47,7 +47,6 @@ const command = ref('Select a country')
 
 const scores = ref({ you: 0, bot: 0 })
 
-// const questions = ref([])
 const currentQuestion = ref(null)
 const questionDuration = gameSettings.timer || 15
 let selectedCountryId = null
@@ -131,13 +130,13 @@ async function updateStats(continent, correct) {
   }
 }
 
-// function handleTimeout() {
-//   countryResults.value[selectedCountryId] = 'wrong'
-//   const path = mapContainer.value.querySelector(`#${selectedCountryId}`)
-//   currentQuestion.value = null
-//   command.value = 'Select a country'
-//   startGameTimer()
-// }
+function handleTimeout() {
+  countryResults.value[selectedCountryId] = 'wrong'
+  const path = mapContainer.value.querySelector(`#${selectedCountryId}`)
+  currentQuestion.value = null
+  command.value = 'Select a country'
+  startGameTimer()
+}
 
 function startGameTimer() {
   clearInterval(gameInterval)

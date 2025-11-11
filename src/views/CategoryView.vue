@@ -6,85 +6,96 @@ const selectRegion = (region) => {
 
 <template>
   <div class="background">
-  <div class="header-category">
-  <div class="titles">
-    <router-link to="/" class="back-link">
-      <h1>World Conquest</h1>
-    </router-link>
-    <h2>Choose region you want to play:</h2>
-  </div>
+    <div class="header-category">
+      <div class="titles">
+        <router-link to="/" class="back-link">
+          <h1>World Conquest</h1>
+        </router-link>
+        <h2>Choose region you want to play:</h2>
+      </div>
 
-  <div class="header-buttons">
-    <router-link to="/stats">
-      <button class="header-btn" aria-label="Statistics">
-        <img src="../assets/stats3.png" alt="Statistics"/>
-      </button>
-    </router-link>
-    <router-link to="/settings">
-      <button class="header-btn" aria-label="Settings">
-                <img src="../assets/settings2.png" alt="Settings"/>
-      </button>
-    </router-link>
-  </div>
-</div>
+      <div class="header-buttons">
+        <router-link to="/stats">
+          <button class="header-btn" aria-label="Statistics">
+            <img src="../assets/stats3.png" alt="Statistics" />
+          </button>
+        </router-link>
+        <router-link to="/settings">
+          <button class="header-btn" aria-label="Settings">
+            <img src="../assets/settings2.png" alt="Settings" />
+          </button>
+        </router-link>
+      </div>
+    </div>
 
-
-  <div class="categories-category">
-    <!-- <router-link to="/themes" class="category"> -->
+    <div class="categories-category">
+      <!-- <router-link to="/themes" class="category"> -->
       <button class="img-button blocked">
         <h3>Africa</h3>
-        <img src="../assets/africa.png" alt="Africa" class="filter2" @click="selectRegion('africa')" />
+        <img
+          src="../assets/africa.png"
+          alt="Africa"
+          class="filter2"
+          @click="selectRegion('africa')"
+        />
       </button>
-    <!-- </router-link> -->
+      <!-- </router-link> -->
 
-    <!-- <router-link to="/themes" class="category"> -->
+      <!-- <router-link to="/themes" class="category"> -->
       <button class="img-button blocked">
         <h3>Americas</h3>
-        <img src="../assets/americas.png" class="filter" alt="Americas" @click="selectRegion('americas')" />
+        <img
+          src="../assets/americas.png"
+          class="filter"
+          alt="Americas"
+          @click="selectRegion('americas')"
+        />
       </button>
-    <!-- </router-link> -->
+      <!-- </router-link> -->
 
-    <!-- <router-link to="/themes" class="category"> -->
+      <!-- <router-link to="/themes" class="category"> -->
       <button class="img-button blocked">
         <h3>Asia</h3>
         <img src="../assets/asia.png" class="filter" alt="Asia" @click="selectRegion('asia')" />
       </button>
-    <!-- </router-link> -->
+      <!-- </router-link> -->
 
-    <!-- <router-link to="/themes" class="category"> -->
+      <!-- <router-link to="/themes" class="category"> -->
       <button class="img-button blocked">
         <h3>Australia & Oceania</h3>
         <img src="../assets/oceania.png" alt="Oceania" @click="selectRegion('oceania')" />
       </button>
-    <!-- </router-link> -->
+      <!-- </router-link> -->
 
-    <router-link to="/themes" class="category">
-      <button class="img-button">
-        <h3>Europe</h3>
-        <img src="../assets/europe.png" alt="Europe" class="filter" @click="selectRegion('europe')" />
-      </button>
-    </router-link>
+      <router-link to="/themes" class="category">
+        <button class="img-button">
+          <h3>Europe</h3>
+          <img
+            src="../assets/europe.png"
+            alt="Europe"
+            class="filter"
+            @click="selectRegion('europe')"
+          />
+        </button>
+      </router-link>
 
-    <!-- <router-link to="/themes" class="category"> -->
+      <!-- <router-link to="/themes" class="category"> -->
       <button class="img-button blocekd">
         <h3>Whole World</h3>
         <img src="../assets/home.png" alt="World" @click="selectRegion('earth')" />
       </button>
-    <!-- </router-link> -->
+      <!-- </router-link> -->
+    </div>
   </div>
-</div>
 </template>
 
 <style>
-
 .header-buttons {
   display: flex;
   flex-direction: row;
   align-items: center;
   gap: 1rem;
 }
-
-
 
 .header-btn {
   display: flex;
@@ -120,15 +131,13 @@ const selectRegion = (region) => {
   transform: scale(1.1);
 }
 
-.filter{
+.filter {
   filter: brightness(1.4);
-
 }
-.filter2{
+.filter2 {
   filter: brightness(1.2);
-
 }
- h3{
+h3 {
   z-index: 999;
 }
 .background {
@@ -139,11 +148,10 @@ const selectRegion = (region) => {
   flex-direction: column;
   font-family: 'Press Start 2P', monospace;
   color: white;
-
 }
 
 .background::before {
-  content: "";
+  content: '';
   position: absolute;
   top: 0;
   left: 0;
@@ -156,7 +164,6 @@ const selectRegion = (region) => {
   opacity: 0.5;
   z-index: -1;
 }
-
 
 .header-category {
   display: flex;
@@ -173,7 +180,7 @@ const selectRegion = (region) => {
   align-items: center;
 }
 
-.categories-category{
+.categories-category {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 20px;
@@ -183,7 +190,7 @@ const selectRegion = (region) => {
 
 .img-button {
   border: none;
-    font-family: 'Press Start 2P', monospace;
+  font-family: 'Press Start 2P', monospace;
   background: none;
   cursor: pointer;
   position: relative;
@@ -214,12 +221,16 @@ const selectRegion = (region) => {
   font-size: 1.1rem;
   text-shadow: 0 0 6px black;
 }
-.titles h1{
+.titles h1 {
   font-size: 4rem;
   margin: 0;
 }
-.back-link{
+.back-link {
   color: white;
   text-decoration: none;
+}
+
+.back-link:hover {
+  color: #00ff88;
 }
 </style>
