@@ -15,8 +15,8 @@
       </div>
 
       <div class="message">
-        <p v-if="scores.you > scores.enemy">🎉 You conquered Europe!</p>
-        <p v-else-if="scores.you === scores.enemy">It’s a draw — Europe remains divided!</p>
+        <p v-if="scores.you > scores.bot">🎉 You conquered Europe!</p>
+        <p v-else-if="scores.you === scores.bot">It’s a draw — Europe remains divided!</p>
         <p v-else>Better luck next time, commander.</p>
       </div>
 

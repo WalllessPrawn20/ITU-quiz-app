@@ -40,12 +40,6 @@ const botAnswer = ref(null)
 const answered = ref(false)
 const showResult = ref(false)
 
-const botAccuracy = {
-  Easy: 0.5,
-  Medium: 0.65,
-  Hard: 0.8,
-}
-
 function shuffleArray(array) {
   return array
     .map((value) => ({ value, sort: Math.random() }))
@@ -53,64 +47,55 @@ function shuffleArray(array) {
     .map(({ value }) => value)
 }
 
-function botSelectAnswer() {
-  const random = Math.random()
-  const chance = botAccuracy[props.difficulty] ?? 0.5
-  const correctAnswer = props.question.correct
-  const answers = shuffledAnswers.value
+function startTimer() {
+  clearInterval(interval)
+  remainingTime.value = props.duration
+  interval = setInterval(async () => {
+    remainingTime.value -= 1
 
-  if (random < chance) {
-    botAnswer.value = correctAnswer
-  } else {
-    const wrongAnswers = answers.filter((a) => a !== correctAnswer)
-    botAnswer.value = wrongAnswers[Math.floor(Math.random() * wrongAnswers.length)]
-  }
+    if (remainingTime.value <= 0) {
+      clearInterval(interval)
+
+      // Hráč nestihol odpovedať → pošli na server "wrong answer"
+      await selectAnswer(null)
+    }
+  }, 1000)
 }
 
-function selectAnswer(answer = null) {
+async function selectAnswer(answer) {
   if (answered.value) return
   answered.value = true
   selectedAnswer.value = answer
   clearInterval(interval)
 
+  // Pošli dáta na server
+  const res = await fetch('http://localhost:5000/game/answer', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      question: props.question,
+      playerAnswer: answer, // môže byť null = hráč nestihol
+      difficulty: props.difficulty,
+    }),
+  })
+
+  const data = await res.json()
+
+  // data = { botAnswer, playerPoint, botPoint, playerCorrect, botCorrect }
+  botAnswer.value = data.botAnswer
+  showResult.value = true
+
   setTimeout(() => {
-    botSelectAnswer()
+    // Emit skóre, front-end už nepotrebuje nič počítať
+    emit('score', { playerPoint: data.playerPoint, botPoint: data.botPoint })
+    emit('answered', data.playerCorrect)
 
-    const playerCorrect = selectedAnswer.value === props.question.correct
-    const botCorrect = botAnswer.value === props.question.correct
-
-    showResult.value = true
-
-    let playerPoint = 0
-    let botPoint = 0
-
-    if (playerCorrect && !botCorrect) {
-      playerPoint = 1
-    } else if (!playerCorrect && botCorrect) {
-      botPoint = 1
-    }
-
-    setTimeout(() => {
-      emit('score', { playerPoint, botPoint })
-      emit('answered', playerCorrect)
-      showResult.value = false
-      selectedAnswer.value = null
-      botAnswer.value = null
-      answered.value = false
-    }, 1500)
+    // Reset pre ďalšiu otázku
+    showResult.value = false
+    selectedAnswer.value = null
+    botAnswer.value = null
+    answered.value = false
   }, 1500)
-}
-
-function startTimer() {
-  clearInterval(interval)
-  remainingTime.value = props.duration
-  interval = setInterval(() => {
-    remainingTime.value -= 1
-    if (remainingTime.value <= 0) {
-      clearInterval(interval)
-      selectAnswer(null)
-    }
-  }, 1000)
 }
 
 onMounted(() => {

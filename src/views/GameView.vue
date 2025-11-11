@@ -81,8 +81,6 @@ async function handleCountryClick(countryId) {
 async function handleAnswer(correct) {
   await updateStats('Europe', correct)
 
-  turn.value++
-
   if (turn.value >= totalRounds.value) {
     endGame()
     return
@@ -95,9 +93,6 @@ async function handleAnswer(correct) {
 }
 
 function handleScore({ playerPoint, botPoint }) {
-  scores.value.you += playerPoint
-  scores.value.bot += botPoint
-
   const path = mapContainer.value.querySelector(`#${selectedCountryId}`)
   if (path && playerPoint) {
     path.style.fill = '#00ff00'
@@ -113,6 +108,8 @@ function endGame() {
   gameOver.value = true
   command.value = 'Game Over!'
 }
+
+//TODO
 
 async function updateStats(continent, correct) {
   try {
@@ -162,7 +159,6 @@ async function fetchQuestions(id) {
   try {
     const capitalizedId = id.slice(0, 2).toUpperCase()
     const categoryParam = categories.join(',')
-    console.error('Category param:', categoryParam)
     const res = await fetch(
       `http://localhost:5000/questions/filter?id=${capitalizedId}&category=${categoryParam}`,
     )
@@ -175,8 +171,16 @@ async function fetchQuestions(id) {
     return []
   }
 }
-
 onMounted(async () => {
+  // 🔁 Najprv vynuluj skóre na serveri
+  try {
+    await fetch('http://localhost:5000/game/reset', { method: 'POST' })
+    console.log('✅ Game score reset on server')
+  } catch (err) {
+    console.error('❌ Failed to reset game score:', err)
+  }
+
+  // 🔹 Pridaj klikateľnosť pre krajiny na mape
   const paths = mapContainer.value.querySelectorAll('path')
   paths.forEach((path) => {
     path.style.cursor = 'pointer'
@@ -187,7 +191,25 @@ onMounted(async () => {
   })
 
   startGameTimer()
+  // 🔹 Spusti timer hry
+  // 🔹 Spusti interval na sťahovanie skóre zo servera
+  updateScoresFromServer() // hneď načíta prvé hodnoty
+  setInterval(updateScoresFromServer, 1500) // každú sekundu
 })
+
+// ===== Funkcia na sťahovanie skóre zo servera =====
+async function updateScoresFromServer() {
+  try {
+    const res = await fetch('http://localhost:5000/game/score')
+    if (!res.ok) throw new Error('Failed to fetch score')
+    const data = await res.json()
+    scores.value.you = data.playerScore
+    scores.value.bot = data.botScore
+    turn.value = data.turn
+  } catch (err) {
+    console.error('Error fetching scores:', err)
+  }
+}
 </script>
 
 <style scoped>
