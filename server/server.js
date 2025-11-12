@@ -76,7 +76,6 @@ app.get('/game/score', (req, res) => {
   })
 })
 
-
 // ======= Endpoint: odpoveď hráča =======
 app.post('/game/answer', (req, res) => {
   const { question, playerAnswer, difficulty } = req.body
@@ -85,9 +84,12 @@ app.post('/game/answer', (req, res) => {
   // Bot odpoveď
   const botAccuracy = { Easy: 0.5, Medium: 0.65, Hard: 0.8 }
   const correctAnswer = question.correct
-  const botAnswer = Math.random() < (botAccuracy[difficulty] || 0.65) 
-                    ? correctAnswer 
-                    : question.answers.filter(a => a !== correctAnswer)[Math.floor(Math.random() * (question.answers.length - 1))]
+  const botAnswer =
+    Math.random() < (botAccuracy[difficulty] || 0.65)
+      ? correctAnswer
+      : question.answers.filter((a) => a !== correctAnswer)[
+          Math.floor(Math.random() * (question.answers.length - 1))
+        ]
 
   // Vyhodnotenie hráča
   const playerCorrect = playerAnswer === correctAnswer
@@ -104,10 +106,9 @@ app.post('/game/answer', (req, res) => {
     playerPoint: playerCorrect && !botCorrect ? 1 : 0,
     botPoint: !playerCorrect && botCorrect ? 1 : 0,
     playerCorrect,
-    botCorrect
+    botCorrect,
   })
 })
-
 
 // ====== Stats ======
 app.get('/stats', (req, res) => {
@@ -128,6 +129,14 @@ app.post('/stats/update', (req, res) => {
 
   saveStats(stats)
   res.json(stats[continent])
+})
+
+// ======= Endpoint: reset statov =======
+app.post('/stats/reset', (req, res) => {
+  const stats = loadStats()
+  stats['Europe'] = { correct: 0, wrong: 0 }
+  saveStats(stats)
+  res.json({ success: true, message: 'Stats reset for Europe.' })
 })
 
 // ====== Run ======

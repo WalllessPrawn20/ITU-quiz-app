@@ -2,6 +2,7 @@
   <div class="stats-overlay">
     <div class="stats-card">
       <button class="close-btn" @click="closeStats">✖</button>
+      <button class="reset-btn" @click="resetStats">RST</button>
       <h1 class="stats-title">STATS</h1>
 
       <table class="stats-table">
@@ -76,6 +77,18 @@ async function fetchStats() {
   }
 }
 
+async function resetStats() {
+  try {
+    const res = await fetch('http://localhost:5000/stats/reset', { method: 'POST' })
+    if (!res.ok) throw new Error('Failed to reset stats')
+
+    // Po resete načítame štatistiky znova
+    await fetchStats()
+  } catch (err) {
+    console.error('Error resetting stats:', err)
+  }
+}
+
 onMounted(() => {
   fetchStats()
 })
@@ -106,7 +119,6 @@ onMounted(() => {
   color: black;
 }
 
-
 .stats-overlay {
   position: fixed;
   inset: 0;
@@ -120,7 +132,7 @@ onMounted(() => {
 }
 
 .stats-overlay::before {
-  content: "";
+  content: '';
   position: absolute;
   inset: 0;
   background-image: url('../assets/home.png');
@@ -177,5 +189,31 @@ onMounted(() => {
   white-space: nowrap;
 }
 
+.stats-title {
+  text-align: center;
+}
 
+.reset-btn {
+  position: absolute;
+  top: 1vh;
+  left: 1.5vw; /* doleva hore */
+  width: 4vw;
+  height: 4vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5rem;
+  border: 0.5vw solid white;
+  background: black;
+  color: white;
+  cursor: pointer;
+  image-rendering: pixelated;
+  box-shadow: 0 0 0 0.5vw black;
+  transition: 0.15s;
+}
+
+.reset-btn:hover {
+  background: white;
+  color: black;
+}
 </style>

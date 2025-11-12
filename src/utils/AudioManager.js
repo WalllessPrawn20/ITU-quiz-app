@@ -14,10 +14,9 @@ class AudioManager {
 
     this.enabled = true
   }
-
   play() {
-    if (this.current == this.last) return
-    this.tracks[this.currentTrack].play()
+    if (!this.current) return
+    this.current.play()
   }
 
   pause() {
