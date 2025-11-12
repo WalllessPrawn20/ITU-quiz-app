@@ -29,9 +29,18 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { ref, watch, onMounted } from 'vue'
 
 const username = ref('')
+
+onMounted(() => {
+  const stored = sessionStorage.getItem('username')
+  if (stored) username.value = stored
+})
+
+watch(username, (newVal) => {
+  sessionStorage.setItem('username', newVal)
+})
 </script>
 
 <style>

@@ -1,3 +1,44 @@
+<script setup>
+import { ref, watch, onMounted } from 'vue'
+import { useRouter } from 'vue-router'
+import { audioManager } from '../utils/AudioManager'
+
+const router = useRouter()
+const music = ref(true)
+const sfx = ref(true)
+const currentTrack = ref('synthwave')
+
+function goBack() {
+  router.back()
+}
+
+function toggleMusic() {
+  music.value = !music.value
+  audioManager.toggle()
+  sessionStorage.setItem('music', music.value) // uložiť stav hudby
+}
+
+function changeTrack(trackName) {
+  currentTrack.value = trackName
+  audioManager.switchTrack(trackName)
+  sessionStorage.setItem('track', trackName) // uložiť zvolenú pesničku
+}
+
+onMounted(() => {
+  const storedMusic = sessionStorage.getItem('music')
+  if (storedMusic !== null) {
+    music.value = storedMusic === 'true'
+    if (!music.value && audioManager.isPlaying()) audioManager.toggle()
+  }
+
+  const storedTrack = sessionStorage.getItem('track')
+  if (storedTrack && storedTrack !== currentTrack.value) {
+    currentTrack.value = storedTrack
+    audioManager.switchTrack(storedTrack) // prepni len ak je iná
+  }
+})
+</script>
+
 <template>
   <div class="menu-screen">
     <button class="close-btn" @click="goBack">✖</button>
@@ -8,7 +49,16 @@
       <div class="settings-box">
         <div class="setting-item">
           <span>MUSIC:</span>
-          <div class="pixel-checkbox" @click="music = !music" :class="{ active: music }"></div>
+          <div class="pixel-checkbox" @click="toggleMusic" :class="{ active: music }"></div>
+        </div>
+
+        <div class="setting-item">
+          <span>TRACK:</span>
+          <select v-model="currentTrack" @change="changeTrack(currentTrack)">
+            <option value="synthwave">Synthwave</option>
+            <option value="chill">Chill</option>
+            <option value="retro">Retro</option>
+          </select>
         </div>
 
         <div class="setting-item">
@@ -21,20 +71,6 @@
     </div>
   </div>
 </template>
-
-<script setup>
-import { ref } from 'vue'
-import { useRouter } from 'vue-router'
-
-const router = useRouter()
-
-const music = ref(true)
-const sfx = ref(true)
-
-function goBack() {
-  router.back()
-}
-</script>
 
 <style scoped>
 .menu-screen {
@@ -49,7 +85,7 @@ function goBack() {
 }
 
 .menu-screen::before {
-  content: "";
+  content: '';
   position: absolute;
   inset: 0;
   background-image: url('../assets/home.png');
@@ -117,7 +153,7 @@ function goBack() {
   padding: 1rem 3rem;
   border: 4px solid white;
   background: black;
-    font-family: 'Press Start 2P', monospace;
+  font-family: 'Press Start 2P', monospace;
   color: white;
   cursor: pointer;
   transition: 0.15s;
