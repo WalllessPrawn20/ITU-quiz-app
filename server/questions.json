@@ -4692,6 +4692,585 @@
       "Approuague River"
     ],
     "correct": "Oyapock River"
+  },  {
+    "id": "AN",
+    "player": 0,
+    "category": "History",
+    "title": "Which European country colonized Anguilla in the 17th century?",
+    "answers": [
+      "United Kingdom",
+      "France",
+      "Netherlands",
+      "Spain"
+    ],
+    "correct": "United Kingdom"
+  },
+  {
+    "id": "AN",
+    "player": 0,
+    "category": "Sport",
+    "title": "Which sport is most popular in Anguilla?",
+    "answers": [
+      "Football (Soccer)",
+      "Cricket",
+      "Basketball",
+      "Athletics"
+    ],
+    "correct": "Football (Soccer)"
+  },
+  {
+    "id": "AN",
+    "player": 0,
+    "category": "Society",
+    "title": "Which festival celebrates Anguilla's culture with music and parades?",
+    "answers": [
+      "Carnival",
+      "Mardi Gras",
+      "Fête de la Musique",
+      "Junkanoo"
+    ],
+    "correct": "Carnival"
+  },
+  {
+    "id": "AN",
+    "player": 0,
+    "category": "Geography",
+    "title": "Which body of water surrounds Anguilla?",
+    "answers": [
+      "Caribbean Sea",
+      "Atlantic Ocean",
+      "Gulf of Mexico",
+      "Pacific Ocean"
+    ],
+    "correct": "Caribbean Sea"
+  },
+
+  {
+    "id": "VC",
+    "player": 0,
+    "category": "History",
+    "title": "Saint Vincent and the Grenadines gained independence from which country in 1979?",
+    "answers": [
+      "United Kingdom",
+      "France",
+      "Netherlands",
+      "Spain"
+    ],
+    "correct": "United Kingdom"
+  },
+  {
+    "id": "VC",
+    "player": 0,
+    "category": "Sport",
+    "title": "Which sport is very popular in Saint Vincent and the Grenadines?",
+    "answers": [
+      "Cricket",
+      "Football (Soccer)",
+      "Basketball",
+      "Athletics"
+    ],
+    "correct": "Cricket"
+  },
+  {
+    "id": "VC",
+    "player": 0,
+    "category": "Society",
+    "title": "Which festival is a major cultural event in Saint Vincent and the Grenadines?",
+    "answers": [
+      "Vincy Mas",
+      "Carnival",
+      "Mardi Gras",
+      "Fête de la Musique"
+    ],
+    "correct": "Vincy Mas"
+  },
+  {
+    "id": "VC",
+    "player": 0,
+    "category": "Geography",
+    "title": "What is the main island of Saint Vincent and the Grenadines called?",
+    "answers": [
+      "Saint Vincent",
+      "Bequia",
+      "Union Island",
+      "Canouan"
+    ],
+    "correct": "Saint Vincent"
+  },
+
+  {
+    "id": "MS",
+    "player": 0,
+    "category": "History",
+    "title": "Which volcanic eruption in 1995 destroyed the capital of Montserrat?",
+    "answers": [
+      "Soufrière Hills",
+      "La Soufrière (St. Vincent)",
+      "Mount Pelée",
+      "Mount Pelee"
+    ],
+    "correct": "Soufrière Hills"
+  },
+  {
+    "id": "MS",
+    "player": 0,
+    "category": "Sport",
+    "title": "Which sport is most popular in Montserrat?",
+    "answers": [
+      "Cricket",
+      "Football (Soccer)",
+      "Basketball",
+      "Athletics"
+    ],
+    "correct": "Cricket"
+  },
+  {
+    "id": "MS",
+    "player": 0,
+    "category": "Society",
+    "title": "Montserrat is nicknamed the 'Emerald Isle of the Caribbean' because of its cultural ties to which country?",
+    "answers": [
+      "Ireland",
+      "United Kingdom",
+      "France",
+      "Spain"
+    ],
+    "correct": "Ireland"
+  },
+  {
+    "id": "MS",
+    "player": 0,
+    "category": "Geography",
+    "title": "Which body of water surrounds Montserrat?",
+    "answers": [
+      "Caribbean Sea",
+      "Atlantic Ocean",
+      "Gulf of Mexico",
+      "Pacific Ocean"
+    ],
+    "correct": "Caribbean Sea"
+  },
+
+  {
+    "id": "AI",
+    "player": 0,
+    "category": "History",
+    "title": "Which European power colonized Antigua and Barbuda in the 17th century?",
+    "answers": [
+      "United Kingdom",
+      "France",
+      "Spain",
+      "Netherlands"
+    ],
+    "correct": "United Kingdom"
+  },
+  {
+    "id": "AI",
+    "player": 0,
+    "category": "Sport",
+    "title": "Which sport is most popular in Antigua and Barbuda?",
+    "answers": [
+      "Cricket",
+      "Football (Soccer)",
+      "Basketball",
+      "Sailing"
+    ],
+    "correct": "Cricket"
+  },
+  {
+    "id": "AI",
+    "player": 0,
+    "category": "Society",
+    "title": "What is the name of Antigua and Barbuda's famous carnival festival?",
+    "answers": [
+      "Antigua Carnival",
+      "Caribbean Carnival",
+      "Crop Over",
+      "Junkanoo"
+    ],
+    "correct": "Antigua Carnival"
+  },
+  {
+    "id": "AI",
+    "player": 0,
+    "category": "Geography",
+    "title": "Which two islands make up the country Antigua and Barbuda?",
+    "answers": [
+      "Antigua and Barbuda",
+      "Saint John and Barbuda",
+      "Antigua and Saint Mary",
+      "Barbuda and Saint Kitts"
+    ],
+    "correct": "Antigua and Barbuda"
+  },
+
+  {
+    "id": "KY",
+    "player": 0,
+    "category": "History",
+    "title": "The Cayman Islands are a British Overseas Territory, but which European country first explored them?",
+    "answers": [
+      "Spain",
+      "United Kingdom",
+      "France",
+      "Netherlands"
+    ],
+    "correct": "Spain"
+  },
+  {
+    "id": "KY",
+    "player": 0,
+    "category": "Sport",
+    "title": "Which sport is commonly played in the Cayman Islands?",
+    "answers": [
+      "Football (Soccer)",
+      "Cricket",
+      "Basketball",
+      "Sailing"
+    ],
+    "correct": "Football (Soccer)"
+  },
+  {
+    "id": "KY",
+    "player": 0,
+    "category": "Society",
+    "title": "Which Cayman Islands festival celebrates local culture and heritage?",
+    "answers": [
+      "Batabano",
+      "Carnival",
+      "Crop Over",
+      "Junkanoo"
+    ],
+    "correct": "Batabano"
+  },
+  {
+    "id": "KY",
+    "player": 0,
+    "category": "Geography",
+    "title": "Which body of water surrounds the Cayman Islands?",
+    "answers": [
+      "Caribbean Sea",
+      "Atlantic Ocean",
+      "Gulf of Mexico",
+      "Pacific Ocean"
+    ],
+    "correct": "Caribbean Sea"
+  },  {
+    "id": "TC",
+    "player": 0,
+    "category": "History",
+    "title": "Turks and Caicos Islands are a British Overseas Territory, but which European country first claimed them?",
+    "answers": [
+      "Spain",
+      "United Kingdom",
+      "France",
+      "Netherlands"
+    ],
+    "correct": "Spain"
+  },
+  {
+    "id": "TC",
+    "player": 0,
+    "category": "Sport",
+    "title": "Which sport is most popular in Turks and Caicos Islands?",
+    "answers": [
+      "Cricket",
+      "Football (Soccer)",
+      "Basketball",
+      "Sailing"
+    ],
+    "correct": "Cricket"
+  },
+  {
+    "id": "TC",
+    "player": 0,
+    "category": "Society",
+    "title": "Which festival is a key cultural celebration in Turks and Caicos?",
+    "answers": [
+      "Conch Festival",
+      "Carnival",
+      "Crop Over",
+      "Junkanoo"
+    ],
+    "correct": "Conch Festival"
+  },
+  {
+    "id": "TC",
+    "player": 0,
+    "category": "Geography",
+    "title": "Which ocean surrounds the Turks and Caicos Islands?",
+    "answers": [
+      "Atlantic Ocean",
+      "Caribbean Sea",
+      "Gulf of Mexico",
+      "Pacific Ocean"
+    ],
+    "correct": "Atlantic Ocean"
+  },
+
+  {
+    "id": "BM",
+    "player": 0,
+    "category": "History",
+    "title": "Bermuda is a British Overseas Territory, first settled by which European country?",
+    "answers": [
+      "United Kingdom",
+      "Spain",
+      "France",
+      "Netherlands"
+    ],
+    "correct": "United Kingdom"
+  },
+  {
+    "id": "BM",
+    "player": 0,
+    "category": "Sport",
+    "title": "Which sport is widely played in Bermuda?",
+    "answers": [
+      "Cricket",
+      "Sailing",
+      "Football (Soccer)",
+      "Rugby"
+    ],
+    "correct": "Cricket"
+  },
+  {
+    "id": "BM",
+    "player": 0,
+    "category": "Society",
+    "title": "Which annual event in Bermuda features colorful parades and costumes?",
+    "answers": [
+      "Bermuda Day",
+      "Carnival",
+      "Crop Over",
+      "Junkanoo"
+    ],
+    "correct": "Bermuda Day"
+  },
+  {
+    "id": "BM",
+    "player": 0,
+    "category": "Geography",
+    "title": "Bermuda is located in which ocean?",
+    "answers": [
+      "Atlantic Ocean",
+      "Caribbean Sea",
+      "Gulf of Mexico",
+      "Pacific Ocean"
+    ],
+    "correct": "Atlantic Ocean"
+  },
+
+  {
+    "id": "PN",
+    "player": 0,
+    "category": "History",
+    "title": "Pitcairn Islands were settled by mutineers from which famous ship?",
+    "answers": [
+      "HMS Bounty",
+      "Mayflower",
+      "Santa Maria",
+      "Endeavour"
+    ],
+    "correct": "HMS Bounty"
+  },
+  {
+    "id": "PN",
+    "player": 0,
+    "category": "Sport",
+    "title": "Which sport is commonly played by the small population of Pitcairn Islands?",
+    "answers": [
+      "Football (Soccer)",
+      "Cricket",
+      "Basketball",
+      "Rugby"
+    ],
+    "correct": "Football (Soccer)"
+  },
+  {
+    "id": "PN",
+    "player": 0,
+    "category": "Society",
+    "title": "Pitcairn Islands celebrate their unique heritage annually on which day?",
+    "answers": [
+      "Bounty Day",
+      "Independence Day",
+      "Constitution Day",
+      "Heritage Day"
+    ],
+    "correct": "Bounty Day"
+  },
+  {
+    "id": "PN",
+    "player": 0,
+    "category": "Geography",
+    "title": "Pitcairn Islands are located in which ocean?",
+    "answers": [
+      "Pacific Ocean",
+      "Atlantic Ocean",
+      "Indian Ocean",
+      "Caribbean Sea"
+    ],
+    "correct": "Pacific Ocean"
+  },
+
+  {
+    "id": "PF",
+    "player": 0,
+    "category": "History",
+    "title": "French Polynesia is an overseas collectivity of which country?",
+    "answers": [
+      "France",
+      "United Kingdom",
+      "Netherlands",
+      "Spain"
+    ],
+    "correct": "France"
+  },
+  {
+    "id": "PF",
+    "player": 0,
+    "category": "Sport",
+    "title": "Which water sport is especially popular in French Polynesia?",
+    "answers": [
+      "Surfing",
+      "Football (Soccer)",
+      "Basketball",
+      "Rugby"
+    ],
+    "correct": "Surfing"
+  },
+  {
+    "id": "PF",
+    "player": 0,
+    "category": "Society",
+    "title": "Which festival in French Polynesia celebrates local culture and traditions?",
+    "answers": [
+      "Heiva i Tahiti",
+      "Carnival",
+      "Mardi Gras",
+      "Junkanoo"
+    ],
+    "correct": "Heiva i Tahiti"
+  },
+  {
+    "id": "PF",
+    "player": 0,
+    "category": "Geography",
+    "title": "French Polynesia is located in which ocean?",
+    "answers": [
+      "Pacific Ocean",
+      "Atlantic Ocean",
+      "Indian Ocean",
+      "Caribbean Sea"
+    ],
+    "correct": "Pacific Ocean"
+  },
+
+  {
+    "id": "CK",
+    "player": 0,
+    "category": "History",
+    "title": "The Cook Islands are a self-governing territory in free association with which country?",
+    "answers": [
+      "New Zealand",
+      "United Kingdom",
+      "France",
+      "Australia"
+    ],
+    "correct": "New Zealand"
+  },
+  {
+    "id": "CK",
+    "player": 0,
+    "category": "Sport",
+    "title": "Which sport is traditionally popular in the Cook Islands?",
+    "answers": [
+      "Rugby",
+      "Football (Soccer)",
+      "Cricket",
+      "Basketball"
+    ],
+    "correct": "Rugby"
+  },
+  {
+    "id": "CK",
+    "player": 0,
+    "category": "Society",
+    "title": "Which festival in the Cook Islands celebrates Polynesian culture and traditions?",
+    "answers": [
+      "Te Maeva Nui",
+      "Carnival",
+      "Heiva",
+      "Mardi Gras"
+    ],
+    "correct": "Te Maeva Nui"
+  },
+  {
+    "id": "CK",
+    "player": 0,
+    "category": "Geography",
+    "title": "The Cook Islands are located in which ocean?",
+    "answers": [
+      "Pacific Ocean",
+      "Atlantic Ocean",
+      "Indian Ocean",
+      "Caribbean Sea"
+    ],
+    "correct": "Pacific Ocean"
+  },
+
+  {
+    "id": "GL",
+    "player": 0,
+    "category": "History",
+    "title": "Greenland is an autonomous territory within which kingdom?",
+    "answers": [
+      "Denmark",
+      "Norway",
+      "Iceland",
+      "Sweden"
+    ],
+    "correct": "Denmark"
+  },
+  {
+    "id": "GL",
+    "player": 0,
+    "category": "Sport",
+    "title": "Which winter sport is popular among Greenlandic people?",
+    "answers": [
+      "Skiing",
+      "Football (Soccer)",
+      "Ice Hockey",
+      "Basketball"
+    ],
+    "correct": "Skiing"
+  },
+  {
+    "id": "GL",
+    "player": 0,
+    "category": "Society",
+    "title": "Which festival celebrates Greenlandic culture, music, and traditions?",
+    "answers": [
+      "National Day",
+      "Carnival",
+      "Heiva",
+      "Mardi Gras"
+    ],
+    "correct": "National Day"
+  },
+  {
+    "id": "GL",
+    "player": 0,
+    "category": "Geography",
+    "title": "Greenland is the world's largest island, located between which oceans?",
+    "answers": [
+      "Arctic and Atlantic Oceans",
+      "Pacific and Atlantic Oceans",
+      "Indian and Atlantic Oceans",
+      "Arctic and Pacific Oceans"
+    ],
+    "correct": "Arctic and Atlantic Oceans"
   }
 
 ]
