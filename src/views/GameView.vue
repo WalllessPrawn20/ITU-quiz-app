@@ -18,7 +18,7 @@
       </div>
 
       <
-      <div class="map-container" ref="mapContainer" v-html="europeSvg" @wheel="handleZoom"></div>
+      <div class="map-container" ref="mapContainer" v-html="americaSvg" @wheel="handleZoom"></div>
     </div>
 
     <QuestionView
@@ -38,6 +38,7 @@
 <script setup>
 import { ref, onMounted, onUnmounted } from 'vue'
 import europeSvg from '@/assets/europe.svg?raw'
+import americaSvg from '@/assets/americas.svg?raw'
 import QuestionView from './QuestionABCDView.vue'
 import GameOverView from './GameOverView.vue'
 import svgPanZoom from 'svg-pan-zoom'
@@ -69,6 +70,7 @@ const countryResults = ref({})
 const totalRounds = ref(0)
 const turn = ref(0)
 const gameOver = ref(false)
+let continent = ref('Europe')
 
 const difficulty = gameSettings.difficulty || 'Medium'
 let categories = ref({})
@@ -195,9 +197,7 @@ function startGameTimer(time) {
 async function fetchQuestions(id) {
   try {
     const capitalizedId = id.slice(0, 2).toUpperCase()
-    console.log('Current categories:', categories.value)
     const categoryParam = categories.value.join(',')
-    console.log('Fetching questions for ID:', capitalizedId, 'Categories:', categories)
     const res = await fetch(
       `http://localhost:5000/questions/filter?id=${capitalizedId}&category=${categoryParam}`,
     )
@@ -215,7 +215,6 @@ onMounted(async () => {
   try {
     const res = await fetch('http://localhost:5000/game/load')
     const data = await res.json()
-    console.log('Game settings from server:', data)
     gameSettings.value = data
     categories.value = Object.keys(gameSettings.value?.categories || {}).filter(
       (key) => gameSettings.value.categories[key] === true,
@@ -223,10 +222,16 @@ onMounted(async () => {
     totalRounds.value = +gameSettings.value.turns || 25
     turn.value = 0
     questionDuration.value = +gameSettings.value.timer || 15
-    console.log(questionDuration.value)
+    continent.value = gameSettings.value.continent
     console.log('✅ Game settings loaded')
   } catch (err) {
     console.error('❌ Failed to load game score:', err)
+  }
+
+  if (continent.value === 'americas') {
+    mapContainer.value.innerHTML = americaSvg
+  } else {
+    mapContainer.value.innerHTML = europeSvg
   }
 
   const svg = mapContainer.value.querySelector('svg')
@@ -256,7 +261,19 @@ onMounted(async () => {
     path.style.cursor = 'pointer'
     path.addEventListener('click', (e) => {
       e.stopPropagation()
-      handleCountryClick(path.id)
+
+      let countryId
+      if (continent.value === 'americas') {
+        countryId = path.parentElement?.id // ID je na <g>
+        if (countryId === 'two_planets') {
+          countryId = path.id
+        }
+        console.log('Clicked country ID:', countryId)
+      } else {
+        countryId = path.id // Európa alebo iné kontinenty
+      }
+
+      if (countryId) handleCountryClick(countryId)
     })
   })
 
