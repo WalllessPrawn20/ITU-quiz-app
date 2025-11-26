@@ -2703,17 +2703,1995 @@
     ],
     "correct": "Poland"
   },
-  {
-    "id": "AL",
-    "player": 1,
-    "category": "Geography",
-    "title": "l",
+{
+  "id": "US",
+  "player": 0,
+  "category": "History",
+  "title": "Which U.S. president signed the Emancipation Proclamation in 1863, declaring all slaves in Confederate territory to be free?",
+  "answers": [
+    "Abraham Lincoln",
+    "George Washington",
+    "Thomas Jefferson",
+    "Andrew Jackson"
+  ],
+  "correct": "Abraham Lincoln"
+},
+{
+  "id": "US",
+  "player": 0,
+  "category": "Sport",
+  "title": "Which American swimmer won 23 Olympic gold medals, making them the most decorated Olympian of all time?",
+  "answers": [
+    "Michael Phelps",
+    "Mark Spitz",
+    "Ryan Lochte",
+    "Katie Ledecky"
+  ],
+  "correct": "Michael Phelps"
+},
+{
+  "id": "US",
+  "player": 0,
+  "category": "Society",
+  "title": "Which 1960s movement fought for civil rights and racial equality in the United States, famously led by figures like Martin Luther King Jr.?",
+  "answers": [
+    "Civil Rights Movement",
+    "Women's Liberation Movement",
+    "Labor Movement",
+    "Temperance Movement"
+  ],
+  "correct": "Civil Rights Movement"
+},
+{
+  "id": "US",
+  "player": 0,
+  "category": "Geography",
+  "title": "Which U.S. state is known for having more freshwater lakes than any other state, earning it the nickname 'Land of 10,000 Lakes'?",
+  "answers": [
+    "Minnesota",
+    "Michigan",
+    "Wisconsin",
+    "Alaska"
+  ],
+  "correct": "Minnesota"
+},{
+    "id": "CA",
+    "player": 0,
+    "category": "History",
+    "title": "Which French explorer is credited with claiming parts of Canada for France in the early 17th century?",
     "answers": [
-      "l",
-      "l",
-      "l",
-      "l"
+      "Samuel de Champlain",
+      "Jacques Cartier",
+      "John Cabot",
+      "Henry Hudson"
     ],
-    "correct": "l"
+    "correct": "Samuel de Champlain"
+  },
+  {
+    "id": "CA",
+    "player": 0,
+    "category": "Sport",
+    "title": "Which Canadian ice hockey team has won the most Stanley Cup championships?",
+    "answers": [
+      "Montreal Canadiens",
+      "Toronto Maple Leafs",
+      "Vancouver Canucks",
+      "Edmonton Oilers"
+    ],
+    "correct": "Montreal Canadiens"
+  },
+  {
+    "id": "CA",
+    "player": 0,
+    "category": "Society",
+    "title": "Which Canadian holiday celebrates the confederation of the provinces in 1867?",
+    "answers": [
+      "Canada Day",
+      "Victoria Day",
+      "Thanksgiving",
+      "Labour Day"
+    ],
+    "correct": "Canada Day"
+  },
+  {
+    "id": "CA",
+    "player": 0,
+    "category": "Geography",
+    "title": "Which Canadian province is known for its French-speaking majority and the city of Montreal?",
+    "answers": [
+      "Quebec",
+      "Ontario",
+      "British Columbia",
+      "Alberta"
+    ],
+    "correct": "Quebec"
+  },
+  {
+    "id": "MX",
+    "player": 0,
+    "category": "History",
+    "title": "Which revolutionary leader became the first president of Mexico after its independence from Spain?",
+    "answers": [
+      "Guadalupe Victoria",
+      "Miguel Hidalgo",
+      "Venustiano Carranza",
+      "Porfirio Díaz"
+    ],
+    "correct": "Guadalupe Victoria"
+  },
+  {
+    "id": "MX",
+    "player": 0,
+    "category": "Sport",
+    "title": "Which Mexican footballer is considered one of the greatest of all time and played for clubs like Club América and LA Galaxy?",
+    "answers": [
+      "Hugo Sánchez",
+      "Jared Borgetti",
+      "Cuauhtémoc Blanco",
+      "Rafael Márquez"
+    ],
+    "correct": "Hugo Sánchez"
+  },
+  {
+    "id": "MX",
+    "player": 0,
+    "category": "Society",
+    "title": "Which Mexican holiday celebrates the memory of deceased loved ones and includes altars, marigolds, and sugar skulls?",
+    "answers": [
+      "Día de los Muertos",
+      "Cinco de Mayo",
+      "Independence Day",
+      "Las Posadas"
+    ],
+    "correct": "Día de los Muertos"
+  },
+  {
+    "id": "MX",
+    "player": 0,
+    "category": "Geography",
+    "title": "Which mountain range runs along the western coast of Mexico, forming a natural barrier from the Pacific Ocean?",
+    "answers": [
+      "Sierra Madre Occidental",
+      "Rocky Mountains",
+      "Sierra Madre Oriental",
+      "Andes"
+    ],
+    "correct": "Sierra Madre Occidental"
+  },
+  {
+    "id": "GT",
+    "player": 0,
+    "category": "History",
+    "title": "Which ancient civilization built the famous city of Tikal in what is now Guatemala?",
+    "answers": [
+      "Maya",
+      "Aztec",
+      "Inca",
+      "Olmec"
+    ],
+    "correct": "Maya"
+  },
+  {
+    "id": "GT",
+    "player": 0,
+    "category": "Sport",
+    "title": "Which traditional Guatemalan sport is played with a ball called 'pelota' and has roots in Mayan culture?",
+    "answers": [
+      "Mesoamerican Ballgame",
+      "Soccer",
+      "Basketball",
+      "Volleyball"
+    ],
+    "correct": "Mesoamerican Ballgame"
+  },
+  {
+    "id": "GT",
+    "player": 0,
+    "category": "Society",
+    "title": "Which colorful Guatemalan textiles are known worldwide for their intricate patterns and traditional weaving techniques?",
+    "answers": [
+      "Mayan Huipils",
+      "Andean Ponchos",
+      "Aztec Serapes",
+      "Incan Tunics"
+    ],
+    "correct": "Mayan Huipils"
+  },
+  {
+    "id": "GT",
+    "player": 0,
+    "category": "Geography",
+    "title": "Which active volcano near Antigua is one of the most famous landmarks of Guatemala?",
+    "answers": [
+      "Volcán de Agua",
+      "Volcán Tajumulco",
+      "Pacaya Volcano",
+      "Fuego Volcano"
+    ],
+    "correct": "Volcán de Agua"
+  },
+  {
+    "id": "BZ",
+    "player": 0,
+    "category": "History",
+    "title": "Which European country colonized Belize, making it known as British Honduras before independence?",
+    "answers": [
+      "United Kingdom",
+      "Spain",
+      "Portugal",
+      "Netherlands"
+    ],
+    "correct": "United Kingdom"
+  },
+  {
+    "id": "BZ",
+    "player": 0,
+    "category": "Sport",
+    "title": "Which sport is most popular in Belize and is played widely in schools and clubs?",
+    "answers": [
+      "Football (Soccer)",
+      "Basketball",
+      "Cricket",
+      "Volleyball"
+    ],
+    "correct": "Football (Soccer)"
+  },
+  {
+    "id": "BZ",
+    "player": 0,
+    "category": "Society",
+    "title": "Which language, besides English, is widely spoken in Belize due to its Maya and Mestizo population?",
+    "answers": [
+      "Spanish",
+      "French",
+      "German",
+      "Dutch"
+    ],
+    "correct": "Spanish"
+  },
+  {
+    "id": "BZ",
+    "player": 0,
+    "category": "Geography",
+    "title": "Which barrier reef, the second largest in the world, runs along the coast of Belize?",
+    "answers": [
+      "Belize Barrier Reef",
+      "Great Barrier Reef",
+      "Mesoamerican Reef",
+      "Florida Reef"
+    ],
+    "correct": "Belize Barrier Reef"
+  },  {
+    "id": "HN",
+    "player": 0,
+    "category": "History",
+    "title": "Which ancient civilization built the Copán ruins in present-day Honduras?",
+    "answers": [
+      "Maya",
+      "Aztec",
+      "Inca",
+      "Toltec"
+    ],
+    "correct": "Maya"
+  },
+  {
+    "id": "HN",
+    "player": 0,
+    "category": "Sport",
+    "title": "Which Honduran football club has won the most national league championships?",
+    "answers": [
+      "Olimpia",
+      "Motagua",
+      "Real España",
+      "Marathón"
+    ],
+    "correct": "Olimpia"
+  },
+  {
+    "id": "HN",
+    "player": 0,
+    "category": "Society",
+    "title": "Which traditional Honduran dish consists of corn tortillas filled with beans, cheese, or meat?",
+    "answers": [
+      "Baleadas",
+      "Tamales",
+      "Pupusas",
+      "Empanadas"
+    ],
+    "correct": "Baleadas"
+  },
+  {
+    "id": "HN",
+    "player": 0,
+    "category": "Geography",
+    "title": "Which mountain range runs through western Honduras?",
+    "answers": [
+      "Sierra de Agalta",
+      "Cordillera Blanca",
+      "Sierra Madre Oriental",
+      "Andes"
+    ],
+    "correct": "Sierra de Agalta"
+  },
+  {
+    "id": "SV",
+    "player": 0,
+    "category": "History",
+    "title": "Which leader declared El Salvador's independence from Spain in 1821?",
+    "answers": [
+      "José Matías Delgado",
+      "Manuel José Arce",
+      "Francisco Morazán",
+      "Pedro de Alvarado"
+    ],
+    "correct": "José Matías Delgado"
+  },
+  {
+    "id": "SV",
+    "player": 0,
+    "category": "Sport",
+    "title": "Which sport is considered the most popular in El Salvador?",
+    "answers": [
+      "Football (Soccer)",
+      "Basketball",
+      "Baseball",
+      "Volleyball"
+    ],
+    "correct": "Football (Soccer)"
+  },
+  {
+    "id": "SV",
+    "player": 0,
+    "category": "Society",
+    "title": "Which traditional El Salvadoran dish is made of maize dough filled with meat, wrapped in banana leaves, and steamed?",
+    "answers": [
+      "Pupusas",
+      "Baleadas",
+      "Tamales",
+      "Empanadas"
+    ],
+    "correct": "Tamales"
+  },
+  {
+    "id": "SV",
+    "player": 0,
+    "category": "Geography",
+    "title": "Which volcano, the highest in El Salvador, is also an important national park?",
+    "answers": [
+      "Santa Ana Volcano",
+      "Izalco Volcano",
+      "San Miguel Volcano",
+      "Tecapa Volcano"
+    ],
+    "correct": "Santa Ana Volcano"
+  },
+  {
+    "id": "NI",
+    "player": 0,
+    "category": "History",
+    "title": "Which Nicaraguan revolutionary leader overthrew the Somoza dictatorship in 1979?",
+    "answers": [
+      "Daniel Ortega",
+      "Augusto Sandino",
+      "Violeta Chamorro",
+      "Carlos Fonseca"
+    ],
+    "correct": "Daniel Ortega"
+  },
+  {
+    "id": "NI",
+    "player": 0,
+    "category": "Sport",
+    "title": "Which sport is Nicaragua most known for internationally?",
+    "answers": [
+      "Baseball",
+      "Football (Soccer)",
+      "Boxing",
+      "Basketball"
+    ],
+    "correct": "Baseball"
+  },
+  {
+    "id": "NI",
+    "player": 0,
+    "category": "Society",
+    "title": "Which colorful Nicaraguan festival features dances, masks, and giant papier-mâché figures?",
+    "answers": [
+      "Palo de Mayo",
+      "La Gritería",
+      "Carnaval de Managua",
+      "Fiesta de Santo Domingo"
+    ],
+    "correct": "Palo de Mayo"
+  },
+  {
+    "id": "NI",
+    "player": 0,
+    "category": "Geography",
+    "title": "Which large freshwater lake in Nicaragua is home to unique freshwater sharks?",
+    "answers": [
+      "Lake Nicaragua",
+      "Lake Managua",
+      "Lake Cocibolca",
+      "Lake Xolotlán"
+    ],
+    "correct": "Lake Nicaragua"
+  },
+  {
+    "id": "CR",
+    "player": 0,
+    "category": "History",
+    "title": "Which Costa Rican president abolished the army in 1948, making the country permanently demilitarized?",
+    "answers": [
+      "José Figueres Ferrer",
+      "Oscar Arias",
+      "Laura Chinchilla",
+      "Rafael Ángel Calderón"
+    ],
+    "correct": "José Figueres Ferrer"
+  },
+  {
+    "id": "CR",
+    "player": 0,
+    "category": "Sport",
+    "title": "Which Costa Rican football club has won the most national championships?",
+    "answers": [
+      "Liga Deportiva Alajuelense",
+      "Deportivo Saprissa",
+      "Club Sport Herediano",
+      "CS Cartaginés"
+    ],
+    "correct": "Deportivo Saprissa"
+  },
+  {
+    "id": "CR",
+    "player": 0,
+    "category": "Society",
+    "title": "Which Costa Rican saying reflects the national philosophy of enjoying life at a relaxed pace?",
+    "answers": [
+      "Pura Vida",
+      "Buen Provecho",
+      "La Vida Loca",
+      "Todo Bien"
+    ],
+    "correct": "Pura Vida"
+  },
+  {
+    "id": "CR",
+    "player": 0,
+    "category": "Geography",
+    "title": "Which mountain range runs through the center of Costa Rica, forming the backbone of the country?",
+    "answers": [
+      "Cordillera Central",
+      "Sierra Madre",
+      "Cordillera Occidental",
+      "Talamanca Range"
+    ],
+    "correct": "Cordillera Central"
+  },
+  {
+    "id": "PA",
+    "player": 0,
+    "category": "History",
+    "title": "Which famous waterway, completed in 1914, connects the Atlantic and Pacific Oceans through Panama?",
+    "answers": [
+      "Panama Canal",
+      "Suez Canal",
+      "Kiel Canal",
+      "Corinth Canal"
+    ],
+    "correct": "Panama Canal"
+  },
+  {
+    "id": "PA",
+    "player": 0,
+    "category": "Sport",
+    "title": "Which Panamanian boxer is widely regarded as one of the greatest in the country's history?",
+    "answers": [
+      "Roberto Durán",
+      "Eusebio Pedroza",
+      "Pancho Villa",
+      "Julio César Chávez"
+    ],
+    "correct": "Roberto Durán"
+  },
+  {
+    "id": "PA",
+    "player": 0,
+    "category": "Society",
+    "title": "Which festival in Panama features colorful masks, parades, and traditional folklore dances?",
+    "answers": [
+      "Carnaval de Panamá",
+      "Fiesta de San Juan",
+      "Semana Santa",
+      "Día de la Independencia"
+    ],
+    "correct": "Carnaval de Panamá"
+  },
+  {
+    "id": "PA",
+    "player": 0,
+    "category": "Geography",
+    "title": "Which mountain range extends along the spine of Panama?",
+    "answers": [
+      "Cordillera de Talamanca",
+      "Sierra Nevada",
+      "Andes",
+      "Cordillera Central"
+    ],
+    "correct": "Cordillera de Talamanca"
+  }, {
+    "id": "CU",
+    "player": 0,
+    "category": "History",
+    "title": "Which revolutionary leader became the Prime Minister of Cuba after the 1959 Cuban Revolution?",
+    "answers": [
+      "Fidel Castro",
+      "Che Guevara",
+      "Camilo Cienfuegos",
+      "Fulgencio Batista"
+    ],
+    "correct": "Fidel Castro"
+  },
+  {
+    "id": "CU",
+    "player": 0,
+    "category": "Sport",
+    "title": "Which sport has brought Cuba the most Olympic success, especially in weight classes like featherweight and bantamweight?",
+    "answers": [
+      "Boxing",
+      "Baseball",
+      "Taekwondo",
+      "Wrestling"
+    ],
+    "correct": "Boxing"
+  },
+  {
+    "id": "CU",
+    "player": 0,
+    "category": "Society",
+    "title": "Which iconic Cuban genre blends African percussion with Spanish guitar and inspired modern salsa?",
+    "answers": [
+      "Son Cubano",
+      "Bolero",
+      "Mambo",
+      "Cha-cha-cha"
+    ],
+    "correct": "Son Cubano"
+  },
+  {
+    "id": "CU",
+    "player": 0,
+    "category": "Geography",
+    "title": "Which Cuban mountain range contains the island’s highest peak, Pico Turquino?",
+    "answers": [
+      "Sierra Maestra",
+      "Escambray Mountains",
+      "Sierra del Rosario",
+      "Cordillera Central"
+    ],
+    "correct": "Sierra Maestra"
+  },
+
+  {
+    "id": "JM",
+    "player": 0,
+    "category": "History",
+    "title": "Which Jamaican national hero led a major slave revolt in 1831 known as the Baptist War?",
+    "answers": [
+      "Samuel Sharpe",
+      "Paul Bogle",
+      "Marcus Garvey",
+      "Nanny of the Maroons"
+    ],
+    "correct": "Samuel Sharpe"
+  },
+  {
+    "id": "JM",
+    "player": 0,
+    "category": "Sport",
+    "title": "Which Jamaican sprinter is widely regarded as the fastest man in history?",
+    "answers": [
+      "Usain Bolt",
+      "Asafa Powell",
+      "Yohan Blake",
+      "Nesta Carter"
+    ],
+    "correct": "Usain Bolt"
+  },
+  {
+    "id": "JM",
+    "player": 0,
+    "category": "Society",
+    "title": "Which Jamaican music style emerged in the late 1960s and is closely tied to Rastafarian culture?",
+    "answers": [
+      "Reggae",
+      "Dancehall",
+      "Ska",
+      "Rocksteady"
+    ],
+    "correct": "Reggae"
+  },
+  {
+    "id": "JM",
+    "player": 0,
+    "category": "Geography",
+    "title": "Which Jamaican mountain range contains the island’s highest point, Blue Mountain Peak?",
+    "answers": [
+      "Blue Mountains",
+      "Dry Harbour Mountains",
+      "John Crow Mountains",
+      "Santa Cruz Mountains"
+    ],
+    "correct": "Blue Mountains"
+  },
+
+  {
+    "id": "HT",
+    "player": 0,
+    "category": "History",
+    "title": "Which leader of the Haitian Revolution became the first ruler of independent Haiti in 1804?",
+    "answers": [
+      "Jean-Jacques Dessalines",
+      "Toussaint Louverture",
+      "Henri Christophe",
+      "Alexandre Pétion"
+    ],
+    "correct": "Jean-Jacques Dessalines"
+  },
+  {
+    "id": "HT",
+    "player": 0,
+    "category": "Sport",
+    "title": "Which sport did Haiti qualify for in the 1974 World Cup, their only FIFA World Cup appearance so far?",
+    "answers": [
+      "Football (Soccer)",
+      "Basketball",
+      "Volleyball",
+      "Handball"
+    ],
+    "correct": "Football (Soccer)"
+  },
+  {
+    "id": "HT",
+    "player": 0,
+    "category": "Society",
+    "title": "Which Haitian religion blends West African traditions with elements of Catholicism?",
+    "answers": [
+      "Vodou",
+      "Santería",
+      "Obeah",
+      "Candomblé"
+    ],
+    "correct": "Vodou"
+  },
+  {
+    "id": "HT",
+    "player": 0,
+    "category": "Geography",
+    "title": "Which mountain range runs through central Haiti, forming one of the country's main highlands?",
+    "answers": [
+      "Massif de la Selle",
+      "Massif du Nord",
+      "Cordillera Central",
+      "Chaîne de la Hotte"
+    ],
+    "correct": "Massif de la Selle"
+  },
+
+  {
+    "id": "DO",
+    "player": 0,
+    "category": "History",
+    "title": "Which founding father of the Dominican Republic led the movement known as La Trinitaria?",
+    "answers": [
+      "Juan Pablo Duarte",
+      "Rafael Trujillo",
+      "Gregorio Luperón",
+      "Pedro Santana"
+    ],
+    "correct": "Juan Pablo Duarte"
+  },
+  {
+    "id": "DO",
+    "player": 0,
+    "category": "Sport",
+    "title": "Which sport is the Dominican Republic most famous for, producing numerous MLB superstars?",
+    "answers": [
+      "Baseball",
+      "Basketball",
+      "Boxing",
+      "Athletics"
+    ],
+    "correct": "Baseball"
+  },
+  {
+    "id": "DO",
+    "player": 0,
+    "category": "Society",
+    "title": "Which Dominican music genre is known for its fast tempo, güira, and accordion melodies?",
+    "answers": [
+      "Merengue",
+      "Bachata",
+      "Salsa",
+      "Reggaeton"
+    ],
+    "correct": "Merengue"
+  },
+  {
+    "id": "DO",
+    "player": 0,
+    "category": "Geography",
+    "title": "Which peak is the highest mountain in the Dominican Republic and the entire Caribbean?",
+    "answers": [
+      "Pico Duarte",
+      "La Pelona",
+      "Blue Mountain Peak",
+      "Montagne Pelee"
+    ],
+    "correct": "Pico Duarte"
+  },
+
+  {
+    "id": "PR",
+    "player": 0,
+    "category": "History",
+    "title": "Which European power controlled Puerto Rico before it was ceded to the United States in 1898?",
+    "answers": [
+      "Spain",
+      "Portugal",
+      "France",
+      "Netherlands"
+    ],
+    "correct": "Spain"
+  },
+  {
+    "id": "PR",
+    "player": 0,
+    "category": "Sport",
+    "title": "Which Puerto Rican baseball legend became the first Latin American player inducted into the Baseball Hall of Fame?",
+    "answers": [
+      "Roberto Clemente",
+      "Iván Rodríguez",
+      "Carlos Beltrán",
+      "Orlando Cepeda"
+    ],
+    "correct": "Roberto Clemente"
+  },
+  {
+    "id": "PR",
+    "player": 0,
+    "category": "Society",
+    "title": "Which Puerto Rican musical style combines bomba, plena, and salsa influences and spread worldwide?",
+    "answers": [
+      "Reggaeton",
+      "Bachata",
+      "Soca",
+      "Zouk"
+    ],
+    "correct": "Reggaeton"
+  },
+  {
+    "id": "PR",
+    "player": 0,
+    "category": "Geography",
+    "title": "Which famous Puerto Rican bay is known for its bioluminescent waters?",
+    "answers": [
+      "Mosquito Bay",
+      "San Juan Bay",
+      "Guanica Bay",
+      "Mayagüez Bay"
+    ],
+    "correct": "Mosquito Bay"
+  },  {
+    "id": "BB",
+    "player": 0,
+    "category": "History",
+    "title": "Which famous Barbadian singer became a global icon and was named a national hero in 2021?",
+    "answers": [
+      "Rihanna",
+      "Shontelle",
+      "Alison Hinds",
+      "Nicki Minaj"
+    ],
+    "correct": "Rihanna"
+  },
+  {
+    "id": "BB",
+    "player": 0,
+    "category": "Sport",
+    "title": "Which sport is Barbados especially known for, producing legends like Sir Garfield Sobers?",
+    "answers": [
+      "Cricket",
+      "Football",
+      "Track and Field",
+      "Basketball"
+    ],
+    "correct": "Cricket"
+  },
+  {
+    "id": "BB",
+    "player": 0,
+    "category": "Society",
+    "title": "What is the name of Barbados’ traditional festival celebrating emancipation, music, and colorful costumes?",
+    "answers": [
+      "Crop Over",
+      "Carnival",
+      "Junkanoo",
+      "Carifiesta"
+    ],
+    "correct": "Crop Over"
+  },
+  {
+    "id": "BB",
+    "player": 0,
+    "category": "Geography",
+    "title": "What is the name of the rugged limestone region in northern Barbados known for caves and cliffs?",
+    "answers": [
+      "Scotland District",
+      "Chalky Mount",
+      "Bathsheba Ridge",
+      "Mount Hillaby Range"
+    ],
+    "correct": "Scotland District"
+  },
+
+  {
+    "id": "TT",
+    "player": 0,
+    "category": "History",
+    "title": "Which Trinidadian political leader served as the first Prime Minister of Trinidad and Tobago?",
+    "answers": [
+      "Eric Williams",
+      "George Chambers",
+      "Patrick Manning",
+      "Basdeo Panday"
+    ],
+    "correct": "Eric Williams"
+  },
+  {
+    "id": "TT",
+    "player": 0,
+    "category": "Sport",
+    "title": "Which sprinter from Trinidad and Tobago won gold in the 100m at the 1976 Olympics?",
+    "answers": [
+      "Hasely Crawford",
+      "Ato Boldon",
+      "Richard Thompson",
+      "Keston Bledman"
+    ],
+    "correct": "Hasely Crawford"
+  },
+  {
+    "id": "TT",
+    "player": 0,
+    "category": "Society",
+    "title": "Which musical instrument was invented in Trinidad and Tobago and is now used worldwide?",
+    "answers": [
+      "Steelpan",
+      "Cajón",
+      "Bongos",
+      "Didgeridoo"
+    ],
+    "correct": "Steelpan"
+  },
+  {
+    "id": "TT",
+    "player": 0,
+    "category": "Geography",
+    "title": "What is the name of Trinidad’s largest mountain range?",
+    "answers": [
+      "Northern Range",
+      "Central Range",
+      "Southern Range",
+      "Andes Ridge"
+    ],
+    "correct": "Northern Range"
+  },
+
+  {
+    "id": "BS",
+    "player": 0,
+    "category": "History",
+    "title": "Which European country first colonized the Bahamas in the 17th century?",
+    "answers": [
+      "United Kingdom",
+      "Spain",
+      "France",
+      "Netherlands"
+    ],
+    "correct": "United Kingdom"
+  },
+  {
+    "id": "BS",
+    "player": 0,
+    "category": "Sport",
+    "title": "Which Bahamian sprinter won Olympic gold in the 400m at Rio 2016?",
+    "answers": [
+      "Shaunae Miller-Uibo",
+      "Tonique Williams-Darling",
+      "Anthonique Strachan",
+      "Debbie Ferguson-McKenzie"
+    ],
+    "correct": "Shaunae Miller-Uibo"
+  },
+  {
+    "id": "BS",
+    "player": 0,
+    "category": "Society",
+    "title": "What is the name of the Bahamian street parade celebrated with costumes, drums, and dancing?",
+    "answers": [
+      "Junkanoo",
+      "Carnival",
+      "Crop Over",
+      "Caribana"
+    ],
+    "correct": "Junkanoo"
+  },
+  {
+    "id": "BS",
+    "player": 0,
+    "category": "Geography",
+    "title": "Which Bahamian island is the largest by land area?",
+    "answers": [
+      "Andros Island",
+      "New Providence",
+      "Abaco Island",
+      "Grand Bahama"
+    ],
+    "correct": "Andros Island"
+  },
+
+  {
+    "id": "LC",
+    "player": 0,
+    "category": "History",
+    "title": "Which two European powers fought repeatedly over Saint Lucia before it finally became a British colony?",
+    "answers": [
+      "France and the United Kingdom",
+      "Spain and France",
+      "Portugal and Britain",
+      "Netherlands and Spain"
+    ],
+    "correct": "France and the United Kingdom"
+  },
+  {
+    "id": "LC",
+    "player": 0,
+    "category": "Sport",
+    "title": "Which sport is the most widely played and followed in Saint Lucia?",
+    "answers": [
+      "Cricket",
+      "Football",
+      "Rugby",
+      "Tennis"
+    ],
+    "correct": "Cricket"
+  },
+  {
+    "id": "LC",
+    "player": 0,
+    "category": "Society",
+    "title": "Which Saint Lucian cultural event celebrates music, dance, and Creole heritage every October?",
+    "answers": [
+      "Jounen Kwéyòl",
+      "Independence Festival",
+      "Carnival Royale",
+      "La Rose Festival"
+    ],
+    "correct": "Jounen Kwéyòl"
+  },
+  {
+    "id": "LC",
+    "player": 0,
+    "category": "Geography",
+    "title": "What are the famous twin volcanic spires in Saint Lucia that form a UNESCO World Heritage Site?",
+    "answers": [
+      "The Pitons",
+      "Blue Mountains",
+      "Morne Vert Peaks",
+      "Soufrière Ridges"
+    ],
+    "correct": "The Pitons"
+  },
+
+  {
+    "id": "GD",
+    "player": 0,
+    "category": "History",
+    "title": "Which Caribbean nation did the United States invade in 1983 following a coup, restoring order in Grenada?",
+    "answers": [
+      "Grenada",
+      "Barbados",
+      "Belize",
+      "Antigua and Barbuda"
+    ],
+    "correct": "Grenada"
+  },
+  {
+    "id": "GD",
+    "player": 0,
+    "category": "Sport",
+    "title": "Which Grenadian athlete won the country's first Olympic gold medal in the 400m at London 2012?",
+    "answers": [
+      "Kirani James",
+      "Bralon Taplin",
+      "Paul Williams",
+      "Andre Gooding"
+    ],
+    "correct": "Kirani James"
+  },
+  {
+    "id": "GD",
+    "player": 0,
+    "category": "Society",
+    "title": "What nickname is Grenada famously known by due to its production of nutmeg and spices?",
+    "answers": [
+      "The Spice Island",
+      "The Emerald Isle",
+      "The Pearl of the Caribbean",
+      "The Island of Flowers"
+    ],
+    "correct": "The Spice Island"
+  },
+  {
+    "id": "GD",
+    "player": 0,
+    "category": "Geography",
+    "title": "Which volcano in Grenada last erupted in 1851 and forms part of the island’s central mountains?",
+    "answers": [
+      "Mount Saint Catherine",
+      "Mount Sinai",
+      "Soufrière Hills",
+      "La Grande Soufrière"
+    ],
+    "correct": "Mount Saint Catherine"
+  },  {
+    "id": "AW",
+    "player": 0,
+    "category": "History",
+    "title": "Which European country colonized Aruba before it became a constituent country within the Kingdom of the Netherlands?",
+    "answers": [
+      "Netherlands",
+      "Spain",
+      "France",
+      "Portugal"
+    ],
+    "correct": "Netherlands"
+  },
+  {
+    "id": "AW",
+    "player": 0,
+    "category": "Sport",
+    "title": "Which sport is most popular in Aruba, especially during local tournaments?",
+    "answers": [
+      "Football (Soccer)",
+      "Baseball",
+      "Cricket",
+      "Basketball"
+    ],
+    "correct": "Football (Soccer)"
+  },
+  {
+    "id": "AW",
+    "player": 0,
+    "category": "Society",
+    "title": "Which annual Aruban festival features colorful parades, costumes, and music, held before Lent?",
+    "answers": [
+      "Carnival",
+      "Semana Santa",
+      "Dia di Betico",
+      "Festa di Pueblo"
+    ],
+    "correct": "Carnival"
+  },
+  {
+    "id": "AW",
+    "player": 0,
+    "category": "Geography",
+    "title": "What is the name of Aruba’s famous desert-like national park with unique divi-divi trees?",
+    "answers": [
+      "Arikok National Park",
+      "Christoffel National Park",
+      "Shete Boka National Park",
+      "Hooiberg Nature Reserve"
+    ],
+    "correct": "Arikok National Park"
+  },
+
+  {
+    "id": "CW",
+    "player": 0,
+    "category": "History",
+    "title": "Which European power originally colonized Curaçao before it became part of the Kingdom of the Netherlands?",
+    "answers": [
+      "Netherlands",
+      "Spain",
+      "Portugal",
+      "France"
+    ],
+    "correct": "Netherlands"
+  },
+  {
+    "id": "CW",
+    "player": 0,
+    "category": "Sport",
+    "title": "Which sport is Curaçao internationally known for producing top players in?",
+    "answers": [
+      "Baseball",
+      "Football (Soccer)",
+      "Basketball",
+      "Track and Field"
+    ],
+    "correct": "Baseball"
+  },
+  {
+    "id": "CW",
+    "player": 0,
+    "category": "Society",
+    "title": "Which festival in Curaçao celebrates the island’s culture, music, and carnival traditions?",
+    "answers": [
+      "Curaçao Carnival",
+      "Dia di Bandera",
+      "King’s Day",
+      "Sinterklaas"
+    ],
+    "correct": "Curaçao Carnival"
+  },
+  {
+    "id": "CW",
+    "player": 0,
+    "category": "Geography",
+    "title": "Which capital city of Curaçao is also the largest city and main port?",
+    "answers": [
+      "Willemstad",
+      "Oranjestad",
+      "Kralendijk",
+      "Philipsburg"
+    ],
+    "correct": "Willemstad"
+  },
+
+  {
+    "id": "KN",
+    "player": 0,
+    "category": "History",
+    "title": "Saint Kitts and Nevis became the first Caribbean colony to achieve independence from which European power in 1983?",
+    "answers": [
+      "United Kingdom",
+      "France",
+      "Spain",
+      "Netherlands"
+    ],
+    "correct": "United Kingdom"
+  },
+  {
+    "id": "KN",
+    "player": 0,
+    "category": "Sport",
+    "title": "Which sport is most commonly played and celebrated in Saint Kitts and Nevis?",
+    "answers": [
+      "Cricket",
+      "Football",
+      "Basketball",
+      "Track and Field"
+    ],
+    "correct": "Cricket"
+  },
+  {
+    "id": "KN",
+    "player": 0,
+    "category": "Society",
+    "title": "Which festival in Saint Kitts and Nevis features music, parades, and cultural displays in December?",
+    "answers": [
+      "Carnival (Sugar Mas)",
+      "Jounen Kwéyòl",
+      "Crop Over",
+      "Reggae Sumfest"
+    ],
+    "correct": "Carnival (Sugar Mas)"
+  },
+  {
+    "id": "KN",
+    "player": 0,
+    "category": "Geography",
+    "title": "Which of the two islands in Saint Kitts and Nevis is larger by land area?",
+    "answers": [
+      "Saint Kitts",
+      "Nevis",
+      "Both equal",
+      "Neither"
+    ],
+    "correct": "Saint Kitts"
+  },
+
+  {
+    "id": "DM",
+    "player": 0,
+    "category": "History",
+    "title": "Dominica gained independence in 1978 from which European colonial power?",
+    "answers": [
+      "United Kingdom",
+      "France",
+      "Spain",
+      "Netherlands"
+    ],
+    "correct": "United Kingdom"
+  },
+  {
+    "id": "DM",
+    "player": 0,
+    "category": "Sport",
+    "title": "Which sport dominates Dominica’s local competitions and schools?",
+    "answers": [
+      "Football (Soccer)",
+      "Cricket",
+      "Basketball",
+      "Rugby"
+    ],
+    "correct": "Football (Soccer)"
+  },
+  {
+    "id": "DM",
+    "player": 0,
+    "category": "Society",
+    "title": "Which natural festival celebrates Dominica’s Creole heritage each October?",
+    "answers": [
+      "World Creole Music Festival",
+      "Carnival",
+      "Crop Over",
+      "Jounen Kwéyòl"
+    ],
+    "correct": "World Creole Music Festival"
+  },
+  {
+    "id": "DM",
+    "player": 0,
+    "category": "Geography",
+    "title": "Which volcanic peak is the highest point on Dominica?",
+    "answers": [
+      "Morne Diablotins",
+      "Morne Trois Pitons",
+      "Boiling Lake Summit",
+      "Morne Anglais"
+    ],
+    "correct": "Morne Diablotins"
+  },
+
+  {
+    "id": "AG",
+    "player": 0,
+    "category": "History",
+    "title": "Which European power colonized Antigua and Barbuda before it gained independence in 1981?",
+    "answers": [
+      "United Kingdom",
+      "France",
+      "Spain",
+      "Netherlands"
+    ],
+    "correct": "United Kingdom"
+  },
+  {
+    "id": "AG",
+    "player": 0,
+    "category": "Sport",
+    "title": "Which sport is Antigua and Barbuda most known for, especially in the West Indies region?",
+    "answers": [
+      "Cricket",
+      "Football",
+      "Sailing",
+      "Athletics"
+    ],
+    "correct": "Cricket"
+  },
+  {
+    "id": "AG",
+    "player": 0,
+    "category": "Society",
+    "title": "Which festival in Antigua features colorful parades, music, and Caribbean culture in July and August?",
+    "answers": [
+      "Antigua Carnival",
+      "Crop Over",
+      "Junkanoo",
+      "Carifesta"
+    ],
+    "correct": "Antigua Carnival"
+  },
+  {
+    "id": "AG",
+    "player": 0,
+    "category": "Geography",
+    "title": "What is the largest island of Antigua and Barbuda where most of the population resides?",
+    "answers": [
+      "Antigua",
+      "Barbuda",
+      "Redonda",
+      "Saint John"
+    ],
+    "correct": "Antigua"
+  },  {
+    "id": "BR",
+    "player": 0,
+    "category": "History",
+    "title": "Which Portuguese explorer is credited with claiming Brazil for Portugal in 1500?",
+    "answers": [
+      "Pedro Álvares Cabral",
+      "Vasco da Gama",
+      "Ferdinand Magellan",
+      "Amerigo Vespucci"
+    ],
+    "correct": "Pedro Álvares Cabral"
+  },
+  {
+    "id": "BR",
+    "player": 0,
+    "category": "Sport",
+    "title": "Which Brazilian footballer is often called 'O Rei' and is considered one of the greatest players ever?",
+    "answers": [
+      "Pelé",
+      "Zico",
+      "Ronaldo",
+      "Ronaldinho"
+    ],
+    "correct": "Pelé"
+  },
+  {
+    "id": "BR",
+    "player": 0,
+    "category": "Society",
+    "title": "Which Brazilian festival is world-famous for its samba parades and elaborate costumes?",
+    "answers": [
+      "Carnival",
+      "Festa Junina",
+      "Bumba Meu Boi",
+      "Parintins Folklore Festival"
+    ],
+    "correct": "Carnival"
+  },
+  {
+    "id": "BR",
+    "player": 0,
+    "category": "Geography",
+    "title": "Which river is the largest by volume in Brazil and one of the longest in the world?",
+    "answers": [
+      "Amazon River",
+      "São Francisco River",
+      "Paraná River",
+      "Tocantins River"
+    ],
+    "correct": "Amazon River"
+  },
+
+  {
+    "id": "AR",
+    "player": 0,
+    "category": "History",
+    "title": "Which revolutionary leader played a key role in Argentina’s independence from Spain?",
+    "answers": [
+      "José de San Martín",
+      "Manuel Belgrano",
+      "Juan Perón",
+      "Domingo Sarmiento"
+    ],
+    "correct": "José de San Martín"
+  },
+  {
+    "id": "AR",
+    "player": 0,
+    "category": "Sport",
+    "title": "Which sport is Argentina globally famous for, producing stars like Lionel Messi?",
+    "answers": [
+      "Football (Soccer)",
+      "Rugby",
+      "Basketball",
+      "Polo"
+    ],
+    "correct": "Football (Soccer)"
+  },
+  {
+    "id": "AR",
+    "player": 0,
+    "category": "Society",
+    "title": "Which traditional Argentine dance is recognized worldwide for its passionate movements?",
+    "answers": [
+      "Tango",
+      "Samba",
+      "Merengue",
+      "Cueca"
+    ],
+    "correct": "Tango"
+  },
+  {
+    "id": "AR",
+    "player": 0,
+    "category": "Geography",
+    "title": "What is the name of the highest peak in Argentina, located in the Andes?",
+    "answers": [
+      "Aconcagua",
+      "Huascarán",
+      "Fitz Roy",
+      "Cerro Bonete"
+    ],
+    "correct": "Aconcagua"
+  },
+
+  {
+    "id": "CL",
+    "player": 0,
+    "category": "History",
+    "title": "Which Chilean leader was overthrown during the military coup of 1973?",
+    "answers": [
+      "Salvador Allende",
+      "Augusto Pinochet",
+      "Michelle Bachelet",
+      "Gabriel González Videla"
+    ],
+    "correct": "Salvador Allende"
+  },
+  {
+    "id": "CL",
+    "player": 0,
+    "category": "Sport",
+    "title": "Which sport is considered Chile’s most popular, with a strong national league and international presence?",
+    "answers": [
+      "Football (Soccer)",
+      "Tennis",
+      "Basketball",
+      "Rugby"
+    ],
+    "correct": "Football (Soccer)"
+  },
+  {
+    "id": "CL",
+    "player": 0,
+    "category": "Society",
+    "title": "Which Chilean dance, often performed during national celebrations, symbolizes courtship and folk traditions?",
+    "answers": [
+      "Cueca",
+      "Samba",
+      "Tango",
+      "Cumbia"
+    ],
+    "correct": "Cueca"
+  },
+  {
+    "id": "CL",
+    "player": 0,
+    "category": "Geography",
+    "title": "Which desert in northern Chile is one of the driest places on Earth?",
+    "answers": [
+      "Atacama Desert",
+      "Patagonian Desert",
+      "Sechura Desert",
+      "Monte Desert"
+    ],
+    "correct": "Atacama Desert"
+  },
+
+  {
+    "id": "CO",
+    "player": 0,
+    "category": "History",
+    "title": "Which revolutionary leader is considered the 'Liberator' of Colombia and other South American countries?",
+    "answers": [
+      "Simón Bolívar",
+      "José de San Martín",
+      "Antonio Nariño",
+      "Francisco de Paula Santander"
+    ],
+    "correct": "Simón Bolívar"
+  },
+  {
+    "id": "CO",
+    "player": 0,
+    "category": "Sport",
+    "title": "Which sport is Colombia especially known for internationally, producing stars like James Rodríguez?",
+    "answers": [
+      "Football (Soccer)",
+      "Cycling",
+      "Boxing",
+      "Basketball"
+    ],
+    "correct": "Football (Soccer)"
+  },
+  {
+    "id": "CO",
+    "player": 0,
+    "category": "Society",
+    "title": "Which traditional Colombian music and dance style originates from the Caribbean coast?",
+    "answers": [
+      "Cumbia",
+      "Salsa",
+      "Merengue",
+      "Vallenato"
+    ],
+    "correct": "Cumbia"
+  },
+  {
+    "id": "CO",
+    "player": 0,
+    "category": "Geography",
+    "title": "Which river, a major tributary of the Amazon, flows through southern Colombia?",
+    "answers": [
+      "Putumayo River",
+      "Magdalena River",
+      "Caquetá River",
+      "Orinoco River"
+    ],
+    "correct": "Putumayo River"
+  },
+
+  {
+    "id": "PE",
+    "player": 0,
+    "category": "History",
+    "title": "Which ancient civilization built the famous city of Machu Picchu in Peru?",
+    "answers": [
+      "Inca",
+      "Maya",
+      "Aztec",
+      "Chavín"
+    ],
+    "correct": "Inca"
+  },
+  {
+    "id": "PE",
+    "player": 0,
+    "category": "Sport",
+    "title": "Which sport is Peru most known for internationally?",
+    "answers": [
+      "Football (Soccer)",
+      "Volleyball",
+      "Surfing",
+      "Basketball"
+    ],
+    "correct": "Football (Soccer)"
+  },
+  {
+    "id": "PE",
+    "player": 0,
+    "category": "Society",
+    "title": "Which Peruvian dish, made from raw fish marinated in citrus juice, is famous worldwide?",
+    "answers": [
+      "Ceviche",
+      "Lomo Saltado",
+      "Aji de Gallina",
+      "Anticuchos"
+    ],
+    "correct": "Ceviche"
+  },
+  {
+    "id": "PE",
+    "player": 0,
+    "category": "Geography",
+    "title": "Which mountain range runs along the western edge of Peru?",
+    "answers": [
+      "Andes",
+      "Sierra Madre",
+      "Cordillera Blanca",
+      "Guiana Highlands"
+    ],
+    "correct": "Andes"
+  },  {
+    "id": "VE",
+    "player": 0,
+    "category": "History",
+    "title": "Which revolutionary leader is considered the 'Liberator' of Venezuela?",
+    "answers": [
+      "Simón Bolívar",
+      "Francisco de Miranda",
+      "José Antonio Páez",
+      "Antonio José de Sucre"
+    ],
+    "correct": "Simón Bolívar"
+  },
+  {
+    "id": "VE",
+    "player": 0,
+    "category": "Sport",
+    "title": "Which Venezuelan baseball player is considered a legend in Major League Baseball?",
+    "answers": [
+      "Miguel Cabrera",
+      "Omar Vizquel",
+      "José Altuve",
+      "Carrao Bracho"
+    ],
+    "correct": "Miguel Cabrera"
+  },
+  {
+    "id": "VE",
+    "player": 0,
+    "category": "Society",
+    "title": "Which Venezuelan festival features colorful costumes and is celebrated before Lent?",
+    "answers": [
+      "Carnival of El Callao",
+      "Feria de la Chinita",
+      "Fiesta de San Juan",
+      "Festival de Margarita"
+    ],
+    "correct": "Carnival of El Callao"
+  },
+  {
+    "id": "VE",
+    "player": 0,
+    "category": "Geography",
+    "title": "What is the name of the world’s highest waterfall located in Venezuela?",
+    "answers": [
+      "Angel Falls",
+      "Niagara Falls",
+      "Iguazu Falls",
+      "Kaieteur Falls"
+    ],
+    "correct": "Angel Falls"
+  },
+
+  {
+    "id": "EC",
+    "player": 0,
+    "category": "History",
+    "title": "Which ancient culture thrived in northern Ecuador before the Inca conquest?",
+    "answers": [
+      "Cañari",
+      "Moche",
+      "Chimú",
+      "Tairona"
+    ],
+    "correct": "Cañari"
+  },
+  {
+    "id": "EC",
+    "player": 0,
+    "category": "Sport",
+    "title": "Which sport is the most popular in Ecuador, with strong national teams?",
+    "answers": [
+      "Football (Soccer)",
+      "Volleyball",
+      "Basketball",
+      "Tennis"
+    ],
+    "correct": "Football (Soccer)"
+  },
+  {
+    "id": "EC",
+    "player": 0,
+    "category": "Society",
+    "title": "Which Ecuadorian festival celebrates indigenous culture, music, and dance in June?",
+    "answers": [
+      "Inti Raymi",
+      "Fiesta de la Luz",
+      "Mama Negra",
+      "Carnaval de Guaranda"
+    ],
+    "correct": "Inti Raymi"
+  },
+  {
+    "id": "EC",
+    "player": 0,
+    "category": "Geography",
+    "title": "Which island group belongs to Ecuador and is famous for unique wildlife and giant tortoises?",
+    "answers": [
+      "Galápagos Islands",
+      "Falkland Islands",
+      "Islas de la Bahía",
+      "San Andrés Archipelago"
+    ],
+    "correct": "Galápagos Islands"
+  },
+
+  {
+    "id": "BO",
+    "player": 0,
+    "category": "History",
+    "title": "Which indigenous leader resisted Spanish conquest in Bolivia during the 16th century?",
+    "answers": [
+      "Túpac Katari",
+      "Atahualpa",
+      "Huayna Capac",
+      "Manco Inca"
+    ],
+    "correct": "Túpac Katari"
+  },
+  {
+    "id": "BO",
+    "player": 0,
+    "category": "Sport",
+    "title": "Which sport is Bolivia most passionate about, especially with local clubs and the national team?",
+    "answers": [
+      "Football (Soccer)",
+      "Basketball",
+      "Volleyball",
+      "Rugby"
+    ],
+    "correct": "Football (Soccer)"
+  },
+  {
+    "id": "BO",
+    "player": 0,
+    "category": "Society",
+    "title": "Which Bolivian festival is famous for colorful masks and dances, held in Oruro?",
+    "answers": [
+      "Carnaval de Oruro",
+      "Fiesta de la Candelaria",
+      "Inti Raymi",
+      "Virgen de Urkupiña"
+    ],
+    "correct": "Carnaval de Oruro"
+  },
+  {
+    "id": "BO",
+    "player": 0,
+    "category": "Geography",
+    "title": "Which high-altitude plateau dominates western Bolivia?",
+    "answers": [
+      "Altiplano",
+      "Gran Chaco",
+      "Pantanal",
+      "Puna"
+    ],
+    "correct": "Altiplano"
+  },
+
+  {
+    "id": "PY",
+    "player": 0,
+    "category": "History",
+    "title": "Which European country colonized Paraguay before it gained independence in 1811?",
+    "answers": [
+      "Spain",
+      "Portugal",
+      "France",
+      "Netherlands"
+    ],
+    "correct": "Spain"
+  },
+  {
+    "id": "PY",
+    "player": 0,
+    "category": "Sport",
+    "title": "Which sport is most popular in Paraguay and a source of national pride?",
+    "answers": [
+      "Football (Soccer)",
+      "Basketball",
+      "Rugby",
+      "Volleyball"
+    ],
+    "correct": "Football (Soccer)"
+  },
+  {
+    "id": "PY",
+    "player": 0,
+    "category": "Society",
+    "title": "Which indigenous language is co-official in Paraguay alongside Spanish?",
+    "answers": [
+      "Guaraní",
+      "Quechua",
+      "Aymara",
+      "Mapudungun"
+    ],
+    "correct": "Guaraní"
+  },
+  {
+    "id": "PY",
+    "player": 0,
+    "category": "Geography",
+    "title": "Which major river forms part of Paraguay’s eastern border with Brazil?",
+    "answers": [
+      "Paraná River",
+      "Amazon River",
+      "Orinoco River",
+      "Río de la Plata"
+    ],
+    "correct": "Paraná River"
+  },
+
+  {
+    "id": "UY",
+    "player": 0,
+    "category": "History",
+    "title": "Which military and political leader played a key role in Uruguay’s independence?",
+    "answers": [
+      "José Gervasio Artigas",
+      "Juan Manuel Blanes",
+      "Fructuoso Rivera",
+      "Venancio Flores"
+    ],
+    "correct": "José Gervasio Artigas"
+  },
+  {
+    "id": "UY",
+    "player": 0,
+    "category": "Sport",
+    "title": "Which sport brought Uruguay two Olympic golds in 1924 and 1928 and two World Cups in 1930 and 1950?",
+    "answers": [
+      "Football (Soccer)",
+      "Rugby",
+      "Basketball",
+      "Polo"
+    ],
+    "correct": "Football (Soccer)"
+  },
+  {
+    "id": "UY",
+    "player": 0,
+    "category": "Society",
+    "title": "Which festival in Uruguay celebrates music, dance, and carnival traditions in Montevideo?",
+    "answers": [
+      "Uruguay Carnival",
+      "Dia de la Tradición",
+      "Semana Criolla",
+      "Fiesta de la Patria Gaucha"
+    ],
+    "correct": "Uruguay Carnival"
+  },
+  {
+    "id": "UY",
+    "player": 0,
+    "category": "Geography",
+    "title": "Which river forms the natural border between Uruguay and Argentina?",
+    "answers": [
+      "Río de la Plata",
+      "Paraná River",
+      "Uruguay River",
+      "Amazon River"
+    ],
+    "correct": "Uruguay River"
+  },{
+    "id": "GY",
+    "player": 0,
+    "category": "History",
+    "title": "Which European country colonized Guyana, originally known as British Guiana?",
+    "answers": [
+      "United Kingdom",
+      "Netherlands",
+      "France",
+      "Spain"
+    ],
+    "correct": "United Kingdom"
+  },
+  {
+    "id": "GY",
+    "player": 0,
+    "category": "Sport",
+    "title": "Which sport is most popular in Guyana, with strong regional competition?",
+    "answers": [
+      "Cricket",
+      "Football (Soccer)",
+      "Basketball",
+      "Athletics"
+    ],
+    "correct": "Cricket"
+  },
+  {
+    "id": "GY",
+    "player": 0,
+    "category": "Society",
+    "title": "Which Guyanese festival combines African, Indian, and European cultural traditions?",
+    "answers": [
+      "Mashramani",
+      "Diwali",
+      "Carnival",
+      "Holi"
+    ],
+    "correct": "Mashramani"
+  },
+  {
+    "id": "GY",
+    "player": 0,
+    "category": "Geography",
+    "title": "Which river is the longest in Guyana, flowing into the Atlantic Ocean?",
+    "answers": [
+      "Essequibo River",
+      "Demerara River",
+      "Berbice River",
+      "Corentyne River"
+    ],
+    "correct": "Essequibo River"
+  },
+
+  {
+    "id": "SR",
+    "player": 0,
+    "category": "History",
+    "title": "Which European country colonized Suriname before its independence in 1975?",
+    "answers": [
+      "Netherlands",
+      "France",
+      "United Kingdom",
+      "Spain"
+    ],
+    "correct": "Netherlands"
+  },
+  {
+    "id": "SR",
+    "player": 0,
+    "category": "Sport",
+    "title": "Which sport is traditionally popular in Suriname, especially among youth?",
+    "answers": [
+      "Football (Soccer)",
+      "Cricket",
+      "Basketball",
+      "Athletics"
+    ],
+    "correct": "Football (Soccer)"
+  },
+  {
+    "id": "SR",
+    "player": 0,
+    "category": "Society",
+    "title": "Which festival in Suriname is a colorful celebration of Hindu culture?",
+    "answers": [
+      "Diwali",
+      "Holi",
+      "Carnival",
+      "Keti Koti"
+    ],
+    "correct": "Diwali"
+  },
+  {
+    "id": "SR",
+    "player": 0,
+    "category": "Geography",
+    "title": "Which river is the largest in Suriname, running through the central part of the country?",
+    "answers": [
+      "Suriname River",
+      "Marowijne River",
+      "Coppename River",
+      "Saramacca River"
+    ],
+    "correct": "Suriname River"
+  },
+
+  {
+    "id": "GF",
+    "player": 0,
+    "category": "History",
+    "title": "French Guiana is an overseas department of which European country?",
+    "answers": [
+      "France",
+      "Netherlands",
+      "Portugal",
+      "Spain"
+    ],
+    "correct": "France"
+  },
+  {
+    "id": "GF",
+    "player": 0,
+    "category": "Sport",
+    "title": "Which sport is most popular in French Guiana, influenced by neighboring Caribbean countries?",
+    "answers": [
+      "Football (Soccer)",
+      "Basketball",
+      "Rugby",
+      "Cricket"
+    ],
+    "correct": "Football (Soccer)"
+  },
+  {
+    "id": "GF",
+    "player": 0,
+    "category": "Society",
+    "title": "Which annual celebration in French Guiana is famous for its carnival parades and costumes?",
+    "answers": [
+      "French Guiana Carnival",
+      "Bastille Day",
+      "Fête de la Musique",
+      "Kourou Festival"
+    ],
+    "correct": "French Guiana Carnival"
+  },
+  {
+    "id": "GF",
+    "player": 0,
+    "category": "Geography",
+    "title": "Which river forms the border between French Guiana and Brazil?",
+    "answers": [
+      "Oyapock River",
+      "Maroni River",
+      "Amazon River",
+      "Approuague River"
+    ],
+    "correct": "Oyapock River"
   }
+
 ]
