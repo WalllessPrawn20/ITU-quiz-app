@@ -125,19 +125,25 @@ async function handleAnswer(correct) {
 function handleScore({ playerPoint, botPoint }) {
   if (!selectedCountryId) return
 
-  // Zober prvé dva znaky ID
-  const prefix = selectedCountryId.slice(0, 2)
+  // Skúsime nájsť group s ID krajiny
+  let countryGroup = mapContainer.value.querySelector(`g[id="${selectedCountryId}"]`)
+  let paths = []
 
-  // Všetky cesty, ktorých id začína na prefix
-  const paths = mapContainer.value.querySelectorAll(`path[id^="${prefix}"]`)
+  if (countryGroup) {
+    paths = countryGroup.querySelectorAll('path')
+  } else {
+    // fallback: skúsiť nájsť path s týmto ID priamo
+    const singlePath = mapContainer.value.querySelector(`path[id="${selectedCountryId}"]`)
+    if (singlePath) paths = [singlePath]
+  }
 
   paths.forEach((path) => {
     if (playerPoint) {
       path.style.fill = '#00ff00' // hráč správne
-      countryResults.value[path.id] = 'correct'
+      countryResults.value[path.id || selectedCountryId] = 'correct'
     } else if (botPoint) {
       path.style.fill = '#ff3333' // bot správne
-      countryResults.value[path.id] = 'wrong'
+      countryResults.value[path.id || selectedCountryId] = 'wrong'
     }
   })
 }
