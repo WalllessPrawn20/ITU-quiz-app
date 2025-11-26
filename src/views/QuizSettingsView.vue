@@ -39,16 +39,33 @@ watch(
   { deep: true },
 )
 
-function playQuiz() {
+async function playQuiz() {
   localStorage.setItem('gameSettings', JSON.stringify(settings.value))
 
+  // odoslanie na server
+  const response = await fetch('http://localhost:5000/game/start', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      continent: settings.value.region,
+      categories: settings.value.sets,
+      difficulty: settings.value.difficulty,
+      timer: settings.value.timer,
+      turns: settings.value.rounds
+    })
+  })
+
+  const data = await response.json()
+
+  if (!data.success) {
+    console.error('Server odmietol nastavenia:', data)
+    return
+  }
+
   router.push('/game')
-
-  // settings.value = { ...defaultSettings }
-
-  // localStorage.setItem('gameSettings', JSON.stringify(settings.value))
 }
-
 function getImgSrc(key) {
   return new URL(`../assets/${key.toLowerCase()}.png`, import.meta.url).href
 }

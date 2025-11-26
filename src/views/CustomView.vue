@@ -46,7 +46,7 @@ const europeanCountries = [
   { code: 'ES', name: 'Spain' },
   { code: 'SE', name: 'Sweden' },
   { code: 'CH', name: 'Switzerland' },
-  { code: 'TR', name: 'Turkey' },
+  { code: 'TR', name: 'Turkiye' },
   { code: 'UA', name: 'Ukraine' },
   { code: 'GB', name: 'United Kingdom' }
 ]
@@ -234,9 +234,10 @@ onMounted(() => {
 
 .block-custom {
   background: rgba(0, 0, 0, 0.7);
-  padding: 2rem;
-  border-radius: 2vw;
+  padding: 1rem;
+  border-radius: 1vw;
   width: 40vw;
+  height:80vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -244,18 +245,19 @@ onMounted(() => {
 }
 
 .block-custom h2 {
-  font-size: 2rem;
+  font-size: 1.2rem;
 }
 
 .form-custom {
   width: 100%;
+  height:80vh;
   display: flex;
   flex-direction: column;
-  gap: 1.2rem;
+  gap: 0.5rem;
 }
 
 label {
-  font-size: 1.2rem;
+  font-size: 1rem;
 }
 
 input, select {
@@ -273,11 +275,10 @@ input::placeholder {
 }
 
 .save-btn-custom {
-  margin-top: 2rem;
   background: none;
   border: 0.3vw solid white;
   color: white;
-  font-size: 1.2rem;
+  font-size: 1rem;
   border-radius: 1vw;
   padding: 1rem 2rem;
     font-family: inherit;

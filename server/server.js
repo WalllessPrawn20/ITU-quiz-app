@@ -155,8 +155,15 @@ app.post('/stats/reset', (req, res) => {
 app.post('/game/start', (req, res) => {
   const { continent, categories, difficulty, timer, turns } = req.body
 
+  console.log("Continent:", continent);
+  console.log("Categories:", categories);
+  console.log("Difficulty:", difficulty);
+  console.log("Timer:", timer);
+  console.log("Turns:", turns);
+
   if (!continent || !categories || !difficulty || !timer || !turns) {
-    return res.status(400).json({ error: 'Missing game settings' })
+    console.log("Chýbajú niektoré nastavenia");
+    return res.status(400).json({ error: 'Missing game settings' });
   }
 
   // Prepis všetkých premenných v game
