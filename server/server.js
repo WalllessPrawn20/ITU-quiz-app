@@ -176,5 +176,36 @@ app.get('/game/load', (req, res) => {
   res.json(game)
 })
 
+app.post('/questions/create', (req, res) => {
+  const q = req.body;
+
+  if (!q.id || !q.category || !q.title || !q.correct || q.answers.length < 4) {
+    return res.status(400).json({ error: "Missing required fields" });
+  }
+
+
+  const questions = loadQuestions();
+
+  const newFormattedQuestion = {
+    id: q.id,                      // SK, IE, CZ...
+    player: 1,                          // custom question
+    category: q.category,           // History / Society...
+    title: q.title,              // main text
+    answers: q.answers,
+    correct: q.correct
+  };
+
+  questions.push(newFormattedQuestion);
+
+  fs.writeFileSync(dataPath, JSON.stringify(questions, null, 2));
+
+  res.json({
+    success: true,
+    message: "Question saved",
+    question: newFormattedQuestion
+  });
+});
+
+
 // ====== Run ======
 app.listen(PORT, () => console.log(`Server running on port ${PORT}\nNEZABUDNI RESETOVAT SERVER`))

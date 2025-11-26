@@ -1,6 +1,8 @@
 <script setup>
 const selectRegion = (region) => {
   localStorage.setItem('region', region)
+  localStorage.removeItem('customQuestionDraft')
+
 }
 </script>
 

@@ -1,5 +1,5 @@
 <script setup>
-import { ref, reactive, watch, onMounted } from 'vue'
+import { ref, reactive, watch, onMounted, computed } from 'vue'
 
 // Zoznam európskych krajín (ISO2 + Kosovo, Rusko, Turecko)
 const europeanCountries = [
@@ -51,6 +51,51 @@ const europeanCountries = [
   { code: 'GB', name: 'United Kingdom' }
 ]
 
+const americasCountries = [
+  // North America
+  { code: 'CA', name: 'Canada' },
+  { code: 'US', name: 'United States' },
+  { code: 'MX', name: 'Mexico' },
+
+  // Central America
+  { code: 'BZ', name: 'Belize' },
+  { code: 'CR', name: 'Costa Rica' },
+  { code: 'SV', name: 'El Salvador' },
+  { code: 'GT', name: 'Guatemala' },
+  { code: 'HN', name: 'Honduras' },
+  { code: 'NI', name: 'Nicaragua' },
+  { code: 'PA', name: 'Panama' },
+
+  // Caribbean
+  { code: 'AG', name: 'Antigua and Barbuda' },
+  { code: 'BS', name: 'Bahamas' },
+  { code: 'BB', name: 'Barbados' },
+  { code: 'CU', name: 'Cuba' },
+  { code: 'DM', name: 'Dominica' },
+  { code: 'DO', name: 'Dominican Republic' },
+  { code: 'GD', name: 'Grenada' },
+  { code: 'HT', name: 'Haiti' },
+  { code: 'JM', name: 'Jamaica' },
+  { code: 'KN', name: 'Saint Kitts and Nevis' },
+  { code: 'LC', name: 'Saint Lucia' },
+  { code: 'VC', name: 'Saint Vincent and the Grenadines' },
+  { code: 'TT', name: 'Trinidad and Tobago' },
+
+  // South America
+  { code: 'AR', name: 'Argentina' },
+  { code: 'BO', name: 'Bolivia' },
+  { code: 'BR', name: 'Brazil' },
+  { code: 'CL', name: 'Chile' },
+  { code: 'CO', name: 'Colombia' },
+  { code: 'EC', name: 'Ecuador' },
+  { code: 'GY', name: 'Guyana' },
+  { code: 'PY', name: 'Paraguay' },
+  { code: 'PE', name: 'Peru' },
+  { code: 'SR', name: 'Suriname' },
+  { code: 'UY', name: 'Uruguay' },
+  { code: 'VE', name: 'Venezuela' }
+];
+
 // reaktívne dáta otázky
 const newQuestion = reactive({
   country: '',
@@ -74,9 +119,14 @@ const errors = reactive({
 
 // ref pre feedback
 const saved = ref(false)
+const region = ref('europe')
 
+const availableCountries = computed(() => {
+  if (region.value === 'americas') return americasCountries
+  return europeanCountries
+})
 // uloženie otázky do zoznamu
-function saveQuestion() {
+async function saveQuestion() {
   let hasError = false
 
   for (const key in newQuestion) {
@@ -94,17 +144,45 @@ function saveQuestion() {
   stored.push({ ...newQuestion })
   localStorage.setItem('customQuestions', JSON.stringify(stored))
 
+  // pripravíme objekt vo formáte, ktorý server očakáva
+  const payload = {
+    id: newQuestion.country,           // stat = id
+    player: 1,
+    category: newQuestion.questionType,
+    title: newQuestion.questionText,
+    answers: [
+      newQuestion.correctAnswer,
+      newQuestion.wrongA,
+      newQuestion.wrongB,
+      newQuestion.wrongC
+    ],
+    correct: newQuestion.correctAnswer
+  }
+  console.log('Payload pred fetch:', payload);
+
+  try {
+    const res = await fetch('http://localhost:5000/questions/create', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
+    })
+
+    if (!res.ok) throw new Error('Failed to save question to server')
+
+    // feedback
+    saved.value = true
+    setTimeout(() => { saved.value = false }, 2000)
+  } catch (err) {
+    console.error(err)
+    alert('Chyba pri ukladaní otázky na server')
+  }
+
+  // vyčistíme form
   for (const key in newQuestion) newQuestion[key] = ''
   for (const key in errors) errors[key] = false
-
-  // zmažeme aj autosave, lebo otázka bola uložená
   localStorage.removeItem('customQuestionDraft')
-
-  saved.value = true
-  setTimeout(() => {
-    saved.value = false
-  }, 2000)
 }
+
 
 // 🔁 sleduj zmeny vo všetkých poliach a priebežne ukladaj
 watch(
@@ -124,6 +202,10 @@ onMounted(() => {
       if (parsed[key]) newQuestion[key] = parsed[key]
     }
   }
+  const savedRegion = localStorage.getItem('region')
+  if (savedRegion) {
+    region.value = savedRegion   // 'europe' alebo 'americas'
+  }
 })
 </script>
 
@@ -142,7 +224,7 @@ onMounted(() => {
   <label>Country</label>
   <select v-model="newQuestion.country" :class="{ 'error-custom': errors.country }">
     <option disabled value="">Select a country</option>
-    <option v-for="c in europeanCountries" :key="c.code" :value="c.code">{{ c.name }}</option>
+    <option v-for="c in availableCountries" :key="c.code" :value="c.code">{{ c.name }}</option>
   </select>
 
   <label>Question Type</label>
