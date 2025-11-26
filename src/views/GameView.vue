@@ -44,7 +44,16 @@ import svgPanZoom from 'svg-pan-zoom'
 
 const mapContainer = ref(null)
 
-const gameSettings = JSON.parse(localStorage.getItem('gameSettings') || '{}')
+const gameSettings = ref({
+  playerScore: 0,
+  botScore: 0,
+  turn: 0,
+  continent: '',
+  categories: {},
+  difficulty: '',
+  timer: 0,
+  completed_turns: 0,
+})
 const initialTimer = gameSettings.timer || 20
 const timer = ref(initialTimer)
 let gameInterval = null
@@ -57,12 +66,12 @@ const questionDuration = gameSettings.timer || 15
 let selectedCountryId = null
 const countryResults = ref({})
 
-const totalRounds = ref(gameSettings.rounds)
+const totalRounds = ref(0)
 const turn = ref(0)
 const gameOver = ref(false)
 
 const difficulty = gameSettings.difficulty || 'Medium'
-let categories = Object.keys(gameSettings.sets).filter((key) => gameSettings.sets[key])
+let categories = ref({})
 
 const isPaused = ref(false)
 
@@ -186,7 +195,8 @@ function startGameTimer(time) {
 async function fetchQuestions(id) {
   try {
     const capitalizedId = id.slice(0, 2).toUpperCase()
-    const categoryParam = categories.join(',')
+    console.log('Current categories:', categories.value)
+    const categoryParam = categories.value.join(',')
     console.log('Fetching questions for ID:', capitalizedId, 'Categories:', categories)
     const res = await fetch(
       `http://localhost:5000/questions/filter?id=${capitalizedId}&category=${categoryParam}`,
@@ -203,11 +213,18 @@ async function fetchQuestions(id) {
 onMounted(async () => {
   // 🔁 Najprv vynuluj skóre na serveri
   try {
-    await fetch('http://localhost:5000/game/reset', { method: 'POST' })
-    console.log('✅ Game score reset on server')
-    console.log(gameSettings.region)
+    const res = await fetch('http://localhost:5000/game/load')
+    const data = await res.json()
+    console.log('Game settings from server:', data)
+    gameSettings.value = data
+    categories.value = Object.keys(gameSettings.value?.categories || {}).filter(
+      (key) => gameSettings.value.categories[key] === true,
+    )
+    totalRounds.value = gameSettings.value.turns || 25
+    turn.value = 0
+    console.log('✅ Game settings loaded')
   } catch (err) {
-    console.error('❌ Failed to reset game score:', err)
+    console.error('❌ Failed to load game score:', err)
   }
 
   const svg = mapContainer.value.querySelector('svg')
@@ -259,7 +276,7 @@ async function updateScoresFromServer() {
     const data = await res.json()
     scores.value.you = data.playerScore
     scores.value.bot = data.botScore
-    turn.value = data.turn
+    turn.value = data.completed_turns
   } catch (err) {
     console.error('Error fetching scores:', err)
   }

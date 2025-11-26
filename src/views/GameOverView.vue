@@ -40,6 +40,9 @@ const router = useRouter()
 
 function restartGame() {
   window.location.reload()
+  fetch('http://localhost:5000/game/reset', {
+    method: 'POST',
+  })
 }
 
 function exitGame() {

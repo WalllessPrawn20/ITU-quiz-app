@@ -19,7 +19,6 @@ let game = {
   },
   difficulty: "Medium",
   timer: 15,
-  turns: 25,
   completed_turns: 0
 }
 
@@ -69,7 +68,7 @@ app.get('/questions/filter', (req, res) => {
 function resetGame() {
   game.playerScore = 0
   game.botScore = 0
-  game.turn = 0
+  game.completed_turns = 0
   console.log('🌀 Game reset.')
 }
 
@@ -84,7 +83,7 @@ app.get('/game/score', (req, res) => {
   res.json({
     playerScore: game.playerScore,
     botScore: game.botScore,
-    turn: game.turn,
+    completed_turns: game.completed_turns,
   })
 })
 
@@ -111,7 +110,7 @@ app.post('/game/answer', (req, res) => {
   if (playerCorrect && !botCorrect) game.playerScore += 1
   else if (!playerCorrect && botCorrect) game.botScore += 1
   // inak nič sa nepridá
-  game.turn += 1
+  game.completed_turns += 1
 
   res.json({
     botAnswer,
@@ -155,21 +154,13 @@ app.post('/stats/reset', (req, res) => {
 app.post('/game/start', (req, res) => {
   const { continent, categories, difficulty, timer, turns } = req.body
 
-  console.log("Continent:", continent);
-  console.log("Categories:", categories);
-  console.log("Difficulty:", difficulty);
-  console.log("Timer:", timer);
-  console.log("Turns:", turns);
-
   if (!continent || !categories || !difficulty || !timer || !turns) {
-    console.log("Chýbajú niektoré nastavenia");
-    return res.status(400).json({ error: 'Missing game settings' });
+    return res.status(400).json({ error: 'Missing game settings' })
   }
 
   // Prepis všetkých premenných v game
   game.playerScore = 0
   game.botScore = 0
-  game.turn = 0
   game.completed_turns = 0
 
   game.continent = continent
