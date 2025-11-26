@@ -205,6 +205,7 @@ onMounted(async () => {
   try {
     await fetch('http://localhost:5000/game/reset', { method: 'POST' })
     console.log('✅ Game score reset on server')
+    console.log(gameSettings.region)
   } catch (err) {
     console.error('❌ Failed to reset game score:', err)
   }

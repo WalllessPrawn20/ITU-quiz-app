@@ -24,6 +24,11 @@ onMounted(() => {
   if (saved) {
     settings.value = JSON.parse(saved)
   }
+
+  const savedRegion = localStorage.getItem('region')
+  if (savedRegion) {
+    settings.value.region = savedRegion
+  }
 })
 
 watch(

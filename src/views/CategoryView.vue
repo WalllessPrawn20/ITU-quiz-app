@@ -41,7 +41,7 @@ const selectRegion = (region) => {
       </button>
       <!-- </router-link> -->
 
-      <!-- <router-link to="/themes" class="category"> -->
+      <router-link to="/themes" class="category">
       <button class="img-button blocked">
         <h3>Americas</h3>
         <img
@@ -51,7 +51,7 @@ const selectRegion = (region) => {
           @click="selectRegion('americas')"
         />
       </button>
-      <!-- </router-link> -->
+      </router-link>
 
       <!-- <router-link to="/themes" class="category"> -->
       <button class="img-button blocked">
