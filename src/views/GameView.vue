@@ -62,7 +62,7 @@ const command = ref('Select a country')
 const scores = ref({ you: 0, bot: 0 })
 
 const currentQuestion = ref(null)
-const questionDuration = gameSettings.timer || 15
+const questionDuration = ref(15)
 let selectedCountryId = null
 const countryResults = ref({})
 
@@ -220,8 +220,10 @@ onMounted(async () => {
     categories.value = Object.keys(gameSettings.value?.categories || {}).filter(
       (key) => gameSettings.value.categories[key] === true,
     )
-    totalRounds.value = gameSettings.value.turns || 25
+    totalRounds.value = +gameSettings.value.turns || 25
     turn.value = 0
+    questionDuration.value = +gameSettings.value.timer || 15
+    console.log(questionDuration.value)
     console.log('✅ Game settings loaded')
   } catch (err) {
     console.error('❌ Failed to load game score:', err)
