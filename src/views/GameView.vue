@@ -36,7 +36,7 @@
 </template>
 
 <script setup>
-import { ref, onMounted } from 'vue'
+import { ref, onMounted, onUnmounted } from 'vue'
 import europeSvg from '@/assets/europe.svg?raw'
 import QuestionView from './QuestionABCDView.vue'
 import GameOverView from './GameOverView.vue'
@@ -187,6 +187,7 @@ async function fetchQuestions(id) {
   try {
     const capitalizedId = id.slice(0, 2).toUpperCase()
     const categoryParam = categories.join(',')
+    console.log('Fetching questions for ID:', capitalizedId, 'Categories:', categories)
     const res = await fetch(
       `http://localhost:5000/questions/filter?id=${capitalizedId}&category=${categoryParam}`,
     )
@@ -243,6 +244,10 @@ onMounted(async () => {
 
   updateScoresFromServer() // hneď načíta prvé hodnoty
   setInterval(updateScoresFromServer, 1500) // každú sekundu
+})
+
+onUnmounted(() => {
+  clearInterval(gameInterval)
 })
 
 // ===== Funkcia na sťahovanie skóre zo servera =====

@@ -7,8 +7,8 @@ const router = useRouter()
 const defaultSettings = {
   region: 'europe',
   sets: {
-    History: false,
-    Society: false,
+    History: true,
+    Society: true,
     Geography: true,
     Sport: false,
   },
@@ -31,7 +31,7 @@ watch(
   (newVal) => {
     localStorage.setItem('gameSettings', JSON.stringify(newVal))
   },
-  { deep: true }
+  { deep: true },
 )
 
 function playQuiz() {
@@ -39,9 +39,9 @@ function playQuiz() {
 
   router.push('/game')
 
-  settings.value = { ...defaultSettings }
+  // settings.value = { ...defaultSettings }
 
-  localStorage.setItem('gameSettings', JSON.stringify(settings.value))
+  // localStorage.setItem('gameSettings', JSON.stringify(settings.value))
 }
 
 function getImgSrc(key) {
@@ -59,7 +59,6 @@ function toggleSet(key) {
 }
 </script>
 
-
 <template>
   <div class="settings-wrapper-settings">
     <div class="header-category">
@@ -73,12 +72,12 @@ function toggleSet(key) {
       <div class="header-buttons">
         <router-link to="/stats">
           <button class="header-btn" aria-label="Statistics">
-            <img src="../assets/stats3.png" alt="Statistics"/>
+            <img src="../assets/stats3.png" alt="Statistics" />
           </button>
         </router-link>
         <router-link to="/settings">
           <button class="header-btn" aria-label="Settings">
-            <img src="../assets/settings2.png" alt="Settings"/>
+            <img src="../assets/settings2.png" alt="Settings" />
           </button>
         </router-link>
       </div>
@@ -88,18 +87,13 @@ function toggleSet(key) {
       <div class="block">
         <h2>Quiz sets</h2>
         <div class="block-content">
-        <div
-          class="row"
-          v-for="(value, key) in settings.sets"
-          :key="key"
-          @click="toggleSet(key)"
-        >
-          <div class="circle-img">
-            <img :src="getImgSrc(key)" :alt="key" />
+          <div class="row" v-for="(value, key) in settings.sets" :key="key" @click="toggleSet(key)">
+            <div class="circle-img">
+              <img :src="getImgSrc(key)" :alt="key" />
+            </div>
+            <span class="label">{{ key }}</span>
+            <div class="checkbox" :class="{ active: settings.sets[key] }"></div>
           </div>
-          <span class="label">{{ key }}</span>
-          <div class="checkbox" :class="{ active: settings.sets[key] }"></div>
-        </div>
         </div>
       </div>
 
@@ -112,42 +106,40 @@ function toggleSet(key) {
             :key="level"
             @click="settings.difficulty = level"
           >
-            <div class="square-img">            <img :src="getImgSrc(level)" :alt="level" />
-</div>
+            <div class="square-img"><img :src="getImgSrc(level)" :alt="level" /></div>
             <span class="label">{{ level }}</span>
             <div class="checkbox" :class="{ active: settings.difficulty === level }"></div>
           </div>
         </div>
       </div>
 
-<div class="block">
-  <h2>Additional</h2>
-  <div class="block-content">
-    <div class="slider-group">
-      <label>Timer</label>
-      <input type="range" min="5" max="25" v-model="settings.timer" />
-      <span class="value">{{ settings.timer }}s</span>
-    </div>
+      <div class="block">
+        <h2>Additional</h2>
+        <div class="block-content">
+          <div class="slider-group">
+            <label>Timer</label>
+            <input type="range" min="5" max="25" v-model="settings.timer" />
+            <span class="value">{{ settings.timer }}s</span>
+          </div>
 
-    <div class="slider-group">
-      <label>Turns</label>
-      <input type="range" min="1" max="50" v-model="settings.rounds" />
-      <span class="value">{{ settings.rounds }}</span>
-    </div>
+          <div class="slider-group">
+            <label>Turns</label>
+            <input type="range" min="1" max="50" v-model="settings.rounds" />
+            <span class="value">{{ settings.rounds }}</span>
+          </div>
 
-<div class="action-buttons">
-  <div class="custom-section">
-    <p class="custom-label">Create question</p>
-    <button class="custom-btn" @click="router.push('/custom')">+</button>
-  </div>
+          <div class="action-buttons">
+            <div class="custom-section">
+              <p class="custom-label">Create question</p>
+              <button class="custom-btn" @click="router.push('/custom')">+</button>
+            </div>
 
-  <button class="play-btn" @click="playQuiz">
-    <img src="../assets/play.png" alt="Play" class="play-icon" />
-  </button>
-</div>
-  </div>
-</div>
-
+            <button class="play-btn" @click="playQuiz">
+              <img src="../assets/play.png" alt="Play" class="play-icon" />
+            </button>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -166,7 +158,7 @@ function toggleSet(key) {
 }
 
 .settings-wrapper-settings::before {
-  content: "";
+  content: '';
   position: absolute;
   top: 0;
   left: 0;
@@ -346,7 +338,7 @@ function toggleSet(key) {
   gap: 1vh;
 }
 
-input[type="range"] {
+input[type='range'] {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
@@ -355,20 +347,20 @@ input[type="range"] {
   cursor: pointer;
 }
 
-input[type="range"]::-webkit-slider-runnable-track {
+input[type='range']::-webkit-slider-runnable-track {
   height: 1.2vw;
   background: black;
   border: 0.4vw solid white;
   image-rendering: pixelated;
 }
 
-input[type="range"]::-moz-range-track {
+input[type='range']::-moz-range-track {
   height: 1.2vw;
   background: black;
   border: 0.4vw solid white;
 }
 
-input[type="range"]::-webkit-slider-thumb {
+input[type='range']::-webkit-slider-thumb {
   -webkit-appearance: none;
   width: 2vw;
   height: 2vw;
@@ -377,15 +369,15 @@ input[type="range"]::-webkit-slider-thumb {
   margin-top: -0.5vw;
 }
 
-input[type="range"]::-moz-range-thumb {
+input[type='range']::-moz-range-thumb {
   width: 2vw;
   height: 2vw;
   background: white;
   border: 0.4vw solid black;
 }
 
-input[type="range"]::-webkit-slider-thumb:hover,
-input[type="range"]::-moz-range-thumb:hover {
+input[type='range']::-webkit-slider-thumb:hover,
+input[type='range']::-moz-range-thumb:hover {
   background: yellow;
 }
 
@@ -432,12 +424,16 @@ input[type="range"]::-moz-range-thumb:hover {
   align-items: center;
   background: rgba(255, 255, 255, 0.1);
   border: 0.2vw solid white;
-  transition: transform 0.2s, background 0.2s;
+  transition:
+    transform 0.2s,
+    background 0.2s;
 }
-.square-img img{
+.square-img img {
   background: rgba(255, 255, 255, 0.1);
   border: 0.2vw solid white;
-  transition: transform 0.2s, background 0.2s;
+  transition:
+    transform 0.2s,
+    background 0.2s;
 }
 
 .circle-img img {
@@ -485,7 +481,7 @@ input[type="range"]::-moz-range-thumb:hover {
   font-size: 1.75rem;
   color: white;
   text-align: center;
-  margin:1rem;
+  margin: 1rem;
 }
 
 .custom-btn {
@@ -497,12 +493,13 @@ input[type="range"]::-moz-range-thumb:hover {
   font-size: 2rem;
   font-family: 'Press Start 2P', monospace;
   cursor: pointer;
-  transition: transform 0.2s, background 0.2s;
+  transition:
+    transform 0.2s,
+    background 0.2s;
 }
 
 .custom-btn:hover {
   transform: scale(1.1);
   background: rgba(255, 255, 255, 0.2);
 }
-
 </style>
