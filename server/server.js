@@ -6,10 +6,21 @@ import cors from 'cors'
 const app = express()
 const PORT = 5000
 
-const game = {
+let game = {
   playerScore: 0,
   botScore: 0,
   turn: 0,
+  continent: "europe",
+  categories: {
+    History: false,
+    Society: false,
+    Geography: true,
+    Sport: false
+  },
+  difficulty: "Medium",
+  timer: 15,
+  turns: 25,
+  completed_turns: 0
 }
 
 app.use(cors())
@@ -18,6 +29,7 @@ app.use(express.json())
 // ====== Paths ======
 const dataPath = path.join(process.cwd(), 'questions.json')
 const statsPath = path.join(process.cwd(), 'stats.json')
+const gamePath = path.join(process.cwd(), 'game.json')
 
 // ====== File utils ======
 function loadQuestions() {
@@ -137,6 +149,33 @@ app.post('/stats/reset', (req, res) => {
   stats['Europe'] = { correct: 0, wrong: 0 }
   saveStats(stats)
   res.json({ success: true, message: 'Stats reset for Europe.' })
+})
+
+
+app.post('/game/start', (req, res) => {
+  const { continent, categories, difficulty, timer, turns } = req.body
+
+  if (!continent || !categories || !difficulty || !timer || !turns) {
+    return res.status(400).json({ error: 'Missing game settings' })
+  }
+
+  // Prepis všetkých premenných v game
+  game.playerScore = 0
+  game.botScore = 0
+  game.turn = 0
+  game.completed_turns = 0
+
+  game.continent = continent
+  game.categories = categories
+  game.difficulty = difficulty
+  game.timer = timer
+  game.turns = turns
+
+  res.json({ success: true })
+})
+
+app.get('/game/load', (req, res) => {
+  res.json(game)
 })
 
 // ====== Run ======

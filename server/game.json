@@ -1,0 +1,13 @@
+{
+  "continent": "europe",
+  "categories": {
+    "History": false,
+    "Society": false,
+    "Geography": true,
+    "Sport": false
+  },
+  "difficulty": "Medium",
+  "timer": 15,
+  "turns": 25,
+  "completed_turns": 0
+}
