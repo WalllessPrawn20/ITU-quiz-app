@@ -8,7 +8,9 @@ const PORT = 5000
 
 let game = {
   playerScore: 0,
+  player_country: [],
   botScore: 0,
+  bot_country: [],
   turn: 0,
   continent: "europe",
   categories: {
@@ -89,10 +91,12 @@ function resetGame() {
   game.playerScore = 0
   game.botScore = 0
   game.completed_turns = 0
+  game.player_country = []
+  game.bot_country = []
   console.log('🌀 Game reset.')
 }
 
-// ======= Endpoint: reset skóre =======
+// ======= Endpoint: reset skóre ======= TODO
 app.post('/game/reset', (req, res) => {
   resetGame()
   res.json({ success: true, message: 'Game reset.' })
@@ -189,6 +193,29 @@ app.post('/game/answer', (req, res) => {
   })
 })
 
+app.post('/game/country/add', (req, res) => {
+  const { target, countryId } = req.body
+
+  if (!target || !countryId) {
+    return res.status(400).json({ error: "Missing target or countryId" })
+  }
+
+  if (target !== "player" && target !== "bot") {
+    return res.status(400).json({ error: "Invalid target. Use 'player' or 'bot'." })
+  }
+
+  // Vyber správne pole
+  let list = target === "player" ? game.player_country : game.bot_country
+
+  // Zakáž duplicity
+  if (!list.includes(countryId)) {
+    list.push(countryId)
+  }
+
+  return res.json({
+    success: true,
+  })
+})
 
 // ====== Stats ======
 app.get('/stats', (req, res) => {
@@ -231,6 +258,8 @@ app.post('/game/start', (req, res) => {
   game.playerScore = 0
   game.botScore = 0
   game.completed_turns = 0
+  game.player_country = []
+  game.bot_country = []
 
   game.continent = continent
   game.categories = categories

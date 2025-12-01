@@ -56,7 +56,9 @@ const mapContainer = ref(null)
 
 const gameSettings = ref({
   playerScore: 0,
+  player_country: [],
   botScore: 0,
+  bot_country: [],
   turn: 0,
   continent: '',
   categories: {},
@@ -106,7 +108,8 @@ async function handleCountryClick(countryId) {
   selectedCountryId = countryId
   command.value = `Loading question for ${countryId}...`
 
-  const countryQuestions = await fetchQuestions(countryId)
+  let countryQuestions = await fetchQuestions(countryId)
+  countryQuestions = countryQuestions.filter((q) => q.type === 'abcd')
 
   if (countryQuestions.length) {
     const randomIndex = Math.floor(Math.random() * countryQuestions.length)
@@ -118,12 +121,11 @@ async function handleCountryClick(countryId) {
 }
 
 async function handleAnswer(result) {
-
   if (result.tie) {
-    console.log("its a tie")
+    console.log('its a tie')
 
     const numeric = await fetchQuestions(selectedCountryId)
-    const numOnly = numeric.filter(q => q.type === "numeric")
+    const numOnly = numeric.filter((q) => q.type === 'numeric')
 
     if (numOnly.length > 0) {
       currentQuestion.value = numOnly[Math.floor(Math.random() * numOnly.length)]
@@ -131,7 +133,7 @@ async function handleAnswer(result) {
     }
   }
 
-  await updateStats('Europe', result.playerCorrect)
+  await updateStats(continent, result.playerCorrect)
 
   if (turn.value >= totalRounds.value) {
     endGame()
@@ -159,13 +161,31 @@ function handleScore({ playerPoint, botPoint }) {
     if (singlePath) paths = [singlePath]
   }
 
-  paths.forEach((path) => {
+  paths.forEach(async (path) => {
     if (playerPoint) {
       path.style.fill = '#00ff00' // hráč správne
       countryResults.value[path.id || selectedCountryId] = 'correct'
+
+      await fetch('http://localhost:5000/game/country/add', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          target: 'player',
+          countryId: selectedCountryId,
+        }),
+      })
     } else if (botPoint) {
       path.style.fill = '#ff3333' // bot správne
       countryResults.value[path.id || selectedCountryId] = 'wrong'
+
+      await fetch('http://localhost:5000/game/country/add', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          target: 'bot',
+          countryId: selectedCountryId,
+        }),
+      })
     }
   })
 }
@@ -228,24 +248,42 @@ async function fetchQuestions(id) {
     const categoryParam = categories.value.join(',')
 
     const res1 = await fetch(
-      `http://localhost:5000/questions/filter?id=${capitalizedId}&category=${categoryParam}`
+      `http://localhost:5000/questions/filter?id=${capitalizedId}&category=${categoryParam}`,
     )
     const abcd = res1.ok ? await res1.json() : []
 
-    const res2 = await fetch(
-      `http://localhost:5000/questions2/filter?id=${capitalizedId}`
-    )
+    const res2 = await fetch(`http://localhost:5000/questions2/filter?id=${capitalizedId}`)
     const numericRaw = res2.ok ? await res2.json() : []
 
-    const numeric = numericRaw.map(q => ({ ...q, type: "numeric" }))
-    const abcdTyped = abcd.map(q => ({ ...q, type: "abcd" }))
+    const numeric = numericRaw.map((q) => ({ ...q, type: 'numeric' }))
+    const abcdTyped = abcd.map((q) => ({ ...q, type: 'abcd' }))
 
     return [...abcdTyped, ...numeric]
-
   } catch (err) {
     console.error('Error loading questions:', err)
     return []
   }
+}
+
+function getCountryPaths(countryId) {
+  let group = mapContainer.value.querySelector(`g[id="${countryId}"]`)
+  if (group) return group.querySelectorAll('path')
+
+  let single = mapContainer.value.querySelector(`path[id="${countryId}"]`)
+  return single ? [single] : []
+}
+
+function colorCountry(countryId, who) {
+  const paths = getCountryPaths(countryId)
+  paths.forEach((path) => {
+    if (who === 'player') {
+      path.style.fill = '#00ff00'
+      countryResults.value[path.id || countryId] = 'correct'
+    } else if (who === 'bot') {
+      path.style.fill = '#ff3333'
+      countryResults.value[path.id || countryId] = 'wrong'
+    }
+  })
 }
 
 onMounted(async () => {
@@ -314,6 +352,15 @@ onMounted(async () => {
       if (countryId) handleCountryClick(countryId)
     })
   })
+
+  if (gameSettings.value.player_country) {
+    console.log('Coloring player countries:', gameSettings.value.player_country)
+    gameSettings.value.player_country.forEach((id) => colorCountry(id, 'player'))
+  }
+
+  if (gameSettings.value.bot_country) {
+    gameSettings.value.bot_country.forEach((id) => colorCountry(id, 'bot'))
+  }
 
   startGameTimer(10)
 
