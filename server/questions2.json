@@ -1,0 +1,447 @@
+[
+  {
+    "id": "RU",
+    "title": "How many kilometers long is the longest river in Russia, the Volga?",
+    "correct": 3530
+  },
+  {
+    "id": "DE",
+    "title": "How many official UNESCO sites does Germany have?",
+    "correct": 51
+  },
+  {
+    "id": "FR",
+    "title": "How many kilometers long is the French coastline (including islands)?",
+    "correct": 5500
+  },
+  {
+    "id": "IT",
+    "title": "How many active volcanoes are there in Italy?",
+    "correct": 14
+  },
+  {
+    "id": "ES",
+    "title": "How many islands does Spain have (including the Balearic and Canary Islands)?",
+    "correct": 69
+  },
+  {
+    "id": "PL",
+    "title": "How many lakes larger than 1 km² does Poland have?",
+    "correct": 7900
+  },
+  {
+    "id": "UA",
+    "title": "How many kilometers long is the Dnieper, the largest river in Ukraine?",
+    "correct": 2285
+  },
+  {
+    "id": "TR",
+    "title": "How many kilometers long is the Turkish coast (Aegean, Mediterranean, and Black Sea combined)?",
+    "correct": 7200
+  },
+  {
+    "id": "GB",
+    "title": "How many football clubs play in the English Premier League?",
+    "correct": 20
+  },
+  {
+    "id": "NL",
+    "title": "How many kilometers long are the canals in the Netherlands in total?",
+    "correct": 6400
+  },
+  {
+    "id": "BE",
+    "title": "How many official languages does Belgium have?",
+    "correct": 3
+  },
+  {
+    "id": "AT",
+    "title": "How many square kilometers does Austria cover?",
+    "correct": 83879
+  },
+  {
+    "id": "CH",
+    "title": "How many lakes larger than 1 km² does Switzerland have?",
+    "correct": 1500
+  },
+  {
+    "id": "SE",
+    "title": "How many kilometers long is the coastline of Sweden?",
+    "correct": 3218
+  },
+  {
+    "id": "NO",
+    "title": "How many fjords does Norway have?",
+    "correct": 1200
+  },
+  {
+    "id": "FI",
+    "title": "How many lakes does Finland have (that's why it's called the land of a thousand lakes)?",
+    "correct": 188000
+  },
+  {
+    "id": "DK",
+    "title": "How many islands belong to Denmark?",
+    "correct": 443
+  },
+  {
+    "id": "IE",
+    "title": "How many kilometers long is the Shannon River, the longest river in Ireland?",
+    "correct": 360
+  },
+  {
+    "id": "PT",
+    "title": "How many kilometers long is the coastline of Portugal?",
+    "correct": 1794
+  },
+  {
+    "id": "GR",
+    "title": "How many islands does Greece have (most are uninhabited)?",
+    "correct": 6000
+  },
+  {
+    "id": "HU",
+    "title": "How many official UNESCO sites does Hungary have?",
+    "correct": 8
+  },
+  {
+    "id": "CZ",
+    "title": "How many liters of beer does an average Czech citizen drink per year?",
+    "correct": 140
+  },
+  {
+    "id": "SK",
+    "title": "How many meters high is the highest peak in Slovakia, Gerlachovský štít?",
+    "correct": 2655
+  },
+  {
+    "id": "RO",
+    "title": "How many kilometers long is the Danube River, which also flows through Romania?",
+    "correct": 2850
+  },
+  {
+    "id": "BG",
+    "title": "How many UNESCO sites does Bulgaria have?",
+    "correct": 10
+  },
+  {
+    "id": "RS",
+    "title": "How many football clubs play in the top league of Serbia?",
+    "correct": 16
+  },
+  {
+    "id": "HR",
+    "title": "How many islands does Croatia have?",
+    "correct": 1244
+  },
+  {
+    "id": "SI",
+    "title": "How many kilometers long is the Sava River in Slovenia?",
+    "correct": 221
+  },
+  {
+    "id": "BA",
+    "title": "How many bridges are known in Sarajevo?",
+    "correct": 7
+  },
+  {
+    "id": "ME",
+    "title": "How many kilometers long is the coastline of Montenegro?",
+    "correct": 293
+  },
+  {
+    "id": "AL",
+    "title": "How many kilometers long is the coastline of Albania?",
+    "correct": 362
+  },
+  {
+    "id": "MK",
+    "title": "How many lakes are known in North Macedonia?",
+    "correct": 40
+  },
+  {
+    "id": "XK",
+    "title": "How many football teams play in the top league of Kosovo?",
+    "correct": 10
+  },
+  {
+    "id": "IS",
+    "title": "How many active volcanoes are there in Iceland?",
+    "correct": 30
+  },
+  {
+    "id": "LI",
+    "title": "How many square kilometers does Liechtenstein cover?",
+    "correct": 160
+  },
+  {
+    "id": "LU",
+    "title": "How many official languages does Luxembourg have?",
+    "correct": 3
+  },
+  {
+    "id": "MD",
+    "title": "How many inhabitants does Moldova have (in millions)?",
+    "correct": 2.6
+  },
+  {
+    "id": "BY",
+    "title": "How many UNESCO sites does Belarus have?",
+    "correct": 4
+  },
+  {
+    "id": "UA",
+    "title": "How many kilometers long is the Dnieper River, which flows through Ukraine?",
+    "correct": 2285
+  },
+  {
+    "id": "GE",
+    "title": "How many meters high is the highest peak in Georgia, Shkhara?",
+    "correct": 5201
+  },
+  {
+    "id": "MT",
+    "title": "How many inhabitants does Malta have (in thousands)?",
+    "correct": 516
+  },
+  {
+    "id": "CY",
+    "title": "How many kilometers long is the coastline of Cyprus?",
+    "correct": 648
+  },
+  {
+    "id": "EE",
+    "title": "How many islands belong to Estonia?",
+    "correct": 2222
+  },
+  {
+    "id": "LV",
+    "title": "How many kilometers long is the Daugava River, which flows through Latvia?",
+    "correct": 1000
+  },
+  {
+    "id": "LT",
+    "title": "How many UNESCO sites does Lithuania have?",
+    "correct": 4
+  },
+  {
+    "id": "US",
+    "title": "How many states make up the United States of America?",
+    "correct": 50
+  },
+  {
+    "id": "CA",
+    "title": "How many kilometers long is the coastline of Canada?",
+    "correct": 202080
+  },
+  {
+    "id": "MX",
+    "title": "How many islands does Mexico have?",
+    "correct": 201
+  },
+  {
+    "id": "BR",
+    "title": "How many kilometers long is the Amazon River?",
+    "correct": 6992
+  },
+  {
+    "id": "AR",
+    "title": "How many meters high is the highest peak in Argentina, Aconcagua?",
+    "correct": 6962
+  },
+  {
+    "id": "CL",
+    "title": "How many kilometers long is the Chilean coastline?",
+    "correct": 6435
+  },
+  {
+    "id": "PE",
+    "title": "How many UNESCO sites does Peru have?",
+    "correct": 13
+  },
+  {
+    "id": "CO",
+    "title": "How many kilometers long is the Magdalena River in Colombia?",
+    "correct": 1538
+  },
+  {
+    "id": "VE",
+    "title": "How many kilometers long is the coastline of Venezuela?",
+    "correct": 2800
+  },
+  {
+    "id": "CU",
+    "title": "How many islands belong to Cuba (including small islets)?",
+    "correct": 4200
+  },
+  {
+    "id": "DO",
+    "title": "How many meters high is the highest peak in the Dominican Republic, Pico Duarte?",
+    "correct": 3087
+  },
+  {
+    "id": "HT",
+    "title": "How many kilometers long is the coastline of Haiti?",
+    "correct": 1771
+  },
+  {
+    "id": "JM",
+    "title": "How many kilometers long is the coastline of Jamaica?",
+    "correct": 1033
+  },
+  {
+    "id": "BS",
+    "title": "How many islands make up the Bahamas?",
+    "correct": 700
+  },
+  {
+    "id": "BB",
+    "title": "How many square kilometers does Barbados cover?",
+    "correct": 430
+  },
+  {
+    "id": "AG",
+    "title": "How many islands make up Antigua and Barbuda?",
+    "correct": 3
+  },
+  {
+    "id": "VC",
+    "title": "How many volcanoes are located on the island of Saint Vincent?",
+    "correct": 8
+  },
+  {
+    "id": "GD",
+    "title": "How many islands make up Grenada?",
+    "correct": 6
+  },
+  {
+    "id": "KN",
+    "title": "How many islands make up Saint Kitts and Nevis?",
+    "correct": 2
+  },
+  {
+    "id": "LC",
+    "title": "How many meters high is the highest peak in Saint Lucia, Mount Gimie?",
+    "correct": 950
+  },
+  {
+    "id": "TT",
+    "title": "How many meters high is the highest peak in Trinidad, El Cerro del Aripo?",
+    "correct": 940
+  },
+  {
+    "id": "BB",
+    "title": "How many football clubs play in the top league of Barbados?",
+    "correct": 10
+  },
+  {
+    "id": "AI",
+    "title": "How many square kilometers does the island of Anguilla have?",
+    "correct": 91
+  },
+  {
+    "id": "KY",
+    "title": "How many islands make up the Cayman Islands?",
+    "correct": 3
+  },
+  {
+    "id": "BM",
+    "title": "How many square meters is the smallest island of Bermuda?",
+    "correct": 54.6
+  },
+  {
+    "id": "PN",
+    "title": "How many inhabitants live on the Pitcairn Islands?",
+    "correct": 50
+  },
+  {
+    "id": "PF",
+    "title": "How many islands belong to French Polynesia?",
+    "correct": 118
+  },
+  {
+    "id": "CK",
+    "title": "How many islands make up the Cook Islands?",
+    "correct": 15
+  },
+  {
+    "id": "GL",
+    "title": "What percentage of Greenland's area is covered by glaciers?",
+    "correct": 80
+  },
+  {
+    "id": "MX",
+    "title": "How many active volcanoes does Mexico have?",
+    "correct": 42
+  },
+  {
+    "id": "GT",
+    "title": "How many kilometers long is Lake Izabal in Guatemala?",
+    "correct": 24
+  },
+  {
+    "id": "BZ",
+    "title": "How many coral reefs make up the Belize Barrier Reef?",
+    "correct": 900
+  },
+  {
+    "id": "SV",
+    "title": "How many meters high is the highest peak in El Salvador, Cerro El Pital?",
+    "correct": 2730
+  },
+  {
+    "id": "HN",
+    "title": "How many football clubs play in the top league of Honduras?",
+    "correct": 10
+  },
+  {
+    "id": "NI",
+    "title": "How many kilometers long is the largest river in Nicaragua, the Río Coco?",
+    "correct": 841
+  },
+  {
+    "id": "CR",
+    "title": "How many national parks does Costa Rica have?",
+    "correct": 28
+  },
+  {
+    "id": "PA",
+    "title": "How many kilometers long is the Panama Canal?",
+    "correct": 82
+  },
+  {
+    "id": "EC",
+    "title": "How many square kilometers do the Galapagos Islands, which belong to Ecuador, cover?",
+    "correct": 8010
+  },
+  {
+    "id": "GY",
+    "title": "How many kilometers long is the Essequibo River, the largest in Guyana?",
+    "correct": 1014
+  },
+  {
+    "id": "SR",
+    "title": "How many UNESCO sites does Suriname have?",
+    "correct": 1
+  },
+  {
+    "id": "PY",
+    "title": "How many kilometers long is the Paraná River in Paraguay?",
+    "correct": 485
+  },
+  {
+    "id": "UY",
+    "title": "How many UNESCO sites does Uruguay have?",
+    "correct": 1
+  },
+  {
+    "id": "BO",
+    "title": "How many meters above sea level is Lake Titicaca in Bolivia?",
+    "correct": 3812
+  },
+  {
+    "id": "TC",
+    "title": "How many islands make up the Turks and Caicos archipelago?",
+    "correct": 40
+  }
+]

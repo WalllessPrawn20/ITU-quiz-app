@@ -56,7 +56,6 @@ function startTimer() {
     if (remainingTime.value <= 0) {
       clearInterval(interval)
 
-      // Hráč nestihol odpovedať → pošli na server "wrong answer"
       await selectAnswer(null)
     }
   }, 1000)
@@ -68,29 +67,29 @@ async function selectAnswer(answer) {
   selectedAnswer.value = answer
   clearInterval(interval)
 
-  // Pošli dáta na server
   const res = await fetch('http://localhost:5000/game/answer', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({
       question: props.question,
-      playerAnswer: answer, // môže byť null = hráč nestihol
+      playerAnswer: answer,
       difficulty: props.difficulty,
     }),
   })
 
   const data = await res.json()
 
-  // data = { botAnswer, playerPoint, botPoint, playerCorrect, botCorrect }
   botAnswer.value = data.botAnswer
   showResult.value = true
 
   setTimeout(() => {
-    // Emit skóre, front-end už nepotrebuje nič počítať
     emit('score', { playerPoint: data.playerPoint, botPoint: data.botPoint })
-    emit('answered', data.playerCorrect)
+    emit('answered', {
+      playerCorrect: data.playerCorrect,
+      botCorrect: data.botCorrect,
+      tie: data.playerPoint === 0 && data.botPoint === 0,
+    })
 
-    // Reset pre ďalšiu otázku
     showResult.value = false
     selectedAnswer.value = null
     botAnswer.value = null

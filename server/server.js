@@ -29,6 +29,11 @@ app.use(express.json())
 const dataPath = path.join(process.cwd(), 'questions.json')
 const statsPath = path.join(process.cwd(), 'stats.json')
 const gamePath = path.join(process.cwd(), 'game.json')
+const dataPath2 = path.join(process.cwd(), 'questions2.json')
+
+function loadNumberQuestions() {
+  return JSON.parse(fs.readFileSync(dataPath2, 'utf-8'))
+}
 
 // ====== File utils ======
 function loadQuestions() {
@@ -50,6 +55,11 @@ app.get('/questions', (req, res) => {
   res.json(questions)
 })
 
+app.get('/questions2', (req, res) => {
+  const questions = loadNumberQuestions()
+  res.json(questions)
+})
+
 app.get('/questions/filter', (req, res) => {
   let questions = loadQuestions()
   const { id, category } = req.query
@@ -63,6 +73,16 @@ app.get('/questions/filter', (req, res) => {
 
   res.json(questions)
 })
+
+app.get('/questions2/filter', (req, res) => {
+  let questions = loadNumberQuestions()
+  const { id } = req.query
+
+  if (id) questions = questions.filter((q) => q.id === String(id))
+
+  res.json(questions)
+})
+
 
 // ======= Pomocná funkcia - reset hry =======
 function resetGame() {
@@ -86,13 +106,49 @@ app.get('/game/score', (req, res) => {
     completed_turns: game.completed_turns,
   })
 })
+app.post('/game/answer2', (req, res) => {
+  const { question, playerValue, reactionTime, difficulty } = req.body
+  if (!question) return res.status(400).json({ error: "Missing question" })
 
-// ======= Endpoint: odpoveď hráča =======
+  const correct = question.correct
+
+  const botSpread = { Easy: 25, Medium: 15, Hard: 8 }
+  const spread = botSpread[difficulty] || 15
+
+  const botValue = correct + (Math.random() * spread * 2 - spread)
+  const botTime = Math.random() * 1500 + 300
+
+  const playerDist = Math.abs(playerValue - correct)
+  const botDist = Math.abs(botValue - correct)
+
+  let playerPoint = 0
+  let botPoint = 0
+
+  if (playerDist < botDist) playerPoint = 1
+  else if (botDist < playerDist) botPoint = 1
+  else {
+    if (reactionTime < botTime) playerPoint = 1
+    else botPoint = 1
+  }
+
+  if (playerPoint) game.playerScore += 1
+  if (botPoint) game.botScore += 1
+  game.completed_turns += 1
+
+  res.json({
+    botValue,
+    botTime,
+    playerDist,
+    botDist,
+    playerPoint,
+    botPoint
+  })
+})
+
 app.post('/game/answer', (req, res) => {
   const { question, playerAnswer, difficulty } = req.body
   if (!question) return res.status(400).json({ error: 'Missing question' })
 
-  // Bot odpoveď
   const botAccuracy = { Easy: 0.5, Medium: 0.65, Hard: 0.8 }
   const correctAnswer = question.correct
   const botAnswer =
@@ -102,24 +158,37 @@ app.post('/game/answer', (req, res) => {
           Math.floor(Math.random() * (question.answers.length - 1))
         ]
 
-  // Vyhodnotenie hráča
   const playerCorrect = playerAnswer === correctAnswer
   const botCorrect = botAnswer === correctAnswer
 
-  // Body podľa tvojej logiky
-  if (playerCorrect && !botCorrect) game.playerScore += 1
-  else if (!playerCorrect && botCorrect) game.botScore += 1
-  // inak nič sa nepridá
-  game.completed_turns += 1
+  let playerPoint = 0
+  let botPoint = 0
+  let tie = false
+
+  if (playerCorrect && !botCorrect) {
+    playerPoint = 1
+    game.playerScore += 1
+    game.completed_turns += 1
+  }
+  else if (!playerCorrect && botCorrect) {
+    botPoint = 1
+    game.botScore += 1
+    game.completed_turns += 1
+  }
+  else {
+    tie = true
+  }
 
   res.json({
     botAnswer,
-    playerPoint: playerCorrect && !botCorrect ? 1 : 0,
-    botPoint: !playerCorrect && botCorrect ? 1 : 0,
+    playerPoint,
+    botPoint,
     playerCorrect,
     botCorrect,
+    tie
   })
 })
+
 
 // ====== Stats ======
 app.get('/stats', (req, res) => {

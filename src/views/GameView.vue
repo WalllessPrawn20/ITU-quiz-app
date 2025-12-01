@@ -22,12 +22,20 @@
     </div>
 
     <QuestionView
-      v-if="currentQuestion && !gameOver"
+      v-if="currentQuestion && currentQuestion.type === 'abcd' && !gameOver"
       :question="currentQuestion"
       :duration="questionDuration"
       :difficulty="difficulty"
       @answered="handleAnswer"
       @timeout="handleTimeout"
+      @score="handleScore"
+    />
+
+    <QuestionNumberView
+      v-if="currentQuestion && currentQuestion.type === 'numeric' && !gameOver"
+      :question="currentQuestion"
+      :duration="questionDuration"
+      @answered="handleAnswer"
       @score="handleScore"
     />
 
@@ -42,6 +50,7 @@ import americaSvg from '@/assets/americas.svg?raw'
 import QuestionView from './QuestionABCDView.vue'
 import GameOverView from './GameOverView.vue'
 import svgPanZoom from 'svg-pan-zoom'
+import QuestionNumberView from './QuestionNumberView.vue'
 
 const mapContainer = ref(null)
 
@@ -108,8 +117,21 @@ async function handleCountryClick(countryId) {
   }
 }
 
-async function handleAnswer(correct) {
-  await updateStats('Europe', correct)
+async function handleAnswer(result) {
+
+  if (result.tie) {
+    console.log("its a tie")
+
+    const numeric = await fetchQuestions(selectedCountryId)
+    const numOnly = numeric.filter(q => q.type === "numeric")
+
+    if (numOnly.length > 0) {
+      currentQuestion.value = numOnly[Math.floor(Math.random() * numOnly.length)]
+      return
+    }
+  }
+
+  await updateStats('Europe', result.playerCorrect)
 
   if (turn.value >= totalRounds.value) {
     endGame()
@@ -204,18 +226,28 @@ async function fetchQuestions(id) {
   try {
     const capitalizedId = id.slice(0, 2).toUpperCase()
     const categoryParam = categories.value.join(',')
-    const res = await fetch(
-      `http://localhost:5000/questions/filter?id=${capitalizedId}&category=${categoryParam}`,
-    )
 
-    if (!res.ok) throw new Error('Failed to fetch questions')
-    const data = await res.json()
-    return data
+    const res1 = await fetch(
+      `http://localhost:5000/questions/filter?id=${capitalizedId}&category=${categoryParam}`
+    )
+    const abcd = res1.ok ? await res1.json() : []
+
+    const res2 = await fetch(
+      `http://localhost:5000/questions2/filter?id=${capitalizedId}`
+    )
+    const numericRaw = res2.ok ? await res2.json() : []
+
+    const numeric = numericRaw.map(q => ({ ...q, type: "numeric" }))
+    const abcdTyped = abcd.map(q => ({ ...q, type: "abcd" }))
+
+    return [...abcdTyped, ...numeric]
+
   } catch (err) {
     console.error('Error loading questions:', err)
     return []
   }
 }
+
 onMounted(async () => {
   // 🔁 Najprv vynuluj skóre na serveri
   try {
