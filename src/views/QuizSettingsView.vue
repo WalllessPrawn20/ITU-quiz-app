@@ -4,6 +4,7 @@ import { useRouter } from 'vue-router'
 
 const router = useRouter()
 
+// default values for settings
 const defaultSettings = {
   region: 'europe',
   sets: {
@@ -19,6 +20,7 @@ const defaultSettings = {
 
 const settings = ref({ ...defaultSettings })
 
+// loads saved settings if they exist
 onMounted(() => {
   const saved = localStorage.getItem('gameSettings')
   if (saved) {
@@ -31,23 +33,22 @@ onMounted(() => {
   }
 })
 
+//watches changes to settings and stores them
 watch(
   settings,
-  (newVal) => {
-    localStorage.setItem('gameSettings', JSON.stringify(newVal))
-  },
+  (newVal) => { localStorage.setItem('gameSettings', JSON.stringify(newVal)) },
   { deep: true },
 )
 
+//start the quiz
 async function playQuiz() {
   localStorage.setItem('gameSettings', JSON.stringify(settings.value))
 
-  // odoslanie na server
+  //sends settings to server(backend) to start the game
   const response = await fetch('http://localhost:5000/game/start', {
     method: 'POST',
     headers: {
-      'Content-Type': 'application/json'
-    },
+      'Content-Type': 'application/json' },
     body: JSON.stringify({
       continent: settings.value.region,
       categories: settings.value.sets,
@@ -57,6 +58,7 @@ async function playQuiz() {
     })
   })
 
+  //response from server
   const data = await response.json()
 
   if (!data.success) {
@@ -64,15 +66,20 @@ async function playQuiz() {
     return
   }
 
+  //navigates to game view
   router.push('/game')
 }
+
+//helper function to get image source based on name
 function getImgSrc(key) {
   return new URL(`../assets/${key.toLowerCase()}.png`, import.meta.url).href
 }
 
+//helper function that toggles quiz sets (at least one must be set)
 function toggleSet(key) {
   const activeCount = Object.values(settings.value.sets).filter(Boolean).length
 
+  //doesnt allow to disable last active set
   if (activeCount === 1 && settings.value.sets[key]) {
     return
   }
@@ -109,6 +116,7 @@ function toggleSet(key) {
       <div class="block">
         <h2>Quiz sets</h2>
         <div class="block-content">
+          <!-- cycle thourgh all sets -->
           <div class="row" v-for="(value, key) in settings.sets" :key="key" @click="toggleSet(key)">
             <div class="circle-img">
               <img :src="getImgSrc(key)" :alt="key" />
@@ -122,6 +130,7 @@ function toggleSet(key) {
       <div class="block">
         <h2>Difficulty</h2>
         <div class="difficulty-rows">
+          <!-- cycle through difficulties -->
           <div
             class="row diff"
             v-for="level in ['Easy', 'Medium', 'Hard']"
@@ -151,6 +160,7 @@ function toggleSet(key) {
           </div>
 
           <div class="action-buttons">
+            <!-- user can create custom abcd questions -->
             <div class="custom-section">
               <p class="custom-label">Create question</p>
               <button class="custom-btn" @click="router.push('/custom')">+</button>

@@ -15,16 +15,18 @@
       class="username-input"
     />
 
-    <router-link :to="username ? '/category' : '#'" custom v-slot="{ navigate }">
-      <button
-        class="start"
-        aria-label="Start quiz"
-        :disabled="!username"
-        @click="username && navigate()"
-      >
-        <img src="../assets/play.png" alt="Play" class="play-icon" />
-      </button>
-    </router-link>
+  <!-- route  to categories -->
+  <router-link :to="username ? '/category' : '#'" class="start-link">
+    <!-- button is disabled till username is given-->
+    <button
+      class="start"
+      aria-label="Start quiz"
+      :disabled="!username"
+    >
+      <img src="../assets/play.png" alt="Play" class="play-icon" />
+    </button>
+  </router-link>
+
   </div>
 </template>
 
@@ -33,16 +35,19 @@ import { ref, watch, onMounted } from 'vue'
 
 const username = ref('')
 
+// after mounting, load username from storage if exists
 onMounted(() => {
   const stored = sessionStorage.getItem('username')
   if (stored) username.value = stored
 })
 
+//watch for changes to username to store them
 watch(username, (newVal) => {
   sessionStorage.setItem('username', newVal)
 })
 </script>
 
+<!-- style for home -->
 <style>
 .username-input {
   margin: 1rem 0 2rem 0;

@@ -1,6 +1,10 @@
 <script setup>
+
+
+//stores selected region
 const selectRegion = (region) => {
   localStorage.setItem('region', region)
+  // when changing regione removes saved incomplete custom question
   localStorage.removeItem('customQuestionDraft')
 
 }
@@ -16,6 +20,7 @@ const selectRegion = (region) => {
         <h2>Choose region you want to play:</h2>
       </div>
 
+      <!-- header of buttons that lead to statistics and settings -->
       <div class="header-buttons">
         <router-link to="/stats">
           <button class="header-btn" aria-label="Statistics">
@@ -30,6 +35,7 @@ const selectRegion = (region) => {
       </div>
     </div>
 
+    <!-- only europe and americas regions are currently playable -->
     <div class="categories-category">
       <!-- <router-link to="/themes" class="category"> -->
       <button class="img-button blocked">
@@ -69,6 +75,7 @@ const selectRegion = (region) => {
       </button>
       <!-- </router-link> -->
 
+      <!-- routes to quiz settings -->
       <router-link to="/themes" class="category">
         <button class="img-button">
           <h3>Europe</h3>
@@ -82,7 +89,7 @@ const selectRegion = (region) => {
       </router-link>
 
       <!-- <router-link to="/themes" class="category"> -->
-      <button class="img-button blocekd">
+      <button class="img-button blocked">
         <h3>Whole World</h3>
         <img src="../assets/home.png" alt="World" @click="selectRegion('earth')" />
       </button>

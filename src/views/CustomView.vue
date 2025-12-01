@@ -1,7 +1,7 @@
 <script setup>
 import { ref, reactive, watch, onMounted, computed } from 'vue'
 
-// Zoznam európskych krajín (ISO2 + Kosovo, Rusko, Turecko)
+//list of countries in selected regions
 const europeanCountries = [
   { code: 'AL', name: 'Albania' },
   { code: 'AD', name: 'Andorra' },
@@ -52,12 +52,9 @@ const europeanCountries = [
 ]
 
 const americasCountries = [
-  // North America
   { code: 'CA', name: 'Canada' },
   { code: 'US', name: 'United States' },
   { code: 'MX', name: 'Mexico' },
-
-  // Central America
   { code: 'BZ', name: 'Belize' },
   { code: 'CR', name: 'Costa Rica' },
   { code: 'SV', name: 'El Salvador' },
@@ -65,8 +62,6 @@ const americasCountries = [
   { code: 'HN', name: 'Honduras' },
   { code: 'NI', name: 'Nicaragua' },
   { code: 'PA', name: 'Panama' },
-
-  // Caribbean
   { code: 'AG', name: 'Antigua and Barbuda' },
   { code: 'BS', name: 'Bahamas' },
   { code: 'BB', name: 'Barbados' },
@@ -80,8 +75,6 @@ const americasCountries = [
   { code: 'LC', name: 'Saint Lucia' },
   { code: 'VC', name: 'Saint Vincent and the Grenadines' },
   { code: 'TT', name: 'Trinidad and Tobago' },
-
-  // South America
   { code: 'AR', name: 'Argentina' },
   { code: 'BO', name: 'Bolivia' },
   { code: 'BR', name: 'Brazil' },
@@ -96,7 +89,7 @@ const americasCountries = [
   { code: 'VE', name: 'Venezuela' }
 ];
 
-// reaktívne dáta otázky
+//reactive values for drafts
 const newQuestion = reactive({
   country: '',
   questionType: '',
@@ -107,6 +100,7 @@ const newQuestion = reactive({
   wrongC: ''
 })
 
+// reactive errors, if something is missing
 const errors = reactive({
   country: false,
   questionType: false,
@@ -117,18 +111,21 @@ const errors = reactive({
   wrongC: false
 })
 
-// ref pre feedback
+//reference values for feedback
 const saved = ref(false)
 const region = ref('europe')
 
+//which list to show
 const availableCountries = computed(() => {
   if (region.value === 'americas') return americasCountries
   return europeanCountries
 })
-// uloženie otázky do zoznamu
+
+//saves question to server
 async function saveQuestion() {
   let hasError = false
 
+  //validiting
   for (const key in newQuestion) {
     if (!newQuestion[key]) {
       errors[key] = true
@@ -144,10 +141,10 @@ async function saveQuestion() {
   stored.push({ ...newQuestion })
   localStorage.setItem('customQuestions', JSON.stringify(stored))
 
-  // pripravíme objekt vo formáte, ktorý server očakáva
-  const payload = {
-    id: newQuestion.country,           // stat = id
-    player: 1,
+  //format for saved question
+  const save = {
+    id: newQuestion.country,
+    player: 1, //custom question
     category: newQuestion.questionType,
     title: newQuestion.questionText,
     answers: [
@@ -158,13 +155,14 @@ async function saveQuestion() {
     ],
     correct: newQuestion.correctAnswer
   }
-  console.log('Payload pred fetch:', payload);
+  console.log('data for fetch:', save);
 
+  //sending to server, which saves the question to questions.json
   try {
     const res = await fetch('http://localhost:5000/questions/create', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(payload)
+      body: JSON.stringify(save)
     })
 
     if (!res.ok) throw new Error('Failed to save question to server')
@@ -174,17 +172,17 @@ async function saveQuestion() {
     setTimeout(() => { saved.value = false }, 2000)
   } catch (err) {
     console.error(err)
-    alert('Chyba pri ukladaní otázky na server')
+    alert('Error saving question to server.')
   }
 
-  // vyčistíme form
+  //clearing form
   for (const key in newQuestion) newQuestion[key] = ''
   for (const key in errors) errors[key] = false
   localStorage.removeItem('customQuestionDraft')
 }
 
 
-// 🔁 sleduj zmeny vo všetkých poliach a priebežne ukladaj
+//watching changes in form nad saving them
 watch(
   newQuestion,
   (val) => {
@@ -193,7 +191,7 @@ watch(
   { deep: true }
 )
 
-// 🔄 pri načítaní komponentu načítaj predchádzajúci draft
+//if draft exists, it loads it
 onMounted(() => {
   const draft = localStorage.getItem('customQuestionDraft')
   if (draft) {
@@ -204,7 +202,7 @@ onMounted(() => {
   }
   const savedRegion = localStorage.getItem('region')
   if (savedRegion) {
-    region.value = savedRegion   // 'europe' alebo 'americas'
+    region.value = savedRegion
   }
 })
 </script>
@@ -220,38 +218,39 @@ onMounted(() => {
     <div class="block-custom">
       <h2>Custom Question</h2>
 
-<div class="form-custom">
-  <label>Country</label>
-  <select v-model="newQuestion.country" :class="{ 'error-custom': errors.country }">
-    <option disabled value="">Select a country</option>
-    <option v-for="c in availableCountries" :key="c.code" :value="c.code">{{ c.name }}</option>
-  </select>
+      <div class="form-custom">
+        <label>Country</label>
+        <!-- list of countries -->
+        <select v-model="newQuestion.country" :class="{ 'error-custom': errors.country }">
+          <option disabled value="">Select a country</option>
+          <option v-for="c in availableCountries" :key="c.code" :value="c.code">{{ c.name }}</option>
+        </select>
 
-  <label>Question Type</label>
-  <select v-model="newQuestion.questionType" :class="{ 'error-custom': errors.questionType }">
-    <option disabled value="">Select a type</option>
-    <option value="History">History</option>
-    <option value="Society">Society</option>
-    <option value="Geography">Geography</option>
-    <option value="Sport">Sport</option>
-  </select>
+        <label>Question Type</label>
+        <!-- categories -->
+        <select v-model="newQuestion.questionType" :class="{ 'error-custom': errors.questionType }">
+          <option disabled value="">Select a type</option>
+          <option value="History">History</option>
+          <option value="Society">Society</option>
+          <option value="Geography">Geography</option>
+          <option value="Sport">Sport</option>
+        </select>
 
-  <label>Question</label>
-  <input type="text" v-model="newQuestion.questionText" placeholder="Enter question..." :class="{ 'error-custom': errors.questionText }" />
+        <label>Question</label>
+        <input type="text" v-model="newQuestion.questionText" placeholder="Enter question..." :class="{ 'error-custom': errors.questionText }" />
 
-  <label>Correct answer</label>
-  <input type="text" v-model="newQuestion.correctAnswer" placeholder="Correct answer..." :class="{ 'error-custom': errors.correctAnswer }" />
+        <label>Correct answer</label>
+        <input type="text" v-model="newQuestion.correctAnswer" placeholder="Correct answer..." :class="{ 'error-custom': errors.correctAnswer }" />
 
-  <label>Wrong answers</label>
-  <input type="text" v-model="newQuestion.wrongA" placeholder="1." :class="{ 'error-custom': errors.wrongA }" />
-  <input type="text" v-model="newQuestion.wrongB" placeholder="2." :class="{ 'error-custom': errors.wrongB }" />
-  <input type="text" v-model="newQuestion.wrongC" placeholder="3." :class="{ 'error-custom': errors.wrongC }" />
+        <label>Wrong answers</label>
+        <input type="text" v-model="newQuestion.wrongA" placeholder="1." :class="{ 'error-custom': errors.wrongA }" />
+        <input type="text" v-model="newQuestion.wrongB" placeholder="2." :class="{ 'error-custom': errors.wrongB }" />
+        <input type="text" v-model="newQuestion.wrongC" placeholder="3." :class="{ 'error-custom': errors.wrongC }" />
 
-  <button class="save-btn-custom" @click="saveQuestion">Save Question</button>
-  <span v-if="saved" class="saved-text-custom">Saved!</span>
+        <button class="save-btn-custom" @click="saveQuestion">Save Question</button>
+        <span v-if="saved" class="saved-text-custom">Saved!</span>
 
-</div>
-
+      </div>
     </div>
   </div>
 </template>
