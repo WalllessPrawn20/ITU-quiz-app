@@ -2703,58 +2703,59 @@
     ],
     "correct": "Poland"
   },
-{
-  "id": "US",
-  "player": 0,
-  "category": "History",
-  "title": "Which U.S. president signed the Emancipation Proclamation in 1863, declaring all slaves in Confederate territory to be free?",
-  "answers": [
-    "Abraham Lincoln",
-    "George Washington",
-    "Thomas Jefferson",
-    "Andrew Jackson"
-  ],
-  "correct": "Abraham Lincoln"
-},
-{
-  "id": "US",
-  "player": 0,
-  "category": "Sport",
-  "title": "Which American swimmer won 23 Olympic gold medals, making them the most decorated Olympian of all time?",
-  "answers": [
-    "Michael Phelps",
-    "Mark Spitz",
-    "Ryan Lochte",
-    "Katie Ledecky"
-  ],
-  "correct": "Michael Phelps"
-},
-{
-  "id": "US",
-  "player": 0,
-  "category": "Society",
-  "title": "Which 1960s movement fought for civil rights and racial equality in the United States, famously led by figures like Martin Luther King Jr.?",
-  "answers": [
-    "Civil Rights Movement",
-    "Women's Liberation Movement",
-    "Labor Movement",
-    "Temperance Movement"
-  ],
-  "correct": "Civil Rights Movement"
-},
-{
-  "id": "US",
-  "player": 0,
-  "category": "Geography",
-  "title": "Which U.S. state is known for having more freshwater lakes than any other state, earning it the nickname 'Land of 10,000 Lakes'?",
-  "answers": [
-    "Minnesota",
-    "Michigan",
-    "Wisconsin",
-    "Alaska"
-  ],
-  "correct": "Minnesota"
-},{
+  {
+    "id": "US",
+    "player": 0,
+    "category": "History",
+    "title": "Which U.S. president signed the Emancipation Proclamation in 1863, declaring all slaves in Confederate territory to be free?",
+    "answers": [
+      "Abraham Lincoln",
+      "George Washington",
+      "Thomas Jefferson",
+      "Andrew Jackson"
+    ],
+    "correct": "Abraham Lincoln"
+  },
+  {
+    "id": "US",
+    "player": 0,
+    "category": "Sport",
+    "title": "Which American swimmer won 23 Olympic gold medals, making them the most decorated Olympian of all time?",
+    "answers": [
+      "Michael Phelps",
+      "Mark Spitz",
+      "Ryan Lochte",
+      "Katie Ledecky"
+    ],
+    "correct": "Michael Phelps"
+  },
+  {
+    "id": "US",
+    "player": 0,
+    "category": "Society",
+    "title": "Which 1960s movement fought for civil rights and racial equality in the United States, famously led by figures like Martin Luther King Jr.?",
+    "answers": [
+      "Civil Rights Movement",
+      "Women's Liberation Movement",
+      "Labor Movement",
+      "Temperance Movement"
+    ],
+    "correct": "Civil Rights Movement"
+  },
+  {
+    "id": "US",
+    "player": 0,
+    "category": "Geography",
+    "title": "Which U.S. state is known for having more freshwater lakes than any other state, earning it the nickname 'Land of 10,000 Lakes'?",
+    "answers": [
+      "Minnesota",
+      "Michigan",
+      "Wisconsin",
+      "Alaska"
+    ],
+    "correct": "Minnesota"
+  },
+  {
     "id": "CA",
     "player": 0,
     "category": "History",
@@ -2961,7 +2962,8 @@
       "Florida Reef"
     ],
     "correct": "Belize Barrier Reef"
-  },  {
+  },
+  {
     "id": "HN",
     "player": 0,
     "category": "History",
@@ -3220,7 +3222,8 @@
       "Cordillera Central"
     ],
     "correct": "Cordillera de Talamanca"
-  }, {
+  },
+  {
     "id": "CU",
     "player": 0,
     "category": "History",
@@ -3272,7 +3275,6 @@
     ],
     "correct": "Sierra Maestra"
   },
-
   {
     "id": "JM",
     "player": 0,
@@ -3325,7 +3327,6 @@
     ],
     "correct": "Blue Mountains"
   },
-
   {
     "id": "HT",
     "player": 0,
@@ -3378,7 +3379,6 @@
     ],
     "correct": "Massif de la Selle"
   },
-
   {
     "id": "DO",
     "player": 0,
@@ -3431,7 +3431,6 @@
     ],
     "correct": "Pico Duarte"
   },
-
   {
     "id": "PR",
     "player": 0,
@@ -3483,7 +3482,8 @@
       "Mayagüez Bay"
     ],
     "correct": "Mosquito Bay"
-  },  {
+  },
+  {
     "id": "BB",
     "player": 0,
     "category": "History",
@@ -3535,7 +3535,6 @@
     ],
     "correct": "Scotland District"
   },
-
   {
     "id": "TT",
     "player": 0,
@@ -3588,7 +3587,6 @@
     ],
     "correct": "Northern Range"
   },
-
   {
     "id": "BS",
     "player": 0,
@@ -3641,7 +3639,6 @@
     ],
     "correct": "Andros Island"
   },
-
   {
     "id": "LC",
     "player": 0,
@@ -3694,7 +3691,6 @@
     ],
     "correct": "The Pitons"
   },
-
   {
     "id": "GD",
     "player": 0,
@@ -3746,7 +3742,8 @@
       "La Grande Soufrière"
     ],
     "correct": "Mount Saint Catherine"
-  },  {
+  },
+  {
     "id": "AW",
     "player": 0,
     "category": "History",
@@ -3798,7 +3795,6 @@
     ],
     "correct": "Arikok National Park"
   },
-
   {
     "id": "CW",
     "player": 0,
@@ -3851,7 +3847,6 @@
     ],
     "correct": "Willemstad"
   },
-
   {
     "id": "KN",
     "player": 0,
@@ -3904,7 +3899,6 @@
     ],
     "correct": "Saint Kitts"
   },
-
   {
     "id": "DM",
     "player": 0,
@@ -3957,7 +3951,6 @@
     ],
     "correct": "Morne Diablotins"
   },
-
   {
     "id": "AG",
     "player": 0,
@@ -4009,7 +4002,8 @@
       "Saint John"
     ],
     "correct": "Antigua"
-  },  {
+  },
+  {
     "id": "BR",
     "player": 0,
     "category": "History",
@@ -4061,7 +4055,6 @@
     ],
     "correct": "Amazon River"
   },
-
   {
     "id": "AR",
     "player": 0,
@@ -4114,7 +4107,6 @@
     ],
     "correct": "Aconcagua"
   },
-
   {
     "id": "CL",
     "player": 0,
@@ -4167,7 +4159,6 @@
     ],
     "correct": "Atacama Desert"
   },
-
   {
     "id": "CO",
     "player": 0,
@@ -4220,7 +4211,6 @@
     ],
     "correct": "Putumayo River"
   },
-
   {
     "id": "PE",
     "player": 0,
@@ -4272,7 +4262,8 @@
       "Guiana Highlands"
     ],
     "correct": "Andes"
-  },  {
+  },
+  {
     "id": "VE",
     "player": 0,
     "category": "History",
@@ -4324,7 +4315,6 @@
     ],
     "correct": "Angel Falls"
   },
-
   {
     "id": "EC",
     "player": 0,
@@ -4377,7 +4367,6 @@
     ],
     "correct": "Galápagos Islands"
   },
-
   {
     "id": "BO",
     "player": 0,
@@ -4430,7 +4419,6 @@
     ],
     "correct": "Altiplano"
   },
-
   {
     "id": "PY",
     "player": 0,
@@ -4483,7 +4471,6 @@
     ],
     "correct": "Paraná River"
   },
-
   {
     "id": "UY",
     "player": 0,
@@ -4535,7 +4522,8 @@
       "Amazon River"
     ],
     "correct": "Uruguay River"
-  },{
+  },
+  {
     "id": "GY",
     "player": 0,
     "category": "History",
@@ -4587,7 +4575,6 @@
     ],
     "correct": "Essequibo River"
   },
-
   {
     "id": "SR",
     "player": 0,
@@ -4640,7 +4627,6 @@
     ],
     "correct": "Suriname River"
   },
-
   {
     "id": "GF",
     "player": 0,
@@ -4692,7 +4678,8 @@
       "Approuague River"
     ],
     "correct": "Oyapock River"
-  },  {
+  },
+  {
     "id": "AN",
     "player": 0,
     "category": "History",
@@ -4744,7 +4731,6 @@
     ],
     "correct": "Caribbean Sea"
   },
-
   {
     "id": "VC",
     "player": 0,
@@ -4797,7 +4783,6 @@
     ],
     "correct": "Saint Vincent"
   },
-
   {
     "id": "MS",
     "player": 0,
@@ -4850,7 +4835,6 @@
     ],
     "correct": "Caribbean Sea"
   },
-
   {
     "id": "AI",
     "player": 0,
@@ -4903,7 +4887,6 @@
     ],
     "correct": "Antigua and Barbuda"
   },
-
   {
     "id": "KY",
     "player": 0,
@@ -4955,7 +4938,8 @@
       "Pacific Ocean"
     ],
     "correct": "Caribbean Sea"
-  },  {
+  },
+  {
     "id": "TC",
     "player": 0,
     "category": "History",
@@ -5007,7 +4991,6 @@
     ],
     "correct": "Atlantic Ocean"
   },
-
   {
     "id": "BM",
     "player": 0,
@@ -5060,7 +5043,6 @@
     ],
     "correct": "Atlantic Ocean"
   },
-
   {
     "id": "PN",
     "player": 0,
@@ -5113,7 +5095,6 @@
     ],
     "correct": "Pacific Ocean"
   },
-
   {
     "id": "PF",
     "player": 0,
@@ -5166,7 +5147,6 @@
     ],
     "correct": "Pacific Ocean"
   },
-
   {
     "id": "CK",
     "player": 0,
@@ -5219,7 +5199,6 @@
     ],
     "correct": "Pacific Ocean"
   },
-
   {
     "id": "GL",
     "player": 0,
@@ -5272,5 +5251,4 @@
     ],
     "correct": "Arctic and Atlantic Oceans"
   }
-
 ]

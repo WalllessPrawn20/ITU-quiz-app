@@ -16,8 +16,6 @@
         <p>You: {{ scores.you }}</p>
         <p>Enemy: {{ scores.bot }}</p>
       </div>
-
-      <
       <div class="map-container" ref="mapContainer" v-html="americaSvg" @wheel="handleZoom"></div>
     </div>
 
@@ -66,7 +64,7 @@ const gameSettings = ref({
   timer: 0,
   completed_turns: 0,
 })
-const initialTimer = gameSettings.timer || 20
+const initialTimer = gameSettings.value.timer || 20
 const timer = ref(initialTimer)
 let gameInterval = null
 const command = ref('Select a country')
@@ -83,7 +81,7 @@ const turn = ref(0)
 const gameOver = ref(false)
 let continent = ref('Europe')
 
-const difficulty = gameSettings.difficulty || 'Medium'
+const difficulty = gameSettings.value.difficulty || 'Medium'
 let categories = ref({})
 
 const isPaused = ref(false)
@@ -216,7 +214,7 @@ async function updateStats(continent, correct) {
 
 function handleTimeout() {
   countryResults.value[selectedCountryId] = 'wrong'
-  const path = mapContainer.value.querySelector(`#${selectedCountryId}`)
+  // const path = mapContainer.value.querySelector(`#${selectedCountryId}`)
   currentQuestion.value = null
   command.value = 'Select a country'
   startGameTimer(10)

@@ -2,9 +2,9 @@
   <div class="game-over-overlay">
     <div class="game-over-card">
       <h2>
-        <span v-if="scores.you > scores.bot">🏆 You Win!</span>
-        <span v-else-if="scores.you < scores.bot">💀 You Lost!</span>
-        <span v-else>🤝 It's a tie!</span>
+        <span v-if="scores.you > scores.bot">You Win!👍</span>
+        <span v-else-if="scores.you < scores.bot">You Lost!👎</span>
+        <span v-else>It's a tie!</span>
       </h2>
 
       <p>You finished all {{ totalRounds }} turns!</p>
@@ -15,8 +15,8 @@
       </div>
 
       <div class="message">
-        <p v-if="scores.you > scores.bot">🎉 You conquered Europe!</p>
-        <p v-else-if="scores.you === scores.bot">It’s a draw — Europe remains divided!</p>
+        <p v-if="scores.you > scores.bot">You conquered Europe!</p>
+        <p v-else-if="scores.you === scores.bot">It's a draw - Europe remains divided!</p>
         <p v-else>Better luck next time, commander.</p>
       </div>
 
