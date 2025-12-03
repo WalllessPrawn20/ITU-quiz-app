@@ -1,3 +1,9 @@
+<!----------------------------->
+<!-- Author: Matej Melchiory -->
+<!-- Login: xmelchm00 --------->
+<!-- Date: 3.12.2025 ---------->
+<!----------------------------->
+
 <script setup>
 import { ref, onMounted } from 'vue'
 import { useRouter } from 'vue-router'
@@ -8,22 +14,26 @@ const music = ref(true)
 const sfx = ref(true)
 const currentTrack = ref('synthwave')
 
+// Going back to the previous page
 function goBack() {
   router.back()
 }
 
+// Toggle music on/off
 function toggleMusic() {
   music.value = !music.value
   audioManager.toggle()
   sessionStorage.setItem('music', music.value) // uložiť stav hudby
 }
 
+// Change the current track
 function changeTrack(trackName) {
   currentTrack.value = trackName
   audioManager.switchTrack(trackName)
   sessionStorage.setItem('track', trackName) // uložiť zvolenú pesničku
 }
 
+// Load settings about sound from sessionStorage on loading
 onMounted(() => {
   const storedMusic = sessionStorage.getItem('music')
   if (storedMusic !== null) {
@@ -41,11 +51,13 @@ onMounted(() => {
 
 <template>
   <div class="menu-screen">
+    <!--  Button for going back -->
     <button class="close-btn" @click="goBack">✖</button>
 
     <div class="menu-content">
       <h1 class="title">WORLD<br />CONQUEST</h1>
 
+      <!-- A menu with all settings available -->
       <div class="settings-box">
         <div class="setting-item">
           <span>MUSIC:</span>

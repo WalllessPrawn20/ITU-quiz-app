@@ -1,19 +1,29 @@
+<!----------------------------->
+<!-- Author: Matej Melchiory -->
+<!-- Login: xmelchm00 --------->
+<!-- Date: 3.12.2025 ---------->
+<!----------------------------->
+
 <template>
   <div class="stats-overlay">
+    <!-- The whole stats info card -->
     <div class="stats-card">
       <button class="close-btn" @click="closeStats">✖</button>
       <button class="reset-btn" @click="resetStats">RST</button>
       <h1 class="stats-title">STATS</h1>
 
+      <!-- All statistics headings -->
       <table class="stats-table">
         <thead>
           <tr>
-            <th>Continent</th>
+            <th>continent</th>
             <th>Correct</th>
             <th>Incorrect</th>
             <th>Success rate</th>
           </tr>
         </thead>
+
+        <!-- Stats from the server -->
         <tbody>
           <tr v-for="(stat, index) in stats" :key="index">
             <td>{{ stat.name }}</td>
@@ -28,11 +38,13 @@
 </template>
 
 <script setup>
+
 import { ref, onMounted } from 'vue'
 import { useRouter } from 'vue-router'
 
 const router = useRouter()
 
+// Statistics data to be downloaded from the server
 const stats = ref([
   { name: 'Whole world', correct: 0, incorrect: 0, successRate: '-' },
   { name: 'Europe', correct: 0, incorrect: 0, successRate: '-' },
@@ -46,23 +58,26 @@ function closeStats() {
   router.back()
 }
 
+// Calculate success rate as a percentage
 function calcRate(correct, incorrect) {
   const total = correct + incorrect
   if (total === 0) return '-'
   return `${Math.round((correct / total) * 100)}%`
 }
 
+// Fetch all statistics from the server
 async function fetchStats() {
   try {
     const res = await fetch('http://localhost:5000/stats')
     if (!res.ok) throw new Error('Failed to fetch stats')
     const data = await res.json()
 
+    // Changing the format for the stats display
     stats.value = stats.value.map((s) => {
-      const cont = s.name
-      if (data[cont]) {
-        const correct = data[cont].correct
-        const incorrect = data[cont].wrong
+      const continent = s.name
+      if (data[continent]) {
+        const correct = data[continent].correct
+        const incorrect = data[continent].wrong
         return {
           ...s,
           correct,
@@ -77,18 +92,20 @@ async function fetchStats() {
   }
 }
 
+// Reset all statistics on the server
 async function resetStats() {
   try {
     const res = await fetch('http://localhost:5000/stats/reset', { method: 'POST' })
     if (!res.ok) throw new Error('Failed to reset stats')
 
-    // Po resete načítame štatistiky znova
+    // Load the fresh stats after resetting
     await fetchStats()
   } catch (err) {
     console.error('Error resetting stats:', err)
   }
 }
 
+// Load stats on component load
 onMounted(() => {
   fetchStats()
 })

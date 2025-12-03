@@ -1,16 +1,25 @@
+<!----------------------------->
+<!-- Author: Matej Melchiory -->
+<!-- Login: xmelchm00 --------->
+<!-- Date: 3.12.2025 ---------->
+<!----------------------------->
+
 <template>
   <div class="game-view">
     <div class="top-bar">
+      <!-- Route to go back home through the reacting logo -->
       <router-link to="/" class="title-link">World Conquest</router-link>
+      <!-- Pause button to pause the game -->
       <button class="pause-button" @click="togglePause">
-        {{ isPaused ? 'Resume' : 'Pause' }}
+        {{ is_paused ? 'Resume' : 'Pause' }}
       </button>
     </div>
 
-    <div class="content" v-if="!gameOver">
+    <!-- A panel with all information necessary, all variables loaded from the server -->
+    <div class="content" v-if="!game_over">
       <div class="info-panel">
         <p><strong>Time left:</strong> {{ timer }}s</p>
-        <p><strong>Command:</strong> {{ command }}</p>
+        <p><strong>Action:</strong> {{ command }}</p>
         <p><strong>Turns:</strong> {{ turn }}/{{ totalRounds }}</p>
         <p><strong>Score</strong></p>
         <p>You: {{ scores.you }}</p>
@@ -19,8 +28,9 @@
       <div class="map-container" ref="mapContainer" v-html="americaSvg" @wheel="handleZoom"></div>
     </div>
 
+    <!-- Mounting the QuestionABCD when the question is loaded and the type is abcd -->
     <QuestionView
-      v-if="currentQuestion && currentQuestion.type === 'abcd' && !gameOver"
+      v-if="currentQuestion && currentQuestion.type === 'abcd' && !game_over"
       :question="currentQuestion"
       :duration="questionDuration"
       :difficulty="difficulty"
@@ -29,15 +39,17 @@
       @score="handleScore"
     />
 
+    <!-- Mounting the QuestionNumber when the question is loaded and the type is numeric -->
     <QuestionNumberView
-      v-if="currentQuestion && currentQuestion.type === 'numeric' && !gameOver"
+      v-if="currentQuestion && currentQuestion.type === 'numeric' && !game_over"
       :question="currentQuestion"
       :duration="questionDuration"
       @answered="handleAnswer"
       @score="handleScore"
     />
 
-    <GameOverView v-if="gameOver" :scores="scores" :totalRounds="totalRounds" />
+    <!-- Mounting the GameOverView when the game is over -->
+    <GameOverView v-if="game_over" :scores="scores" :totalRounds="totalRounds" />
   </div>
 </template>
 
@@ -52,7 +64,8 @@ import QuestionNumberView from './QuestionNumberView.vue'
 
 const mapContainer = ref(null)
 
-const gameSettings = ref({
+// Game settings loaded from the server to configure the game
+const game_settings = ref({
   playerScore: 0,
   player_country: [],
   botScore: 0,
@@ -64,63 +77,76 @@ const gameSettings = ref({
   timer: 0,
   completed_turns: 0,
 })
-const initialTimer = gameSettings.value.timer || 20
-const timer = ref(initialTimer)
-let gameInterval = null
-const command = ref('Select a country')
 
-const scores = ref({ you: 0, bot: 0 })
+// Game settings variables
+const initial_timer = game_settings.value.timer || 20
+let game_interval = null
+let continent = ref('Europe')
+let categories = ref({})
+const difficulty = game_settings.value.difficulty || 'Medium'
 
+// Checks
+const is_paused = ref(false)
+const game_over = ref(false)
+
+// Country question variables
 const currentQuestion = ref(null)
 const questionDuration = ref(15)
 let selectedCountryId = null
 const countryResults = ref({})
 
+// Info panel variables
+const timer = ref(initial_timer)
 const totalRounds = ref(0)
 const turn = ref(0)
-const gameOver = ref(false)
-let continent = ref('Europe')
+const scores = ref({ you: 0, bot: 0 })
+const command = ref('Select a country')
 
-const difficulty = gameSettings.value.difficulty || 'Medium'
-let categories = ref({})
 
-const isPaused = ref(false)
-
+// Function to toggle pause state, freeze the game
 function togglePause() {
-  isPaused.value = !isPaused.value
+  is_paused.value = !is_paused.value
   let time = timer.value
-  if (isPaused.value) {
-    clearInterval(gameInterval) // pozastaví timer
+
+  if (is_paused.value) {
+    clearInterval(game_interval)  // Pause the timer
     command.value = 'Game Paused'
-  } else {
+  }
+  else {
     command.value = 'Select a country'
-    startGameTimer(time) // spustí timer znova
+    startGameTimer(time)  // Resume with remaining time
   }
 }
 
+// Function to handle the click on a country, continues to load a random question from the server with country ID
 async function handleCountryClick(countryId) {
-  if (countryResults.value[countryId] || currentQuestion.value || gameOver.value) return
 
-  clearInterval(gameInterval)
+  // Prevent clicking on already answered countries or during a question or after game over
+  if (countryResults.value[countryId] || currentQuestion.value || game_over.value) return
+
+  clearInterval(game_interval)
 
   selectedCountryId = countryId
   command.value = `Loading question for ${countryId}...`
 
+  // Fetch questions for the clicked country
   let countryQuestions = await fetchQuestions(countryId)
   countryQuestions = countryQuestions.filter((q) => q.type === 'abcd')
 
+  // If there is a question, pick a random one
   if (countryQuestions.length) {
     const randomIndex = Math.floor(Math.random() * countryQuestions.length)
     currentQuestion.value = countryQuestions[randomIndex]
-    command.value = `Question for ${countryId}`
-  } else {
-    command.value = `No question for ${countryId}`
+    command.value = `Answer a question for ${countryId}`
+  }
+  else {
+    command.value = `No question for ${countryId} found`
   }
 }
 
+// Function to handle the answer result for the abcd question or if the result was a tie getting numeric question
 async function handleAnswer(result) {
   if (result.tie) {
-    console.log('its a tie')
 
     const numeric = await fetchQuestions(selectedCountryId)
     const numOnly = numeric.filter((q) => q.type === 'numeric')
@@ -131,8 +157,11 @@ async function handleAnswer(result) {
     }
   }
 
+  // Update the stats on the server
+  console.log('Updating stats for continent:', continent.value, 'Correct:', result.playerCorrect)
   await updateStats(continent, result.playerCorrect)
 
+  // Go to the next turn or end the game if all rounds are completed
   if (turn.value >= totalRounds.value) {
     endGame()
     return
@@ -144,21 +173,22 @@ async function handleAnswer(result) {
   startGameTimer(10)
 }
 
+// Function to handle scoring and coloring the country based on who got it right
 function handleScore({ playerPoint, botPoint }) {
   if (!selectedCountryId) return
 
-  // Skúsime nájsť group s ID krajiny
+  // A differrent type of svgs magic, if the id isnt on a group, try to find id on path directly
   let countryGroup = mapContainer.value.querySelector(`g[id="${selectedCountryId}"]`)
   let paths = []
 
   if (countryGroup) {
     paths = countryGroup.querySelectorAll('path')
   } else {
-    // fallback: skúsiť nájsť path s týmto ID priamo
     const singlePath = mapContainer.value.querySelector(`path[id="${selectedCountryId}"]`)
     if (singlePath) paths = [singlePath]
   }
 
+  // Color the country based on who got it right and update the server to know what continent is correct/wrong for the site refresh
   paths.forEach(async (path) => {
     if (playerPoint) {
       path.style.fill = '#00ff00' // hráč správne
@@ -172,8 +202,9 @@ function handleScore({ playerPoint, botPoint }) {
           countryId: selectedCountryId,
         }),
       })
-    } else if (botPoint) {
-      path.style.fill = '#ff3333' // bot správne
+    }
+    else if (botPoint) {
+      path.style.fill = '#ff3333'
       countryResults.value[path.id || selectedCountryId] = 'wrong'
 
       await fetch('http://localhost:5000/game/country/add', {
@@ -188,14 +219,16 @@ function handleScore({ playerPoint, botPoint }) {
   })
 }
 
+// Function to end the game, stop the timer and show game over screen
 function endGame() {
-  clearInterval(gameInterval)
-  gameOver.value = true
+  clearInterval(game_interval)
+  game_over.value = true
   command.value = 'Game Over!'
 }
 
-//TODO
+//TODO hm?
 
+// Function to update statistics json with the chosen continent on the server
 async function updateStats(continent, correct) {
   try {
     const res = await fetch('http://localhost:5000/stats/update', {
@@ -207,44 +240,53 @@ async function updateStats(continent, correct) {
       }),
     })
     if (!res.ok) throw new Error('Failed to update stats')
-  } catch (err) {
+  }
+  catch (err) {
     console.error('Error updating stats:', err)
   }
 }
 
+// Function to handle timeout when no answer is given in time
 function handleTimeout() {
   countryResults.value[selectedCountryId] = 'wrong'
-  // const path = mapContainer.value.querySelector(`#${selectedCountryId}`)
   currentQuestion.value = null
   command.value = 'Select a country'
   startGameTimer(10)
 }
 
+// Function to start the game timer for each question or turn
 function startGameTimer(time) {
-  clearInterval(gameInterval)
+  clearInterval(game_interval)
   timer.value = time
-  gameInterval = setInterval(() => {
+
+  // Start the countdown
+  game_interval = setInterval(() => {
     if (timer.value > 0) {
       timer.value -= 1
-    } else {
-      clearInterval(gameInterval)
+    }
+    else {
+      clearInterval(game_interval)
       const paths = mapContainer.value.querySelectorAll('path')
       const unselected = Array.from(paths).filter((p) => !countryResults.value[p.id])
       if (unselected.length > 0) {
         const randomPath = unselected[Math.floor(Math.random() * unselected.length)]
         handleCountryClick(randomPath.id)
-      } else {
+      }
+      else {
         command.value = 'Time is up! No more countries left.'
       }
     }
   }, 1000)
 }
 
+// Function to fetch questions for a given country ID from the server
 async function fetchQuestions(id) {
   try {
+    // Change of the ID to match server expectations
     const capitalizedId = id.slice(0, 2).toUpperCase()
     const categoryParam = categories.value.join(',')
 
+    // Fetch both types of questions
     const res1 = await fetch(
       `http://localhost:5000/questions/filter?id=${capitalizedId}&category=${categoryParam}`,
     )
@@ -253,9 +295,11 @@ async function fetchQuestions(id) {
     const res2 = await fetch(`http://localhost:5000/questions2/filter?id=${capitalizedId}`)
     const numericRaw = res2.ok ? await res2.json() : []
 
+    // Add type to each question
     const numeric = numericRaw.map((q) => ({ ...q, type: 'numeric' }))
     const abcdTyped = abcd.map((q) => ({ ...q, type: 'abcd' }))
 
+    // Combine both types and return
     return [...abcdTyped, ...numeric]
   } catch (err) {
     console.error('Error loading questions:', err)
@@ -263,6 +307,7 @@ async function fetchQuestions(id) {
   }
 }
 
+// An actual function to get all paths for a country, whether in a group or single path, part of the coloring fuinction when the site is refreshed
 function getCountryPaths(countryId) {
   let group = mapContainer.value.querySelector(`g[id="${countryId}"]`)
   if (group) return group.querySelectorAll('path')
@@ -271,6 +316,7 @@ function getCountryPaths(countryId) {
   return single ? [single] : []
 }
 
+// Function to color a country on the map based on who got it right before the site refresh
 function colorCountry(countryId, who) {
   const paths = getCountryPaths(countryId)
   paths.forEach((path) => {
@@ -284,24 +330,27 @@ function colorCountry(countryId, who) {
   })
 }
 
+// On component mount, load game settings and initialize the map and timer
 onMounted(async () => {
-  // 🔁 Najprv vynuluj skóre na serveri
   try {
+    // Load game settings from the server
     const res = await fetch('http://localhost:5000/game/load')
     const data = await res.json()
-    gameSettings.value = data
-    categories.value = Object.keys(gameSettings.value?.categories || {}).filter(
-      (key) => gameSettings.value.categories[key] === true,
+    game_settings.value = data
+
+    // Set up game parameters based on loaded settings
+    categories.value = Object.keys(game_settings.value?.categories || {}).filter(
+      (key) => game_settings.value.categories[key] === true,
     )
-    totalRounds.value = +gameSettings.value.turns || 25
+    totalRounds.value = +game_settings.value.turns || 25
     turn.value = 0
-    questionDuration.value = +gameSettings.value.timer || 15
-    continent.value = gameSettings.value.continent
-    console.log('✅ Game settings loaded')
+    questionDuration.value = +game_settings.value.timer || 15
+    continent.value = game_settings.value.continent
   } catch (err) {
-    console.error('❌ Failed to load game score:', err)
+    console.error('Failed to load game score:', err)
   }
 
+  // Choosing the correct SVG based on the continent
   if (continent.value === 'americas') {
     mapContainer.value.innerHTML = americaSvg
   } else {
@@ -311,11 +360,9 @@ onMounted(async () => {
   const svg = mapContainer.value.querySelector('svg')
   if (!svg) return
 
-  // odstrániť predvolené width/height, aby sa bral viewBox
+  // Forcing the SVG to take full container size for pan and zoom
   svg.removeAttribute('width')
   svg.removeAttribute('height')
-
-  // nastav CSS štýl, aby zabral celý kontajner
   svg.style.width = '100%'
   svg.style.height = '100%'
 
@@ -329,7 +376,7 @@ onMounted(async () => {
     zoomScaleSensitivity: 0.2,
   })
 
-  // 🔹 Pridaj klikateľnosť pre krajiny na mape
+  // Adding click listeners to all paths representing countries
   const paths = mapContainer.value.querySelectorAll('path')
   paths.forEach((path) => {
     path.style.cursor = 'pointer'
@@ -338,44 +385,48 @@ onMounted(async () => {
 
       let countryId
       if (continent.value === 'americas') {
-        countryId = path.parentElement?.id // ID je na <g>
+        countryId = path.parentElement?.id // ID from the americas svg is on parent g element
         if (countryId === 'two_planets') {
           countryId = path.id
         }
         console.log('Clicked country ID:', countryId)
       } else {
-        countryId = path.id // Európa alebo iné kontinenty
+        countryId = path.id
       }
 
-      if (countryId) handleCountryClick(countryId)
+      if (countryId){
+        handleCountryClick(countryId)
+      }
     })
   })
 
-  if (gameSettings.value.player_country) {
-    console.log('Coloring player countries:', gameSettings.value.player_country)
-    gameSettings.value.player_country.forEach((id) => colorCountry(id, 'player'))
+  // Coloring already answered countries based on loaded game settings using custom functions
+  if (game_settings.value.player_country) {
+    console.log('Coloring player countries:', game_settings.value.player_country)
+    game_settings.value.player_country.forEach((id) => colorCountry(id, 'player'))
   }
-
-  if (gameSettings.value.bot_country) {
-    gameSettings.value.bot_country.forEach((id) => colorCountry(id, 'bot'))
+  if (game_settings.value.bot_country) {
+    game_settings.value.bot_country.forEach((id) => colorCountry(id, 'bot'))
   }
 
   startGameTimer(10)
 
-  updateScoresFromServer() // hneď načíta prvé hodnoty
-  setInterval(updateScoresFromServer, 1500) // každú sekundu
+  updateScoresFromServer()
+  setInterval(updateScoresFromServer, 1500)
 })
 
+// Clear the interval on component unmount to prevent errors
 onUnmounted(() => {
-  clearInterval(gameInterval)
+  clearInterval(game_interval)
 })
 
-// ===== Funkcia na sťahovanie skóre zo servera =====
+// Function to download the latest scores from the server
 async function updateScoresFromServer() {
   try {
     const res = await fetch('http://localhost:5000/game/score')
     if (!res.ok) throw new Error('Failed to fetch score')
     const data = await res.json()
+
     scores.value.you = data.playerScore
     scores.value.bot = data.botScore
     turn.value = data.completed_turns

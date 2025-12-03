@@ -1,7 +1,16 @@
+<!----------------------------->
+<!-- Author: Matej Melchiory -->
+<!-- Login: xmelchm00 --------->
+<!-- Date: 3.12.2025 ---------->
+<!----------------------------->
+
 <template>
   <div class="question-view">
+
+    <!-- Getting the question title -->
     <h2>{{ question.title }}</h2>
     <div class="answers">
+      <!-- Going through all available answers and setting classes for the final picking -->
       <button
         v-for="answer in shuffledAnswers"
         :key="answer"
@@ -16,6 +25,8 @@
         {{ answer }}
       </button>
     </div>
+
+    <!-- Remaining time loaded from the server and ticking down using timeout -->
     <p>Time left: {{ remainingTime }}s</p>
   </div>
 </template>
@@ -23,6 +34,7 @@
 <script setup>
 import { ref, onMounted, watch } from 'vue'
 
+// Deffining variables getting from the Gameview
 const props = defineProps({
   question: Object,
   duration: Number,
@@ -40,13 +52,13 @@ const botAnswer = ref(null)
 const answered = ref(false)
 const showResult = ref(false)
 
-function shuffleArray(array) {
-  return array
-    .map((value) => ({ value, sort: Math.random() }))
-    .sort((a, b) => a.sort - b.sort)
-    .map(({ value }) => value)
+// Function to shuffle the answers array
+function shuffleAnswers(answers) {
+  answers.map((value) => ({ value, sort: Math.random() })).sort((a, b) => a.sort - b.sort).map(({ value }) => value)
+  return answers
 }
 
+// Function to start the countdown timer 
 function startTimer() {
   clearInterval(interval)
   remainingTime.value = props.duration
@@ -61,6 +73,7 @@ function startTimer() {
   }, 1000)
 }
 
+// Function to select an answer and send it to the server for evaluation
 async function selectAnswer(answer) {
   if (answered.value) return
   answered.value = true
@@ -82,6 +95,7 @@ async function selectAnswer(answer) {
   botAnswer.value = data.botAnswer
   showResult.value = true
 
+  // Emitting the results after a short delay to show the correct and picked answers
   setTimeout(() => {
     emit('score', { playerPoint: data.playerPoint, botPoint: data.botPoint })
     emit('answered', {
@@ -97,15 +111,17 @@ async function selectAnswer(answer) {
   }, 1500)
 }
 
+// On component load, shuffle answers and start the timer
 onMounted(() => {
-  shuffledAnswers.value = shuffleArray(props.question.answers)
+  shuffledAnswers.value = shuffleAnswers(props.question.answers)
   startTimer()
 })
 
+// Watching for changes in the question prop to reshuffle answers and restart timer
 watch(
   () => props.question,
   () => {
-    shuffledAnswers.value = shuffleArray(props.question.answers)
+    shuffledAnswers.value = shuffleAnswers(props.question.answers)
     startTimer()
   },
 )
