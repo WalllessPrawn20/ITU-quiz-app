@@ -62,6 +62,15 @@ function saveStats(stats) {
   fs.writeFileSync(statsPath, JSON.stringify(stats, null, 2))
 }
 
+// Reseting values for the new game
+function resetGame() {
+  game.playerScore = 0
+  game.botScore = 0
+  game.completed_turns = 0
+  game.player_country = []
+  game.bot_country = []
+}
+
 // ======= Endpoints: questions =======
 app.get('/questions', (req, res) => {
   const questions = loadQuestions()
@@ -131,22 +140,6 @@ app.post('/questions/create', (req, res) => {
 });
 
 
-// ======= Pomocná funkcia - reset hry =======
-// function resetGame() {
-//   game.playerScore = 0
-//   game.botScore = 0
-//   game.completed_turns = 0
-//   game.player_country = []
-//   game.bot_country = []
-//   console.log('🌀 Game reset.')
-// }
-
-// // ======= Endpoint: reset skóre ======= TODO
-// app.post('/game/reset', (req, res) => {
-//   resetGame()
-//   res.json({ success: true, message: 'Game reset.' })
-// })
-
 // ======= Endpoint: Score =======
 app.get('/game/score', (req, res) => {
   res.json({
@@ -154,6 +147,11 @@ app.get('/game/score', (req, res) => {
     botScore: game.botScore,
     completed_turns: game.completed_turns,
   })
+})
+
+app.post('/game/reset', (req, res) => {
+  resetGame()
+  res.json({ success: true, message: 'Game reset.' })
 })
 
 // ======= Endpoints: Answers ======= TODO
@@ -310,9 +308,15 @@ app.get('/stats', (req, res) => {
 
 // Update stats in ti stats.json
 app.post('/stats/update', (req, res) => {
-  const { continent, correct } = req.body
+  let { continent, correct } = req.body
 
   if (!continent) return res.status(400).json({ error: 'Missing continent' })
+  if(continent === "europe"){
+    continent = "Europe"
+  }
+  else{
+    continent = "America"
+  }
 
   // Load, update and save stats
   const stats = loadStats()

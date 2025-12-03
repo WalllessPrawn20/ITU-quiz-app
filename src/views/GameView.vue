@@ -146,6 +146,10 @@ async function handleCountryClick(countryId) {
 
 // Function to handle the answer result for the abcd question or if the result was a tie getting numeric question
 async function handleAnswer(result) {
+  
+  // Update the stats on the server
+  await updateStats(continent, result.playerCorrect)
+  
   if (result.tie) {
 
     const numeric = await fetchQuestions(selectedCountryId)
@@ -156,11 +160,7 @@ async function handleAnswer(result) {
       return
     }
   }
-
-  // Update the stats on the server
-  console.log('Updating stats for continent:', continent.value, 'Correct:', result.playerCorrect)
-  await updateStats(continent, result.playerCorrect)
-
+  
   // Go to the next turn or end the game if all rounds are completed
   if (turn.value >= totalRounds.value) {
     endGame()
@@ -235,7 +235,7 @@ async function updateStats(continent, correct) {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
-        continent,
+        continent: continent.value,
         correct: correct ? 1 : 0,
       }),
     })
@@ -389,7 +389,6 @@ onMounted(async () => {
         if (countryId === 'two_planets') {
           countryId = path.id
         }
-        console.log('Clicked country ID:', countryId)
       } else {
         countryId = path.id
       }
@@ -402,7 +401,6 @@ onMounted(async () => {
 
   // Coloring already answered countries based on loaded game settings using custom functions
   if (game_settings.value.player_country) {
-    console.log('Coloring player countries:', game_settings.value.player_country)
     game_settings.value.player_country.forEach((id) => colorCountry(id, 'player'))
   }
   if (game_settings.value.bot_country) {
