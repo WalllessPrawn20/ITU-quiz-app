@@ -1,3 +1,9 @@
+<!----------------------------->
+<!-- Author: Lukas Choleva ---->
+<!-- Login: xcholel00 --------->
+<!-- Date: 8.12.2025 ---------->
+<!----------------------------->
+
 <script setup>
 import { ref, reactive, watch, onMounted, computed } from 'vue'
 
@@ -100,7 +106,7 @@ const newQuestion = reactive({
   wrongC: ''
 })
 
-// reactive errors, if something is missing
+// reactive errors, if something is missing or duplicate
 const errors = reactive({
   country: false,
   questionType: false,
@@ -125,7 +131,7 @@ const availableCountries = computed(() => {
 async function saveQuestion() {
   let hasError = false
 
-  //validiting
+  //validiting (if everything is filled out)
   for (const key in newQuestion) {
     if (!newQuestion[key]) {
       errors[key] = true
@@ -135,8 +141,44 @@ async function saveQuestion() {
     }
   }
 
-  if (hasError) return
+  //getting all answers
+  const answers = ["correctAnswer", "wrongA", "wrongB", "wrongC"]
+  const values = answers.map(key => ({ key, value: newQuestion[key].trim().toLowerCase()
+  }))
 
+  //resetting before marking new errors
+  answers.forEach(key => {
+    if (!errors[key]){
+      errors[key] = false
+    }
+  })
+
+  let duplicate = {} // fields that should be marked red
+
+  values.forEach((item, i) => {
+    //looking fort another answer with same value at different i
+    values.forEach((item2, j) => {
+      if (i !== j && item.value !== '' && item.value === item2.value) {
+        duplicate[item.key] = true
+        duplicate[item2.key] = true
+      }
+    })
+  })
+
+  // iff duplicates exist, mark only specific ones
+  if (Object.keys(duplicate).length > 0) {
+    hasError = true
+    Object.keys(duplicate).forEach(key => {
+      errors[key] = true
+    })
+  }
+
+  //not everything is filled out
+  if (hasError) {
+    return
+  }
+
+  //saving question (for browser refresh)
   const stored = JSON.parse(localStorage.getItem('customQuestions') || '[]')
   stored.push({ ...newQuestion })
   localStorage.setItem('customQuestions', JSON.stringify(stored))
@@ -159,13 +201,13 @@ async function saveQuestion() {
 
   //sending to server, which saves the question to questions.json
   try {
-    const res = await fetch('http://localhost:5000/questions/create', {
+    const resolution = await fetch('http://localhost:5000/questions/create', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(save)
     })
 
-    if (!res.ok) throw new Error('Failed to save question to server')
+    if (!resolution.ok) throw new Error('Failed to save question to server')
 
     // feedback
     saved.value = true
@@ -200,18 +242,85 @@ onMounted(() => {
       if (parsed[key]) newQuestion[key] = parsed[key]
     }
   }
+
   const savedRegion = localStorage.getItem('region')
   if (savedRegion) {
     region.value = savedRegion
   }
+
+  //lists all custom questions
+  loadCustomQuestions()
 })
+
+const customQuestions = ref([])
+
+//all custom questions
+async function loadCustomQuestions() {
+  try {
+    const resolution = await fetch('http://localhost:5000/questions')
+    const data = await resolution.json()
+
+    //filter where player is 1 (custom questions)
+    customQuestions.value = data.filter(question => question.player === 1)
+  } catch (err) {
+    console.error('Failed loading questions', err)
+  }
+}
+
+// when saving new question, refresh list
+watch(saved, (val) => {
+  if (val) loadCustomQuestions()
+})
+
+//deletes said question
+async function deleteQuestion(question) {
+  const resolution = await fetch("http://localhost:5000/questions/delete", {
+    method: "DELETE",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(question)
+  });
+
+  if (resolution.ok) {
+    await loadCustomQuestions();
+  } else {
+    const error = await resolution.json().catch(() => null);
+    console.error("Delete failed:", error);
+    alert("Delete failed:" + (error?.error ?? ""));
+  }
+}
+
+// utility function that transforms id into country name
+function getCountryName(code) {
+  const list = [...europeanCountries, ...americasCountries];
+  const country = list.find(c => c.code === code);
+  return country ? country.name : code; //fallback
+}
+
+//function for ,,editing,, custom question
+async function editQuestion(question) {
+  //first deletes said question
+  await deleteQuestion(question)
+
+  //then gives values of that question into form to change some of them
+  newQuestion.country = question.id
+  newQuestion.questionType = question.category
+  newQuestion.questionText = question.title
+
+  newQuestion.correctAnswer = question.correct
+  const wrongAnswers = question.answers.filter(a => a !== question.correct)
+
+  newQuestion.wrongA = wrongAnswers[0] || ""
+  newQuestion.wrongB = wrongAnswers[1] || ""
+  newQuestion.wrongC = wrongAnswers[2] || ""
+}
+
 </script>
 
 <template>
   <div class="custom-wrapper-custom">
     <div class="header-custom">
       <router-link to="/themes" class="back-link-custom">
-        <h1>← Back</h1>
+        <h1>Back</h1>
       </router-link>
     </div>
 
@@ -252,13 +361,42 @@ onMounted(() => {
 
       </div>
     </div>
+    <div v-if="customQuestions.length" class="custom-list-wrapper">
+    <h2>Your Custom Questions</h2>
+
+    <div class="custom-list">
+      <div v-for="question in customQuestions" :key="question.title" class="custom-question-item">
+        <div class="custom-question-header">
+          <h3>{{ question.title }}</h3>
+          <div class="btn-group">
+            <button class="edit-btn" @click="editQuestion(question)">Edit</button>
+            <button class="delete-btn" @click="deleteQuestion(question)">Delete</button>
+          </div>
+        </div>
+
+        <p><strong>Country:</strong> {{ getCountryName(question.id) }}</p>
+        <p><strong>Type:</strong> {{ question.category }}</p>
+
+        <ul class="answer-list">
+          <li
+            v-for="a in question.answers"
+            :key="a"
+            :class="a === question.correct ? 'correct-answer' : 'wrong-answer'"
+          >
+            {{ a }}
+          </li>
+        </ul>
+      </div>
+    </div>
+</div>
+
   </div>
 </template>
 
 <style>
 .custom-wrapper-custom {
   position: relative;
-  width: 100vw;
+  width: 99vw;
   height: 100vh;
   color: white;
   font-family: 'Press Start 2P', monospace;
@@ -388,10 +526,108 @@ select option {
   font-weight: bold;
   font-size: 4rem;
   background: rgba(0, 0, 0, 0.5);
-  z-index: 9999;
+  z-i: 9999;
   pointer-events: none;
   opacity: 1;
   transition: opacity 0.3s ease;
+}
+.custom-list-wrapper {
+  width: 40vw;           /* rovnaká šírka ako formulár */
+  max-width: 100%;       /* aby sa nezalamovalo na mobile */
+  margin-top: 2rem;
+  text-align: center;
+}
+
+.custom-question-item {
+  padding: 1rem;
+  border: 2px solid white;
+  border-radius: 1rem;
+  background: rgba(0,0,0,0.6);
+  text-align: left;
+  max-width: 100%;
+  word-break: break-word;
+  overflow-wrap: break-word;
+}
+
+.custom-question-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: nowrap;
+}
+
+.custom-question-header h3 {
+  margin: 0;
+  color: gold;
+  white-space: normal;
+  word-break: break-word;
+}
+
+.delete-btn {
+  flex-shrink: 0;
+  white-space: nowrap;
+  background: red;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  font-family: 'Press Start 2P', monospace;
+  font-size: 0.8rem;
+  transition: transform 0.2s, background 0.2s;
+}
+
+.delete-btn:hover {
+  transform: scale(1.05);
+  background: darkred;
+}
+
+.custom-question-item p,
+.answer-list li {
+  white-space: normal;
+  word-break: break-word;
+  overflow-wrap: break-word;
+  margin: 0.3rem 0;
+}
+
+.answer-list {
+  list-style: none;
+  padding: 0;
+  margin: 0.5rem 0 0 0;
+}
+
+.correct-answer {
+  color: limegreen;
+  font-weight: bold;
+}
+
+.wrong-answer {
+  color: red;
+}
+
+.edit-btn {
+  flex-shrink: 0;
+  white-space: nowrap;
+  background: orange;
+  color: black;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  font-family: 'Press Start 2P', monospace;
+  font-size: 0.8rem;
+  transition: transform 0.2s, background 0.2s;
+}
+
+.edit-btn:hover {
+  transform: scale(1.05);
+  background: rgb(210,140,0);
+}
+.btn-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  flex-shrink: 0;
 }
 
 

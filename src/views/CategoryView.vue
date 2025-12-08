@@ -1,6 +1,10 @@
+<!----------------------------->
+<!-- Author: Lukas Choleva ---->
+<!-- Login: xcholel00 --------->
+<!-- Date: 8.12.2025 ---------->
+<!----------------------------->
+
 <script setup>
-
-
 //stores selected region
 const selectRegion = (region) => {
   localStorage.setItem('region', region)

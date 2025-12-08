@@ -154,18 +154,40 @@ app.post('/game/reset', (req, res) => {
   res.json({ success: true, message: 'Game reset.' })
 })
 
-// ======= Endpoints: Answers ======= TODO
+// ======= Endpoints: Answers =======
 app.post('/game/answer2', (req, res) => {
   const { question, playerValue, reactionTime, difficulty } = req.body
   if (!question) return res.status(400).json({ error: "Missing question" })
 
-  const correct = question.correct
+  const correct = Number(question.correct)
 
-  const botSpread = { Easy: 25, Medium: 15, Hard: 8 }
-  const spread = botSpread[difficulty] || 15
+  // range based by difficluty
+  const spreadd = {
+    Easy: 45,
+    Medium: 30,
+    Hard: 15
+  }
 
-  const botValue = correct + (Math.random() * spread * 2 - spread)
-  const botTime = Math.random() * 1500 + 300
+  const spread = spreadd[difficulty] ?? 15
+
+  // generating bot guess
+  let deviation = Math.floor(Math.random() * spread * 2) - spread
+  let rawBot = correct + deviation
+
+  //only positive values
+  if (rawBot < 0) rawBot = Math.abs(rawBot)
+
+  const botValue = Math.round(rawBot)
+
+  //bot reaction time
+  const botTimee = {
+    Easy: { min: 800, max: 2000 },
+    Medium: { min: 600, max: 1500 },
+    Hard: { min: 400, max: 1200 }
+  }
+
+  const t = botTimee[difficulty] ?? botTimee.Medium
+  const botTime = Math.random() * (t.max - t.min) + t.min
 
   const playerDist = Math.abs(playerValue - correct)
   const botDist = Math.abs(botValue - correct)
@@ -173,10 +195,12 @@ app.post('/game/answer2', (req, res) => {
   let playerPoint = 0
   let botPoint = 0
 
-  if (playerDist < botDist) playerPoint = 1
-  else if (botDist < playerDist) botPoint = 1
-  else {
+  //calculating winner
+  if (playerDist === botDist) {
     if (reactionTime < botTime) playerPoint = 1
+    else botPoint = 1
+  } else {
+    if (playerDist < botDist) playerPoint = 1
     else botPoint = 1
   }
 
@@ -193,6 +217,7 @@ app.post('/game/answer2', (req, res) => {
     botPoint
   })
 })
+
 
 app.post('/game/answer', (req, res) => {
   const { question, playerAnswer, difficulty } = req.body
@@ -216,7 +241,7 @@ app.post('/game/answer', (req, res) => {
   let playerPoint = 0
   let botPoint = 0
   let tie = false
-  
+
   // Determine points
   if (playerCorrect && !botCorrect) {
     playerPoint = 1
@@ -337,6 +362,25 @@ app.post('/stats/reset', (req, res) => {
   saveStats(stats)
   res.json({ success: true })
 })
+
+//deletes question from questions.json
+app.delete('/questions/delete', (req, res) => {
+  const questionToRemove = req.body;
+
+  let questions = loadQuestions();
+  const before = JSON.stringify(questions);
+
+  //filter for said question
+  questions = questions.filter(q => JSON.stringify(q) !== JSON.stringify(questionToRemove));
+
+  if (before === JSON.stringify(questions)) {
+    return res.status(404).json({ error: "Question not found" });
+  }
+
+  fs.writeFileSync(dataPath, JSON.stringify(questions, null, 2));
+
+  res.json({ success: true });
+});
 
 
 

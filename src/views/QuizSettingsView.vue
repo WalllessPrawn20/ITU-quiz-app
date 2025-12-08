@@ -1,3 +1,9 @@
+<!----------------------------->
+<!-- Author: Lukas Choleva ---->
+<!-- Login: xcholel00 --------->
+<!-- Date: 8.12.2025 ---------->
+<!----------------------------->
+
 <script setup>
 import { ref, watch, onMounted } from 'vue'
 import { useRouter } from 'vue-router'

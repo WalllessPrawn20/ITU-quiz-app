@@ -1,25 +1,34 @@
+<!----------------------------->
+<!-- Author: Lukas Choleva ---->
+<!-- Login: xcholel00 --------->
+<!-- Date: 8.12.2025 ---------->
+<!----------------------------->
+
 <template>
   <div class="question-view">
     <h2>{{ question.title }}</h2>
 
+    <!-- input for user answer -->
     <div class="input-box">
       <input
         type="number"
         v-model.number="playerValue"
         class="number-input"
-        placeholder="Your answer"
         :disabled="answered"
       />
+      <!-- sends said answer -->
       <button class="submit-btn" @click="sendAnswer" :disabled="answered">Submit</button>
     </div>
 
     <p>Time left: {{ remainingTime }}s</p>
-
+    <!-- shows result -->
     <div v-if="showResult" class="result-box">
       <p>Correct answer: <strong>{{ question.correct }}</strong></p>
+      <!-- if user answered shows his value -->
       <p v-if="playerValue">Your answer: <strong>{{ playerValue }}</strong></p>
       <p>Bot answer: <strong>{{ botValue.toFixed(1) }}</strong></p>
 
+      <!-- win/lose -->
       <p
         v-if="playerPoint > botPoint"
         class="you-win"
@@ -39,14 +48,17 @@
 <script setup>
 import { ref, onMounted, watch } from 'vue'
 
+//data inserted
 const props = defineProps({
   question: Object,
   duration: Number,
   difficulty: String
 })
 
+//gives back this
 const emit = defineEmits(['answered', 'score'])
 
+//initialization of umportant values
 const remainingTime = ref(props.duration)
 let interval = null
 
@@ -64,6 +76,7 @@ let startTime = performance.now()
 function startTimer() {
   clearInterval(interval)
   remainingTime.value = props.duration
+  //start time
   startTime = performance.now()
 
   interval = setInterval(() => {
@@ -75,14 +88,18 @@ function startTimer() {
   }, 1000)
 }
 
+//sends anwser to server(backend)
 async function sendAnswer() {
-  if (answered.value) return
+  if (answered.value){ return
+  }
   answered.value = true
   clearInterval(interval)
 
+  //reaction time of user
   const reactionTime = performance.now() - startTime
   const value = Number(playerValue.value ?? NaN)
 
+  //sending parametres to server
   const res = await fetch('http://localhost:5000/game/answer2', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
@@ -94,6 +111,7 @@ async function sendAnswer() {
     })
   })
 
+  //data from server
   const data = await res.json()
 
   botValue.value = data.botValue
@@ -102,7 +120,9 @@ async function sendAnswer() {
 
   showResult.value = true
 
+  //timeout to show results
   setTimeout(() => {
+    //sends parent
     emit('score', { playerPoint: data.playerPoint, botPoint: data.botPoint })
     emit('answered', true)
 
@@ -116,6 +136,7 @@ onMounted(() => {
   startTimer()
 })
 
+//new question
 watch(
   () => props.question,
   () => {
@@ -134,29 +155,30 @@ watch(
   left: 50%;
   transform: translateX(-50%);
   background: rgba(0, 0, 0, 0.9);
-  padding: 2rem;
-  border: 3px solid #00cc66;
+  padding: 1.4rem;
+  border: 2px solid #00cc66;
   border-radius: 10px;
   color: white;
-  box-shadow: 0 0 20px #00cc66;
-  width: 400px;
+  box-shadow: 0 0 12px #00cc66;
+  width: 360px;
   text-align: center;
+  overflow: hidden; /* prevents scrollbar */
 }
 
 .input-box {
   display: flex;
   justify-content: center;
-  gap: 1rem;
-  margin: 1.5rem 0;
+  gap: 0.7rem;
+  margin: 1rem 0 0.6rem;
   flex-wrap: wrap;
 }
 
 .number-input {
-  padding: 0.5rem 1rem;
-  width: 120px;
-  font-size: 18px;
+  padding: 0.4rem 0.6rem;
+  width: 95px;
+  font-size: 16px;
   border: 2px solid #555;
-  border-radius: 8px;
+  border-radius: 6px;
   background: #222;
   color: white;
   text-align: center;
@@ -165,24 +187,23 @@ watch(
 .number-input:focus {
   outline: none;
   border-color: #00cc66;
-  box-shadow: 0 0 10px #00cc66;
 }
 
 .submit-btn {
-  padding: 0.5rem 1.2rem;
-  font-size: 18px;
-  background: #00cc66;
-  border: 2px solid #00aa55;
-  border-radius: 8px;
+  padding: 0.4rem 1rem;
+  font-size: 16px;
+  background: #222;
+  border: 2px solid #555;
+  border-radius: 6px;
   cursor: pointer;
-  color: black;
+  color: white;
   font-weight: bold;
-  transition: all 0.2s ease;
 }
 
 .submit-btn:hover:not(:disabled) {
-  background: #00ff88;
-  box-shadow: 0 0 10px #00ff88;
+  background: #00cc66;
+  border-color: #00cc66;
+  color: black;
 }
 
 .submit-btn:disabled {
@@ -190,32 +211,32 @@ watch(
   cursor: default;
 }
 
-.timer {
-  margin-top: 1rem;
-  font-weight: bold;
-}
-
 .result-box {
-  margin-top: 1.5rem;
+  margin-top: 1rem;
+  padding: 0.6rem 0.4rem;
+  border-top: 1px solid #444;
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  gap: 0.2rem;
+  font-size: 14px; /* smaller results */
 }
 
-.round-result {
-  font-size: 20px;
+.you-win,
+.bot-win {
+  margin-top: 3px;
+  font-size: 15px;
+  padding: 0.3rem;
+  border-radius: 6px;
   font-weight: bold;
 }
 
 .you-win {
-  color: #00ff88;
+  background: #00cc66;
+  color: black;
 }
 
 .bot-win {
-  color: #ff5555;
-}
-
-.tie {
-  color: #ffff66;
+  background: #ff4444;
+  color: white;
 }
 </style>

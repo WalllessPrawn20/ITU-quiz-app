@@ -1,3 +1,9 @@
+<!----------------------------->
+<!-- Author: Lukas Choleva ---->
+<!-- Login: xcholel00 --------->
+<!-- Date: 8.12.2025 ---------->
+<!----------------------------->
+
 <template>
   <div class="homepage">
     <router-link to="/settings">
