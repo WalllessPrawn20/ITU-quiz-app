@@ -1,6 +1,13 @@
+<!----------------------------->
+<!-- Author: Matej Melchiory -->
+<!-- Login: xmelchm00 --------->
+<!-- Date: 9.12.2025 ---------->
+<!----------------------------->
+
 <template>
   <div class="game-over-overlay">
     <div class="game-over-card">
+      <!-- Overview of the final results -->
       <h2>
         <span v-if="scores.you > scores.bot">You Win!👍</span>
         <span v-else-if="scores.you < scores.bot">You Lost!👎</span>
@@ -19,7 +26,7 @@
         <p v-else-if="scores.you === scores.bot">It's a draw - Europe remains divided!</p>
         <p v-else>Better luck next time, commander.</p>
       </div>
-
+      <!-- Buttons to continue in the app -->
       <div class="buttons">
         <button @click="restartGame">Restart</button>
         <button @click="exitGame">Exit</button>
@@ -31,6 +38,7 @@
 <script setup>
 import { useRouter } from 'vue-router'
 
+// Defining props for scores and total rounds
 const props = defineProps({
   scores: Object,
   totalRounds: Number,
@@ -38,6 +46,7 @@ const props = defineProps({
 
 const router = useRouter()
 
+// Function to restart the game
 function restartGame() {
   window.location.reload()
   fetch('http://localhost:5000/game/reset', {
@@ -45,6 +54,7 @@ function restartGame() {
   })
 }
 
+// Function to exit the game and go back to home page
 function exitGame() {
   router.push('/')
 }

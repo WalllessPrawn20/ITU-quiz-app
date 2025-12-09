@@ -18,12 +18,29 @@
     <!-- A panel with all information necessary, all variables loaded from the server -->
     <div class="content" v-if="!game_over">
       <div class="info-panel">
-        <p><strong>Time left:</strong> {{ timer }}s</p>
-        <p><strong>Action:</strong> {{ command }}</p>
-        <p><strong>Turns:</strong> {{ turn }}/{{ totalRounds }}</p>
-        <p><strong>Score</strong></p>
-        <p>You: {{ scores.you }}</p>
-        <p>Enemy: {{ scores.bot }}</p>
+        <p class="info-title">Game Status</p>
+
+        <div class="info-item">
+          <strong>Time:</strong> <span>{{ timer }}s</span>
+        </div>
+
+        <div class="info-item">
+          <strong>Action:</strong> <span>{{ command }}</span>
+        </div>
+
+        <div class="info-item">
+          <strong>Turn:</strong> <span>{{ turn }}/{{ totalRounds }}</span>
+        </div>
+
+        <p class="info-title">Score</p>
+
+        <div class="info-item">
+          <strong>You:</strong> <span>{{ scores.you }}</span>
+        </div>
+
+        <div class="info-item">
+          <strong>Enemy:</strong> <span>{{ scores.bot }}</span>
+        </div>
       </div>
       <div class="map-container" ref="mapContainer" v-html="americaSvg" @wheel="handleZoom"></div>
     </div>
@@ -127,7 +144,7 @@ async function handleCountryClick(countryId) {
   clearInterval(game_interval)
 
   selectedCountryId = countryId
-  command.value = `Loading question for ${countryId}...`
+  command.value = `Loading question`
 
   // Fetch questions for the clicked country
   let countryQuestions = await fetchQuestions(countryId)
@@ -137,7 +154,7 @@ async function handleCountryClick(countryId) {
   if (countryQuestions.length) {
     const randomIndex = Math.floor(Math.random() * countryQuestions.length)
     currentQuestion.value = countryQuestions[randomIndex]
-    command.value = `Answer a question for ${countryId}`
+    command.value = `Answer a question`
   }
   else {
     command.value = `No question for ${countryId} found`
@@ -178,21 +195,14 @@ function handleScore({ playerPoint, botPoint }) {
   if (!selectedCountryId) return
 
   // A differrent type of svgs magic, if the id isnt on a group, try to find id on path directly
-  let countryGroup = mapContainer.value.querySelector(`g[id="${selectedCountryId}"]`)
   let paths = []
-
-  if (countryGroup) {
-    paths = countryGroup.querySelectorAll('path')
-  } else {
-    const singlePath = mapContainer.value.querySelector(`path[id="${selectedCountryId}"]`)
-    if (singlePath) paths = [singlePath]
-  }
+  paths = getCountryPaths(selectedCountryId)
 
   // Color the country based on who got it right and update the server to know what continent is correct/wrong for the site refresh
   paths.forEach(async (path) => {
     if (playerPoint) {
-      path.style.fill = '#00ff00' // hráč správne
-      countryResults.value[path.id || selectedCountryId] = 'correct'
+      path.style.fill = '#00ff00'
+      countryResults.value[selectedCountryId] = 'correct'
 
       await fetch('http://localhost:5000/game/country/add', {
         method: 'POST',
@@ -205,7 +215,7 @@ function handleScore({ playerPoint, botPoint }) {
     }
     else if (botPoint) {
       path.style.fill = '#ff3333'
-      countryResults.value[path.id || selectedCountryId] = 'wrong'
+      countryResults.value[selectedCountryId] = 'wrong'
 
       await fetch('http://localhost:5000/game/country/add', {
         method: 'POST',
@@ -448,9 +458,11 @@ async function updateScoresFromServer() {
 
 .top-bar {
   background: #333;
-  text-align: center;
   font-size: 25px;
-  padding: 1rem 0;
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;  /* ♥ zarovná vľavo/vpravo */
+  align-items: center;              /* ♥ vyrovná vertikálne */
 }
 
 .title-link {
@@ -464,26 +476,56 @@ async function updateScoresFromServer() {
 }
 
 .content {
-  display: flex;
-  flex: 1 1 auto;
+  flex: 1;
   overflow: hidden;
+  position: relative;   /* dôležité pre umiestnenie panelu */
 }
 
 .info-panel {
-  width: 250px;
-  background: rgba(0, 0, 0, 0.7);
-  padding: 1rem;
+  position: absolute;   /* ✨ teraz to bude nad mapou */
+  top: 20px;
+  left: 20px;
+
+  width: 360px;
+  background: rgba(0, 0, 0, 0.8);
+  padding: 1.5rem;
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: 1.4rem;
+
+  border-radius: 14px;
+  box-shadow: 0 0 25px rgba(0, 0, 0, 0.8);
+
+  font-family: 'Press Start 2P', monospace;
+  font-size: 14px;
+  line-height: 1.8;
+  letter-spacing: 0.5px;
+
+  z-index: 10;          /* ✨ nad SVG */
+  backdrop-filter: blur(20px); /* pekné rozmazanie */
 }
 
-.map-container {
-  flex: 1;
+.info-title {
+  font-size: 16px;
+  color: #00ffcc;
+  text-shadow: 0 0 6px #00ffcc88;
+  margin-bottom: -0.2rem;
+}
+
+.info-item {
   display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  padding: 1rem;
+  justify-content: space-between;
+  color: #eee;
+}
+
+.info-item strong {
+  color: #00ffaa;
+}
+
+
+.map-container {
+  position: absolute;
+  inset: 0;             /* top:0, left:0, right:0, bottom:0 */
   overflow: hidden;
 }
 
@@ -492,7 +534,6 @@ async function updateScoresFromServer() {
   max-height: 100%;
   border: 2px solid #555;
   background: #222;
-  transform: scale(1.3);
   transform-origin: center;
 }
 
@@ -502,9 +543,9 @@ async function updateScoresFromServer() {
 }
 
 .pause-button {
-  margin-left: 1rem;
   padding: 0.5rem 1rem;
   font-size: 16px;
+  font-family: 'Press Start 2P', monospace; /* ♥ rovnaký font */
   background: #555;
   color: white;
   border: 2px solid #00cc66;

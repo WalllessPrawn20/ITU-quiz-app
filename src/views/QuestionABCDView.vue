@@ -94,7 +94,6 @@ async function selectAnswer(answer) {
 
   botAnswer.value = data.botAnswer
   showResult.value = true
-  console.log("data:", data.playerCorrect)
   // Emitting the results after a short delay to show the correct and picked answers
   setTimeout(() => {
     emit('score', { playerPoint: data.playerPoint, botPoint: data.botPoint })
@@ -154,6 +153,7 @@ watch(
   color: white;
   border: 2px solid #555;
   cursor: pointer;
+  font-family: 'Press Start 2P', monospace;
 }
 
 .answers button:hover:not(:disabled) {

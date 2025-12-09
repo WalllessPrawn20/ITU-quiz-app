@@ -62,7 +62,7 @@ function saveStats(stats) {
   fs.writeFileSync(statsPath, JSON.stringify(stats, null, 2))
 }
 
-// Reseting values for the new game
+// Reseting values for the new game    
 function resetGame() {
   game.playerScore = 0
   game.botScore = 0
