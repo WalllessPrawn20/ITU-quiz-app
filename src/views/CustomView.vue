@@ -526,7 +526,7 @@ select option {
   font-weight: bold;
   font-size: 4rem;
   background: rgba(0, 0, 0, 0.5);
-  z-i: 9999;
+  z-index: 9999;
   pointer-events: none;
   opacity: 1;
   transition: opacity 0.3s ease;
