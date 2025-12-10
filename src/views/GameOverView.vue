@@ -13,9 +13,9 @@
         <span v-else-if="scores.you < scores.bot">You Lost!👎</span>
         <span v-else>It's a tie!</span>
       </h2>
-
+      
       <p>You finished all {{ totalRounds }} turns!</p>
-
+      <!-- Final score -->
       <div class="score">
         <p><strong>You:</strong> {{ scores.you }}</p>
         <p><strong>Enemy:</strong> {{ scores.bot }}</p>
