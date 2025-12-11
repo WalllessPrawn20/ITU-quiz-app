@@ -5250,5 +5250,18 @@
       "Arctic and Pacific Oceans"
     ],
     "correct": "Arctic and Atlantic Oceans"
+  },
+  {
+    "id": "HU",
+    "player": 1,
+    "category": "History",
+    "title": "What is the capital of Hungary?",
+    "answers": [
+      "Budapest",
+      "Prague",
+      "Prievidza",
+      "Brno"
+    ],
+    "correct": "Budapest"
   }
 ]

@@ -39,11 +39,11 @@
 <script setup>
 import { ref, watch, onMounted } from 'vue'
 
-const username = ref('')
+const username =ref('')
 
 // after mounting, load username from storage if exists
 onMounted(() => {
-  const stored = sessionStorage.getItem('username')
+  const stored= sessionStorage.getItem('username')
   if (stored) username.value = stored
 })
 

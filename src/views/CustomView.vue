@@ -96,7 +96,7 @@ const americasCountries = [
 ];
 
 //reactive values for drafts
-const newQuestion = reactive({
+const newQuestion= reactive({
   country: '',
   questionType: '',
   questionText: '',
@@ -118,12 +118,12 @@ const errors = reactive({
 })
 
 //reference values for feedback
-const saved = ref(false)
+const saved =ref(false)
 const region = ref('europe')
 
 //which list to show
 const availableCountries = computed(() => {
-  if (region.value === 'americas') return americasCountries
+  if (region.value=== 'americas') return americasCountries
   return europeanCountries
 })
 
@@ -142,14 +142,14 @@ async function saveQuestion() {
   }
 
   //getting all answers
-  const answers = ["correctAnswer", "wrongA", "wrongB", "wrongC"]
+  const answers= ["correctAnswer", "wrongA", "wrongB", "wrongC"]
   const values = answers.map(key => ({ key, value: newQuestion[key].trim().toLowerCase()
   }))
 
   //resetting before marking new errors
-  answers.forEach(key => {
+  answers.forEach(key=> {
     if (!errors[key]){
-      errors[key] = false
+      errors[key] =false
     }
   })
 
@@ -159,8 +159,8 @@ async function saveQuestion() {
     //looking fort another answer with same value at different i
     values.forEach((item2, j) => {
       if (i !== j && item.value !== '' && item.value === item2.value) {
-        duplicate[item.key] = true
-        duplicate[item2.key] = true
+        duplicate[item.key]= true
+        duplicate[item2.key] =true
       }
     })
   })
@@ -179,14 +179,14 @@ async function saveQuestion() {
   }
 
   //saving question (for browser refresh)
-  const stored = JSON.parse(localStorage.getItem('customQuestions') || '[]')
+  const stored= JSON.parse(localStorage.getItem('customQuestions') || '[]')
   stored.push({ ...newQuestion })
   localStorage.setItem('customQuestions', JSON.stringify(stored))
 
   //format for saved question
   const save = {
     id: newQuestion.country,
-    player: 1, //custom question
+    player:1, //custom question
     category: newQuestion.questionType,
     title: newQuestion.questionText,
     answers: [
@@ -197,7 +197,6 @@ async function saveQuestion() {
     ],
     correct: newQuestion.correctAnswer
   }
-  console.log('data for fetch:', save);
 
   //sending to server, which saves the question to questions.json
   try {
@@ -210,7 +209,7 @@ async function saveQuestion() {
     if (!resolution.ok) throw new Error('Failed to save question to server')
 
     // feedback
-    saved.value = true
+    saved.value =true
     setTimeout(() => { saved.value = false }, 2000)
   } catch (err) {
     console.error(err)
@@ -227,18 +226,17 @@ async function saveQuestion() {
 //watching changes in form nad saving them
 watch(
   newQuestion,
-  (val) => {
-    localStorage.setItem('customQuestionDraft', JSON.stringify(val))
-  },
+  (val)=> {
+    localStorage.setItem('customQuestionDraft', JSON.stringify(val))},
   { deep: true }
 )
 
 //if draft exists, it loads it
 onMounted(() => {
   const draft = localStorage.getItem('customQuestionDraft')
-  if (draft) {
+  if (draft){
     const parsed = JSON.parse(draft)
-    for (const key in newQuestion) {
+    for(const key in newQuestion) {
       if (parsed[key]) newQuestion[key] = parsed[key]
     }
   }
@@ -262,7 +260,7 @@ async function loadCustomQuestions() {
 
     //filter where player is 1 (custom questions)
     customQuestions.value = data.filter(question => question.player === 1)
-  } catch (err) {
+  } catch (err){
     console.error('Failed loading questions', err)
   }
 }
@@ -291,9 +289,9 @@ async function deleteQuestion(question) {
 
 // utility function that transforms id into country name
 function getCountryName(code) {
-  const list = [...europeanCountries, ...americasCountries];
+  const list =[...europeanCountries, ...americasCountries];
   const country = list.find(c => c.code === code);
-  return country ? country.name : code; //fallback
+  return country? country.name : code; //fallback
 }
 
 //function for ,,editing,, custom question
@@ -335,7 +333,7 @@ async function editQuestion(question) {
           <option v-for="c in availableCountries" :key="c.code" :value="c.code">{{ c.name }}</option>
         </select>
 
-        <label>Question Type</label>
+        <label>Category</label>
         <!-- categories -->
         <select v-model="newQuestion.questionType" :class="{ 'error-custom': errors.questionType }">
           <option disabled value="">Select a type</option>

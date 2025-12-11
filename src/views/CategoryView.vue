@@ -19,7 +19,7 @@ const selectRegion = (region) => {
     <div class="header-category">
       <div class="titles">
         <router-link to="/" class="back-link">
-          <h1>World Conquest</h1>
+          <h1 class="tomenu">World Conquest</h1>
         </router-link>
         <h2>Choose region you want to play:</h2>
       </div>
@@ -54,7 +54,7 @@ const selectRegion = (region) => {
       <!-- </router-link> -->
 
       <router-link to="/themes" class="category">
-      <button class="img-button blocked">
+      <button class="img-button">
         <h3>Americas</h3>
         <img
           src="../assets/americas.png"
@@ -217,11 +217,8 @@ h3 {
   transition: 0.3s all;
 }
 
-.img-button:hover img {
-  box-shadow:
-    0 0 5px #ccc,
-    0 0 10px #ccc,
-    0 0 15px #ccc;
+.img-button:hover:not(.blocked) img {
+  box-shadow:0 0 5px #ccc,0 0 10px #ccc,0 0 15px #ccc;
   transform: scale(1.05);
 }
 
@@ -245,5 +242,9 @@ h3 {
 
 .back-link:hover {
   color: #00ff88;
+}
+.blocked{
+filter: grayscale(100%) brightness(70%);
+
 }
 </style>

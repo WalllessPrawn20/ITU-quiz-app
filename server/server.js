@@ -1,7 +1,9 @@
 /************************************/
 /* Name: Matej Melchiory            */
+/* Name: Lukas Choleava             */
 /* Date: 3.12.2025                  */
 /* Login: xmelchm00                 */
+/* Login: xcholel00                 */
 /************************************/
 
 import express from 'express'
@@ -62,7 +64,7 @@ function saveStats(stats) {
   fs.writeFileSync(statsPath, JSON.stringify(stats, null, 2))
 }
 
-// Reseting values for the new game    
+// Reseting values for the new game
 function resetGame() {
   game.playerScore = 0
   game.botScore = 0
@@ -162,22 +164,22 @@ app.post('/game/answer2', (req, res) => {
   const correct = Number(question.correct)
 
   // range based by difficluty
-  const spreadd = {
-    Easy: 45,
-    Medium: 30,
-    Hard: 15
+  const percent = {
+    Easy: 0.50,
+    Medium: 0.40,
+    Hard: 0.15
   }
 
-  const spread = spreadd[difficulty] ?? 15
+  const spread = correct * (percent[difficulty] ?? 0.30)
 
   // generating bot guess
-  let deviation = Math.floor(Math.random() * spread * 2) - spread
-  let rawBot = correct + deviation
+  let botdeviation = Math.floor(Math.random() * spread * 2) - spread
+  let botnumber = correct + botdeviation
 
   //only positive values
-  if (rawBot < 0) rawBot = Math.abs(rawBot)
+  if (botnumber < 0) botnumber = Math.abs(botnumber)
 
-  const botValue = Math.round(rawBot)
+  const botValue = Math.round(botnumber)
 
   //bot reaction time
   const botTimee = {

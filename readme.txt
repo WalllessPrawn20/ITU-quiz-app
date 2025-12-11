@@ -3,7 +3,7 @@ Backend with questions is in the folder /server :
   questions.json
   questions2.json
   stats.json
-  server.js(on)
+  server.js
 
 - both given abcd questions and custom user abcd questions are in /server/questions.json
 - numerical questions are in /server/questions2.json
@@ -14,8 +14,7 @@ Backend with questions is in the folder /server :
 Frontend and assets are in the /src folder :
 /src
   /assets
-  /router
-    index.js
+  /router/index.js
   /utils
   /views
 

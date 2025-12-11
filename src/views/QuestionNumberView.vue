@@ -56,22 +56,22 @@ const props = defineProps({
 })
 
 //gives back this
-const emit = defineEmits(['answered', 'score'])
+const emit= defineEmits(['answered', 'score'])
 
 //initialization of umportant values
-const remainingTime = ref(props.duration)
+const remainingTime =ref(props.duration)
 let interval = null
 
-const playerValue = ref(null)
+const playerValue= ref(null)
 const answered = ref(false)
 
-const botValue = ref(0)
+const botValue =ref(0)
 const playerPoint = ref(0)
 const botPoint = ref(0)
 
 const showResult = ref(false)
 
-let startTime = performance.now()
+let startTime= performance.now()
 
 function startTimer() {
   clearInterval(interval)
@@ -92,12 +92,12 @@ function startTimer() {
 async function sendAnswer() {
   if (answered.value){ return
   }
-  answered.value = true
+  answered.value= true
   clearInterval(interval)
 
   //reaction time of user
   const reactionTime = performance.now() - startTime
-  const value = Number(playerValue.value ?? NaN)
+  const value= Number(playerValue.value ?? NaN)
 
   //sending parametres to server
   const res = await fetch('http://localhost:5000/game/answer2', {
@@ -115,10 +115,10 @@ async function sendAnswer() {
   const data = await res.json()
 
   botValue.value = data.botValue
-  playerPoint.value = data.playerPoint
+  playerPoint.value =data.playerPoint
   botPoint.value = data.botPoint
 
-  showResult.value = true
+  showResult.value =true
 
   //timeout to show results
   setTimeout(() => {
@@ -128,7 +128,7 @@ async function sendAnswer() {
 
     answered.value = false
     showResult.value = false
-    playerValue.value = null
+    playerValue.value= null
   }, 3000)
 }
 
@@ -140,7 +140,7 @@ onMounted(() => {
 watch(
   () => props.question,
   () => {
-    playerValue.value = null
+    playerValue.value= null
     answered.value = false
     showResult.value = false
     startTimer()
@@ -162,7 +162,7 @@ watch(
   box-shadow: 0 0 12px #00cc66;
   width: 360px;
   text-align: center;
-  overflow: hidden; /* prevents scrollbar */
+  overflow: hidden;
 }
 
 .input-box {
@@ -218,11 +218,10 @@ watch(
   display: flex;
   flex-direction: column;
   gap: 0.2rem;
-  font-size: 14px; /* smaller results */
+  font-size: 14px;
 }
 
-.you-win,
-.bot-win {
+.you-win, .bot-win {
   margin-top: 3px;
   font-size: 15px;
   padding: 0.3rem;

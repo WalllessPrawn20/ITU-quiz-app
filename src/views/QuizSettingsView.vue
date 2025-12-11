@@ -90,7 +90,7 @@ function toggleSet(key) {
     return
   }
 
-  settings.value.sets[key] = !settings.value.sets[key]
+  settings.value.sets[key]= !settings.value.sets[key]
 }
 </script>
 
@@ -99,7 +99,7 @@ function toggleSet(key) {
     <div class="header-category">
       <div class="titles">
         <router-link to="/" class="back-link">
-          <h1>World Conquest</h1>
+          <h1 class="tomenu">World Conquest</h1>
         </router-link>
         <h2>Choose settings for your game:</h2>
       </div>
@@ -304,8 +304,7 @@ function toggleSet(key) {
   width: 100%;
 }
 
-.slider-group,
-.play-btn {
+.slider-group, .play-btn {
   margin-top: 0;
 }
 
@@ -365,7 +364,27 @@ function toggleSet(key) {
 }
 
 .checkbox.active {
+  position: relative;
+  background: none;
+}
+
+.checkbox.active::before, .checkbox.active::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 2vw;
+  height: 0.35vw;
   background: white;
+  transform-origin: center;
+}
+
+.checkbox.active::before {
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+
+.checkbox.active::after {
+  transform: translate(-50%, -50%) rotate(-45deg);
 }
 
 .slider-group {
@@ -414,8 +433,7 @@ input[type='range']::-moz-range-thumb {
   border: 0.4vw solid black;
 }
 
-input[type='range']::-webkit-slider-thumb:hover,
-input[type='range']::-moz-range-thumb:hover {
+input[type='range']::-webkit-slider-thumb:hover, input[type='range']::-moz-range-thumb:hover {
   background: yellow;
 }
 
@@ -540,4 +558,18 @@ input[type='range']::-moz-range-thumb:hover {
   transform: scale(1.1);
   background: rgba(255, 255, 255, 0.2);
 }
+.circle-img, .square-img, .checkbox {
+  flex-shrink: 0;
+}
+
+.label {
+  flex-grow: 1;
+  flex-shrink: 1;
+  min-width: 0;
+  font-size: clamp(0.8rem, 1.2vw, 1.4rem);
+  white-space: nowrap;
+}
+/* .tomenu{
+  text-decoration: underline;
+} */
 </style>

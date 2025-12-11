@@ -60,7 +60,7 @@ function closeStats() {
 
 // Calculate success rate as a percentage
 function calcRate(correct, incorrect) {
-  const total = correct + incorrect
+  const total= correct + incorrect
   if (total === 0) return '-'
   return `${Math.round((correct / total) * 100)}%`
 }
@@ -70,20 +70,19 @@ async function fetchStats() {
   try {
     const res = await fetch('http://localhost:5000/stats')
     if (!res.ok) throw new Error('Failed to fetch stats')
-    const data = await res.json()
+    const data =await res.json()
 
     // Changing the format for the stats display
     stats.value = stats.value.map((s) => {
       const continent = s.name
       if (data[continent]) {
         const correct = data[continent].correct
-        const incorrect = data[continent].wrong
+        const incorrect= data[continent].wrong
         return {
           ...s,
           correct,
           incorrect,
-          successRate: calcRate(correct, incorrect),
-        }
+          successRate: calcRate(correct, incorrect),}
       }
       return s
     })
@@ -106,7 +105,7 @@ async function resetStats() {
 }
 
 // Load stats on component load
-onMounted(() => {
+onMounted(() =>{
   fetchStats()
 })
 </script>
@@ -194,8 +193,7 @@ onMounted(() => {
   height: calc(100% / 6);
 }
 
-.stats-table th,
-.stats-table td {
+.stats-table th, .stats-table td {
   background: black;
   border: 4px solid white;
   border-radius: 4px;
