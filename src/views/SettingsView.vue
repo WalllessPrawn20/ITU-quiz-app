@@ -14,6 +14,17 @@ const music = ref(true)
 const sfx = ref(true)
 const currentTrack = ref('synthwave')
 
+//showing credits ,,window,,
+const showCredits = ref(false)
+
+function openCredits() {
+  showCredits.value = true
+}
+
+function closeCredits() {
+  showCredits.value = false
+}
+
 // Going back to the previous page
 function goBack() {
   router.back()
@@ -78,8 +89,18 @@ onMounted(() => {
           <div class="pixel-checkbox" @click="sfx = !sfx" :class="{ active: sfx }"></div>
         </div>
 
-        <button class="credits-btn">CREDITS</button>
+        <button class="credits-btn" @click="openCredits">CREDITS</button>
       </div>
+    </div>
+  </div>
+  <div v-if="showCredits" class="credits-overlay">
+    <div class="credits-window">
+      <button class="credits-close" @click="closeCredits">✖</button>
+
+      <h2>CREDITS</h2>
+      <p>Author: Lukas Choleva</p>
+      <p>Author: Matej Melchiory</p>
+      <p>Date: 12.12.2025</p>
     </div>
   </div>
 </template>
@@ -177,4 +198,46 @@ onMounted(() => {
   color: black;
   transform: scale(1.05);
 }
+.credits-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
+}
+
+.credits-window {
+  background: rgba(0, 0, 0, 0.9);
+  border: 6px solid white;
+  padding: 2rem 3rem;
+  text-align: left;
+  font-family: 'Press Start 2P', monospace;
+  color: white;
+  box-shadow: 0 0 0 6px black;
+  position: relative;
+}
+
+.credits-close {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 32px;
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+}
+
+.credits-window h2 {
+  margin-bottom: 1.5rem;
+}
+
+.credits-window p {
+  margin: 0.5rem 0;
+  margin-left: 0.5rem;
+
+}
+
 </style>

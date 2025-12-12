@@ -206,8 +206,9 @@ async function saveQuestion() {
       body: JSON.stringify(save)
     })
 
-    if (!resolution.ok) throw new Error('Failed to save question to server')
-
+    if (!resolution.ok) {
+      throw new Error('Failed to save question to server')
+    }
     // feedback
     saved.value =true
     setTimeout(() => { saved.value = false }, 2000)
@@ -217,8 +218,12 @@ async function saveQuestion() {
   }
 
   //clearing form
-  for (const key in newQuestion) newQuestion[key] = ''
-  for (const key in errors) errors[key] = false
+  for (const key in newQuestion){
+    newQuestion[key] = ''
+  }
+    for (const key in errors) {
+    errors[key] = false
+  }
   localStorage.removeItem('customQuestionDraft')
 }
 
