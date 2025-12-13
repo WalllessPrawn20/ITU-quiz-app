@@ -5,12 +5,27 @@
 <!----------------------------->
 
 <script setup>
+import { ref, onMounted } from 'vue'
+import { sfxManager } from '../utils/SfxManager'
+
+let sfx = ref(false)
+
 //stores selected region
 const selectRegion = (region) => {
   localStorage.setItem('region', region)
   // when changing regione removes saved incomplete custom question
   localStorage.removeItem('customQuestionDraft')
 
+}
+
+function selectAndClick(region) {
+  selectRegion(region)  // tvoja funkcia na nastavenie regionu
+  Click()               // spusti sfx a log
+}
+
+// play click sound if sfx enabled
+function Click() {
+  sfxManager.playClick()
 }
 </script>
 
@@ -60,7 +75,7 @@ const selectRegion = (region) => {
           src="../assets/americas.png"
           class="filter"
           alt="Americas"
-          @click="selectRegion('americas')"
+          @click="selectAndClick('americas')"
         />
       </button>
       </router-link>
@@ -87,7 +102,7 @@ const selectRegion = (region) => {
             src="../assets/europe.png"
             alt="Europe"
             class="filter"
-            @click="selectRegion('europe')"
+            @click="selectAndClick('europe')"
           />
         </button>
       </router-link>

@@ -10,7 +10,7 @@
       <!-- Route to go back home through the reacting logo -->
       <router-link to="/" class="title-link">World Conquest</router-link>
       <!-- Pause button to pause the game -->
-      <button class="pause-button" @click="togglePause">
+      <button class="pause-button" @click="togglePause(); Click()">
         {{ is_paused ? 'Resume' : 'Pause' }}
       </button>
     </div>
@@ -78,6 +78,7 @@ import QuestionView from './QuestionABCDView.vue'
 import GameOverView from './GameOverView.vue'
 import svgPanZoom from 'svg-pan-zoom'
 import QuestionNumberView from './QuestionNumberView.vue'
+import { sfxManager } from '../utils/SfxManager'
 
 const mapContainer = ref(null)
 
@@ -140,6 +141,10 @@ async function handleCountryClick(countryId) {
 
   // Prevent clicking on already answered countries or during a question or after game over
   if (countryResults.value[countryId] || currentQuestion.value || game_over.value) return
+
+  if (is_paused.value == true){
+    is_paused.value = false
+  }
 
   clearInterval(game_interval)
 
@@ -264,6 +269,24 @@ function handleTimeout() {
   startGameTimer(10)
 }
 
+function getCountryIdFromPath(path) {
+  // 1️⃣ ak má path ID a začína na 2 písmená
+  if (path.id && /^[a-z]{2}/i.test(path.id)) {
+    return path.id.slice(0, 2)
+  }
+
+  // 2️⃣ choď hore v DOMe a hľadaj <g id="xx">
+  let el = path.parentElement
+  while (el && el !== mapContainer.value) {
+    if (el.id && /^[a-z]{2}/i.test(el.id)) {
+      return el.id.slice(0, 2)
+    }
+    el = el.parentElement
+  }
+
+  return null
+}
+
 // Function to start the game timer for each question or turn
 function startGameTimer(time) {
   clearInterval(game_interval)
@@ -277,11 +300,17 @@ function startGameTimer(time) {
     else {
       clearInterval(game_interval)
       const paths = mapContainer.value.querySelectorAll('path')
-      const unselected = Array.from(paths).filter((p) => !countryResults.value[p.id])
-      if (unselected.length > 0) {
-        const randomPath = unselected[Math.floor(Math.random() * unselected.length)]
-        handleCountryClick(randomPath.id)
-      }
+
+      const unselectedCountries = Array.from(paths)
+        .map(p => getCountryIdFromPath(p))
+        .filter(id => id && !countryResults.value[id])
+
+      if (unselectedCountries.length > 0) {
+        const randomCountry =
+          unselectedCountries[Math.floor(Math.random() * unselectedCountries.length)]
+
+        handleCountryClick(randomCountry)
+      } 
       else {
         command.value = 'Time is up! No more countries left.'
       }
@@ -423,6 +452,11 @@ onMounted(async () => {
   setInterval(updateScoresFromServer, 1500)
 })
 
+// play click sound if sfx enabled
+function Click() {
+  sfxManager.playClick()
+}
+
 // Clear the interval on component unmount to prevent errors
 onUnmounted(() => {
   clearInterval(game_interval)
@@ -461,8 +495,8 @@ async function updateScoresFromServer() {
   font-size: 25px;
   padding: 1rem 2rem;
   display: flex;
-  justify-content: space-between;  /* ♥ zarovná vľavo/vpravo */
-  align-items: center;              /* ♥ vyrovná vertikálne */
+  justify-content: space-between;
+  align-items: center;
 }
 
 .title-link {
@@ -478,15 +512,15 @@ async function updateScoresFromServer() {
 .content {
   flex: 1;
   overflow: hidden;
-  position: relative;   /* dôležité pre umiestnenie panelu */
+  position: relative;
 }
 
 .info-panel {
-  position: absolute;   /* ✨ teraz to bude nad mapou */
+  position: absolute;
   top: 20px;
   left: 20px;
 
-  width: 360px;
+  width: 20vw;
   background: rgba(0, 0, 0, 0.8);
   padding: 1.5rem;
   display: flex;
@@ -501,8 +535,8 @@ async function updateScoresFromServer() {
   line-height: 1.8;
   letter-spacing: 0.5px;
 
-  z-index: 10;          /* ✨ nad SVG */
-  backdrop-filter: blur(20px); /* pekné rozmazanie */
+  z-index: 10;
+  backdrop-filter: blur(20px);
 }
 
 .info-title {
@@ -518,6 +552,10 @@ async function updateScoresFromServer() {
   color: #eee;
 }
 
+.info-item:first-of-type span {
+  color: red;
+}
+
 .info-item strong {
   color: #00ffaa;
 }
@@ -525,7 +563,7 @@ async function updateScoresFromServer() {
 
 .map-container {
   position: absolute;
-  inset: 0;             /* top:0, left:0, right:0, bottom:0 */
+  inset: 0;
   overflow: hidden;
 }
 
@@ -545,7 +583,7 @@ async function updateScoresFromServer() {
 .pause-button {
   padding: 0.5rem 1rem;
   font-size: 16px;
-  font-family: 'Press Start 2P', monospace; /* ♥ rovnaký font */
+  font-family: 'Press Start 2P', monospace;
   background: #555;
   color: white;
   border: 2px solid #00cc66;

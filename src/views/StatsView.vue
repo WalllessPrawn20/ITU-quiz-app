@@ -8,8 +8,8 @@
   <div class="stats-overlay">
     <!-- The whole stats info card -->
     <div class="stats-card">
-      <button class="close-btn" @click="closeStats">✖</button>
-      <button class="reset-btn" @click="resetStats">RST</button>
+      <button class="close-btn" @click="closeStats && Click()">✖</button>
+      <button class="reset-btn" @click="resetStats && Click()">RST</button>
       <h1 class="stats-title">STATS</h1>
 
       <!-- All statistics headings -->
@@ -41,6 +41,7 @@
 
 import { ref, onMounted } from 'vue'
 import { useRouter } from 'vue-router'
+import { sfxManager } from '../utils/SfxManager'
 
 const router = useRouter()
 
@@ -56,6 +57,11 @@ const stats = ref([
 
 function closeStats() {
   router.back()
+}
+
+// play click sound if sfx enabled
+function Click() {
+  if (sfx.value) sfxManager.playClick()
 }
 
 // Calculate success rate as a percentage
@@ -125,7 +131,6 @@ onMounted(() =>{
   background: black;
   color: white;
   cursor: pointer;
-  image-rendering: pixelated;
   box-shadow: 0 0 0 0.5vw black;
   transition: 0.15s;
 }
@@ -211,16 +216,17 @@ onMounted(() =>{
 .reset-btn {
   position: absolute;
   top: 1vh;
-  left: 1.5vw; /* doleva hore */
+  left: 1.5vw;
   width: 4vw;
   height: 4vw;
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 1.5rem;
+  font-size: 1rem;
   border: 0.5vw solid white;
   background: black;
   color: white;
+  font-family: 'Press Start 2P', monospace;
   cursor: pointer;
   image-rendering: pixelated;
   box-shadow: 0 0 0 0.5vw black;

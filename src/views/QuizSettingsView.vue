@@ -7,6 +7,7 @@
 <script setup>
 import { ref, watch, onMounted } from 'vue'
 import { useRouter } from 'vue-router'
+import { sfxManager } from '../utils/SfxManager'
 
 const router = useRouter()
 
@@ -38,6 +39,11 @@ onMounted(() => {
     settings.value.region = savedRegion
   }
 })
+
+// play click sound if sfx enabled
+function Click() {
+  sfxManager.playClick()
+}
 
 //watches changes to settings and stores them
 watch(
@@ -172,7 +178,7 @@ function toggleSet(key) {
               <button class="custom-btn" @click="router.push('/custom')">+</button>
             </div>
 
-            <button class="play-btn" @click="playQuiz">
+            <button class="play-btn" @click="playQuiz(); Click()">
               <img src="../assets/play.png" alt="Play" class="play-icon" />
             </button>
           </div>

@@ -22,7 +22,11 @@
     />
 
   <!-- route  to categories -->
-  <router-link :to="username ? '/category' : '#'" class="start-link">
+  <router-link
+    :to="username ? '/category' : '#'"
+    class="start-link"
+    @click="username && Click()"
+  >
     <!-- button is disabled till username is given-->
     <button
       class="start"
@@ -38,14 +42,32 @@
 
 <script setup>
 import { ref, watch, onMounted } from 'vue'
+import { sfxManager } from '../utils/SfxManager'
+
 
 const username =ref('')
+const sfx = ref(false)
 
-// after mounting, load username from storage if exists
+// after mounting, load username from storage if exists and sfx settings
 onMounted(() => {
   const stored= sessionStorage.getItem('username')
   if (stored) username.value = stored
+
+  const storedSfx = sessionStorage.getItem('sfx')
+  if (storedSfx !== null) {
+    sfx.value = storedSfx === 'true'
+  } else {
+    sfx.value = false
+    sessionStorage.setItem('sfx', 'false')
+  }
+
+  sfxManager.setEnabled(sfx.value)
 })
+
+// play click sound if sfx enabled
+function Click() {
+  if (sfx.value) sfxManager.playClick()
+}
 
 //watch for changes to username to store them
 watch(username, (newVal) => {

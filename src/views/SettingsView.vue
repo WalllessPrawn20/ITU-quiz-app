@@ -8,11 +8,19 @@
 import { ref, onMounted } from 'vue'
 import { useRouter } from 'vue-router'
 import { audioManager } from '../utils/AudioManager'
+import { sfxManager } from '../utils/SfxManager'
+
 
 const router = useRouter()
 const music = ref(true)
 const sfx = ref(true)
 const currentTrack = ref('synthwave')
+
+function toggleSfx() {
+  sfx.value = !sfx.value
+  sfxManager.setEnabled(sfx.value)
+  sessionStorage.setItem('sfx', sfx.value)
+}
 
 //showing credits ,,window,,
 const showCredits = ref(false)
@@ -33,29 +41,50 @@ function goBack() {
 // Toggle music on/off
 function toggleMusic() {
   music.value = !music.value
-  audioManager.toggle()
-  sessionStorage.setItem('music', music.value) // uložiť stav hudby
+  if (music.value) {
+    audioManager.play()
+  } else {
+    audioManager.pause()
+  }
+  sessionStorage.setItem('music', music.value)
 }
 
 // Change the current track
 function changeTrack(trackName) {
   currentTrack.value = trackName
   audioManager.switchTrack(trackName)
-  sessionStorage.setItem('track', trackName) // uložiť zvolenú pesničku
+  sessionStorage.setItem('track', trackName)
 }
 
 // Load settings about sound from sessionStorage on loading
 onMounted(() => {
   const storedMusic = sessionStorage.getItem('music')
   if (storedMusic !== null) {
-    music.value = storedMusic === 'true'
-    if (!music.value && audioManager.isPlaying()) audioManager.toggle()
+    music.value = storedMusic === 'true'    
+    if (music.value) {
+      audioManager.play()
+    } else {
+      audioManager.pause()
+    }
+  }
+  else{
+    music.value = false 
+    audioManager.toggle()                   
   }
 
   const storedTrack = sessionStorage.getItem('track')
   if (storedTrack && storedTrack !== currentTrack.value) {
     currentTrack.value = storedTrack
-    audioManager.switchTrack(storedTrack) // prepni len ak je iná
+    audioManager.switchTrack(storedTrack)
+  }
+
+    const storedSfx = sessionStorage.getItem('sfx')
+  if (storedSfx !== null) {
+    sfx.value = storedSfx === 'true'     // string -> boolean
+    sfxManager.setEnabled(sfx.value)
+  } else {
+    sfx.value = false                     // default OFF na začiatku
+    sfxManager.setEnabled(false)
   }
 })
 </script>
@@ -63,10 +92,15 @@ onMounted(() => {
 <template>
   <div class="menu-screen">
     <!--  Button for going back -->
-    <button class="close-btn" @click="goBack">✖</button>
+    <button
+      class="close-btn"
+      @click="() => { sfxManager.playClick(); goBack() }"
+    >
+      ✖
+  </button>
 
     <div class="menu-content">
-      <h1 class="title">WORLD<br />CONQUEST</h1>
+      <h1 class="title">WORLD<br/>CONQUEST</h1>
 
       <!-- A menu with all settings available -->
       <div class="settings-box">
@@ -86,7 +120,7 @@ onMounted(() => {
 
         <div class="setting-item">
           <span>SFX:</span>
-          <div class="pixel-checkbox" @click="sfx = !sfx" :class="{ active: sfx }"></div>
+          <div class="pixel-checkbox" @click="toggleSfx" :class="{ active: sfx }"></div>
         </div>
 
         <button class="credits-btn" @click="openCredits">CREDITS</button>
@@ -95,7 +129,7 @@ onMounted(() => {
   </div>
   <div v-if="showCredits" class="credits-overlay">
     <div class="credits-window">
-      <button class="credits-close" @click="closeCredits">✖</button>
+      <button class="credits-close" @click="() => { sfxManager.playClick(); closeCredits()}">✖</button>
 
       <h2>CREDITS</h2>
       <p>Author: Lukas Choleva</p>
