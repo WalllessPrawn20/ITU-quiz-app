@@ -41,6 +41,9 @@
         <div class="info-item">
           <strong>Enemy:</strong> <span>{{ scores.bot }}</span>
         </div>
+        <div class="info-item">
+          <strong>Tip:</strong> <span>You can move around the map and zoom in/out!</span>
+        </div>
       </div>
       <div class="map-container" ref="mapContainer" v-html="americaSvg" @wheel="handleZoom"></div>
     </div>
