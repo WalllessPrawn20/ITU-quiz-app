@@ -5,7 +5,8 @@
 SRC_DIR := src
 SERVER_DIR := server/server.js server/stats.json server/questions.json server/questions2.json
 DIST_DIR := dist
-ARCHIVE := xmelchm00_xcholel00_source.zip
+ARCHIVE := 01_xmelchm00_xcholel00_source.zip
+DOCUMENTS := README.md 01_xmelchm00_xcholel00_final.pdf
 
 # Default target
 .PHONY: help
@@ -38,5 +39,6 @@ clean:
 pack: clean
 	zip -r $(ARCHIVE) \
 		$(SRC_DIR) \
-		$(SERVER_DIR)
+		$(SERVER_DIR) \
+		$(DOCUMENTS)
 	@echo "Projekt zbaleny do $(ARCHIVE)"
