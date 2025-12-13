@@ -26,6 +26,7 @@ const defaultSettings = {
 }
 
 const settings = ref({ ...defaultSettings })
+const showHelp = ref(false) 
 
 // loads saved settings if they exist
 onMounted(() => {
@@ -111,6 +112,7 @@ function toggleSet(key) {
       </div>
 
       <div class="header-buttons">
+        <button class="header-btn" @click="showHelp = true">?</button>
         <router-link to="/stats">
           <button class="header-btn" aria-label="Statistics">
             <img src="../assets/stats3.png" alt="Statistics" />
@@ -186,9 +188,62 @@ function toggleSet(key) {
       </div>
     </div>
   </div>
+  <div v-if="showHelp" class="modal-overlay" @click.self="showHelp = false">
+  <div class="modal-content">
+    <h2>How to Play</h2>
+    <p>
+      Welcome to World Conquest!<br />
+      - Choose your quiz sets (at least one must be active).<br />
+      - Select difficulty, timer, and number of rounds.<br />
+      - Click "Play" to start the game.<br />
+      - During the quiz, click on the country on the map and anser it's question.<br />
+      - You are fighting against a bot.<br />
+      - Have fun and try to conquer the world!
+    </p>
+    <button class="close-btn" @click="showHelp = false">Close</button>
+  </div>
+</div>
 </template>
 
 <style>
+
+  .modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0,0,0,0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background: #222;
+  padding: 2rem;
+  border-radius: 1rem;
+  width: 80%;
+  max-width: 600px;
+  font-family: 'Press Start 2P', monospace;
+  color: white;
+  text-align: center;
+  position: relative;
+    border: 3px solid #00cc66;
+  border-radius: 10px;
+  box-shadow: 0 0 20px #00cc66;
+}
+
+.close-btn {
+  margin-top: 1.5rem;
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  font-family: 'Press Start 2P', monospace;
+  cursor: pointer;
+}
+
+
 .settings-wrapper-settings {
   position: relative;
   width: 100vw;
@@ -252,7 +307,7 @@ function toggleSet(key) {
   align-items: center;
   justify-content: flex-start;
   font-family: 'Press Start 2P', monospace;
-  font-size: 3rem;
+  font-size: 5rem;
   background: none;
   border: none;
   color: white;
