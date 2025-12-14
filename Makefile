@@ -6,7 +6,7 @@ SRC_DIR := src
 SERVER_DIR := server/server.js server/stats.json server/questions.json server/questions2.json
 DIST_DIR := dist
 ARCHIVE := 01_xmelchm00_xcholel00_source.zip
-DOCUMENTS := README.md 01_xmelchm00_xcholel00_final.pdf
+DOCUMENTS := readme.txt 01_xmelchm00_xcholel00_final.pdf 01_xmelchm00_video.mp4
 
 # Default target
 .PHONY: help

@@ -20,7 +20,7 @@ Frontend and assets are in the /src folder :
 
 - image assets are in /src/assets folder
 - router is in /src/router/index.js
-- audio files and manager are in /src/utils
+- audio and sfx files and manager are in /src/utils
 
 FE (views) is in /src/views folder :
 
