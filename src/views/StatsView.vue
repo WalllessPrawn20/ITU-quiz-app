@@ -8,8 +8,8 @@
   <div class="stats-overlay">
     <!-- The whole stats info card -->
     <div class="stats-card">
-      <button class="close-btn" @click="closeStats && Click()">✖</button>
-      <button class="reset-btn" @click="resetStats && Click()">RST</button>
+      <button class="close-btn" @click="closeStats(); Click()">✖</button>
+      <button class="reset-btn" @click="resetStats(); Click()">RST</button>
       <h1 class="stats-title">STATS</h1>
 
       <!-- All statistics headings -->
@@ -61,7 +61,7 @@ function closeStats() {
 
 // play click sound if sfx enabled
 function Click() {
-  if (sfx.value) sfxManager.playClick()
+  sfxManager.playClick()
 }
 
 // Calculate success rate as a percentage
